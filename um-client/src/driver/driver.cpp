@@ -1,12 +1,14 @@
 #include "driver.hpp"
 
-#include <iostream>
-#include <xor.hpp>
-
 namespace driver
 {
     Driver::Driver(): handle(createHandle())
     {
+    }
+
+    Driver::~Driver()
+    {
+        CloseHandle(handle);
     }
 
     HANDLE Driver::createHandle()
@@ -26,6 +28,7 @@ namespace driver
         {
             throw std::runtime_error(XOR("Failed creating driver handle. Error: ") + std::to_string(GetLastError()));
         }
+        std::cout << XOR("Created driver handle.\n");
 
         return driverHandle;
     }

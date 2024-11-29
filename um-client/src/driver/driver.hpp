@@ -1,21 +1,46 @@
 #pragma once
 #include <Windows.h>
 #include <cstdint>
-
-#include "../../km-xd/src/common.hpp"
+#include <iostream>
+#include <xor.hpp>
+#include <winioctl.h>
 
 namespace driver
 {
+    // TODO this duplication between user mode and kernel mode is error prone
+    struct Request
+    {
+        HANDLE processIdHandle;
+
+        PVOID targetAddress;
+        PVOID buffer;
+
+        SIZE_T size;
+        SIZE_T returnSize;
+    };
+
+    // TODO this duplication between user mode and kernel mode is error prone
+    namespace control_codes
+    {
+        constexpr ULONG attach{CTL_CODE(FILE_DEVICE_UNKNOWN, 0xA1, METHOD_BUFFERED, FILE_SPECIAL_ACCESS)};
+        constexpr ULONG read{CTL_CODE(FILE_DEVICE_UNKNOWN, 0xA2, METHOD_BUFFERED, FILE_SPECIAL_ACCESS)};
+        constexpr ULONG write{CTL_CODE(FILE_DEVICE_UNKNOWN, 0xA3, METHOD_BUFFERED, FILE_SPECIAL_ACCESS)};
+    }
+
     class Driver
     {
-    public:
+    private:
         const HANDLE handle;
 
+    private:
+        static HANDLE createHandle();
+
+    public:
         Driver();
 
-        bool attach(const DWORD& processId) const;
+        ~Driver();
 
-        static HANDLE createHandle();
+        bool attach(const DWORD& processId) const;
 
         template <class T>
         T read(const std::uintptr_t& address) const
