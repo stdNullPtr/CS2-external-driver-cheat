@@ -146,6 +146,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\controller\Cs2CheatController.cpp" />
+    <ClCompile Include="src\controller\EntityController.cpp" />
+    <ClInclude Include="src\controller\EntityController.hpp" />
     <ClCompile Include="src\driver\driver.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>

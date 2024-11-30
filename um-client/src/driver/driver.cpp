@@ -8,6 +8,7 @@ namespace driver
 
     Driver::~Driver()
     {
+        std::cout << "~Driver()\n";
         CloseHandle(handle);
     }
 
@@ -33,10 +34,10 @@ namespace driver
         return driverHandle;
     }
 
-    bool Driver::attach(const DWORD& processId) const
+    bool Driver::attach(const DWORD& process_id) const
     {
         Request driverRequest;
-        driverRequest.processIdHandle = reinterpret_cast<HANDLE>(processId);
+        driverRequest.processIdHandle = reinterpret_cast<HANDLE>(process_id);
 
         return DeviceIoControl(handle, control_codes::attach, &driverRequest, sizeof(driverRequest), &driverRequest,
                                sizeof(driverRequest), nullptr, nullptr);

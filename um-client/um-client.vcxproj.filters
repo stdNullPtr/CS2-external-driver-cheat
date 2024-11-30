@@ -24,6 +24,9 @@
     <ClCompile Include="src\controller\Cs2CheatController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\controller\EntityController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\sdk\offsets.hpp">
@@ -43,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="src\controller\Cs2CheatController.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\controller\EntityController.hpp">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

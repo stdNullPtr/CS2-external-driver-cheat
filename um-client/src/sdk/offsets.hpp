@@ -30,6 +30,7 @@ namespace cs2_dumper
             constexpr std::ptrdiff_t dwViewRender = 0x1A54D60;
             constexpr std::ptrdiff_t dwWeaponC4 = 0x19F55F8;
         }
+
         // Module: engine2.dll
         namespace engine2_dll
         {
@@ -45,17 +46,20 @@ namespace cs2_dumper
             constexpr std::ptrdiff_t dwWindowHeight = 0x6140CC;
             constexpr std::ptrdiff_t dwWindowWidth = 0x6140C8;
         }
+
         // Module: inputsystem.dll
         namespace inputsystem_dll
         {
             constexpr std::ptrdiff_t dwInputSystem = 0x387E0;
         }
+
         // Module: matchmaking.dll
         namespace matchmaking_dll
         {
             constexpr std::ptrdiff_t dwGameTypes = 0x1A41B0;
             constexpr std::ptrdiff_t dwGameTypes_mapName = 0x120;
         }
+
         // Module: soundsystem.dll
         namespace soundsystem_dll
         {
