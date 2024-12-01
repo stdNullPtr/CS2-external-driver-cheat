@@ -1,12 +1,12 @@
-#include "entity_controller.hpp"
+#include "EntityController.hpp"
 
 namespace cheat::entity
 {
-    entity_controller::entity_controller(const driver::driver& driver, const uintptr_t entity_controller, const uintptr_t entity_pawn): m_driver(driver), m_entityController(entity_controller), m_entityPawn(entity_pawn)
+    EntityController::EntityController(const driver::Driver& driver, const uintptr_t entity_controller, const uintptr_t entity_pawn): m_driver(driver), m_entityController(entity_controller), m_entityPawn(entity_pawn)
     {
     }
 
-    std::string entity_controller::get_name() const
+    std::string EntityController::get_name() const
     {
         const auto entityNameAddress = m_driver.read<uintptr_t>(m_entityController + cs2_dumper::schemas::client_dll::CCSPlayerController::m_sSanitizedPlayerName);
         struct strWrap
@@ -18,17 +18,17 @@ namespace cheat::entity
         return std::string(str.buf);
     }
 
-    int entity_controller::get_team() const
+    int EntityController::get_team() const
     {
         return m_driver.read<int>(m_entityPawn + cs2_dumper::schemas::client_dll::C_BaseEntity::m_iTeamNum);
     }
 
-    int entity_controller::get_health() const
+    int EntityController::get_health() const
     {
         return m_driver.read<int>(m_entityPawn + cs2_dumper::schemas::client_dll::C_BaseEntity::m_iHealth);
     }
 
-    bool entity_controller::is_spotted() const
+    bool EntityController::is_spotted() const
     {
         const auto pEntitySpottedState{m_entityPawn + cs2_dumper::schemas::client_dll::C_CSPlayerPawn::m_entitySpottedState};
 
@@ -37,12 +37,12 @@ namespace cheat::entity
         return m_driver.read<bool>(entitySpottedAddress);
     }
 
-    bool entity_controller::is_local_player() const
+    bool EntityController::is_local_player() const
     {
         return m_driver.read<bool>(m_entityController + cs2_dumper::schemas::client_dll::CBasePlayerController::m_bIsLocalPlayerController);
     }
 
-    void entity_controller::set_spotted(const bool& new_spotted_state) const
+    void EntityController::set_spotted(const bool& new_spotted_state) const
     {
         const auto pEntitySpottedState{m_entityPawn + cs2_dumper::schemas::client_dll::C_CSPlayerPawn::m_entitySpottedState};
 

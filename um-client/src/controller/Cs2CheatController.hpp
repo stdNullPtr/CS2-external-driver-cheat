@@ -3,16 +3,16 @@
 #include <process.hpp>
 
 #include "../global.hpp"
-#include "../driver/driver.hpp"
+#include "../driver/Driver.hpp"
 #include "../sdk/dumper/client_dll.hpp"
 #include "../sdk/dumper/offsets.hpp"
 
 namespace cheat
 {
-    class cs2_cheat_controller
+    class Cs2CheatController
     {
     public:
-        const driver::driver& m_driver;
+        const driver::Driver& m_driver;
 
     private:
         DWORD m_cs2_process_id{0};
@@ -26,13 +26,13 @@ namespace cheat
         [[nodiscard]] bool attach() const;
 
     public:
-        cs2_cheat_controller(const driver::driver& driver);
-        ~cs2_cheat_controller() = default;
+        Cs2CheatController(const driver::Driver& driver);
+        ~Cs2CheatController() = default;
 
-        cs2_cheat_controller(const cs2_cheat_controller& other) = delete;
-        cs2_cheat_controller(cs2_cheat_controller&& other) noexcept = delete;
-        cs2_cheat_controller& operator=(const cs2_cheat_controller& other) = delete;
-        cs2_cheat_controller& operator=(cs2_cheat_controller&& other) noexcept = delete;
+        Cs2CheatController(const Cs2CheatController& other) = delete;
+        Cs2CheatController(Cs2CheatController&& other) noexcept = delete;
+        Cs2CheatController& operator=(const Cs2CheatController& other) = delete;
+        Cs2CheatController& operator=(Cs2CheatController&& other) noexcept = delete;
 
         [[nodiscard]] DWORD get_m_cs2_process_id() const;
         [[nodiscard]] uintptr_t get_client_dll_base() const;

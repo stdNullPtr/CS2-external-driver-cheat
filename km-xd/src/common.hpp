@@ -6,13 +6,13 @@ namespace driver
     // TODO this duplication between user mode and kernel mode is error prone
     struct Request
     {
-        HANDLE processIdHandle;
+        HANDLE process_id_handle;
 
-        PVOID targetAddress;
+        PVOID target_address;
         PVOID buffer;
 
         SIZE_T size;
-        SIZE_T returnSize;
+        SIZE_T return_size;
     };
 
     // TODO this duplication between user mode and kernel mode is error prone

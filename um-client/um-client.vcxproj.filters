@@ -18,13 +18,13 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\driver\driver.cpp">
+    <ClCompile Include="src\driver\Driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controller\cs2_cheat_controller.cpp">
+    <ClCompile Include="src\controller\Cs2CheatController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controller\entity_controller.cpp">
+    <ClCompile Include="src\controller\EntityController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +32,13 @@
     <ClInclude Include="src\global.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\driver\driver.hpp">
+    <ClInclude Include="src\driver\Driver.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\controller\cs2_cheat_controller.hpp">
+    <ClInclude Include="src\controller\Cs2CheatController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\controller\entity_controller.hpp">
+    <ClInclude Include="src\controller\EntityController.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\sdk\dumper\animationsystem_dll.hpp">

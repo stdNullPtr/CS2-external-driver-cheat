@@ -145,15 +145,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\controller\cs2_cheat_controller.cpp" />
-    <ClCompile Include="src\controller\entity_controller.cpp" />
-    <ClInclude Include="src\controller\entity_controller.hpp" />
-    <ClCompile Include="src\driver\driver.cpp" />
+    <ClCompile Include="src\controller\Cs2CheatController.cpp" />
+    <ClCompile Include="src\controller\EntityController.cpp" />
+    <ClInclude Include="src\controller\EntityController.hpp" />
+    <ClCompile Include="src\driver\Driver.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\controller\cs2_cheat_controller.hpp" />
-    <ClInclude Include="src\driver\driver.hpp" />
+    <ClInclude Include="src\controller\Cs2CheatController.hpp" />
+    <ClInclude Include="src\driver\Driver.hpp" />
     <ClInclude Include="src\global.hpp" />
     <ClInclude Include="src\sdk\dumper\animationsystem_dll.hpp" />
     <ClInclude Include="src\sdk\dumper\buttons.hpp" />

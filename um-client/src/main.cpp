@@ -3,12 +3,12 @@
 #include <string>
 #include <thread>
 
-#include "driver/driver.hpp"
+#include "driver/Driver.hpp"
 #include "process.hpp"
 #include "console.hpp"
 #include "window.hpp"
-#include "controller/cs2_cheat_controller.hpp"
-#include "controller/entity_controller.hpp"
+#include "controller/Cs2CheatController.hpp"
+#include "controller/EntityController.hpp"
 #include "sdk/dumper/client_dll.hpp"
 #include "sdk/dumper/offsets.hpp"
 
@@ -20,16 +20,16 @@ int main()
 {
     commons::console::setCursorVisibility(false);
 
-    const driver::driver driver{};
+    const driver::Driver driver{};
     if (!driver.is_valid())
     {
-        MessageBox(nullptr, XOR("Load the driver first lmao."), XOR("Oopsie"), MB_OK);
+        MessageBox(nullptr, XOR("Load the Driver first lmao."), XOR("Oopsie"), MB_OK);
         return EXIT_FAILURE;
     }
 
     commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999h);
 
-    cheat::cs2_cheat_controller cheat{driver};
+    cheat::Cs2CheatController cheat{driver};
 
     sleep_for(2s);
 
@@ -85,7 +85,7 @@ int main()
             radar_hack = !radar_hack;
         }
 
-        cheat::entity::entity_controller me{cheat.m_driver, cheat.get_local_player_controller(), cheat.get_local_player_pawn()};
+        cheat::entity::EntityController me{cheat.m_driver, cheat.get_local_player_controller(), cheat.get_local_player_pawn()};
 
         const auto entity_system{cheat.m_driver.read<uintptr_t>(cheat.get_client_dll_base() + cs2_dumper::offsets::client_dll::dwEntityList)};
 
@@ -105,7 +105,7 @@ int main()
                 continue;
             }
 
-            const cheat::entity::entity_controller entity{cheat.m_driver, controller.value(), entity_pawn.value()};
+            const cheat::entity::EntityController entity{cheat.m_driver, controller.value(), entity_pawn.value()};
 
             std::cout << XOR("Name: ") << entity.get_name() << '\n';
 

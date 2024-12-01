@@ -1,8 +1,8 @@
-#include "cs2_cheat_controller.hpp"
+#include "Cs2CheatController.hpp"
 
 namespace cheat
 {
-    DWORD cs2_cheat_controller::get_cs2_process_id()
+    DWORD Cs2CheatController::get_cs2_process_id()
     {
         const auto processId{commons::process::GetProcessIdByName(g::CS2_PROCESS_NAME)};
         if (!processId.has_value())
@@ -15,7 +15,7 @@ namespace cheat
         return processId.value();
     }
 
-    uintptr_t cs2_cheat_controller::find_client_dll_base() const
+    uintptr_t Cs2CheatController::find_client_dll_base() const
     {
         const auto clientDllBase{commons::process::GetModuleBaseAddress(m_cs2_process_id, g::CLIENT_DLL_MODULE_NAME)};
         if (!clientDllBase.has_value())
@@ -27,7 +27,7 @@ namespace cheat
         return clientDllBase.value();
     }
 
-    uintptr_t cs2_cheat_controller::find_engine_dll_base() const
+    uintptr_t Cs2CheatController::find_engine_dll_base() const
     {
         const auto clientDllBase{commons::process::GetModuleBaseAddress(m_cs2_process_id, g::ENGINE_DLL_MODULE_NAME)};
         if (!clientDllBase.has_value())
@@ -39,41 +39,41 @@ namespace cheat
         return clientDllBase.value();
     }
 
-    cs2_cheat_controller::cs2_cheat_controller(const driver::driver& driver): m_driver(driver)
+    Cs2CheatController::Cs2CheatController(const driver::Driver& driver): m_driver(driver)
     {
     }
 
-    DWORD cs2_cheat_controller::get_m_cs2_process_id() const
+    DWORD Cs2CheatController::get_m_cs2_process_id() const
     {
         return m_cs2_process_id;
     }
 
-    uintptr_t cs2_cheat_controller::get_client_dll_base() const
+    uintptr_t Cs2CheatController::get_client_dll_base() const
     {
         return m_client_dll_base;
     }
 
-    uintptr_t cs2_cheat_controller::get_engine_dll_base() const
+    uintptr_t Cs2CheatController::get_engine_dll_base() const
     {
         return m_engine_dll_base;
     }
 
-    uintptr_t cs2_cheat_controller::get_local_player_controller() const
+    uintptr_t Cs2CheatController::get_local_player_controller() const
     {
         return m_driver.read<uintptr_t>(m_client_dll_base + cs2_dumper::offsets::client_dll::dwLocalPlayerController);
     }
 
-    uintptr_t cs2_cheat_controller::get_local_player_pawn() const
+    uintptr_t Cs2CheatController::get_local_player_pawn() const
     {
         return m_driver.read<uintptr_t>(m_client_dll_base + cs2_dumper::offsets::client_dll::dwLocalPlayerPawn);
     }
 
-    uintptr_t cs2_cheat_controller::get_network_client() const
+    uintptr_t Cs2CheatController::get_network_client() const
     {
         return m_driver.read<uintptr_t>(m_engine_dll_base + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient);
     }
 
-    bool cs2_cheat_controller::attach() const
+    bool Cs2CheatController::attach() const
     {
         if (!m_driver.attach(m_cs2_process_id))
         {
@@ -84,7 +84,7 @@ namespace cheat
         return true;
     }
 
-    bool cs2_cheat_controller::init()
+    bool Cs2CheatController::init()
     {
         auto result{true};
 
@@ -96,19 +96,19 @@ namespace cheat
         return result;
     }
 
-    bool cs2_cheat_controller::is_in_game() const
+    bool Cs2CheatController::is_in_game() const
     {
         const auto is_background{m_driver.read<bool>(get_network_client() + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_isBackgroundMap)};
         const auto state{m_driver.read<int>(get_network_client() + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_signOnState)};
         return !is_background && state >= 6;
     }
 
-    bool cs2_cheat_controller::is_state_valid() const
+    bool Cs2CheatController::is_state_valid() const
     {
         return get_cs2_process_id() == m_cs2_process_id;
     }
 
-    std::optional<uintptr_t> cs2_cheat_controller::get_entity_controller(const uintptr_t& entity_system, const int& i) const
+    std::optional<uintptr_t> Cs2CheatController::get_entity_controller(const uintptr_t& entity_system, const int& i) const
     {
         const auto listEntity{m_driver.read<uintptr_t>(entity_system + ((8 * (i & 0x7FFF) >> 9) + 16))};
         if (!listEntity)
@@ -125,7 +125,7 @@ namespace cheat
         return entityController;
     }
 
-    std::optional<uintptr_t> cs2_cheat_controller::get_entity_pawn(const uintptr_t& entity_system, const uintptr_t& entity_controller) const
+    std::optional<uintptr_t> Cs2CheatController::get_entity_pawn(const uintptr_t& entity_system, const uintptr_t& entity_controller) const
     {
         const auto entity_controller_pawn{m_driver.read<uintptr_t>(entity_controller + cs2_dumper::schemas::client_dll::CCSPlayerController::m_hPlayerPawn)};
         if (!entity_controller_pawn)

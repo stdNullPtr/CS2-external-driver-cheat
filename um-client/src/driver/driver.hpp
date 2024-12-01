@@ -11,13 +11,13 @@ namespace driver
     // TODO this duplication between user mode and kernel mode is error prone
     struct Request
     {
-        HANDLE processIdHandle;
+        HANDLE process_id_handle;
 
-        PVOID targetAddress;
+        PVOID target_address;
         PVOID buffer;
 
         SIZE_T size;
-        SIZE_T returnSize;
+        SIZE_T return_size;
     };
 
     // TODO this duplication between user mode and kernel mode is error prone
@@ -28,7 +28,7 @@ namespace driver
         constexpr ULONG write{CTL_CODE(FILE_DEVICE_UNKNOWN, 0xA3, METHOD_BUFFERED, FILE_SPECIAL_ACCESS)};
     }
 
-    class driver
+    class Driver
     {
     private:
         const HANDLE m_handle;
@@ -37,12 +37,12 @@ namespace driver
         static HANDLE create_handle();
 
     public:
-        driver();
-        ~driver();
-        driver(const driver& other) = delete;
-        driver(driver&& other) noexcept = delete;
-        driver& operator=(const driver& other) = delete;
-        driver& operator=(driver&& other) noexcept = delete;
+        Driver();
+        ~Driver();
+        Driver(const Driver& other) = delete;
+        Driver(Driver&& other) noexcept = delete;
+        Driver& operator=(const Driver& other) = delete;
+        Driver& operator=(Driver&& other) noexcept = delete;
 
         [[nodiscard]] bool attach(const DWORD& process_id) const;
         [[nodiscard]] bool is_valid() const;
@@ -51,27 +51,27 @@ namespace driver
         template <class T>
         T read(const std::uintptr_t& address) const
         {
-            T resultBuffer{};
+            T result_buffer{};
 
-            Request driverRequest;
-            driverRequest.targetAddress = reinterpret_cast<PVOID>(address);
-            driverRequest.buffer = &resultBuffer;
-            driverRequest.size = sizeof(T);
+            Request driver_request;
+            driver_request.target_address = reinterpret_cast<PVOID>(address);
+            driver_request.buffer = &result_buffer;
+            driver_request.size = sizeof(T);
 
-            DeviceIoControl(m_handle, control_codes::read, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
+            DeviceIoControl(m_handle, control_codes::read, &driver_request, sizeof(driver_request), &driver_request, sizeof(driver_request), nullptr, nullptr);
 
-            return resultBuffer;
+            return result_buffer;
         }
 
         template <class T>
         void write(const std::uintptr_t& address, const T& value) const
         {
-            Request driverRequest;
-            driverRequest.targetAddress = reinterpret_cast<PVOID>(address);
-            driverRequest.buffer = (PVOID)&value;
-            driverRequest.size = sizeof(T);
+            Request driver_request;
+            driver_request.target_address = reinterpret_cast<PVOID>(address);
+            driver_request.buffer = (PVOID)&value;
+            driver_request.size = sizeof(T);
 
-            DeviceIoControl(m_handle, control_codes::write, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
+            DeviceIoControl(m_handle, control_codes::write, &driver_request, sizeof(driver_request), &driver_request, sizeof(driver_request), nullptr, nullptr);
         }
     };
 }

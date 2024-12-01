@@ -67,19 +67,19 @@ namespace driver
         switch (stackIrp->Parameters.DeviceIoControl.IoControlCode)
         {
         case control_codes::attach:
-            status = PsLookupProcessByProcessId(request->processIdHandle, &targetProcess);
+            status = PsLookupProcessByProcessId(request->process_id_handle, &targetProcess);
             break;
         case control_codes::read:
             if (targetProcess != nullptr)
             {
                 status = MmCopyVirtualMemory(
                     targetProcess,
-                    request->targetAddress,
+                    request->target_address,
                     PsGetCurrentProcess(),
                     request->buffer,
                     request->size,
                     KernelMode,
-                    &request->returnSize);
+                    &request->return_size);
             }
             else
             {
@@ -93,10 +93,10 @@ namespace driver
                     PsGetCurrentProcess(),
                     request->buffer,
                     targetProcess,
-                    request->targetAddress,
+                    request->target_address,
                     request->size,
                     KernelMode,
-                    &request->returnSize);
+                    &request->return_size);
             }
             else
             {
