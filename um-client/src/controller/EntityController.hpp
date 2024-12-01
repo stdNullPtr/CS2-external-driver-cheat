@@ -9,8 +9,8 @@ namespace cheat::entity
     private:
         const driver::Driver& m_driver;
 
-        const uintptr_t m_entityController;
-        const uintptr_t m_entityPawn;
+        const uintptr_t m_entity_controller;
+        const uintptr_t m_entity_pawn;
 
     public:
         EntityController(const driver::Driver& driver, uintptr_t entity_controller, uintptr_t entity_pawn);

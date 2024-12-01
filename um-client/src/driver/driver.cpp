@@ -21,7 +21,7 @@ namespace driver
     {
         const HANDLE driver_handle{
             CreateFile(
-                R"(\\.\xd)",
+                XOR(R"(\\.\xd)"),
                 GENERIC_READ,
                 0,
                 nullptr,

@@ -4,39 +4,39 @@ namespace cheat
 {
     DWORD Cs2CheatController::get_cs2_process_id()
     {
-        const auto processId{commons::process::GetProcessIdByName(g::CS2_PROCESS_NAME)};
-        if (!processId.has_value())
+        const auto process_id{commons::process::GetProcessIdByName(g::CS2_PROCESS_NAME)};
+        if (!process_id.has_value())
         {
             std::cerr << XOR("Failed to find pid of requested process.\n");
             throw std::runtime_error(XOR("Failed to find pid of requested process."));
         }
-        std::cout << XOR("Target process id: ") << processId.value() << '\n';
+        std::cout << XOR("Target process id: ") << process_id.value() << '\n';
 
-        return processId.value();
+        return process_id.value();
     }
 
     uintptr_t Cs2CheatController::find_client_dll_base() const
     {
-        const auto clientDllBase{commons::process::GetModuleBaseAddress(m_cs2_process_id, g::CLIENT_DLL_MODULE_NAME)};
-        if (!clientDllBase.has_value())
+        const auto client_dll_base{commons::process::GetModuleBaseAddress(m_cs2_process_id, g::CLIENT_DLL_MODULE_NAME)};
+        if (!client_dll_base.has_value())
         {
             std::cerr << XOR("Failed GetModuleBaseAddress for Client DLL.\n");
             throw std::runtime_error(XOR("Failed GetModuleBaseAddress for Client DL."));
         }
-        std::cout << XOR("Client DLL base: ") << std::hex << std::uppercase << clientDllBase.value() << '\n';
-        return clientDllBase.value();
+        std::cout << XOR("Client DLL base: ") << std::hex << std::uppercase << client_dll_base.value() << '\n';
+        return client_dll_base.value();
     }
 
     uintptr_t Cs2CheatController::find_engine_dll_base() const
     {
-        const auto clientDllBase{commons::process::GetModuleBaseAddress(m_cs2_process_id, g::ENGINE_DLL_MODULE_NAME)};
-        if (!clientDllBase.has_value())
+        const auto engine_dll_base{commons::process::GetModuleBaseAddress(m_cs2_process_id, g::ENGINE_DLL_MODULE_NAME)};
+        if (!engine_dll_base.has_value())
         {
             std::cerr << XOR("Failed GetModuleBaseAddress for Engine DLL.\n");
             throw std::runtime_error(XOR("Failed GetModuleBaseAddress for Engine DLL."));
         }
-        std::cout << XOR("Engine DLL base: ") << std::hex << std::uppercase << clientDllBase.value() << '\n';
-        return clientDllBase.value();
+        std::cout << XOR("Engine DLL base: ") << std::hex << std::uppercase << engine_dll_base.value() << '\n';
+        return engine_dll_base.value();
     }
 
     Cs2CheatController::Cs2CheatController(const driver::Driver& driver): m_driver(driver)
