@@ -2,7 +2,7 @@
 #include <cstdint>
 #include "cs2_cheat_controller.hpp"
 
-namespace cheat_controller::entity
+namespace cheat::entity
 {
     class entity_controller
     {

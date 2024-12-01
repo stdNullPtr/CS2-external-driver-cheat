@@ -156,6 +156,7 @@
     <ClInclude Include="src\sdk\clientDll.hpp" />
     <ClInclude Include="src\driver\driver.hpp" />
     <ClInclude Include="src\global.hpp" />
+    <ClInclude Include="src\sdk\engineDll.hpp" />
     <ClInclude Include="src\sdk\offsets.hpp" />
     <ClInclude Include="src\sdk\sdk.hpp" />
   </ItemGroup>

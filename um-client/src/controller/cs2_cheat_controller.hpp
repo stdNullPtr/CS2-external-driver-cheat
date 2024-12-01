@@ -1,4 +1,5 @@
 #pragma once
+#include <chrono>
 #include <process.hpp>
 
 #include "../global.hpp"
@@ -6,7 +7,7 @@
 #include "../sdk/clientDll.hpp"
 #include "../sdk/offsets.hpp"
 
-namespace cheat_controller
+namespace cheat
 {
     class cs2_cheat_controller
     {
@@ -14,13 +15,15 @@ namespace cheat_controller
         const driver::driver m_driver;
         const DWORD m_cs2_process_id;
         const uintptr_t m_client_dll_base;
+        const uintptr_t m_engine_dll_base;
 
     private:
-        static DWORD getCs2ProcessId();
-        [[nodiscard]] uintptr_t getClientDllBase() const;
+        static DWORD get_cs2_process_id();
+        [[nodiscard]] uintptr_t get_client_dll_base() const;
+        [[nodiscard]] uintptr_t get_engine_dll_base() const;
 
     public:
-        cs2_cheat_controller();
+        cs2_cheat_controller(const driver::driver& driver);
         ~cs2_cheat_controller() = default;
 
         cs2_cheat_controller(const cs2_cheat_controller& other) = delete;
@@ -30,10 +33,10 @@ namespace cheat_controller
 
         [[nodiscard]] uintptr_t get_local_player_controller() const;
         [[nodiscard]] uintptr_t get_local_player_pawn() const;
+        [[nodiscard]] uintptr_t get_network_client() const;
+        [[nodiscard]] bool is_in_game() const;
 
         [[nodiscard]] std::optional<uintptr_t> get_entity_controller(const uintptr_t& entity_system, const int& i) const;
         [[nodiscard]] std::optional<uintptr_t> get_entity_pawn(const uintptr_t& entity_system, const uintptr_t& entity_controller) const;
-
-        int get_highest_entity_index(const uintptr_t& entity_system) const;
     };
 }

@@ -39,8 +39,8 @@ namespace driver
     public:
         driver();
         ~driver();
-        driver(const driver& other) = delete;
-        driver(driver&& other) noexcept = delete;
+        driver(const driver& other) = default;
+        driver(driver&& other) noexcept = default;
         driver& operator=(const driver& other) = delete;
         driver& operator=(driver&& other) noexcept = delete;
 

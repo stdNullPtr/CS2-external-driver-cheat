@@ -6,6 +6,7 @@
 #include "driver/driver.hpp"
 #include "process.hpp"
 #include "console.hpp"
+#include "window.hpp"
 #include "controller/cs2_cheat_controller.hpp"
 #include "controller/entity_controller.hpp"
 #include "sdk/clientDll.hpp"
@@ -16,23 +17,27 @@ using namespace sdk;
 using namespace std::chrono_literals;
 using namespace g::settings;
 using std::this_thread::sleep_for;
-using cheat_controller::entity::entity_controller;
 
 int main()
 {
-    const cheat_controller::cs2_cheat_controller cheat;
-
-    const auto p_entity_system{cheat.m_client_dll_base + cs2_dumper::offsets::client_dll::dwEntityList};
-    std::cout << XOR("Entity System: ") << std::hex << std::uppercase << p_entity_system << '\n';
-
-    sleep_for(2s);
-
     commons::console::setCursorVisibility(false);
+    commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999ms);
+
+    const driver::driver& driver{};
+    const cheat::cs2_cheat_controller cheat{ driver };
+
     while (!(GetAsyncKeyState(VK_END) & 0x1))
     {
         commons::console::clearConsole({0, 0});
 
         std::cout << XOR("[END] Quit\n");
+        if (!cheat.is_in_game())
+        {
+            std::cout << XOR("Waiting for you to join game...\n");
+            sleep_for(500ms);
+            continue;
+        }
+
         std::cout << XOR("[F1] Pause\n");
         std::cout << XOR("[F2] Radar hack\n");
 
@@ -53,7 +58,7 @@ int main()
             radar_hack = !radar_hack;
         }
 
-        entity_controller me{cheat.m_driver, cheat.get_local_player_controller(), cheat.get_local_player_pawn()};
+        cheat::entity::entity_controller me{cheat.m_driver, cheat.get_local_player_controller(), cheat.get_local_player_pawn()};
 
         const auto entity_system{cheat.m_driver.read<uintptr_t>(cheat.m_client_dll_base + cs2_dumper::offsets::client_dll::dwEntityList)};
 
@@ -73,7 +78,7 @@ int main()
                 continue;
             }
 
-            const entity_controller entity{cheat.m_driver, controller.value(), entity_pawn.value()};
+            const cheat::entity::entity_controller entity{cheat.m_driver, controller.value(), entity_pawn.value()};
 
             std::cout << XOR("Name: ") << entity.get_name() << '\n';
 

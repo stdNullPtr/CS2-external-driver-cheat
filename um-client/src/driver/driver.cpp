@@ -8,7 +8,7 @@ namespace driver
 
     driver::~driver()
     {
-        std::cout << "~Driver()\n";
+        std::cout << XOR("Driver handle destroyed.\n");
         CloseHandle(handle);
     }
 

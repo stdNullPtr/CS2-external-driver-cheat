@@ -50,5 +50,8 @@
     <ClInclude Include="src\controller\entity_controller.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\sdk\engineDll.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

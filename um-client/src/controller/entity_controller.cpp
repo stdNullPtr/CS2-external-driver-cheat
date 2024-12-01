@@ -1,6 +1,6 @@
 #include "entity_controller.hpp"
 
-namespace cheat_controller::entity
+namespace cheat::entity
 {
     entity_controller::entity_controller(const driver::driver& driver, const uintptr_t entity_controller, const uintptr_t entity_pawn): m_driver(driver), m_entityController(entity_controller), m_entityPawn(entity_pawn)
     {
