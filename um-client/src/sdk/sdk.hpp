@@ -3,7 +3,7 @@
 
 namespace sdk
 {
-    class PlayerController
+    class player_controller
     {
     public:
         char pad_0000[16]; //0x0000
@@ -20,7 +20,7 @@ namespace sdk
         char pad_0814[28]; //0x0814
     }; //Size: 0x0830
 
-    class Entity
+    class entity
     {
     public:
         uintptr_t pPlayerController; //0x0000

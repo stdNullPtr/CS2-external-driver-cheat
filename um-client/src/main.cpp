@@ -6,21 +6,21 @@
 #include "driver/driver.hpp"
 #include "process.hpp"
 #include "console.hpp"
-#include "controller/Cs2CheatController.hpp"
-#include "controller/EntityController.hpp"
+#include "controller/cs2_cheat_controller.hpp"
+#include "controller/entity_controller.hpp"
 #include "sdk/clientDll.hpp"
 #include "sdk/sdk.hpp"
 #include "sdk/offsets.hpp"
 
 using namespace sdk;
-using std::this_thread::sleep_for;
 using namespace std::chrono_literals;
 using namespace g::settings;
-using cheat_controller::entity::EntityController;
+using std::this_thread::sleep_for;
+using cheat_controller::entity::entity_controller;
 
 int main()
 {
-    const cheat_controller::Cs2CheatController cheat;
+    const cheat_controller::cs2_cheat_controller cheat;
 
     const auto p_entity_system{cheat.m_client_dll_base + cs2_dumper::offsets::client_dll::dwEntityList};
     std::cout << XOR("Entity System: ") << std::hex << std::uppercase << p_entity_system << '\n';
@@ -53,31 +53,27 @@ int main()
             radar_hack = !radar_hack;
         }
 
-        EntityController me{cheat.m_driver, cheat.get_local_player_controller(), cheat.get_local_player_pawn()};
+        entity_controller me{cheat.m_driver, cheat.get_local_player_controller(), cheat.get_local_player_pawn()};
 
-        const auto my_team{me.get_team()};
-
-        const auto entity_system{
-            cheat.m_driver.read<uintptr_t>(cheat.m_client_dll_base + cs2_dumper::offsets::client_dll::dwEntityList)
-        };
+        const auto entity_system{cheat.m_driver.read<uintptr_t>(cheat.m_client_dll_base + cs2_dumper::offsets::client_dll::dwEntityList)};
 
         std::cout << '\n';
 
-        for (int i = 1; i < 64; i++)
+        for (int i = 1; i < 32; i++)
         {
-            const auto entity_controller{cheat.get_entity_controller(entity_system, i)};
-            if (!entity_controller.has_value())
+            const auto controller{cheat.get_entity_controller(entity_system, i)};
+            if (!controller.has_value())
             {
                 continue;
             }
 
-            const auto entity_pawn{cheat.get_entity_pawn(entity_system, entity_controller.value())};
+            const auto entity_pawn{cheat.get_entity_pawn(entity_system, controller.value())};
             if (!entity_pawn.has_value())
             {
                 continue;
             }
 
-            const EntityController entity{cheat.m_driver, entity_controller.value(), entity_pawn.value()};
+            const entity_controller entity{cheat.m_driver, controller.value(), entity_pawn.value()};
 
             std::cout << XOR("Name: ") << entity.get_name() << '\n';
 
@@ -85,6 +81,7 @@ int main()
             std::cout << XOR("Is this me: ") << (is_local_player ? "yes" : "no") << '\n';
 
             const auto player_team{entity.get_team()};
+            const auto my_team{me.get_team()};
             std::cout << XOR("Enemy: ") << (my_team != player_team ? "yes" : "no") << '\n';
 
             const auto player_health{entity.get_health()};

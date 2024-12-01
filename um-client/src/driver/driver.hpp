@@ -4,6 +4,7 @@
 #include <iostream>
 #include <xor.hpp>
 #include <winioctl.h>
+#include <optional>
 
 namespace driver
 {
@@ -27,18 +28,21 @@ namespace driver
         constexpr ULONG write{CTL_CODE(FILE_DEVICE_UNKNOWN, 0xA3, METHOD_BUFFERED, FILE_SPECIAL_ACCESS)};
     }
 
-    class Driver
+    class driver
     {
     private:
         const HANDLE handle;
 
     private:
-        static HANDLE createHandle();
+        static HANDLE create_handle();
 
     public:
-        Driver();
-
-        ~Driver();
+        driver();
+        ~driver();
+        driver(const driver& other) = delete;
+        driver(driver&& other) noexcept = delete;
+        driver& operator=(const driver& other) = delete;
+        driver& operator=(driver&& other) noexcept = delete;
 
         bool attach(const DWORD& process_id) const;
 
@@ -53,8 +57,7 @@ namespace driver
             driverRequest.buffer = &resultBuffer;
             driverRequest.size = sizeof(T);
 
-            DeviceIoControl(handle, control_codes::read, &driverRequest, sizeof(driverRequest), &driverRequest,
-                            sizeof(driverRequest), nullptr, nullptr);
+            DeviceIoControl(handle, control_codes::read, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
 
             return resultBuffer;
         }
@@ -67,8 +70,7 @@ namespace driver
             driverRequest.buffer = (PVOID)&value;
             driverRequest.size = sizeof(T);
 
-            DeviceIoControl(handle, control_codes::write, &driverRequest, sizeof(driverRequest), &driverRequest,
-                            sizeof(driverRequest), nullptr, nullptr);
+            DeviceIoControl(handle, control_codes::write, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
         }
     };
 }

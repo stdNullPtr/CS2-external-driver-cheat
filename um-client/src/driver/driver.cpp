@@ -2,17 +2,17 @@
 
 namespace driver
 {
-    Driver::Driver(): handle(createHandle())
+    driver::driver(): handle(create_handle())
     {
     }
 
-    Driver::~Driver()
+    driver::~driver()
     {
         std::cout << "~Driver()\n";
         CloseHandle(handle);
     }
 
-    HANDLE Driver::createHandle()
+    HANDLE driver::create_handle()
     {
         const HANDLE driverHandle{
             CreateFile(
@@ -34,12 +34,11 @@ namespace driver
         return driverHandle;
     }
 
-    bool Driver::attach(const DWORD& process_id) const
+    bool driver::attach(const DWORD& process_id) const
     {
         Request driverRequest;
         driverRequest.processIdHandle = reinterpret_cast<HANDLE>(process_id);
 
-        return DeviceIoControl(handle, control_codes::attach, &driverRequest, sizeof(driverRequest), &driverRequest,
-                               sizeof(driverRequest), nullptr, nullptr);
+        return DeviceIoControl(handle, control_codes::attach, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
     }
 }

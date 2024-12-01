@@ -21,10 +21,10 @@
     <ClCompile Include="src\driver\driver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controller\Cs2CheatController.cpp">
+    <ClCompile Include="src\controller\cs2_cheat_controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controller\EntityController.cpp">
+    <ClCompile Include="src\controller\entity_controller.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,10 +44,10 @@
     <ClInclude Include="src\driver\driver.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\controller\Cs2CheatController.hpp">
+    <ClInclude Include="src\controller\cs2_cheat_controller.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\controller\EntityController.hpp">
+    <ClInclude Include="src\controller\entity_controller.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
