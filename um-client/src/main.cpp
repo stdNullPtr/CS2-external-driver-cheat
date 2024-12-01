@@ -14,11 +14,12 @@
 
 using namespace std::chrono_literals;
 using namespace g::toggles;
+using namespace commons::console;
 using std::this_thread::sleep_for;
 
 int main()
 {
-    commons::console::setCursorVisibility(false);
+    setCursorVisibility(false);
 
     const driver::Driver driver{};
     if (!driver.is_valid())
@@ -27,21 +28,14 @@ int main()
         return EXIT_FAILURE;
     }
 
-    if (!commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999h))
-    {
-        std::cerr << XOR("Aborted looking for game window, exiting...\n");
-        return EXIT_SUCCESS;
-    }
-
     cheat::Cs2CheatController cheat{driver};
 
     sleep_for(2s);
 
     while (!(GetAsyncKeyState(VK_END) & 0x1))
     {
-        commons::console::clearConsole({0, 0});
+        clearConsole({0, 0});
 
-        std::cout << XOR("[END] Quit\n");
         if (!commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999h))
         {
             std::cerr << XOR("Aborted looking for game window, exiting...\n");
@@ -62,6 +56,7 @@ int main()
             }
         }
 
+        std::cout << ansi_codes::red << XOR("[END] Quit\n") << ansi_codes::reset_color;
         if (!cheat.is_in_game())
         {
             std::cout << XOR("Waiting for you to join game...\n");
@@ -69,8 +64,8 @@ int main()
             continue;
         }
 
-        std::cout << XOR("[F1] Pause\n");
-        std::cout << XOR("[F2] Radar hack\n");
+        std::cout << ansi_codes::light_blue << XOR("[F1] Pause\n") << ansi_codes::reset_color;
+        std::cout << ansi_codes::light_blue << XOR("[F2] Radar hack\n") << ansi_codes::reset_color;
 
         if (GetAsyncKeyState(VK_F1) & 0x1)
         {
