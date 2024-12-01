@@ -27,7 +27,11 @@ int main()
         return EXIT_FAILURE;
     }
 
-    commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999h);
+    if (!commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999h))
+    {
+        std::cerr << XOR("Aborted looking for game window, exiting...\n");
+        return EXIT_SUCCESS;
+    }
 
     cheat::Cs2CheatController cheat{driver};
 
