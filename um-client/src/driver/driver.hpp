@@ -31,7 +31,7 @@ namespace driver
     class driver
     {
     private:
-        const HANDLE handle;
+        const HANDLE m_handle;
 
     private:
         static HANDLE create_handle();
@@ -39,12 +39,13 @@ namespace driver
     public:
         driver();
         ~driver();
-        driver(const driver& other) = default;
-        driver(driver&& other) noexcept = default;
+        driver(const driver& other) = delete;
+        driver(driver&& other) noexcept = delete;
         driver& operator=(const driver& other) = delete;
         driver& operator=(driver&& other) noexcept = delete;
 
-        bool attach(const DWORD& process_id) const;
+        [[nodiscard]] bool attach(const DWORD& process_id) const;
+        [[nodiscard]] bool is_valid() const;
 
         //TODO optional
         template <class T>
@@ -57,7 +58,7 @@ namespace driver
             driverRequest.buffer = &resultBuffer;
             driverRequest.size = sizeof(T);
 
-            DeviceIoControl(handle, control_codes::read, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
+            DeviceIoControl(m_handle, control_codes::read, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
 
             return resultBuffer;
         }
@@ -70,7 +71,7 @@ namespace driver
             driverRequest.buffer = (PVOID)&value;
             driverRequest.size = sizeof(T);
 
-            DeviceIoControl(handle, control_codes::write, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
+            DeviceIoControl(m_handle, control_codes::write, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
         }
     };
 }

@@ -2,19 +2,24 @@
 
 namespace driver
 {
-    driver::driver(): handle(create_handle())
+    driver::driver(): m_handle(create_handle())
     {
     }
 
     driver::~driver()
     {
         std::cout << XOR("Driver handle destroyed.\n");
-        CloseHandle(handle);
+        CloseHandle(m_handle);
+    }
+
+    bool driver::is_valid() const
+    {
+        return m_handle != INVALID_HANDLE_VALUE;
     }
 
     HANDLE driver::create_handle()
     {
-        const HANDLE driverHandle{
+        const HANDLE driver_handle{
             CreateFile(
                 R"(\\.\xd)",
                 GENERIC_READ,
@@ -25,13 +30,16 @@ namespace driver
                 nullptr)
         };
 
-        if (driverHandle == INVALID_HANDLE_VALUE)
+        if (driver_handle == INVALID_HANDLE_VALUE)
         {
-            throw std::runtime_error(XOR("Failed creating driver handle. Error: ") + std::to_string(GetLastError()));
+            std::cerr << XOR("Failed creating driver handle. Error: ") << GetLastError() << '\n';
         }
-        std::cout << XOR("Created driver handle.\n");
+        else
+        {
+            std::cout << XOR("Created driver handle.\n");
+        }
 
-        return driverHandle;
+        return driver_handle;
     }
 
     bool driver::attach(const DWORD& process_id) const
@@ -39,6 +47,6 @@ namespace driver
         Request driverRequest;
         driverRequest.processIdHandle = reinterpret_cast<HANDLE>(process_id);
 
-        return DeviceIoControl(handle, control_codes::attach, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
+        return DeviceIoControl(m_handle, control_codes::attach, &driverRequest, sizeof(driverRequest), &driverRequest, sizeof(driverRequest), nullptr, nullptr);
     }
 }

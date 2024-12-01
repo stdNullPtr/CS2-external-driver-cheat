@@ -9,11 +9,9 @@
 #include "window.hpp"
 #include "controller/cs2_cheat_controller.hpp"
 #include "controller/entity_controller.hpp"
-#include "sdk/clientDll.hpp"
-#include "sdk/sdk.hpp"
-#include "sdk/offsets.hpp"
+#include "sdk/dumper/client_dll.hpp"
+#include "sdk/dumper/offsets.hpp"
 
-using namespace sdk;
 using namespace std::chrono_literals;
 using namespace g::settings;
 using std::this_thread::sleep_for;
@@ -21,16 +19,33 @@ using std::this_thread::sleep_for;
 int main()
 {
     commons::console::setCursorVisibility(false);
+
+    const driver::driver driver{};
+    if (!driver.is_valid())
+    {
+        MessageBox(nullptr, XOR("Load the driver first lmao."), XOR("Oopsie"), MB_OK);
+        return EXIT_FAILURE;
+    }
+
     commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999ms);
 
-    const driver::driver& driver{};
-    const cheat::cs2_cheat_controller cheat{ driver };
+    cheat::cs2_cheat_controller cheat{driver};
+
+    sleep_for(2s);
 
     while (!(GetAsyncKeyState(VK_END) & 0x1))
     {
         commons::console::clearConsole({0, 0});
 
         std::cout << XOR("[END] Quit\n");
+        commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999ms);
+
+        if (!cheat.validate_state_and_re_init())
+        {
+            std::cerr << XOR("Failed initializing cheat controller state, retying...\n");
+            sleep_for(2s);
+        }
+
         if (!cheat.is_in_game())
         {
             std::cout << XOR("Waiting for you to join game...\n");
@@ -60,7 +75,7 @@ int main()
 
         cheat::entity::entity_controller me{cheat.m_driver, cheat.get_local_player_controller(), cheat.get_local_player_pawn()};
 
-        const auto entity_system{cheat.m_driver.read<uintptr_t>(cheat.m_client_dll_base + cs2_dumper::offsets::client_dll::dwEntityList)};
+        const auto entity_system{cheat.m_driver.read<uintptr_t>(cheat.get_client_dll_base() + cs2_dumper::offsets::client_dll::dwEntityList)};
 
         std::cout << '\n';
 
