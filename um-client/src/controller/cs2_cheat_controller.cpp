@@ -73,18 +73,6 @@ namespace cheat
         return m_driver.read<uintptr_t>(m_engine_dll_base + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient);
     }
 
-    bool cs2_cheat_controller::validate_state_and_re_init()
-    {
-        if (get_cs2_process_id() != m_cs2_process_id)
-        {
-            std::cout << XOR("New game instance found, will re-init...\n");
-            std::this_thread::sleep_for(std::chrono::seconds(3));
-            return init();
-        }
-
-        return true;
-    }
-
     bool cs2_cheat_controller::attach() const
     {
         if (!m_driver.attach(m_cs2_process_id))
@@ -113,6 +101,11 @@ namespace cheat
         const auto is_background{m_driver.read<bool>(get_network_client() + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_isBackgroundMap)};
         const auto state{m_driver.read<int>(get_network_client() + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_signOnState)};
         return !is_background && state >= 6;
+    }
+
+    bool cs2_cheat_controller::is_state_valid() const
+    {
+        return get_cs2_process_id() == m_cs2_process_id;
     }
 
     std::optional<uintptr_t> cs2_cheat_controller::get_entity_controller(const uintptr_t& entity_system, const int& i) const

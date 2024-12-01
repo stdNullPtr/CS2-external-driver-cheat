@@ -8,8 +8,8 @@ namespace driver
 
     driver::~driver()
     {
-        std::cout << XOR("Driver handle destroyed.\n");
         CloseHandle(m_handle);
+        std::cout << XOR("Driver handle successfully destroyed.\n");
     }
 
     bool driver::is_valid() const

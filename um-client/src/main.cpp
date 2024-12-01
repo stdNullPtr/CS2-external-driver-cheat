@@ -13,7 +13,7 @@
 #include "sdk/dumper/offsets.hpp"
 
 using namespace std::chrono_literals;
-using namespace g::settings;
+using namespace g::toggles;
 using std::this_thread::sleep_for;
 
 int main()
@@ -27,7 +27,7 @@ int main()
         return EXIT_FAILURE;
     }
 
-    commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999ms);
+    commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999h);
 
     cheat::cs2_cheat_controller cheat{driver};
 
@@ -38,12 +38,24 @@ int main()
         commons::console::clearConsole({0, 0});
 
         std::cout << XOR("[END] Quit\n");
-        commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999ms);
-
-        if (!cheat.validate_state_and_re_init())
+        if (!commons::window::waitForWindow(XOR("Counter-Strike 2"), 999999h))
         {
-            std::cerr << XOR("Failed initializing cheat controller state, retying...\n");
-            sleep_for(2s);
+            std::cerr << XOR("Aborted looking for game window, exiting...\n");
+            break;
+        }
+
+        if (!cheat.is_state_valid())
+        {
+            std::cout << XOR("Controller state invalid, will re-init...\n");
+            reset_toggles();
+            sleep_for(3s);
+
+            if (!cheat.init())
+            {
+                std::cerr << XOR("Failed initializing cheat controller state, retying...\n");
+                sleep_for(2s);
+                continue;
+            }
         }
 
         if (!cheat.is_in_game())

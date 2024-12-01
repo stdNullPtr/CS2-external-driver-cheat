@@ -24,7 +24,6 @@ namespace cheat
         [[nodiscard]] uintptr_t find_client_dll_base() const;
         [[nodiscard]] uintptr_t find_engine_dll_base() const;
         [[nodiscard]] bool attach() const;
-        [[nodiscard]] bool init();
 
     public:
         cs2_cheat_controller(const driver::driver& driver);
@@ -43,8 +42,9 @@ namespace cheat
         [[nodiscard]] uintptr_t get_local_player_pawn() const;
         [[nodiscard]] uintptr_t get_network_client() const;
         [[nodiscard]] bool is_in_game() const;
+        [[nodiscard]] bool is_state_valid() const;
 
-        [[nodiscard]] bool validate_state_and_re_init();
+        [[nodiscard]] bool init();
 
         [[nodiscard]] std::optional<uintptr_t> get_entity_controller(const uintptr_t& entity_system, const int& i) const;
         [[nodiscard]] std::optional<uintptr_t> get_entity_pawn(const uintptr_t& entity_system, const uintptr_t& entity_controller) const;

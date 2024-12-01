@@ -8,9 +8,14 @@ namespace g
     const std::string CLIENT_DLL_MODULE_NAME{XOR("client.dll")};
     const std::string ENGINE_DLL_MODULE_NAME{XOR("engine2.dll")};
 
-    namespace settings
+    namespace toggles
     {
         static bool is_paused{false};
         static bool radar_hack{false};
+
+        inline void reset_toggles()
+        {
+            radar_hack = false;
+        }
     }
 }
