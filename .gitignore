@@ -363,3 +363,16 @@ MigrationBackup/
 FodyWeavers.xsd
 
 build/
+build*/
+
+## Dear ImGui artifacts
+imgui.ini
+imgui*.ini
+
+## General build artifacts
+*.o
+*.obj
+*.exe
+examples/*/Debug/*
+examples/*/Release/*
+examples/*/x64/*

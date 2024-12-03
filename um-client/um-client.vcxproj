@@ -122,6 +122,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -142,6 +143,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+      <AdditionalDependencies>d3d12.lib;d3dcompiler.lib;dxgi.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -149,12 +151,28 @@
     <ClCompile Include="src\controller\EntityController.cpp" />
     <ClInclude Include="src\controller\EntityController.hpp" />
     <ClCompile Include="src\driver\Driver.cpp" />
+    <ClCompile Include="src\imgui\lib\imgui.cpp" />
+    <ClCompile Include="src\imgui\lib\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui\lib\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui\lib\backends\imgui_impl_dx12.cpp" />
+    <ClCompile Include="src\imgui\lib\backends\imgui_impl_win32.cpp" />
+    <ClCompile Include="src\imgui\lib\imgui_tables.cpp" />
+    <ClCompile Include="src\imgui\lib\imgui_widgets.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\controller\Cs2CheatController.hpp" />
     <ClInclude Include="src\driver\Driver.hpp" />
     <ClInclude Include="src\global.hpp" />
+    <ClInclude Include="src\imgui\ImGuiFrame.h" />
+    <ClInclude Include="src\imgui\lib\imconfig.h" />
+    <ClInclude Include="src\imgui\lib\imgui.h" />
+    <ClInclude Include="src\imgui\lib\backends\imgui_impl_dx12.h" />
+    <ClInclude Include="src\imgui\lib\backends\imgui_impl_win32.h" />
+    <ClInclude Include="src\imgui\lib\imgui_internal.h" />
+    <ClInclude Include="src\imgui\lib\imstb_rectpack.h" />
+    <ClInclude Include="src\imgui\lib\imstb_textedit.h" />
+    <ClInclude Include="src\imgui\lib\imstb_truetype.h" />
     <ClInclude Include="src\sdk\dumper\animationsystem_dll.hpp" />
     <ClInclude Include="src\sdk\dumper\buttons.hpp" />
     <ClInclude Include="src\sdk\dumper\client_dll.hpp" />
