@@ -22,7 +22,7 @@ int main()
 {
 #pragma region imgui_loop
 
-    // Our state
+    /*// Our state
     bool show_demo_window = true;
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
@@ -86,7 +86,7 @@ int main()
 
     cheat::imgui::frame::cleanup();
 
-    return 1;
+    return 1;*/
 #pragma endregion imgui_loop
 
     setCursorVisibility(false);
