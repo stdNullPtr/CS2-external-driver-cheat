@@ -17,6 +17,7 @@ namespace g
         inline void reset_toggles()
         {
             radar_hack = false;
+            glow_hack = false;
         }
     }
 }

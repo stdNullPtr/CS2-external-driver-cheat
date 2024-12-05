@@ -4,7 +4,6 @@
 #include <iostream>
 #include <xor.hpp>
 #include <winioctl.h>
-#include <optional>
 
 namespace driver
 {

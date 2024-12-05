@@ -148,8 +148,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\controller\Cs2CheatController.cpp" />
-    <ClCompile Include="src\controller\EntityController.cpp" />
-    <ClInclude Include="src\controller\EntityController.hpp" />
+    <ClCompile Include="src\controller\Entity.cpp" />
+    <ClInclude Include="src\controller\Entity.hpp" />
     <ClCompile Include="src\driver\Driver.cpp" />
     <ClCompile Include="src\imgui\lib\imgui.cpp" />
     <ClCompile Include="src\imgui\lib\imgui_demo.cpp" />

@@ -24,7 +24,7 @@
     <ClCompile Include="src\controller\Cs2CheatController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controller\EntityController.cpp">
+    <ClCompile Include="src\controller\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\imgui\lib\imgui.cpp">
@@ -59,7 +59,7 @@
     <ClInclude Include="src\controller\Cs2CheatController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\controller\EntityController.hpp">
+    <ClInclude Include="src\controller\Entity.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\sdk\dumper\animationsystem_dll.hpp">

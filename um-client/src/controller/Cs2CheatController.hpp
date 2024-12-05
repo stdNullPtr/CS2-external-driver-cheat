@@ -1,32 +1,37 @@
 #pragma once
 #include <chrono>
 #include <process.hpp>
+#include <optional>
 
 #include "../global.hpp"
 #include "../driver/Driver.hpp"
 #include "../sdk/dumper/client_dll.hpp"
 #include "../sdk/dumper/offsets.hpp"
+#include "Entity.hpp"
 
 namespace cheat
 {
     class Cs2CheatController
     {
-    public:
-        const driver::Driver& m_driver;
-
     private:
         DWORD m_cs2_process_id{0};
         uintptr_t m_client_dll_base{0};
         uintptr_t m_engine_dll_base{0};
+        uintptr_t m_entity_system{0};
 
     private:
-        static DWORD get_cs2_process_id();
+        [[nodiscard]] static DWORD get_cs2_process_id();
         [[nodiscard]] uintptr_t find_client_dll_base() const;
         [[nodiscard]] uintptr_t find_engine_dll_base() const;
-        [[nodiscard]] bool attach() const;
+        [[nodiscard]] uintptr_t find_entity_system(const driver::Driver& driver) const;
+
+        [[nodiscard]] uintptr_t get_local_player_controller(const driver::Driver& driver) const;
+        [[nodiscard]] uintptr_t get_local_player_pawn(const driver::Driver& driver) const;
+
+        [[nodiscard]] bool attach(const driver::Driver& driver) const;
 
     public:
-        Cs2CheatController(const driver::Driver& driver);
+        Cs2CheatController() = default;
         ~Cs2CheatController() = default;
 
         Cs2CheatController(const Cs2CheatController& other) = delete;
@@ -34,19 +39,16 @@ namespace cheat
         Cs2CheatController& operator=(const Cs2CheatController& other) = delete;
         Cs2CheatController& operator=(Cs2CheatController&& other) noexcept = delete;
 
-        [[nodiscard]] DWORD get_m_cs2_process_id() const;
-        [[nodiscard]] uintptr_t get_client_dll_base() const;
-        [[nodiscard]] uintptr_t get_engine_dll_base() const;
-
-        [[nodiscard]] uintptr_t get_local_player_controller() const;
-        [[nodiscard]] uintptr_t get_local_player_pawn() const;
-        [[nodiscard]] uintptr_t get_network_client() const;
-        [[nodiscard]] bool is_in_game() const;
+        [[nodiscard]] uintptr_t get_network_client(const driver::Driver& driver) const;
+        [[nodiscard]] bool is_in_game(const driver::Driver& driver) const;
         [[nodiscard]] bool is_state_valid() const;
 
-        [[nodiscard]] bool init();
+        [[nodiscard]] std::optional<entity::Entity> get_entity_from_list(const driver::Driver& driver, const int& index) const;
+        [[nodiscard]] entity::Entity get_local_player(const driver::Driver& driver) const;
 
-        [[nodiscard]] std::optional<uintptr_t> get_entity_controller(const uintptr_t& entity_system, const int& i) const;
-        [[nodiscard]] std::optional<uintptr_t> get_entity_pawn(const uintptr_t& entity_system, const uintptr_t& entity_controller) const;
+        [[nodiscard]] bool init(const driver::Driver& driver);
+
+        [[nodiscard]] std::optional<uintptr_t> get_entity_controller(const driver::Driver& driver, const int& i) const;
+        [[nodiscard]] std::optional<uintptr_t> get_entity_pawn(const driver::Driver& driver, const uintptr_t& entity_controller) const;
     };
 }
