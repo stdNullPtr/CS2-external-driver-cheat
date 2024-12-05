@@ -1,9 +1,12 @@
 #pragma once
 #include <cstdint>
 #include "Cs2CheatController.hpp"
+#include "../imgui/lib/imgui.h"
 
 namespace cheat::entity
 {
+    using namespace cs2_dumper::schemas;
+
     class EntityController
     {
     private:
@@ -31,6 +34,10 @@ namespace cheat::entity
 
         [[nodiscard]] bool is_local_player() const;
 
-        void set_spotted(const bool& new_spotted_state) const;
+        [[nodiscard]] bool is_glowing() const;
+
+        void set_spotted(const bool& spotted) const;
+
+        void set_glowing(const bool& glow) const;
     };
 }

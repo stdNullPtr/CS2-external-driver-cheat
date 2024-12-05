@@ -136,6 +136,7 @@ int main()
 
         std::cout << ansi_codes::light_blue << XOR("[F1] Pause\n") << ansi_codes::reset_color;
         std::cout << ansi_codes::light_blue << XOR("[F2] Radar hack\n") << ansi_codes::reset_color;
+        std::cout << ansi_codes::light_blue << XOR("[F3] Glow hack\n") << ansi_codes::reset_color;
 
         if (GetAsyncKeyState(VK_F1) & 0x1)
         {
@@ -152,6 +153,11 @@ int main()
         if (GetAsyncKeyState(VK_F2) & 0x1)
         {
             radar_hack = !radar_hack;
+        }
+
+        if (GetAsyncKeyState(VK_F3) & 0x1)
+        {
+            glow_hack = !glow_hack;
         }
 
         cheat::entity::EntityController me{cheat.m_driver, cheat.get_local_player_controller(), cheat.get_local_player_pawn()};
@@ -191,9 +197,18 @@ int main()
             const auto entity_spotted{entity.is_spotted()};
             std::cout << XOR("Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n';
 
+            const auto is_glowing{entity.is_glowing()};
+            std::cout << XOR("Is glowing: ") << (is_glowing ? "yes" : "no") << '\n';
+
+            if (glow_hack && my_team != player_team && player_health > 0 && !is_local_player)
+            {
+                std::cout << XOR("Will set glow\n");
+                entity.set_glowing(true);
+            }
+
             if (radar_hack && my_team != player_team && player_health > 0 && !is_local_player)
             {
-                std::cout << XOR("Will radar hack\n");
+                std::cout << XOR("Will show on radar\n");
                 if (!entity_spotted)
                 {
                     //TODO should we set the correct mask as well? we are setting this bool but the variables after it should be 1 as well
@@ -203,7 +218,7 @@ int main()
             std::cout << '\n';
         }
 
-        sleep_for(100ms);
+        sleep_for(20ms);
     }
 
     return EXIT_SUCCESS;

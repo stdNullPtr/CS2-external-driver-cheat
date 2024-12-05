@@ -12,6 +12,7 @@ namespace g
     {
         static bool is_paused{false};
         static bool radar_hack{false};
+        static bool glow_hack{false};
 
         inline void reset_toggles()
         {
