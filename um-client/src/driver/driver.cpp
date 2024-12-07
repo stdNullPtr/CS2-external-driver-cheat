@@ -2,19 +2,19 @@
 
 namespace driver
 {
-    Driver::Driver(): m_handle(create_handle())
+    Driver::Driver(): handle_(create_handle())
     {
     }
 
     Driver::~Driver()
     {
-        CloseHandle(m_handle);
+        CloseHandle(handle_);
         std::cout << XOR("Driver handle successfully destroyed.\n");
     }
 
     bool Driver::is_valid() const
     {
-        return m_handle != INVALID_HANDLE_VALUE;
+        return handle_ != INVALID_HANDLE_VALUE;
     }
 
     HANDLE Driver::create_handle()
@@ -47,6 +47,6 @@ namespace driver
         Request driver_request;
         driver_request.process_id_handle = reinterpret_cast<HANDLE>(process_id);
 
-        return DeviceIoControl(m_handle, control_codes::attach, &driver_request, sizeof(driver_request), &driver_request, sizeof(driver_request), nullptr, nullptr);
+        return DeviceIoControl(handle_, control_codes::attach, &driver_request, sizeof(driver_request), &driver_request, sizeof(driver_request), nullptr, nullptr);
     }
 }

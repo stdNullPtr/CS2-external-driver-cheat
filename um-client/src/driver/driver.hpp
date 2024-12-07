@@ -30,7 +30,7 @@ namespace driver
     class Driver
     {
     private:
-        const HANDLE m_handle;
+        const HANDLE handle_;
 
     private:
         static HANDLE create_handle();
@@ -57,7 +57,7 @@ namespace driver
             driver_request.buffer = &result_buffer;
             driver_request.size = sizeof(T);
 
-            DeviceIoControl(m_handle, control_codes::read, &driver_request, sizeof(driver_request), &driver_request, sizeof(driver_request), nullptr, nullptr);
+            DeviceIoControl(handle_, control_codes::read, &driver_request, sizeof(driver_request), &driver_request, sizeof(driver_request), nullptr, nullptr);
 
             return result_buffer;
         }
@@ -70,7 +70,7 @@ namespace driver
             driver_request.buffer = (PVOID)&value;
             driver_request.size = sizeof(T);
 
-            DeviceIoControl(m_handle, control_codes::write, &driver_request, sizeof(driver_request), &driver_request, sizeof(driver_request), nullptr, nullptr);
+            DeviceIoControl(handle_, control_codes::write, &driver_request, sizeof(driver_request), &driver_request, sizeof(driver_request), nullptr, nullptr);
         }
     };
 }

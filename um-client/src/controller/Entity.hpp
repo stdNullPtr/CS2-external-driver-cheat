@@ -32,8 +32,8 @@ namespace cheat::entity
     class Entity
     {
     private:
-        const uintptr_t m_entity_controller;
-        const uintptr_t m_entity_pawn;
+        uintptr_t entity_controller_;
+        uintptr_t entity_pawn_;
 
     private:
         //TODO base classes for these classes maybe so we can move their specific field retrieval there
@@ -41,34 +41,19 @@ namespace cheat::entity
         [[nodiscard]] uintptr_t get_movement_services(const driver::Driver& driver) const;
 
     public:
-        Entity(uintptr_t entity_controller, uintptr_t entity_pawn);
-        ~Entity() = default;
-
-        Entity(Entity&& other) noexcept = default;
-        Entity(const Entity& other) = default;
-        Entity& operator=(const Entity& other) = delete;
-        Entity& operator=(Entity&& other) noexcept = delete;
+        Entity(const uintptr_t& entity_controller, const uintptr_t& entity_pawn);
 
         [[nodiscard]] std::string get_name(const driver::Driver& driver) const;
-
         [[nodiscard]] int get_team(const driver::Driver& driver) const;
-
         [[nodiscard]] int get_health(const driver::Driver& driver) const;
-
         [[nodiscard]] bool is_spotted(const driver::Driver& driver) const;
-
         [[nodiscard]] bool is_local_player(const driver::Driver& driver) const;
-
         [[nodiscard]] bool is_glowing(const driver::Driver& driver) const;
-
         [[nodiscard]] Vec3 get_forward_vector(const driver::Driver& driver) const;
-
         [[nodiscard]] Vec3 get_vec_origin(const driver::Driver& driver) const;
-
         [[nodiscard]] Vec3 get_eye_pos(const driver::Driver& driver) const;
 
         void set_spotted(const driver::Driver& driver, const bool& spotted) const;
-
         void set_glowing(const driver::Driver& driver, const bool& glow) const;
     };
 }
