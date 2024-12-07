@@ -14,19 +14,19 @@ namespace cheat
     class Cs2CheatController
     {
     private:
-        DWORD m_cs2_process_id{0};
-        uintptr_t m_client_dll_base{0};
-        uintptr_t m_engine_dll_base{0};
-        uintptr_t m_entity_system{0};
+        DWORD cs2_process_id_{0};
+        uintptr_t client_dll_base_{0};
+        uintptr_t engine_dll_base_{0};
+        uintptr_t entity_system_{0};
 
     private:
         [[nodiscard]] static DWORD get_cs2_process_id();
+
         [[nodiscard]] uintptr_t find_client_dll_base() const;
         [[nodiscard]] uintptr_t find_engine_dll_base() const;
         [[nodiscard]] uintptr_t find_entity_system(const driver::Driver& driver) const;
-
-        [[nodiscard]] uintptr_t get_local_player_controller(const driver::Driver& driver) const;
-        [[nodiscard]] uintptr_t get_local_player_pawn(const driver::Driver& driver) const;
+        [[nodiscard]] uintptr_t find_local_player_controller(const driver::Driver& driver) const;
+        [[nodiscard]] uintptr_t find_local_player_pawn(const driver::Driver& driver) const;
 
         [[nodiscard]] bool attach(const driver::Driver& driver) const;
 

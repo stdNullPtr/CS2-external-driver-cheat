@@ -9,8 +9,6 @@
 #include "window.hpp"
 #include "controller/Cs2CheatController.hpp"
 #include "controller/Entity.hpp"
-#include "sdk/dumper/client_dll.hpp"
-#include "sdk/dumper/offsets.hpp"
 #include "imgui/ImGuiFrame.h"
 
 using namespace std::chrono_literals;

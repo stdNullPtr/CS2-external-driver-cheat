@@ -17,7 +17,7 @@ namespace cheat
 
     uintptr_t Cs2CheatController::find_client_dll_base() const
     {
-        const auto client_dll_base{commons::process::GetModuleBaseAddress(m_cs2_process_id, g::CLIENT_DLL_MODULE_NAME)};
+        const auto client_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::CLIENT_DLL_MODULE_NAME)};
         if (!client_dll_base.has_value())
         {
             std::cerr << XOR("Failed GetModuleBaseAddress for Client DLL.\n");
@@ -29,7 +29,7 @@ namespace cheat
 
     uintptr_t Cs2CheatController::find_engine_dll_base() const
     {
-        const auto engine_dll_base{commons::process::GetModuleBaseAddress(m_cs2_process_id, g::ENGINE_DLL_MODULE_NAME)};
+        const auto engine_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::ENGINE_DLL_MODULE_NAME)};
         if (!engine_dll_base.has_value())
         {
             std::cerr << XOR("Failed GetModuleBaseAddress for Engine DLL.\n");
@@ -41,32 +41,32 @@ namespace cheat
 
     uintptr_t Cs2CheatController::find_entity_system(const driver::Driver& driver) const
     {
-        if (!m_client_dll_base)
+        if (!client_dll_base_)
         {
             return 0;
         }
 
-        return driver.read<uintptr_t>(m_client_dll_base + cs2_dumper::offsets::client_dll::dwEntityList);
+        return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwEntityList);
     }
 
-    uintptr_t Cs2CheatController::get_local_player_controller(const driver::Driver& driver) const
+    uintptr_t Cs2CheatController::find_local_player_controller(const driver::Driver& driver) const
     {
-        return driver.read<uintptr_t>(m_client_dll_base + cs2_dumper::offsets::client_dll::dwLocalPlayerController);
+        return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwLocalPlayerController);
     }
 
-    uintptr_t Cs2CheatController::get_local_player_pawn(const driver::Driver& driver) const
+    uintptr_t Cs2CheatController::find_local_player_pawn(const driver::Driver& driver) const
     {
-        return driver.read<uintptr_t>(m_client_dll_base + cs2_dumper::offsets::client_dll::dwLocalPlayerPawn);
+        return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwLocalPlayerPawn);
     }
 
     uintptr_t Cs2CheatController::get_network_client(const driver::Driver& driver) const
     {
-        return driver.read<uintptr_t>(m_engine_dll_base + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient);
+        return driver.read<uintptr_t>(engine_dll_base_ + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient);
     }
 
     bool Cs2CheatController::attach(const driver::Driver& driver) const
     {
-        if (!driver.attach(m_cs2_process_id))
+        if (!driver.attach(cs2_process_id_))
         {
             std::cerr << XOR("Failed to attach to process.\n");
             return false;
@@ -79,10 +79,10 @@ namespace cheat
     {
         auto result{true};
 
-        result &= (m_cs2_process_id = get_cs2_process_id()) != 0;
-        result &= (m_client_dll_base = find_client_dll_base()) != 0;
-        result &= (m_engine_dll_base = find_engine_dll_base()) != 0;
-        result &= (m_entity_system = find_entity_system(driver)) != 0;
+        result &= (cs2_process_id_ = get_cs2_process_id()) != 0;
+        result &= (client_dll_base_ = find_client_dll_base()) != 0;
+        result &= (engine_dll_base_ = find_engine_dll_base()) != 0;
+        result &= (entity_system_ = find_entity_system(driver)) != 0;
         result &= attach(driver);
 
         return result;
@@ -97,7 +97,7 @@ namespace cheat
 
     bool Cs2CheatController::is_state_valid() const
     {
-        return get_cs2_process_id() == m_cs2_process_id;
+        return get_cs2_process_id() == cs2_process_id_;
     }
 
     std::optional<entity::Entity> Cs2CheatController::get_entity_from_list(const driver::Driver& driver, const int& index) const
@@ -119,12 +119,12 @@ namespace cheat
 
     entity::Entity Cs2CheatController::get_local_player(const driver::Driver& driver) const
     {
-        return entity::Entity{get_local_player_controller(driver), get_local_player_pawn(driver)};
+        return entity::Entity{find_local_player_controller(driver), find_local_player_pawn(driver)};
     }
 
     std::optional<uintptr_t> Cs2CheatController::get_entity_controller(const driver::Driver& driver, const int& i) const
     {
-        const auto listEntity{driver.read<uintptr_t>(m_entity_system + ((8 * (i & 0x7FFF) >> 9) + 16))};
+        const auto listEntity{driver.read<uintptr_t>(entity_system_ + ((8 * (i & 0x7FFF) >> 9) + 16))};
         if (!listEntity)
         {
             return std::nullopt;
@@ -147,7 +147,7 @@ namespace cheat
             return std::nullopt;
         }
 
-        const auto list_entity = driver.read<uintptr_t>(m_entity_system + (0x8 * ((entity_controller_pawn & 0x7FFF) >> 9) + 0x10));
+        const auto list_entity = driver.read<uintptr_t>(entity_system_ + (0x8 * ((entity_controller_pawn & 0x7FFF) >> 9) + 0x10));
         if (!list_entity)
         {
             return std::nullopt;

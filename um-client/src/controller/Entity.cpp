@@ -12,11 +12,7 @@ namespace cheat::entity
         return driver.read<uintptr_t>(entity_pawn_ + client_dll::C_BasePlayerPawn::m_pMovementServices);
     }
 
-    Entity::Entity(const uintptr_t& entity_controller, const uintptr_t& entity_pawn): entity_controller_(entity_controller), entity_pawn_(entity_pawn)
-    {
-    }
-
-    Entity::Entity(const driver::Driver& driver, const uintptr_t& entity_controller, const uintptr_t& entity_pawn)
+    Entity::Entity(const uintptr_t& entity_controller, const uintptr_t& entity_pawn) : entity_controller_(entity_controller), entity_pawn_(entity_pawn)
     {
     }
 
