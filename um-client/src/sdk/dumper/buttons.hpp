@@ -1,15 +1,13 @@
 // Generated using https://github.com/a2x/cs2-dumper
-// 2024-12-04 19:45:01.324933400 UTC
+// 2024-12-06 20:50:49.699310600 UTC
 
 #pragma once
 
 #include <cstddef>
 
-namespace cs2_dumper
-{
+namespace cs2_dumper {
     // Module: client.dll
-    namespace buttons
-    {
+    namespace buttons {
         constexpr std::ptrdiff_t attack = 0x184E4D0;
         constexpr std::ptrdiff_t attack2 = 0x184E560;
         constexpr std::ptrdiff_t back = 0x184E7A0;

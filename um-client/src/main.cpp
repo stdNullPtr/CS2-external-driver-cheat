@@ -166,15 +166,16 @@ int main()
 
         const auto my_eye_pos{me.get_eye_pos(driver)};
         const auto my_forward_vec{me.get_forward_vector(driver)};
+        const auto my_team{me.get_team(driver)};
 
-        std::cout << XOR("Forward vec: ") << my_forward_vec << '\n';
-        std::cout << XOR("My eye position: ") << my_eye_pos << '\n';
+        std::cout << XOR("Forward vec: ") << my_forward_vec << '\n'
+            << XOR("My eye position: ") << my_eye_pos << '\n';
 
         std::cout << '\n';
 
-        float max_cosine = -std::numeric_limits<float>::infinity();
-        int closest_entity_index{-1};
-        std::cout << XOR("Closest ent: ") << closest_entity_index << '\n';
+        // float max_cosine = -std::numeric_limits<float>::infinity();
+        // int closest_entity_index{-1};
+        // std::cout << XOR("Closest ent: ") << closest_entity_index << '\n';
 
         for (int i{1}; i < 32; i++)
         {
@@ -185,29 +186,24 @@ int main()
                 continue;
             }
 
-            std::cout << XOR("Ent: ") << i << '\n';
-            std::cout << XOR("Name: ") << entity.value().get_name(driver) << '\n';
+            const auto is_local_player{entity->is_local_player(driver)};
+            const auto player_team{entity->get_team(driver)};
+            const auto player_health{entity->get_health(driver)};
+            const auto entity_spotted{entity->is_spotted(driver)};
+            const auto is_glowing{entity->is_glowing(driver)};
 
-            const auto is_local_player{entity.value().is_local_player(driver)};
-            std::cout << XOR("Is this me: ") << (is_local_player ? "yes" : "no") << '\n';
+            std::cout << XOR("Ent: ") << i << '\n'
+                << XOR("Name: ") << entity->get_name(driver) << '\n'
+                << XOR("Is this me: ") << (is_local_player ? "yes" : "no") << '\n'
+                << XOR("Enemy: ") << (my_team != player_team ? "yes" : "no") << '\n'
+                << XOR("HP: ") << std::dec << player_health << '\n'
+                << XOR("Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n'
+                << XOR("Is glowing: ") << (is_glowing ? "yes" : "no") << '\n';
 
-            const auto player_team{entity.value().get_team(driver)};
-            const auto my_team{me.get_team(driver)};
-            std::cout << XOR("Enemy: ") << (my_team != player_team ? "yes" : "no") << '\n';
+            /*const cheat::entity::Vec3 entity_pos{entity->get_eye_pos(driver)};
+            const cheat::entity::Vec3 vector_to_entity{entity_pos - my_eye_pos};
 
-            const auto player_health{entity.value().get_health(driver)};
-            std::cout << XOR("HP: ") << std::dec << player_health << '\n';
-
-            const auto entity_spotted{entity.value().is_spotted(driver)};
-            std::cout << XOR("Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n';
-
-            const auto is_glowing{entity.value().is_glowing(driver)};
-            std::cout << XOR("Is glowing: ") << (is_glowing ? "yes" : "no") << '\n';
-
-            cheat::entity::Vec3 entity_pos{entity.value().get_eye_pos(driver)};
-            cheat::entity::Vec3 vector_to_entity{entity_pos - my_eye_pos};
-
-            float magnitude{
+            const float magnitude{
                 std::sqrt(vector_to_entity.x * vector_to_entity.x +
                     vector_to_entity.y * vector_to_entity.y +
                     vector_to_entity.z * vector_to_entity.z)
@@ -215,52 +211,54 @@ int main()
 
             if (magnitude == 0.0f) { continue; }
 
-            cheat::entity::Vec3 normalized_vector_to_entity{
+            const cheat::entity::Vec3 normalized_vector_to_entity{
                 vector_to_entity.x / magnitude,
                 vector_to_entity.y / magnitude,
                 vector_to_entity.z / magnitude
             };
 
-            float cosine_angle{
+            const float cosine_angle{
                 my_forward_vec.x * normalized_vector_to_entity.x +
                 my_forward_vec.y * normalized_vector_to_entity.y +
                 my_forward_vec.z * normalized_vector_to_entity.z
-            };
+            };*/
 
-            if (cosine_angle > max_cosine)
+            // std::cout << XOR("Cosine angle ") << cosine_angle << '\n';
+
+            /*constexpr float cosine_threshold{ 0.9f };
+            if (cosine_angle > max_cosine && cosine_angle < cosine_threshold)
             {
+                std::cout << XOR("Cosine angle will set ") << cosine_angle << '\n';
                 max_cosine = cosine_angle;
                 closest_entity_index = i;
-            }
+            }*/
 
-            if (glow_hack && my_team != player_team && player_health > 0 && !is_local_player)
+            if (my_team != player_team && player_health > 0 && !is_local_player)
             {
-                std::cout << XOR("Will set glow\n");
-                entity.value().set_glowing(driver, true);
-            }
+                if (glow_hack)
+                {
+                    entity->set_glowing(driver, true);
+                }
 
-            if (radar_hack && my_team != player_team && player_health > 0 && !is_local_player)
-            {
-                std::cout << XOR("Will show on radar\n");
-                if (!entity_spotted)
+                if (radar_hack && !entity_spotted)
                 {
                     //TODO should we set the correct mask as well? we are setting this bool but the variables after it should be 1 as well
-                    entity.value().set_spotted(driver, true);
+                    entity->set_spotted(driver, true);
                 }
             }
             std::cout << '\n';
         }
 
-        constexpr float cosine_threshold{0.9f};
-        // Interact with the closest entity (if found)
-        if (max_cosine > 0.0f) // Ensure there's a valid entity in front
+        /*if (max_cosine > 0.0f)
         {
             std::cout << XOR("Closest ent max_cosine: ") << closest_entity_index << '\n';
+            const std::optional closestEnt{ cheat.get_entity_from_list(driver, closest_entity_index) };
+            std::cout << XOR("Closest enxxxxxxxxxxxxxxxxxxxxxxxt name: ") << closestEnt->get_name(driver) << '\n';
         }
         else
         {
             std::cout << XOR("No entity close to crosshair.\n");
-        }
+        }*/
 
         sleep_for(20ms);
     }

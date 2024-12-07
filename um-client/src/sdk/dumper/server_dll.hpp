@@ -1,98 +1,78 @@
 // Generated using https://github.com/a2x/cs2-dumper
-// 2024-12-04 19:45:01.324933400 UTC
+// 2024-12-06 20:50:49.699310600 UTC
 
 #pragma once
 
 #include <cstddef>
 
-namespace cs2_dumper
-{
-    namespace schemas
-    {
+namespace cs2_dumper {
+    namespace schemas {
         // Module: server.dll
         // Class count: 653
         // Enum count: 139
-        namespace server_dll
-        {
+        namespace server_dll {
             // Alignment: 4
             // Member count: 3
-            enum class PropDoorRotatingOpenDirection_e : uint32_t
-            {
+            enum class PropDoorRotatingOpenDirection_e : uint32_t {
                 DOOR_ROTATING_OPEN_BOTH_WAYS = 0x0,
                 DOOR_ROTATING_OPEN_FORWARD = 0x1,
                 DOOR_ROTATING_OPEN_BACKWARD = 0x2
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class SceneOnPlayerDeath_t : uint32_t
-            {
+            enum class SceneOnPlayerDeath_t : uint32_t {
                 SCENE_ONPLAYERDEATH_DO_NOTHING = 0x0,
                 SCENE_ONPLAYERDEATH_CANCEL = 0x1
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class LessonPanelLayoutFileTypes_t : uint32_t
-            {
+            enum class LessonPanelLayoutFileTypes_t : uint32_t {
                 LAYOUT_HAND_DEFAULT = 0x0,
                 LAYOUT_WORLD_DEFAULT = 0x1,
                 LAYOUT_CUSTOM = 0x2
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class TimelineCompression_t : uint32_t
-            {
+            enum class TimelineCompression_t : uint32_t {
                 TIMELINE_COMPRESSION_SUM = 0x0,
                 TIMELINE_COMPRESSION_COUNT_PER_INTERVAL = 0x1,
                 TIMELINE_COMPRESSION_AVERAGE = 0x2,
                 TIMELINE_COMPRESSION_AVERAGE_BLEND = 0x3,
                 TIMELINE_COMPRESSION_TOTAL = 0x4
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class SubclassVDataChangeType_t : uint32_t
-            {
+            enum class SubclassVDataChangeType_t : uint32_t {
                 SUBCLASS_VDATA_CREATED = 0x0,
                 SUBCLASS_VDATA_SUBCLASS_CHANGED = 0x1,
                 SUBCLASS_VDATA_RELOADED = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class C4LightEffect_t : uint32_t
-            {
+            enum class C4LightEffect_t : uint32_t {
                 eLightEffectNone = 0x0,
                 eLightEffectDropped = 0x1,
                 eLightEffectThirdPersonHeld = 0x2
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class StanceType_t : uint32_t
-            {
+            enum class StanceType_t : uint32_t {
                 STANCE_CURRENT = 0xFFFFFFFFFFFFFFFF,
                 STANCE_DEFAULT = 0x0,
                 STANCE_CROUCHING = 0x1,
                 STANCE_PRONE = 0x2,
                 NUM_STANCES = 0x3
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class Explosions : uint32_t
-            {
+            enum class Explosions : uint32_t {
                 expRandom = 0x0,
                 expDirected = 0x1,
                 expUsePrecise = 0x2
             };
-
             // Alignment: 4
             // Member count: 10
-            enum class PreviewCharacterMode : uint32_t
-            {
+            enum class PreviewCharacterMode : uint32_t {
                 DIORAMA = 0x0,
                 MAIN_MENU = 0x1,
                 BUY_MENU = 0x2,
@@ -104,66 +84,52 @@ namespace cs2_dumper
                 WINGMAN_INTRO = 0x8,
                 BANNER = 0x9
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class ObserverInterpState_t : uint32_t
-            {
+            enum class ObserverInterpState_t : uint32_t {
                 OBSERVER_INTERP_NONE = 0x0,
                 OBSERVER_INTERP_TRAVELING = 0x1,
                 OBSERVER_INTERP_SETTLING = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class WorldTextPanelOrientation_t : uint32_t
-            {
+            enum class WorldTextPanelOrientation_t : uint32_t {
                 WORLDTEXT_ORIENTATION_DEFAULT = 0x0,
                 WORLDTEXT_ORIENTATION_FACEUSER = 0x1,
                 WORLDTEXT_ORIENTATION_FACEUSER_UPRIGHT = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class WorldTextPanelHorizontalAlign_t : uint32_t
-            {
+            enum class WorldTextPanelHorizontalAlign_t : uint32_t {
                 WORLDTEXT_HORIZONTAL_ALIGN_LEFT = 0x0,
                 WORLDTEXT_HORIZONTAL_ALIGN_CENTER = 0x1,
                 WORLDTEXT_HORIZONTAL_ALIGN_RIGHT = 0x2
             };
-
             // Alignment: 1
             // Member count: 3
-            enum class SequenceFinishNotifyState_t : uint8_t
-            {
+            enum class SequenceFinishNotifyState_t : uint8_t {
                 eDoNotNotify = 0x0,
                 eNotifyWhenFinished = 0x1,
                 eNotifyTriggered = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class SoundEventStartType_t : uint32_t
-            {
+            enum class SoundEventStartType_t : uint32_t {
                 SOUNDEVENT_START_PLAYER = 0x0,
                 SOUNDEVENT_START_WORLD = 0x1,
                 SOUNDEVENT_START_ENTITY = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class TrainOrientationType_t : uint32_t
-            {
+            enum class TrainOrientationType_t : uint32_t {
                 TrainOrientation_Fixed = 0x0,
                 TrainOrientation_AtPathTracks = 0x1,
                 TrainOrientation_LinearBlend = 0x2,
                 TrainOrientation_EaseInEaseOut = 0x3
             };
-
             // Alignment: 4
             // Member count: 7
-            enum class CSWeaponCategory : uint32_t
-            {
+            enum class CSWeaponCategory : uint32_t {
                 WEAPONCATEGORY_OTHER = 0x0,
                 WEAPONCATEGORY_MELEE = 0x1,
                 WEAPONCATEGORY_SECONDARY = 0x2,
@@ -172,20 +138,16 @@ namespace cs2_dumper
                 WEAPONCATEGORY_HEAVY = 0x5,
                 WEAPONCATEGORY_COUNT = 0x6
             };
-
             // Alignment: 1
             // Member count: 3
-            enum class BeginDeathLifeStateTransition_t : uint8_t
-            {
+            enum class BeginDeathLifeStateTransition_t : uint8_t {
                 NO_CHANGE_IN_LIFESTATE = 0x0,
                 TRANSITION_TO_LIFESTATE_DYING = 0x1,
                 TRANSITION_TO_LIFESTATE_DEAD = 0x2
             };
-
             // Alignment: 2
             // Member count: 14
-            enum class SoundTypes_t : uint16_t
-            {
+            enum class SoundTypes_t : uint16_t {
                 SOUND_NONE = 0x0,
                 SOUND_COMBAT = 0x1,
                 SOUND_PLAYER = 0x2,
@@ -201,11 +163,9 @@ namespace cs2_dumper
                 SOUND_FOOD = 0xC,
                 NUM_AI_SOUND_TYPES = 0xD
             };
-
             // Alignment: 4
             // Member count: 24
-            enum class PlayerAnimEvent_t : uint32_t
-            {
+            enum class PlayerAnimEvent_t : uint32_t {
                 PLAYERANIMEVENT_FIRE_GUN_PRIMARY = 0x0,
                 PLAYERANIMEVENT_FIRE_GUN_SECONDARY = 0x1,
                 PLAYERANIMEVENT_GRENADE_PULL_PIN = 0x2,
@@ -231,11 +191,9 @@ namespace cs2_dumper
                 PLAYERANIMEVENT_TAUNT = 0x16,
                 PLAYERANIMEVENT_COUNT = 0x17
             };
-
             // Alignment: 1
             // Member count: 9
-            enum class ItemFlagTypes_t : uint8_t
-            {
+            enum class ItemFlagTypes_t : uint8_t {
                 ITEM_FLAG_NONE = 0x0,
                 ITEM_FLAG_CAN_SELECT_WITHOUT_AMMO = 0x1,
                 ITEM_FLAG_NOAUTORELOAD = 0x2,
@@ -246,11 +204,9 @@ namespace cs2_dumper
                 ITEM_FLAG_NOAMMOPICKUPS = 0x40,
                 ITEM_FLAG_NOITEMPICKUP = 0x80
             };
-
             // Alignment: 1
             // Member count: 10
-            enum class SurroundingBoundsType_t : uint8_t
-            {
+            enum class SurroundingBoundsType_t : uint8_t {
                 USE_OBB_COLLISION_BOUNDS = 0x0,
                 USE_BEST_COLLISION_BOUNDS = 0x1,
                 USE_HITBOXES = 0x2,
@@ -262,51 +218,41 @@ namespace cs2_dumper
                 USE_ROTATION_EXPANDED_SEQUENCE_BOUNDS = 0x8,
                 SURROUNDING_TYPE_BIT_COUNT = 0x3
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class LifeState_t : uint32_t
-            {
+            enum class LifeState_t : uint32_t {
                 LIFE_ALIVE = 0x0,
                 LIFE_DYING = 0x1,
                 LIFE_DEAD = 0x2,
                 LIFE_RESPAWNABLE = 0x3,
                 LIFE_RESPAWNING = 0x4
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class NPCFollowFormation_t : uint32_t
-            {
+            enum class NPCFollowFormation_t : uint32_t {
                 Default = 0xFFFFFFFFFFFFFFFF,
                 CloseCircle = 0x0,
                 WideCircle = 0x1,
                 MediumCircle = 0x5,
                 Sidekick = 0x6
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class CSWeaponMode : uint32_t
-            {
+            enum class CSWeaponMode : uint32_t {
                 Primary_Mode = 0x0,
                 Secondary_Mode = 0x1,
                 WeaponMode_MAX = 0x2
             };
-
             // Alignment: 1
             // Member count: 3
-            enum class OnFrame : uint8_t
-            {
+            enum class OnFrame : uint8_t {
                 ONFRAME_UNKNOWN = 0x0,
                 ONFRAME_TRUE = 0x1,
                 ONFRAME_FALSE = 0x2
             };
-
             // Alignment: 4
             // Member count: 12
-            enum class Materials : uint32_t
-            {
+            enum class Materials : uint32_t {
                 matGlass = 0x0,
                 matWood = 0x1,
                 matMetal = 0x2,
@@ -320,11 +266,9 @@ namespace cs2_dumper
                 matNone = 0xA,
                 matLastMaterial = 0xB
             };
-
             // Alignment: 4
             // Member count: 9
-            enum class BloodType : uint32_t
-            {
+            enum class BloodType : uint32_t {
                 None = 0xFFFFFFFFFFFFFFFF,
                 ColorRed = 0x0,
                 ColorYellow = 0x1,
@@ -335,21 +279,17 @@ namespace cs2_dumper
                 ColorRedLVL5 = 0x6,
                 ColorRedLVL6 = 0x7
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class BreakableContentsType_t : uint32_t
-            {
+            enum class BreakableContentsType_t : uint32_t {
                 BC_DEFAULT = 0x0,
                 BC_EMPTY = 0x1,
                 BC_PROP_GROUP_OVERRIDE = 0x2,
                 BC_PARTICLE_SYSTEM_OVERRIDE = 0x3
             };
-
             // Alignment: 4
             // Member count: 6
-            enum class ScriptedMoveTo_t : uint32_t
-            {
+            enum class ScriptedMoveTo_t : uint32_t {
                 eWait = 0x0,
                 eMoveWithGait = 0x3,
                 eTeleport = 0x4,
@@ -357,22 +297,18 @@ namespace cs2_dumper
                 eObsoleteBackCompat1 = 0x1,
                 eObsoleteBackCompat2 = 0x2
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class AnimLoopMode_t : uint32_t
-            {
+            enum class AnimLoopMode_t : uint32_t {
                 ANIM_LOOP_MODE_INVALID = 0xFFFFFFFFFFFFFFFF,
                 ANIM_LOOP_MODE_NOT_LOOPING = 0x0,
                 ANIM_LOOP_MODE_LOOPING = 0x1,
                 ANIM_LOOP_MODE_USE_SEQUENCE_SETTINGS = 0x2,
                 ANIM_LOOP_MODE_COUNT = 0x3
             };
-
             // Alignment: 2
             // Member count: 10
-            enum class SoundFlags_t : uint16_t
-            {
+            enum class SoundFlags_t : uint16_t {
                 SOUND_FLAGS_NONE = 0x0,
                 SOUND_FLAG_GUNFIRE = 0x1,
                 SOUND_FLAG_COMBINE_ONLY = 0x2,
@@ -384,11 +320,9 @@ namespace cs2_dumper
                 SOUND_FLAG_PANIC_NPCS = 0x80,
                 SOUND_FLAG_SQUAD_ONLY = 0x100
             };
-
             // Alignment: 4
             // Member count: 10
-            enum class Class_T : uint32_t
-            {
+            enum class Class_T : uint32_t {
                 CLASS_NONE = 0x0,
                 CLASS_PLAYER = 0x1,
                 CLASS_PLAYER_ALLY = 0x2,
@@ -400,36 +334,28 @@ namespace cs2_dumper
                 CLASS_DOOR = 0x8,
                 NUM_CLASSIFY_CLASSES = 0x9
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class filter_t : uint32_t
-            {
+            enum class filter_t : uint32_t {
                 FILTER_AND = 0x0,
                 FILTER_OR = 0x1
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class CSWeaponSilencerType : uint32_t
-            {
+            enum class CSWeaponSilencerType : uint32_t {
                 WEAPONSILENCER_NONE = 0x0,
                 WEAPONSILENCER_DETACHABLE = 0x1,
                 WEAPONSILENCER_INTEGRATED = 0x2
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class EProceduralRagdollWeightIndexPropagationMethod : uint32_t
-            {
+            enum class EProceduralRagdollWeightIndexPropagationMethod : uint32_t {
                 Bone = 0x0,
                 BoneAndChildren = 0x1
             };
-
             // Alignment: 4
             // Member count: 17
-            enum class BaseExplosionTypes_t : uint32_t
-            {
+            enum class BaseExplosionTypes_t : uint32_t {
                 EXPLOSION_TYPE_DEFAULT = 0x0,
                 EXPLOSION_TYPE_GRENADE = 0x1,
                 EXPLOSION_TYPE_MOLOTOV = 0x2,
@@ -448,11 +374,9 @@ namespace cs2_dumper
                 EXPLOSION_TYPE_CUSTOM = 0xF,
                 EXPLOSION_TYPE_COUNT = 0x10
             };
-
             // Alignment: 4
             // Member count: 47
-            enum class GameAnimEventIndex_t : uint32_t
-            {
+            enum class GameAnimEventIndex_t : uint32_t {
                 AE_EMPTY = 0x0,
                 AE_CL_PLAYSOUND = 0x1,
                 AE_CL_PLAYSOUND_ATTACHMENT = 0x2,
@@ -501,59 +425,47 @@ namespace cs2_dumper
                 AE_CL_C4_SCREEN_TEXT = 0x2D,
                 AE_GRENADE_THROW_COMPLETE = 0x2E
             };
-
             // Alignment: 1
             // Member count: 3
-            enum class FixAngleSet_t : uint8_t
-            {
+            enum class FixAngleSet_t : uint8_t {
                 None = 0x0,
                 Absolute = 0x1,
                 Relative = 0x2
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class IChoreoServices__ScriptState_t : uint32_t
-            {
+            enum class IChoreoServices__ScriptState_t : uint32_t {
                 SCRIPT_PLAYING = 0x0,
                 SCRIPT_WAIT = 0x1,
                 SCRIPT_POST_IDLE = 0x2,
                 SCRIPT_CLEANUP = 0x3,
                 SCRIPT_MOVE_TO_MARK = 0x4
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class CommandEntitySpecType_t : uint32_t
-            {
+            enum class CommandEntitySpecType_t : uint32_t {
                 SPEC_SEARCH = 0x0,
                 SPEC_TYPES_COUNT = 0x1
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class Touch_t : uint32_t
-            {
+            enum class Touch_t : uint32_t {
                 touch_none = 0x0,
                 touch_player_only = 0x1,
                 touch_npc_only = 0x2,
                 touch_player_or_npc = 0x3,
                 touch_player_or_npc_or_physicsprop = 0x4
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class TrainVelocityType_t : uint32_t
-            {
+            enum class TrainVelocityType_t : uint32_t {
                 TrainVelocity_Instantaneous = 0x0,
                 TrainVelocity_LinearBlend = 0x1,
                 TrainVelocity_EaseInEaseOut = 0x2
             };
-
             // Alignment: 4
             // Member count: 20
-            enum class CSWeaponType : uint32_t
-            {
+            enum class CSWeaponType : uint32_t {
                 WEAPONTYPE_KNIFE = 0x0,
                 WEAPONTYPE_PISTOL = 0x1,
                 WEAPONTYPE_SUBMACHINEGUN = 0x2,
@@ -575,58 +487,46 @@ namespace cs2_dumper
                 WEAPONTYPE_ZONE_REPULSOR = 0x12,
                 WEAPONTYPE_UNKNOWN = 0x13
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class EntFinderMethod_t : uint32_t
-            {
+            enum class EntFinderMethod_t : uint32_t {
                 ENT_FIND_METHOD_NEAREST = 0x0,
                 ENT_FIND_METHOD_FARTHEST = 0x1,
                 ENT_FIND_METHOD_RANDOM = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class PropDoorRotatingSpawnPos_t : uint32_t
-            {
+            enum class PropDoorRotatingSpawnPos_t : uint32_t {
                 DOOR_SPAWN_CLOSED = 0x0,
                 DOOR_SPAWN_OPEN_FORWARD = 0x1,
                 DOOR_SPAWN_OPEN_BACK = 0x2,
                 DOOR_SPAWN_AJAR = 0x3
             };
-
             // Alignment: 1
             // Member count: 2
-            enum class ShardSolid_t : uint8_t
-            {
+            enum class ShardSolid_t : uint8_t {
                 SHARD_SOLID = 0x0,
                 SHARD_DEBRIS = 0x1
             };
-
             // Alignment: 1
             // Member count: 3
-            enum class EntityPlatformTypes_t : uint8_t
-            {
+            enum class EntityPlatformTypes_t : uint8_t {
                 ENTITY_NOT_PLATFORM = 0x0,
                 ENTITY_PLATFORM_PLAYER_FOLLOWS_YAW = 0x1,
                 ENTITY_PLATFORM_PLAYER_IGNORES_YAW = 0x2
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class PulseNPCCondition_t : uint32_t
-            {
+            enum class PulseNPCCondition_t : uint32_t {
                 COND_SEE_PLAYER = 0x1,
                 COND_LOST_PLAYER = 0x2,
                 COND_HEAR_PLAYER = 0x3,
                 COND_PLAYER_PUSHING = 0x4,
                 COND_NO_PRIMARY_AMMO = 0x5
             };
-
             // Alignment: 1
             // Member count: 13
-            enum class RenderMode_t : uint8_t
-            {
+            enum class RenderMode_t : uint8_t {
                 kRenderNormal = 0x0,
                 kRenderTransColor = 0x1,
                 kRenderTransTexture = 0x2,
@@ -641,30 +541,24 @@ namespace cs2_dumper
                 kRenderDevVisualizer = 0xB,
                 kRenderModeCount = 0xC
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class ForcedCrouchState_t : uint32_t
-            {
+            enum class ForcedCrouchState_t : uint32_t {
                 FORCEDCROUCH_NONE = 0x0,
                 FORCEDCROUCH_CROUCHED = 0x1,
                 FORCEDCROUCH_UNCROUCHED = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class PerformanceMode_t : uint32_t
-            {
+            enum class PerformanceMode_t : uint32_t {
                 PM_NORMAL = 0x0,
                 PM_NO_GIBS = 0x1,
                 PM_FULL_GIBS = 0x2,
                 PM_REDUCED_GIBS = 0x3
             };
-
             // Alignment: 4
             // Member count: 8
-            enum class TOGGLE_STATE : uint32_t
-            {
+            enum class TOGGLE_STATE : uint32_t {
                 TS_AT_TOP = 0x0,
                 TS_AT_BOTTOM = 0x1,
                 TS_GOING_UP = 0x2,
@@ -674,11 +568,9 @@ namespace cs2_dumper
                 DOOR_OPENING = 0x2,
                 DOOR_CLOSING = 0x3
             };
-
             // Alignment: 4
             // Member count: 74
-            enum class loadout_slot_t : uint32_t
-            {
+            enum class loadout_slot_t : uint32_t {
                 LOADOUT_SLOT_PROMOTED = 0xFFFFFFFFFFFFFFFE,
                 LOADOUT_SLOT_INVALID = 0xFFFFFFFFFFFFFFFF,
                 LOADOUT_SLOT_MELEE = 0x0,
@@ -754,19 +646,15 @@ namespace cs2_dumper
                 LOADOUT_SLOT_LAST_ALL_CHARACTER = 0x38,
                 LOADOUT_SLOT_COUNT = 0x39
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class EDestructiblePartDamagePassThroughType : uint32_t
-            {
+            enum class EDestructiblePartDamagePassThroughType : uint32_t {
                 Normal = 0x0,
                 Absorb = 0x1
             };
-
             // Alignment: 4
             // Member count: 20
-            enum class NavAttributeEnum : uint32_t
-            {
+            enum class NavAttributeEnum : uint32_t {
                 NAV_MESH_AVOID = 0x80,
                 NAV_MESH_STAIRS = 0x1000,
                 NAV_MESH_NON_ZUP = 0x8000,
@@ -788,30 +676,24 @@ namespace cs2_dumper
                 NAV_ATTR_FIRST_GAME_INDEX = 0x13,
                 NAV_ATTR_LAST_INDEX = 0x1F
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class MoveLinearAuthoredPos_t : uint32_t
-            {
+            enum class MoveLinearAuthoredPos_t : uint32_t {
                 MOVELINEAR_AUTHORED_AT_START_POSITION = 0x0,
                 MOVELINEAR_AUTHORED_AT_OPEN_POSITION = 0x1,
                 MOVELINEAR_AUTHORED_AT_CLOSED_POSITION = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class ValueRemapperMomentumType_t : uint32_t
-            {
+            enum class ValueRemapperMomentumType_t : uint32_t {
                 MomentumType_None = 0x0,
                 MomentumType_Friction = 0x1,
                 MomentumType_SpringTowardSnapValue = 0x2,
                 MomentumType_SpringAwayFromSnapValue = 0x3
             };
-
             // Alignment: 4
             // Member count: 12
-            enum class Hull_t : uint32_t
-            {
+            enum class Hull_t : uint32_t {
                 HULL_HUMAN = 0x0,
                 HULL_SMALL_CENTERED = 0x1,
                 HULL_WIDE_HUMAN = 0x2,
@@ -825,11 +707,9 @@ namespace cs2_dumper
                 NUM_HULLS = 0xA,
                 HULL_NONE = 0xB
             };
-
             // Alignment: 4
             // Member count: 6
-            enum class PreviewWeaponState : uint32_t
-            {
+            enum class PreviewWeaponState : uint32_t {
                 DROPPED = 0x0,
                 HOLSTERED = 0x1,
                 DEPLOYED = 0x2,
@@ -837,11 +717,9 @@ namespace cs2_dumper
                 INSPECT = 0x4,
                 ICON = 0x5
             };
-
             // Alignment: 4
             // Member count: 9
-            enum class EInButtonState : uint32_t
-            {
+            enum class EInButtonState : uint32_t {
                 IN_BUTTON_UP = 0x0,
                 IN_BUTTON_DOWN = 0x1,
                 IN_BUTTON_DOWN_UP = 0x2,
@@ -852,31 +730,25 @@ namespace cs2_dumper
                 IN_BUTTON_UP_DOWN_UP_DOWN = 0x7,
                 IN_BUTTON_STATE_COUNT = 0x8
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class BeamClipStyle_t : uint32_t
-            {
+            enum class BeamClipStyle_t : uint32_t {
                 kNOCLIP = 0x0,
                 kGEOCLIP = 0x1,
                 kMODELCLIP = 0x2,
                 kBEAMCLIPSTYLE_NUMBITS = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class WeaponAttackType_t : uint32_t
-            {
+            enum class WeaponAttackType_t : uint32_t {
                 eInvalid = 0xFFFFFFFFFFFFFFFF,
                 ePrimary = 0x0,
                 eSecondary = 0x1,
                 eCount = 0x2
             };
-
             // Alignment: 4
             // Member count: 18
-            enum class CSPlayerBlockingUseAction_t : uint32_t
-            {
+            enum class CSPlayerBlockingUseAction_t : uint32_t {
                 k_CSPlayerBlockingUseAction_None = 0x0,
                 k_CSPlayerBlockingUseAction_DefusingDefault = 0x1,
                 k_CSPlayerBlockingUseAction_DefusingWithKit = 0x2,
@@ -896,71 +768,57 @@ namespace cs2_dumper
                 k_CSPlayerBlockingUseAction_MapLongUseEntity_Place = 0x10,
                 k_CSPlayerBlockingUseAction_MaxCount = 0x11
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class CSWeaponState_t : uint32_t
-            {
+            enum class CSWeaponState_t : uint32_t {
                 WEAPON_NOT_CARRIED = 0x0,
                 WEAPON_IS_CARRIED_BY_PLAYER = 0x1,
                 WEAPON_IS_ACTIVE = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class CommandExecMode_t : uint32_t
-            {
+            enum class CommandExecMode_t : uint32_t {
                 EXEC_MANUAL = 0x0,
                 EXEC_LEVELSTART = 0x1,
                 EXEC_PERIODIC = 0x2,
                 EXEC_MODES_COUNT = 0x3
             };
-
             // Alignment: 1
             // Member count: 5
-            enum class ShatterDamageCause : uint8_t
-            {
+            enum class ShatterDamageCause : uint8_t {
                 SHATTERDAMAGE_BULLET = 0x0,
                 SHATTERDAMAGE_MELEE = 0x1,
                 SHATTERDAMAGE_THROWN = 0x2,
                 SHATTERDAMAGE_SCRIPT = 0x3,
                 SHATTERDAMAGE_EXPLOSIVE = 0x4
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class ScriptedOnDeath_t : uint32_t
-            {
+            enum class ScriptedOnDeath_t : uint32_t {
                 SS_ONDEATH_NOT_APPLICABLE = 0xFFFFFFFFFFFFFFFF,
                 SS_ONDEATH_UNDEFINED = 0x0,
                 SS_ONDEATH_RAGDOLL = 0x1,
                 SS_ONDEATH_ANIMATED_DEATH = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class ChoreoLookAtSpeed_t : uint32_t
-            {
+            enum class ChoreoLookAtSpeed_t : uint32_t {
                 eInvalid = 0xFFFFFFFFFFFFFFFF,
                 eSlow = 0x0,
                 eMedium = 0x1,
                 eFast = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class ScriptedMoveType_t : uint32_t
-            {
+            enum class ScriptedMoveType_t : uint32_t {
                 SCRIPTED_MOVETYPE_NONE = 0x0,
                 SCRIPTED_MOVETYPE_TO_WITH_DURATION = 0x1,
                 SCRIPTED_MOVETYPE_TO_WITH_MOVESPEED = 0x2,
                 SCRIPTED_MOVETYPE_SWEEP_TO_AT_MOVEMENT_SPEED = 0x3
             };
-
             // Alignment: 4
             // Member count: 17
-            enum class gear_slot_t : uint32_t
-            {
+            enum class gear_slot_t : uint32_t {
                 GEAR_SLOT_INVALID = 0xFFFFFFFFFFFFFFFF,
                 GEAR_SLOT_RIFLE = 0x0,
                 GEAR_SLOT_PISTOL = 0x1,
@@ -979,11 +837,9 @@ namespace cs2_dumper
                 GEAR_SLOT_FIRST = 0x0,
                 GEAR_SLOT_LAST = 0xC
             };
-
             // Alignment: 4
             // Member count: 10
-            enum class CSPlayerState : uint32_t
-            {
+            enum class CSPlayerState : uint32_t {
                 STATE_ACTIVE = 0x0,
                 STATE_WELCOME = 0x1,
                 STATE_PICKINGTEAM = 0x2,
@@ -995,19 +851,15 @@ namespace cs2_dumper
                 STATE_DORMANT = 0x8,
                 NUM_PLAYER_STATES = 0x9
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class ScriptedConflictResponse_t : uint32_t
-            {
+            enum class ScriptedConflictResponse_t : uint32_t {
                 SS_CONFLICT_ENQUEUE = 0x0,
                 SS_CONFLICT_INTERRUPT = 0x1
             };
-
             // Alignment: 1
             // Member count: 7
-            enum class WaterLevel_t : uint8_t
-            {
+            enum class WaterLevel_t : uint8_t {
                 WL_NotInWater = 0x0,
                 WL_Feet = 0x1,
                 WL_Knees = 0x2,
@@ -1016,30 +868,24 @@ namespace cs2_dumper
                 WL_FullyUnderwater = 0x5,
                 WL_Count = 0x6
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class WorldTextPanelVerticalAlign_t : uint32_t
-            {
+            enum class WorldTextPanelVerticalAlign_t : uint32_t {
                 WORLDTEXT_VERTICAL_ALIGN_TOP = 0x0,
                 WORLDTEXT_VERTICAL_ALIGN_CENTER = 0x1,
                 WORLDTEXT_VERTICAL_ALIGN_BOTTOM = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class AmmoPosition_t : uint32_t
-            {
+            enum class AmmoPosition_t : uint32_t {
                 AMMO_POSITION_INVALID = 0xFFFFFFFFFFFFFFFF,
                 AMMO_POSITION_PRIMARY = 0x0,
                 AMMO_POSITION_SECONDARY = 0x1,
                 AMMO_POSITION_COUNT = 0x2
             };
-
             // Alignment: 4
             // Member count: 10
-            enum class CDebugOverlayFilterType_t : uint32_t
-            {
+            enum class CDebugOverlayFilterType_t : uint32_t {
                 NONE = 0x0,
                 TEXT = 0x1,
                 ENTITY = 0x2,
@@ -1051,11 +897,9 @@ namespace cs2_dumper
                 END_SIM_HISTORY_TYPES = 0x8,
                 COMBINED = 0xFFFFFFFFFFFFFFFF
             };
-
             // Alignment: 4
             // Member count: 23
-            enum class PreviewEOMCelebration : uint32_t
-            {
+            enum class PreviewEOMCelebration : uint32_t {
                 WALKUP = 0x0,
                 PUNCHING = 0x1,
                 SWAGGER = 0x2,
@@ -1080,22 +924,18 @@ namespace cs2_dumper
                 MUHLIK_DEFEAT = 0x15,
                 VYPA_DEFEAT = 0x16
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class EntityDisolveType_t : uint32_t
-            {
+            enum class EntityDisolveType_t : uint32_t {
                 ENTITY_DISSOLVE_INVALID = 0xFFFFFFFFFFFFFFFF,
                 ENTITY_DISSOLVE_NORMAL = 0x0,
                 ENTITY_DISSOLVE_ELECTRICAL = 0x1,
                 ENTITY_DISSOLVE_ELECTRICAL_LIGHT = 0x2,
                 ENTITY_DISSOLVE_CORE = 0x3
             };
-
             // Alignment: 8
             // Member count: 21
-            enum class InputBitMask_t : uint64_t
-            {
+            enum class InputBitMask_t : uint64_t {
                 IN_NONE = 0x0,
                 IN_ALL = 0xFFFFFFFFFFFFFFFF,
                 IN_ATTACK = 0x1,
@@ -1118,11 +958,9 @@ namespace cs2_dumper
                 IN_ZOOM = 0x400000000,
                 IN_LOOK_AT_WEAPON = 0x800000000
             };
-
             // Alignment: 4
             // Member count: 14
-            enum class HitGroup_t : uint32_t
-            {
+            enum class HitGroup_t : uint32_t {
                 HITGROUP_INVALID = 0xFFFFFFFFFFFFFFFF,
                 HITGROUP_GENERIC = 0x0,
                 HITGROUP_HEAD = 0x1,
@@ -1138,11 +976,9 @@ namespace cs2_dumper
                 HITGROUP_SPECIAL = 0xB,
                 HITGROUP_COUNT = 0xC
             };
-
             // Alignment: 4
             // Member count: 9
-            enum class ChickenActivity : uint32_t
-            {
+            enum class ChickenActivity : uint32_t {
                 IDLE = 0x0,
                 SQUAT = 0x1,
                 WALK = 0x2,
@@ -1153,19 +989,15 @@ namespace cs2_dumper
                 TRICK = 0x7,
                 TURN_IN_PLACE = 0x8
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class PointWorldTextReorientMode_t : uint32_t
-            {
+            enum class PointWorldTextReorientMode_t : uint32_t {
                 POINT_WORLD_TEXT_REORIENT_NONE = 0x0,
                 POINT_WORLD_TEXT_REORIENT_AROUND_UP = 0x1
             };
-
             // Alignment: 8
             // Member count: 40
-            enum class DebugOverlayBits_t : uint64_t
-            {
+            enum class DebugOverlayBits_t : uint64_t {
                 OVERLAY_TEXT_BIT = 0x1,
                 OVERLAY_NAME_BIT = 0x2,
                 OVERLAY_BBOX_BIT = 0x4,
@@ -1207,20 +1039,16 @@ namespace cs2_dumper
                 OVERLAY_NPC_CONDITIONS_TEXT_BIT = 0x8000000000,
                 OVERLAY_NPC_ABILITY_RANGE_DEBUG_BIT = 0x10000000000
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class AmmoFlags_t : uint32_t
-            {
+            enum class AmmoFlags_t : uint32_t {
                 AMMO_FORCE_DROP_IF_CARRIED = 0x1,
                 AMMO_RESERVE_STAYS_WITH_WEAPON = 0x2,
                 AMMO_FLAG_MAX = 0x2
             };
-
             // Alignment: 4
             // Member count: 6
-            enum class HierarchyType_t : uint32_t
-            {
+            enum class HierarchyType_t : uint32_t {
                 HIERARCHY_NONE = 0x0,
                 HIERARCHY_BONE_MERGE = 0x1,
                 HIERARCHY_ATTACHMENT = 0x2,
@@ -1228,20 +1056,16 @@ namespace cs2_dumper
                 HIERARCHY_BONE = 0x4,
                 HIERARCHY_TYPE_COUNT = 0x5
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class doorCheck_e : uint32_t
-            {
+            enum class doorCheck_e : uint32_t {
                 DOOR_CHECK_FORWARD = 0x0,
                 DOOR_CHECK_BACKWARD = 0x1,
                 DOOR_CHECK_FULL = 0x2
             };
-
             // Alignment: 4
             // Member count: 7
-            enum class BeamType_t : uint32_t
-            {
+            enum class BeamType_t : uint32_t {
                 BEAM_INVALID = 0x0,
                 BEAM_POINTS = 0x1,
                 BEAM_ENTPOINT = 0x2,
@@ -1250,104 +1074,82 @@ namespace cs2_dumper
                 BEAM_SPLINE = 0x5,
                 BEAM_LASER = 0x6
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class EntitySubclassScope_t : uint32_t
-            {
+            enum class EntitySubclassScope_t : uint32_t {
                 SUBCLASS_SCOPE_NONE = 0xFFFFFFFFFFFFFFFF,
                 SUBCLASS_SCOPE_PRECIPITATION = 0x0,
                 SUBCLASS_SCOPE_PLAYER_WEAPONS = 0x1,
                 SUBCLASS_SCOPE_COUNT = 0x2
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class PointTemplateClientOnlyEntityBehavior_t : uint32_t
-            {
+            enum class PointTemplateClientOnlyEntityBehavior_t : uint32_t {
                 CREATE_FOR_CURRENTLY_CONNECTED_CLIENTS_ONLY = 0x0,
                 CREATE_FOR_CLIENTS_WHO_CONNECT_LATER = 0x1
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class CDebugOverlayCombinedTypes_t : uint32_t
-            {
+            enum class CDebugOverlayCombinedTypes_t : uint32_t {
                 ALL = 0x0,
                 ANY = 0x1,
                 COUNT = 0x2
             };
-
             // Alignment: 1
             // Member count: 4
-            enum class ShatterGlassStressType : uint8_t
-            {
+            enum class ShatterGlassStressType : uint8_t {
                 SHATTERGLASS_BLUNT = 0x0,
                 SHATTERGLASS_BALLISTIC = 0x1,
                 SHATTERGLASS_PULSE = 0x2,
                 SHATTERGLASS_EXPLOSIVE = 0x3
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class TrackOrientationType_t : uint32_t
-            {
+            enum class TrackOrientationType_t : uint32_t {
                 TrackOrientation_Fixed = 0x0,
                 TrackOrientation_FacePath = 0x1,
                 TrackOrientation_FacePathAngles = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class WeaponSwitchReason_t : uint32_t
-            {
+            enum class WeaponSwitchReason_t : uint32_t {
                 eDrawn = 0x0,
                 eEquipped = 0x1,
                 eUserInitiatedSwitchToLast = 0x2,
                 eUserInitiatedSwitchHands = 0x3
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class ValueRemapperRatchetType_t : uint32_t
-            {
+            enum class ValueRemapperRatchetType_t : uint32_t {
                 RatchetType_Absolute = 0x0,
                 RatchetType_EachEngage = 0x1
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class NavDirType : uint32_t
-            {
+            enum class NavDirType : uint32_t {
                 NORTH = 0x0,
                 EAST = 0x1,
                 SOUTH = 0x2,
                 WEST = 0x3,
                 NUM_NAV_DIR_TYPE_DIRECTIONS = 0x4
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class CRR_Response__ResponseEnum_t : uint32_t
-            {
+            enum class CRR_Response__ResponseEnum_t : uint32_t {
                 MAX_RESPONSE_NAME = 0xC0,
                 MAX_RULE_NAME = 0x80
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class MoveMountingAmount_t : uint32_t
-            {
+            enum class MoveMountingAmount_t : uint32_t {
                 MOVE_MOUNT_NONE = 0x0,
                 MOVE_MOUNT_LOW = 0x1,
                 MOVE_MOUNT_HIGH = 0x2,
                 MOVE_MOUNT_MAXCOUNT = 0x3
             };
-
             // Alignment: 1
             // Member count: 20
-            enum class RenderFx_t : uint8_t
-            {
+            enum class RenderFx_t : uint8_t {
                 kRenderFxNone = 0x0,
                 kRenderFxPulseSlow = 0x1,
                 kRenderFxPulseFast = 0x2,
@@ -1369,11 +1171,9 @@ namespace cs2_dumper
                 kRenderFxGlowShell = 0x12,
                 kRenderFxMax = 0x13
             };
-
             // Alignment: 4
             // Member count: 35
-            enum class vote_create_failed_t : uint32_t
-            {
+            enum class vote_create_failed_t : uint32_t {
                 VOTE_FAILED_GENERIC = 0x0,
                 VOTE_FAILED_TRANSITIONING_PLAYERS = 0x1,
                 VOTE_FAILED_RATE_EXCEEDED = 0x2,
@@ -1410,11 +1210,9 @@ namespace cs2_dumper
                 VOTE_FAILED_CONTINUE = 0x21,
                 VOTE_FAILED_MAX = 0x22
             };
-
             // Alignment: 4
             // Member count: 27
-            enum class RumbleEffect_t : uint32_t
-            {
+            enum class RumbleEffect_t : uint32_t {
                 RUMBLE_INVALID = 0xFFFFFFFFFFFFFFFF,
                 RUMBLE_STOP_ALL = 0x0,
                 RUMBLE_PISTOL = 0x1,
@@ -1443,11 +1241,9 @@ namespace cs2_dumper
                 RUMBLE_PHYSCANNON_HIGH = 0x18,
                 NUM_RUMBLE_EFFECTS = 0x19
             };
-
             // Alignment: 4
             // Member count: 6
-            enum class LatchDirtyPermission_t : uint32_t
-            {
+            enum class LatchDirtyPermission_t : uint32_t {
                 LATCH_DIRTY_DISALLOW = 0x0,
                 LATCH_DIRTY_SERVER_CONTROLLED = 0x1,
                 LATCH_DIRTY_CLIENT_SIMULATED = 0x2,
@@ -1455,41 +1251,33 @@ namespace cs2_dumper
                 LATCH_DIRTY_FRAMESIMULATE = 0x4,
                 LATCH_DIRTY_PARTICLE_SIMULATE = 0x5
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class DoorState_t : uint32_t
-            {
+            enum class DoorState_t : uint32_t {
                 DOOR_STATE_CLOSED = 0x0,
                 DOOR_STATE_OPENING = 0x1,
                 DOOR_STATE_OPEN = 0x2,
                 DOOR_STATE_CLOSING = 0x3,
                 DOOR_STATE_AJAR = 0x4
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class ChoreoLookAtMode_t : uint32_t
-            {
+            enum class ChoreoLookAtMode_t : uint32_t {
                 eInvalid = 0xFFFFFFFFFFFFFFFF,
                 eChest = 0x0,
                 eHead = 0x1,
                 eEyesOnly = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class ChatIgnoreType_t : uint32_t
-            {
+            enum class ChatIgnoreType_t : uint32_t {
                 CHAT_IGNORE_NONE = 0x0,
                 CHAT_IGNORE_ALL = 0x1,
                 CHAT_IGNORE_TEAM = 0x2
             };
-
             // Alignment: 4
             // Member count: 7
-            enum class PlayerConnectedState : uint32_t
-            {
+            enum class PlayerConnectedState : uint32_t {
                 PlayerNeverConnected = 0xFFFFFFFFFFFFFFFF,
                 PlayerConnected = 0x0,
                 PlayerConnecting = 0x1,
@@ -1498,27 +1286,21 @@ namespace cs2_dumper
                 PlayerDisconnected = 0x4,
                 PlayerReserved = 0x5
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class SimpleConstraintSoundProfile__SimpleConstraintsSoundProfileKeypoints_t : uint32_t
-            {
+            enum class SimpleConstraintSoundProfile__SimpleConstraintsSoundProfileKeypoints_t : uint32_t {
                 kMIN_THRESHOLD = 0x0,
                 kMIN_FULL = 0x1,
                 kHIGHWATER = 0x2
             };
-
             // Alignment: 4
             // Member count: 1
-            enum class navproperties_t : uint32_t
-            {
+            enum class navproperties_t : uint32_t {
                 NAV_IGNORE = 0x1
             };
-
             // Alignment: 1
             // Member count: 9
-            enum class SolidType_t : uint8_t
-            {
+            enum class SolidType_t : uint8_t {
                 SOLID_NONE = 0x0,
                 SOLID_BSP = 0x1,
                 SOLID_BBOX = 0x2,
@@ -1529,11 +1311,9 @@ namespace cs2_dumper
                 SOLID_CAPSULE = 0x7,
                 SOLID_LAST = 0x8
             };
-
             // Alignment: 4
             // Member count: 24
-            enum class DamageTypes_t : uint32_t
-            {
+            enum class DamageTypes_t : uint32_t {
                 DMG_GENERIC = 0x0,
                 DMG_CRUSH = 0x1,
                 DMG_BULLET = 0x2,
@@ -1559,28 +1339,22 @@ namespace cs2_dumper
                 DMG_HEADSHOT = 0x2000000,
                 DMG_DANGERZONE = 0x4000000
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class PointWorldTextJustifyVertical_t : uint32_t
-            {
+            enum class PointWorldTextJustifyVertical_t : uint32_t {
                 POINT_WORLD_TEXT_JUSTIFY_VERTICAL_BOTTOM = 0x0,
                 POINT_WORLD_TEXT_JUSTIFY_VERTICAL_CENTER = 0x1,
                 POINT_WORLD_TEXT_JUSTIFY_VERTICAL_TOP = 0x2
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class attributeprovidertypes_t : uint32_t
-            {
+            enum class attributeprovidertypes_t : uint32_t {
                 PROVIDER_GENERIC = 0x0,
                 PROVIDER_WEAPON = 0x1
             };
-
             // Alignment: 1
             // Member count: 6
-            enum class MoveCollide_t : uint8_t
-            {
+            enum class MoveCollide_t : uint8_t {
                 MOVECOLLIDE_DEFAULT = 0x0,
                 MOVECOLLIDE_FLY_BOUNCE = 0x1,
                 MOVECOLLIDE_FLY_CUSTOM = 0x2,
@@ -1588,11 +1362,9 @@ namespace cs2_dumper
                 MOVECOLLIDE_COUNT = 0x4,
                 MOVECOLLIDE_MAX_BITS = 0x3
             };
-
             // Alignment: 4
             // Member count: 7
-            enum class IChoreoServices__ChoreoState_t : uint32_t
-            {
+            enum class IChoreoServices__ChoreoState_t : uint32_t {
                 STATE_PRE_SCRIPT = 0x0,
                 STATE_WAIT_FOR_SCRIPT = 0x1,
                 STATE_WALK_TO_MARK = 0x2,
@@ -1601,66 +1373,52 @@ namespace cs2_dumper
                 STATE_PLAY_SCRIPT_POST_IDLE = 0x5,
                 STATE_PLAY_SCRIPT_POST_IDLE_DONE = 0x6
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class ValueRemapperOutputType_t : uint32_t
-            {
+            enum class ValueRemapperOutputType_t : uint32_t {
                 OutputType_AnimationCycle = 0x0,
                 OutputType_RotationX = 0x1,
                 OutputType_RotationY = 0x2,
                 OutputType_RotationZ = 0x3
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class PointTemplateOwnerSpawnGroupType_t : uint32_t
-            {
+            enum class PointTemplateOwnerSpawnGroupType_t : uint32_t {
                 INSERT_INTO_POINT_TEMPLATE_SPAWN_GROUP = 0x0,
                 INSERT_INTO_CURRENTLY_ACTIVE_SPAWN_GROUP = 0x1,
                 INSERT_INTO_NEWLY_CREATED_SPAWN_GROUP = 0x2
             };
-
             // Alignment: 1
             // Member count: 3
-            enum class EContributionScoreFlag_t : uint8_t
-            {
+            enum class EContributionScoreFlag_t : uint8_t {
                 k_EContributionScoreFlag_Default = 0x0,
                 k_EContributionScoreFlag_Objective = 0x1,
                 k_EContributionScoreFlag_Bullets = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class eSplinePushType : uint32_t
-            {
+            enum class eSplinePushType : uint32_t {
                 k_eSplinePushAlong = 0x0,
                 k_eSplinePushAway = 0x1,
                 k_eSplinePushTowards = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class EntityDistanceMode_t : uint32_t
-            {
+            enum class EntityDistanceMode_t : uint32_t {
                 eOriginToOrigin = 0x0,
                 eCenterToCenter = 0x1,
                 eAxisToAxis = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class PointWorldTextJustifyHorizontal_t : uint32_t
-            {
+            enum class PointWorldTextJustifyHorizontal_t : uint32_t {
                 POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_LEFT = 0x0,
                 POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_CENTER = 0x1,
                 POINT_WORLD_TEXT_JUSTIFY_HORIZONTAL_RIGHT = 0x2
             };
-
             // Alignment: 4
             // Member count: 6
-            enum class ShakeCommand_t : uint32_t
-            {
+            enum class ShakeCommand_t : uint32_t {
                 SHAKE_START = 0x0,
                 SHAKE_STOP = 0x1,
                 SHAKE_AMPLITUDE = 0x2,
@@ -1668,29 +1426,23 @@ namespace cs2_dumper
                 SHAKE_START_RUMBLEONLY = 0x4,
                 SHAKE_START_NORUMBLE = 0x5
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class TRAIN_CODE : uint32_t
-            {
+            enum class TRAIN_CODE : uint32_t {
                 TRAIN_SAFE = 0x0,
                 TRAIN_BLOCKING = 0x1,
                 TRAIN_FOLLOWING = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class BrushSolidities_e : uint32_t
-            {
+            enum class BrushSolidities_e : uint32_t {
                 BRUSHSOLID_TOGGLE = 0x0,
                 BRUSHSOLID_NEVER = 0x1,
                 BRUSHSOLID_ALWAYS = 0x2
             };
-
             // Alignment: 4
             // Member count: 13
-            enum class QuestProgress__Reason : uint32_t
-            {
+            enum class QuestProgress__Reason : uint32_t {
                 QUEST_NONINITIALIZED = 0x0,
                 QUEST_OK = 0x1,
                 QUEST_NOT_ENOUGH_PLAYERS = 0x2,
@@ -1705,37 +1457,29 @@ namespace cs2_dumper
                 QUEST_NOT_SYNCED_WITH_SERVER = 0xB,
                 QUEST_REASON_MAX = 0xC
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class ModifyDamageReturn_t : uint32_t
-            {
+            enum class ModifyDamageReturn_t : uint32_t {
                 CONTINUE_TO_APPLY_DAMAGE = 0x0,
                 ABORT_DO_NOT_APPLY_DAMAGE = 0x1
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class ShadowType_t : uint32_t
-            {
+            enum class ShadowType_t : uint32_t {
                 SHADOWS_NONE = 0x0,
                 SHADOWS_SIMPLE = 0x1
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class ScriptedHeldWeaponBehavior_t : uint32_t
-            {
+            enum class ScriptedHeldWeaponBehavior_t : uint32_t {
                 eInvalid = 0xFFFFFFFFFFFFFFFF,
                 eHolster = 0x0,
                 eDeploy = 0x1,
                 eDrop = 0x2
             };
-
             // Alignment: 4
             // Member count: 8
-            enum class GrenadeType_t : uint32_t
-            {
+            enum class GrenadeType_t : uint32_t {
                 GRENADE_TYPE_EXPLOSIVE = 0x0,
                 GRENADE_TYPE_FLASH = 0x1,
                 GRENADE_TYPE_FIRE = 0x2,
@@ -1745,19 +1489,15 @@ namespace cs2_dumper
                 GRENADE_TYPE_SNOWBALL = 0x6,
                 GRENADE_TYPE_TOTAL = 0x7
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class ValueRemapperInputType_t : uint32_t
-            {
+            enum class ValueRemapperInputType_t : uint32_t {
                 InputType_PlayerShootPosition = 0x0,
                 InputType_PlayerShootPositionAroundAxis = 0x1
             };
-
             // Alignment: 1
             // Member count: 8
-            enum class EKillTypes_t : uint8_t
-            {
+            enum class EKillTypes_t : uint8_t {
                 KILL_NONE = 0x0,
                 KILL_DEFAULT = 0x1,
                 KILL_HEADSHOT = 0x2,
@@ -1767,11 +1507,9 @@ namespace cs2_dumper
                 KILL_SHOCK = 0x6,
                 KILLTYPE_COUNT = 0x7
             };
-
             // Alignment: 4
             // Member count: 25
-            enum class WeaponSound_t : uint32_t
-            {
+            enum class WeaponSound_t : uint32_t {
                 WEAPON_SOUND_EMPTY = 0x0,
                 WEAPON_SOUND_SECONDARY_EMPTY = 0x1,
                 WEAPON_SOUND_SINGLE = 0x2,
@@ -1798,11 +1536,9 @@ namespace cs2_dumper
                 WEAPON_SOUND_RADIO_USE = 0x17,
                 WEAPON_SOUND_NUM_TYPES = 0x18
             };
-
             // Alignment: 8
             // Member count: 17
-            enum class TakeDamageFlags_t : uint64_t
-            {
+            enum class TakeDamageFlags_t : uint64_t {
                 DFLAG_NONE = 0x0,
                 DFLAG_SUPPRESS_HEALTH_CHANGES = 0x1,
                 DFLAG_SUPPRESS_PHYSICS_FORCE = 0x2,
@@ -1821,19 +1557,15 @@ namespace cs2_dumper
                 DFLAG_IGNORE_ARMOR = 0x2000,
                 DFLAG_SUPPRESS_UTILREMOVE = 0x4000
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class ValueRemapperHapticsType_t : uint32_t
-            {
+            enum class ValueRemapperHapticsType_t : uint32_t {
                 HaticsType_Default = 0x0,
                 HaticsType_None = 0x1
             };
-
             // Alignment: 4
             // Member count: 10
-            enum class Disposition_t : uint32_t
-            {
+            enum class Disposition_t : uint32_t {
                 D_ER = 0x0,
                 D_HT = 0x1,
                 D_FR = 0x2,
@@ -1845,31 +1577,25 @@ namespace cs2_dumper
                 D_LIKE = 0x3,
                 D_NEUTRAL = 0x4
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class CanPlaySequence_t : uint32_t
-            {
+            enum class CanPlaySequence_t : uint32_t {
                 CANNOT_PLAY = 0x0,
                 CAN_PLAY_NOW = 0x1,
                 CAN_PLAY_ENQUEUED = 0x2
             };
-
             // Alignment: 4
             // Member count: 5
-            enum class MedalRank_t : uint32_t
-            {
+            enum class MedalRank_t : uint32_t {
                 MEDAL_RANK_NONE = 0x0,
                 MEDAL_RANK_BRONZE = 0x1,
                 MEDAL_RANK_SILVER = 0x2,
                 MEDAL_RANK_GOLD = 0x3,
                 MEDAL_RANK_COUNT = 0x4
             };
-
             // Alignment: 4
             // Member count: 7
-            enum class ObserverMode_t : uint32_t
-            {
+            enum class ObserverMode_t : uint32_t {
                 OBS_MODE_NONE = 0x0,
                 OBS_MODE_FIXED = 0x1,
                 OBS_MODE_IN_EYE = 0x2,
@@ -1878,28 +1604,22 @@ namespace cs2_dumper
                 OBS_MODE_DIRECTED = 0x5,
                 NUM_OBSERVER_MODES = 0x6
             };
-
             // Alignment: 4
             // Member count: 2
-            enum class FuncDoorSpawnPos_t : uint32_t
-            {
+            enum class FuncDoorSpawnPos_t : uint32_t {
                 FUNC_DOOR_SPAWN_CLOSED = 0x0,
                 FUNC_DOOR_SPAWN_OPEN = 0x1
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class EOverrideBlockLOS_t : uint32_t
-            {
+            enum class EOverrideBlockLOS_t : uint32_t {
                 BLOCK_LOS_DEFAULT = 0x0,
                 BLOCK_LOS_FORCE_FALSE = 0x1,
                 BLOCK_LOS_FORCE_TRUE = 0x2
             };
-
             // Alignment: 1
             // Member count: 14
-            enum class MoveType_t : uint8_t
-            {
+            enum class MoveType_t : uint8_t {
                 MOVETYPE_NONE = 0x0,
                 MOVETYPE_OBSOLETE = 0x1,
                 MOVETYPE_WALK = 0x2,
@@ -1915,31 +1635,25 @@ namespace cs2_dumper
                 MOVETYPE_INVALID = 0xB,
                 MOVETYPE_MAX_BITS = 0x5
             };
-
             // Parent: CBaseCombatCharacter
             // Field count: 1
-            namespace CHostageExpresserShim
-            {
+            namespace CHostageExpresserShim {
                 constexpr std::ptrdiff_t m_pExpresser = 0xAC0; // CAI_Expresser*
             }
-
             // Parent: CBaseTrigger
             // Field count: 3
-            namespace CTriggerSoundscape
-            {
+            namespace CTriggerSoundscape {
                 constexpr std::ptrdiff_t m_hSoundscape = 0x960; // CHandle<CEnvSoundscapeTriggerable>
                 constexpr std::ptrdiff_t m_SoundscapeName = 0x968; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_spectators = 0x970; // CUtlVector<CHandle<CBasePlayerPawn>>
             }
-
             // Parent: CBreakableProp
             // Field count: 22
             //
             // Metadata:
             // NetworkVarNames: m_bUseHitboxesForRenderBox (bool)
             // NetworkVarNames: m_bUseAnimGraph (bool)
-            namespace CDynamicProp
-            {
+            namespace CDynamicProp {
                 constexpr std::ptrdiff_t m_bCreateNavObstacle = 0xB60; // bool
                 constexpr std::ptrdiff_t m_bNavObstacleUpdatesOverridden = 0xB61; // bool
                 constexpr std::ptrdiff_t m_bUseHitboxesForRenderBox = 0xB62; // bool
@@ -1963,13 +1677,10 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_glowColor = 0xC50; // Color
                 constexpr std::ptrdiff_t m_nGlowTeam = 0xC54; // int32
             }
-
             // Parent: CBaseModelEntity
             // Field count: 0
-            namespace CFuncIllusionary
-            {
+            namespace CFuncIllusionary {
             }
-
             // Parent: CPlayer_MovementServices_Humanoid
             // Field count: 40
             //
@@ -1991,8 +1702,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flOffsetTickCompleteTime (float)
             // NetworkVarNames: m_flOffsetTickStashedSpeed (float)
             // NetworkVarNames: m_flStamina (float)
-            namespace CCSPlayer_MovementServices
-            {
+            namespace CCSPlayer_MovementServices {
                 constexpr std::ptrdiff_t m_vecLadderNormal = 0x228; // Vector
                 constexpr std::ptrdiff_t m_nLadderSurfacePropIndex = 0x234; // int32
                 constexpr std::ptrdiff_t m_flDuckAmount = 0x238; // float32
@@ -2034,7 +1744,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flStaminaAtJumpStart = 0x4F0; // float32
                 constexpr std::ptrdiff_t m_flAccumulatedJumpError = 0x4F4; // float32
             }
-
             // Parent: None
             // Field count: 6
             //
@@ -2045,8 +1754,7 @@ namespace cs2_dumper
             // NetworkVarNames: flClip3DSkyBoxNearToWorldFarOffset (float32)
             // NetworkVarNames: fog (fogparams_t)
             // NetworkVarNames: m_nWorldGroupID (WorldGroupId_t)
-            namespace sky3dparams_t
-            {
+            namespace sky3dparams_t {
                 constexpr std::ptrdiff_t scale = 0x8; // int16
                 constexpr std::ptrdiff_t origin = 0xC; // Vector
                 constexpr std::ptrdiff_t bClip3DSkyBoxNearToWorldFar = 0x18; // bool
@@ -2054,15 +1762,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t fog = 0x20; // fogparams_t
                 constexpr std::ptrdiff_t m_nWorldGroupID = 0x88; // WorldGroupId_t
             }
-
             // Parent: CCSWeaponBase
             // Field count: 7
             //
             // Metadata:
             // NetworkVarNames: m_bPlayingUninterruptableAct (bool)
             // NetworkVarNames: m_nUninterruptableActivity (PlayerAnimEvent_t)
-            namespace CFists
-            {
+            namespace CFists {
                 constexpr std::ptrdiff_t m_bPlayingUninterruptableAct = 0xF70; // bool
                 constexpr std::ptrdiff_t m_nUninterruptableActivity = 0xF74; // PlayerAnimEvent_t
                 constexpr std::ptrdiff_t m_bRestorePrevWep = 0xF78; // bool
@@ -2071,68 +1777,50 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bDelayedHardPunchIncoming = 0xF84; // bool
                 constexpr std::ptrdiff_t m_bDestroyAfterTaunt = 0xF85; // bool
             }
-
             // Parent: CBaseTrigger
             // Field count: 1
-            namespace CTriggerRemove
-            {
+            namespace CTriggerRemove {
                 constexpr std::ptrdiff_t m_OnRemove = 0x960; // CEntityIOOutput
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace CFilterName
-            {
+            namespace CFilterName {
                 constexpr std::ptrdiff_t m_iFilterName = 0x538; // CUtlSymbolLarge
             }
-
             // Parent: CPointEntity
             // Field count: 2
-            namespace CProjectedDecal
-            {
+            namespace CProjectedDecal {
                 constexpr std::ptrdiff_t m_nTexture = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_flDistance = 0x4E4; // float32
             }
-
             // Parent: CFuncTrackChange
             // Field count: 0
-            namespace CFuncTrackAuto
-            {
+            namespace CFuncTrackAuto {
             }
-
             // Parent: CBreakable
             // Field count: 0
-            namespace CPushable
-            {
+            namespace CPushable {
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CTriggerTripWire
-            {
+            namespace CTriggerTripWire {
             }
-
             // Parent: CBaseTrigger
             // Field count: 1
-            namespace CTriggerMultiple
-            {
+            namespace CTriggerMultiple {
                 constexpr std::ptrdiff_t m_OnTrigger = 0x960; // CEntityIOOutput
             }
-
             // Parent: CBodyComponent
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_skeletonInstance (CSkeletonInstance)
-            namespace CBodyComponentSkeletonInstance
-            {
+            namespace CBodyComponentSkeletonInstance {
                 constexpr std::ptrdiff_t m_skeletonInstance = 0x50; // CSkeletonInstance
             }
-
             // Parent: CBaseTrigger
             // Field count: 7
-            namespace CTriggerPush
-            {
+            namespace CTriggerPush {
                 constexpr std::ptrdiff_t m_angPushEntitySpace = 0x960; // QAngle
                 constexpr std::ptrdiff_t m_vecPushDirEntitySpace = 0x96C; // Vector
                 constexpr std::ptrdiff_t m_bTriggerOnStartTouch = 0x978; // bool
@@ -2141,78 +1829,62 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_PathSimple = 0x988; // CPathSimple*
                 constexpr std::ptrdiff_t m_splinePushType = 0x990; // uint32
             }
-
             // Parent: CBaseFilter
             // Field count: 3
-            namespace FilterHealth
-            {
+            namespace FilterHealth {
                 constexpr std::ptrdiff_t m_bAdrenalineActive = 0x538; // bool
                 constexpr std::ptrdiff_t m_iHealthMin = 0x53C; // int32
                 constexpr std::ptrdiff_t m_iHealthMax = 0x540; // int32
             }
-
             // Parent: CCSGO_TeamSelectCharacterPosition
             // Field count: 0
-            namespace CCSGO_TeamSelectCounterTerroristPosition
-            {
+            namespace CCSGO_TeamSelectCounterTerroristPosition {
             }
-
             // Parent: CBaseTrigger
             // Field count: 5
-            namespace CTriggerProximity
-            {
+            namespace CTriggerProximity {
                 constexpr std::ptrdiff_t m_hMeasureTarget = 0x960; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_iszMeasureTarget = 0x968; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_fRadius = 0x970; // float32
                 constexpr std::ptrdiff_t m_nTouchers = 0x974; // int32
                 constexpr std::ptrdiff_t m_NearestEntityDistance = 0x978; // CEntityOutputTemplate<float32>
             }
-
             // Parent: CFuncBrush
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_EffectName (string_t)
-            namespace CFuncElectrifiedVolume
-            {
+            namespace CFuncElectrifiedVolume {
                 constexpr std::ptrdiff_t m_EffectName = 0x7B0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_EffectInterpenetrateName = 0x7B8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_EffectZapName = 0x7C0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszEffectSource = 0x7C8; // CUtlSymbolLarge
             }
-
             // Parent: CPointEntity
             // Field count: 1
-            namespace CBaseDMStart
-            {
+            namespace CBaseDMStart {
                 constexpr std::ptrdiff_t m_Master = 0x4E0; // CUtlSymbolLarge
             }
-
             // Parent: CGameRulesProxy
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_pGameRules (CCSGameRules*)
-            namespace CCSGameRulesProxy
-            {
+            namespace CCSGameRulesProxy {
                 constexpr std::ptrdiff_t m_pGameRules = 0x4E0; // CCSGameRules*
             }
-
             // Parent: CBaseModelEntity
             // Field count: 5
-            namespace CTriggerBrush
-            {
+            namespace CTriggerBrush {
                 constexpr std::ptrdiff_t m_OnStartTouch = 0x790; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnEndTouch = 0x7B8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnUse = 0x7E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_iInputFilter = 0x808; // int32
                 constexpr std::ptrdiff_t m_iDontMessageParent = 0x80C; // int32
             }
-
             // Parent: CBeam
             // Field count: 19
-            namespace CEnvBeam
-            {
+            namespace CEnvBeam {
                 constexpr std::ptrdiff_t m_active = 0x830; // int32
                 constexpr std::ptrdiff_t m_spriteTexture = 0x838; // CStrongHandle<InfoForResourceTypeIMaterial2>
                 constexpr std::ptrdiff_t m_iszStartEntity = 0x840; // CUtlSymbolLarge
@@ -2233,15 +1905,12 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iszDecal = 0x8A8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_OnTouchedByEntity = 0x8B0; // CEntityIOOutput
             }
-
             // Parent: CBaseTrigger
             // Field count: 2
-            namespace CTonemapTrigger
-            {
+            namespace CTonemapTrigger {
                 constexpr std::ptrdiff_t m_tonemapControllerName = 0x960; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hTonemapController = 0x968; // CEntityHandle
             }
-
             // Parent: None
             // Field count: 5
             //
@@ -2251,101 +1920,78 @@ namespace cs2_dumper
             // NetworkVarNames: m_flInitialValue (float)
             // NetworkVarNames: m_nRefundableCurrency (int)
             // NetworkVarNames: m_bSetBonus (bool)
-            namespace CEconItemAttribute
-            {
+            namespace CEconItemAttribute {
                 constexpr std::ptrdiff_t m_iAttributeDefinitionIndex = 0x30; // uint16
                 constexpr std::ptrdiff_t m_flValue = 0x34; // float32
                 constexpr std::ptrdiff_t m_flInitialValue = 0x38; // float32
                 constexpr std::ptrdiff_t m_nRefundableCurrency = 0x3C; // int32
                 constexpr std::ptrdiff_t m_bSetBonus = 0x40; // bool
             }
-
             // Parent: CWeaponBaseItem
             // Field count: 0
-            namespace CItem_Healthshot
-            {
+            namespace CItem_Healthshot {
             }
-
             // Parent: CBaseTrigger
             // Field count: 1
-            namespace CFogTrigger
-            {
+            namespace CFogTrigger {
                 constexpr std::ptrdiff_t m_fog = 0x960; // fogparams_t
             }
-
             // Parent: CLogicalEntity
             // Field count: 5
-            namespace CLogicCollisionPair
-            {
+            namespace CLogicCollisionPair {
                 constexpr std::ptrdiff_t m_nameAttach1 = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_nameAttach2 = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_supportMultipleEntitiesWithSameName = 0x4F0; // bool
                 constexpr std::ptrdiff_t m_disabled = 0x4F1; // bool
                 constexpr std::ptrdiff_t m_succeeded = 0x4F2; // bool
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CCSPointScriptExtensions_weapon_cs_base
-            {
+            namespace CCSPointScriptExtensions_weapon_cs_base {
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CTriggerHostageReset
-            {
+            namespace CTriggerHostageReset {
             }
-
             // Parent: CServerOnlyPointEntity
             // Field count: 4
-            namespace CPointTeleport
-            {
+            namespace CPointTeleport {
                 constexpr std::ptrdiff_t m_vSaveOrigin = 0x4E0; // Vector
                 constexpr std::ptrdiff_t m_vSaveAngles = 0x4EC; // QAngle
                 constexpr std::ptrdiff_t m_bTeleportParentedEntities = 0x4F8; // bool
                 constexpr std::ptrdiff_t m_bTeleportUseCurrentAngle = 0x4F9; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoInstructorHintBombTargetB
-            {
+            namespace CInfoInstructorHintBombTargetB {
             }
-
             // Parent: CBtNodeCondition
             // Field count: 3
-            namespace CBtNodeConditionInactive
-            {
+            namespace CBtNodeConditionInactive {
                 constexpr std::ptrdiff_t m_flRoundStartThresholdSeconds = 0x78; // float32
                 constexpr std::ptrdiff_t m_flSensorInactivityThresholdSeconds = 0x7C; // float32
                 constexpr std::ptrdiff_t m_SensorInactivityTimer = 0x80; // CountdownTimer
             }
-
             // Parent: CCSWeaponBase
             // Field count: 0
-            namespace CWeaponSawedoff
-            {
+            namespace CWeaponSawedoff {
             }
-
             // Parent: CBaseTrigger
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_flFluidDensity (float)
-            namespace CTriggerBuoyancy
-            {
+            namespace CTriggerBuoyancy {
                 constexpr std::ptrdiff_t m_BuoyancyHelper = 0x960; // CBuoyancyHelper
                 constexpr std::ptrdiff_t m_flFluidDensity = 0x9E0; // float32
             }
-
             // Parent: CPointEntity
             // Field count: 7
-            namespace CMoverPathNode
-            {
+            namespace CMoverPathNode {
                 constexpr std::ptrdiff_t m_vInTangentLocal = 0x4E0; // Vector
                 constexpr std::ptrdiff_t m_vOutTangentLocal = 0x4EC; // Vector
                 constexpr std::ptrdiff_t m_szParentPathUniqueID = 0x4F8; // CUtlSymbolLarge
@@ -2354,17 +2000,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnPassThroughReverse = 0x550; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_hMover = 0x578; // CHandle<CPathMover>
             }
-
             // Parent: CEnvSoundscape
             // Field count: 0
-            namespace CEnvSoundscapeTriggerable
-            {
+            namespace CEnvSoundscapeTriggerable {
             }
-
             // Parent: CBtNode
             // Field count: 12
-            namespace CBtActionAim
-            {
+            namespace CBtActionAim {
                 constexpr std::ptrdiff_t m_szSensorInputKey = 0x68; // CUtlString
                 constexpr std::ptrdiff_t m_szAimReadyKey = 0x80; // CUtlString
                 constexpr std::ptrdiff_t m_flZoomCooldownTimestamp = 0x88; // float32
@@ -2378,19 +2020,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_FocusIntervalTimer = 0xD8; // CountdownTimer
                 constexpr std::ptrdiff_t m_bAcquired = 0xF0; // bool
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 0
-            namespace CPlayer_ViewModelServices
-            {
+            namespace CPlayer_ViewModelServices {
             }
-
             // Parent: CCSGO_WingmanIntroCharacterPosition
             // Field count: 0
-            namespace CCSGO_WingmanIntroCounterTerroristPosition
-            {
+            namespace CCSGO_WingmanIntroCounterTerroristPosition {
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 12
             //
@@ -2404,8 +2041,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_hTonemapController (CHandle<CTonemapController2>)
             // NetworkVarNames: m_audio (audioparams_t)
             // NetworkVarNames: m_PostProcessingVolumes (CHandle<CPostProcessingVolume>)
-            namespace CPlayer_CameraServices
-            {
+            namespace CPlayer_CameraServices {
                 constexpr std::ptrdiff_t m_vecCsViewPunchAngle = 0x40; // QAngle
                 constexpr std::ptrdiff_t m_nCsViewPunchAngleTick = 0x4C; // GameTick_t
                 constexpr std::ptrdiff_t m_flCsViewPunchAngleTickRatio = 0x50; // float32
@@ -2419,58 +2055,45 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flOldPlayerViewOffsetZ = 0x13C; // float32
                 constexpr std::ptrdiff_t m_hTriggerSoundscapeList = 0x158; // CUtlVector<CHandle<CEnvSoundscapeTriggerable>>
             }
-
             // Parent: CBaseEntity
             // Field count: 3
             //
             // Metadata:
             // NetworkVarNames: m_fog (fogparams_t)
-            namespace CFogController
-            {
+            namespace CFogController {
                 constexpr std::ptrdiff_t m_fog = 0x4E0; // fogparams_t
                 constexpr std::ptrdiff_t m_bUseAngles = 0x548; // bool
                 constexpr std::ptrdiff_t m_iChangedVariables = 0x54C; // int32
             }
-
             // Parent: CCSGO_TeamPreviewCharacterPosition
             // Field count: 0
-            namespace CCSGO_TeamIntroCharacterPosition
-            {
+            namespace CCSGO_TeamIntroCharacterPosition {
             }
-
             // Parent: CEntityComponent
             // Field count: 2
-            namespace CBodyComponent
-            {
+            namespace CBodyComponent {
                 constexpr std::ptrdiff_t m_pSceneNode = 0x8; // CGameSceneNode*
                 constexpr std::ptrdiff_t __m_pChainEntity = 0x20; // CNetworkVarChainer
             }
-
             // Parent: CBaseCSGrenadeProjectile
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_nDecoyShotTick (int)
-            namespace CDecoyProjectile
-            {
+            namespace CDecoyProjectile {
                 constexpr std::ptrdiff_t m_nDecoyShotTick = 0xB58; // int32
                 constexpr std::ptrdiff_t m_shotsRemaining = 0xB5C; // int32
                 constexpr std::ptrdiff_t m_fExpireTime = 0xB60; // GameTime_t
                 constexpr std::ptrdiff_t m_decoyWeaponDefIndex = 0xB70; // uint16
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CEnableMotionFixup
-            {
+            namespace CEnableMotionFixup {
             }
-
             // Parent: CPlayer_MovementServices
             // Field count: 0
-            namespace CCSObserver_MovementServices
-            {
+            namespace CCSObserver_MovementServices {
             }
-
             // Parent: None
             // Field count: 4
             //
@@ -2479,42 +2102,34 @@ namespace cs2_dumper
             // NetworkVarNames: m_timestamp (GameTime_t)
             // NetworkVarNames: m_timescale (float32)
             // NetworkVarNames: m_nWorldGroupId (WorldGroupId_t)
-            namespace CountdownTimer
-            {
+            namespace CountdownTimer {
                 constexpr std::ptrdiff_t m_duration = 0x8; // float32
                 constexpr std::ptrdiff_t m_timestamp = 0xC; // GameTime_t
                 constexpr std::ptrdiff_t m_timescale = 0x10; // float32
                 constexpr std::ptrdiff_t m_nWorldGroupId = 0x14; // WorldGroupId_t
             }
-
             // Parent: None
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_hOwner (CEntityHandle)
             // NetworkVarNames: m_name (CUtlStringToken)
-            namespace CGameSceneNodeHandle
-            {
+            namespace CGameSceneNodeHandle {
                 constexpr std::ptrdiff_t m_hOwner = 0x8; // CEntityHandle
                 constexpr std::ptrdiff_t m_name = 0xC; // CUtlStringToken
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponMP9
-            {
+            namespace CWeaponMP9 {
             }
-
             // Parent: CLogicalEntity
             // Field count: 4
-            namespace CPhysicsEntitySolver
-            {
+            namespace CPhysicsEntitySolver {
                 constexpr std::ptrdiff_t m_hMovingEntity = 0x4E8; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_hPhysicsBlocker = 0x4EC; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_separationDuration = 0x4F0; // float32
                 constexpr std::ptrdiff_t m_cancelTime = 0x4F4; // GameTime_t
             }
-
             // Parent: CBaseEntity
             // Field count: 5
             //
@@ -2524,15 +2139,13 @@ namespace cs2_dumper
             // NetworkVarNames: m_iType (int)
             // NetworkVarNames: m_bUrgent (bool)
             // NetworkVarNames: m_szPlaceName (char)
-            namespace CPlayerPing
-            {
+            namespace CPlayerPing {
                 constexpr std::ptrdiff_t m_hPlayer = 0x4E8; // CHandle<CCSPlayerPawn>
                 constexpr std::ptrdiff_t m_hPingedEntity = 0x4EC; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_iType = 0x4F0; // int32
                 constexpr std::ptrdiff_t m_bUrgent = 0x4F4; // bool
                 constexpr std::ptrdiff_t m_szPlaceName = 0x4F5; // char[18]
             }
-
             // Parent: None
             // Field count: 4
             //
@@ -2541,20 +2154,16 @@ namespace cs2_dumper
             // NetworkVarNames: flFlinchModSmall (float)
             // NetworkVarNames: flFlinchModLarge (float)
             // NetworkVarNames: flFriendlyFireDamageReductionRatio (float)
-            namespace PredictedDamageTag_t
-            {
+            namespace PredictedDamageTag_t {
                 constexpr std::ptrdiff_t nTagTick = 0x30; // GameTick_t
                 constexpr std::ptrdiff_t flFlinchModSmall = 0x34; // float32
                 constexpr std::ptrdiff_t flFlinchModLarge = 0x38; // float32
                 constexpr std::ptrdiff_t flFriendlyFireDamageReductionRatio = 0x3C; // float32
             }
-
             // Parent: CCSPointScriptEntity
             // Field count: 0
-            namespace CCSServerPointScriptEntity
-            {
+            namespace CCSServerPointScriptEntity {
             }
-
             // Parent: CGameSceneNode
             // Field count: 8
             //
@@ -2564,8 +2173,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bUseParentRenderBounds (bool)
             // NetworkVarNames: m_materialGroup (CUtlStringToken)
             // NetworkVarNames: m_nHitboxSet (uint8)
-            namespace CSkeletonInstance
-            {
+            namespace CSkeletonInstance {
                 constexpr std::ptrdiff_t m_modelState = 0x170; // CModelState
                 constexpr std::ptrdiff_t m_bIsAnimationEnabled = 0x3A0; // bool
                 constexpr std::ptrdiff_t m_bUseParentRenderBounds = 0x3A1; // bool
@@ -2575,49 +2183,37 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_materialGroup = 0x3A4; // CUtlStringToken
                 constexpr std::ptrdiff_t m_nHitboxSet = 0x3A8; // uint8
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoLandmark
-            {
+            namespace CInfoLandmark {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponMP7
-            {
+            namespace CWeaponMP7 {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponFiveSeven
-            {
+            namespace CWeaponFiveSeven {
             }
-
             // Parent: CBodyComponentSkeletonInstance
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_animationController (CBaseAnimGraphController)
-            namespace CBodyComponentBaseAnimGraph
-            {
+            namespace CBodyComponentBaseAnimGraph {
                 constexpr std::ptrdiff_t m_animationController = 0x490; // CBaseAnimGraphController
             }
-
             // Parent: CBodyComponent
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_sceneNode (CGameSceneNode)
-            namespace CBodyComponentPoint
-            {
+            namespace CBodyComponentPoint {
                 constexpr std::ptrdiff_t m_sceneNode = 0x50; // CGameSceneNode
             }
-
             // Parent: CBaseEntity
             // Field count: 8
-            namespace CEnvFireSensor
-            {
+            namespace CEnvFireSensor {
                 constexpr std::ptrdiff_t m_bEnabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_bHeatAtLevel = 0x4E1; // bool
                 constexpr std::ptrdiff_t m_radius = 0x4E4; // float32
@@ -2627,39 +2223,29 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnHeatLevelStart = 0x4F8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnHeatLevelEnd = 0x520; // CEntityIOOutput
             }
-
             // Parent: CCSGO_WingmanIntroCharacterPosition
             // Field count: 0
-            namespace CCSGO_WingmanIntroTerroristPosition
-            {
+            namespace CCSGO_WingmanIntroTerroristPosition {
             }
-
             // Parent: None
             // Field count: 2
-            namespace CEnvWindShared__WindAveEvent_t
-            {
+            namespace CEnvWindShared__WindAveEvent_t {
                 constexpr std::ptrdiff_t m_flStartWindSpeed = 0x0; // float32
                 constexpr std::ptrdiff_t m_flAveWindSpeed = 0x4; // float32
             }
-
             // Parent: CDynamicProp
             // Field count: 0
-            namespace CDynamicPropAlias_cable_dynamic
-            {
+            namespace CDynamicPropAlias_cable_dynamic {
             }
-
             // Parent: CPointEntity
             // Field count: 2
-            namespace CPointGamestatsCounter
-            {
+            namespace CPointGamestatsCounter {
                 constexpr std::ptrdiff_t m_strStatisticName = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E8; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 10
-            namespace CEnvShake
-            {
+            namespace CEnvShake {
                 constexpr std::ptrdiff_t m_limitToEntity = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_Amplitude = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_Frequency = 0x4EC; // float32
@@ -2671,17 +2257,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_maxForce = 0x504; // Vector
                 constexpr std::ptrdiff_t m_shakeCallback = 0x518; // CPhysicsShake
             }
-
             // Parent: CBaseModelEntity
             // Field count: 0
-            namespace CPrecipitationBlocker
-            {
+            namespace CPrecipitationBlocker {
             }
-
             // Parent: CPathKeyFrame
             // Field count: 11
-            namespace CBaseMoveBehavior
-            {
+            namespace CBaseMoveBehavior {
                 constexpr std::ptrdiff_t m_iPositionInterpolator = 0x540; // int32
                 constexpr std::ptrdiff_t m_iRotationInterpolator = 0x544; // int32
                 constexpr std::ptrdiff_t m_flAnimStartTime = 0x548; // float32
@@ -2694,34 +2276,27 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flTimeIntoFrame = 0x578; // float32
                 constexpr std::ptrdiff_t m_iDirection = 0x57C; // int32
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CFuncMoverAPI
-            {
+            namespace CFuncMoverAPI {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
-            namespace CFuncNavObstruction
-            {
+            namespace CFuncNavObstruction {
                 constexpr std::ptrdiff_t m_bDisabled = 0x798; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 4
-            namespace CEnvTilt
-            {
+            namespace CEnvTilt {
                 constexpr std::ptrdiff_t m_Duration = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_Radius = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_TiltTime = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_stopTime = 0x4EC; // GameTime_t
             }
-
             // Parent: CCSWeaponBase
             // Field count: 14
             //
@@ -2740,8 +2315,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nNextHoldTick (GameTick_t)
             // NetworkVarNames: m_flNextHoldFrac (float)
             // NetworkVarNames: m_hSwitchToWeaponAfterThrow (CHandle<CCSWeaponBase>)
-            namespace CBaseCSGrenade
-            {
+            namespace CBaseCSGrenade {
                 constexpr std::ptrdiff_t m_bRedraw = 0xF70; // bool
                 constexpr std::ptrdiff_t m_bIsHeldByPlayer = 0xF71; // bool
                 constexpr std::ptrdiff_t m_bPinPulled = 0xF72; // bool
@@ -2757,18 +2331,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flNextHoldFrac = 0xF94; // float32
                 constexpr std::ptrdiff_t m_hSwitchToWeaponAfterThrow = 0xF98; // CHandle<CCSWeaponBase>
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
-            namespace CItemGenericTriggerHelper
-            {
+            namespace CItemGenericTriggerHelper {
                 constexpr std::ptrdiff_t m_hParentItem = 0x790; // CHandle<CItemGeneric>
             }
-
             // Parent: CLogicalEntity
             // Field count: 6
-            namespace CLogicBranchList
-            {
+            namespace CLogicBranchList {
                 constexpr std::ptrdiff_t m_nLogicBranchNames = 0x4E0; // CUtlSymbolLarge[16]
                 constexpr std::ptrdiff_t m_LogicBranchList = 0x560; // CUtlVector<CHandle<CBaseEntity>>
                 constexpr std::ptrdiff_t m_eLastState = 0x578; // CLogicBranchList::LogicBranchListenerLastState_t
@@ -2776,14 +2346,12 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnAllFalse = 0x5A8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnMixed = 0x5D0; // CEntityIOOutput
             }
-
             // Parent: None
             // Field count: 14
             //
             // Metadata:
             // NetworkVarNames: m_hCtrl (CHandle<CFogController>)
-            namespace fogplayerparams_t
-            {
+            namespace fogplayerparams_t {
                 constexpr std::ptrdiff_t m_hCtrl = 0x8; // CHandle<CFogController>
                 constexpr std::ptrdiff_t m_flTransitionTime = 0xC; // float32
                 constexpr std::ptrdiff_t m_OldColor = 0x10; // Color
@@ -2799,26 +2367,20 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flNewHDRColorScale = 0x38; // float32
                 constexpr std::ptrdiff_t m_flNewFarZ = 0x3C; // float32
             }
-
             // Parent: CItemDefuser
             // Field count: 0
-            namespace CItemDefuserAlias_item_defuser
-            {
+            namespace CItemDefuserAlias_item_defuser {
             }
-
             // Parent: CModelPointEntity
             // Field count: 3
-            namespace CRevertSaved
-            {
+            namespace CRevertSaved {
                 constexpr std::ptrdiff_t m_loadTime = 0x790; // float32
                 constexpr std::ptrdiff_t m_Duration = 0x794; // float32
                 constexpr std::ptrdiff_t m_HoldTime = 0x798; // float32
             }
-
             // Parent: CLogicalEntity
             // Field count: 8
-            namespace CMultiLightProxy
-            {
+            namespace CMultiLightProxy {
                 constexpr std::ptrdiff_t m_iszLightNameFilter = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszLightClassFilter = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_flLightRadiusFilter = 0x4F0; // float32
@@ -2828,7 +2390,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flCurrentBrightnessMultiplier = 0x500; // float32
                 constexpr std::ptrdiff_t m_vecLights = 0x508; // CUtlVector<CHandle<CLightEntity>>
             }
-
             // Parent: None
             // Field count: 21
             //
@@ -2854,8 +2415,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nAttachmentName (CUtlStringToken)
             // NetworkVarNames: m_iEffectName (uint16)
             // NetworkVarNames: m_nExplosionType (uint8)
-            namespace CEffectData
-            {
+            namespace CEffectData {
                 constexpr std::ptrdiff_t m_vOrigin = 0x8; // Vector
                 constexpr std::ptrdiff_t m_vStart = 0x14; // Vector
                 constexpr std::ptrdiff_t m_vNormal = 0x20; // Vector
@@ -2878,17 +2438,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iEffectName = 0x6C; // uint16
                 constexpr std::ptrdiff_t m_nExplosionType = 0x6E; // uint8
             }
-
             // Parent: CBaseModelEntity
             // Field count: 0
-            namespace CEntityBlocker
-            {
+            namespace CEntityBlocker {
             }
-
             // Parent: CLogicalEntity
             // Field count: 6
-            namespace CLogicCase
-            {
+            namespace CLogicCase {
                 constexpr std::ptrdiff_t m_nCase = 0x4E0; // CUtlSymbolLarge[32]
                 constexpr std::ptrdiff_t m_nShuffleCases = 0x5E0; // int32
                 constexpr std::ptrdiff_t m_nLastShuffleCase = 0x5E4; // int32
@@ -2896,31 +2452,23 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnCase = 0x608; // CEntityIOOutput[32]
                 constexpr std::ptrdiff_t m_OnDefault = 0xB08; // CEntityOutputTemplate<CVariantBase<CVariantDefaultAllocator>>
             }
-
             // Parent: CItem
             // Field count: 2
-            namespace CItemDefuser
-            {
+            namespace CItemDefuser {
                 constexpr std::ptrdiff_t m_entitySpottedState = 0xA80; // EntitySpottedState_t
                 constexpr std::ptrdiff_t m_nSpotRules = 0xA98; // int32
             }
-
             // Parent: CRuleEntity
             // Field count: 0
-            namespace CRuleBrushEntity
-            {
+            namespace CRuleBrushEntity {
             }
-
             // Parent: CInferno
             // Field count: 0
-            namespace CFireCrackerBlast
-            {
+            namespace CFireCrackerBlast {
             }
-
             // Parent: CBaseEntity
             // Field count: 14
-            namespace CSoundEventEntity
-            {
+            namespace CSoundEventEntity {
                 constexpr std::ptrdiff_t m_bStartOnSpawn = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_bToLocalPlayer = 0x4E1; // bool
                 constexpr std::ptrdiff_t m_bStopOnNew = 0x4E2; // bool
@@ -2936,35 +2484,28 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hSource = 0x590; // CEntityHandle
                 constexpr std::ptrdiff_t m_nEntityIndexSelection = 0x594; // int32
             }
-
             // Parent: CPlayer_ViewModelServices
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_hViewModel (CHandle<CBaseViewModel>)
-            namespace CCSPlayer_ViewModelServices
-            {
+            namespace CCSPlayer_ViewModelServices {
                 constexpr std::ptrdiff_t m_hViewModel = 0x40; // CHandle<CBaseViewModel>[3]
             }
-
             // Parent: CCSWeaponBase
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_SequenceCompleteTimer (CountdownTimer)
             // NetworkVarNames: m_bRedraw (bool)
-            namespace CWeaponBaseItem
-            {
+            namespace CWeaponBaseItem {
                 constexpr std::ptrdiff_t m_SequenceCompleteTimer = 0xF70; // CountdownTimer
                 constexpr std::ptrdiff_t m_bRedraw = 0xF88; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoParticleTarget
-            {
+            namespace CInfoParticleTarget {
             }
-
             // Parent: CBaseEntity
             // Field count: 34
             //
@@ -3002,8 +2543,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_fNoiseSpeed (float)
             // NetworkVarNames: m_fNoiseStrength (float)
             // NetworkVarNames: m_vNoiseScale (Vector)
-            namespace CEnvVolumetricFogController
-            {
+            namespace CEnvVolumetricFogController {
                 constexpr std::ptrdiff_t m_flScattering = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flAnisotropy = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flFadeSpeed = 0x4E8; // float32
@@ -3039,7 +2579,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vNoiseScale = 0x56C; // Vector
                 constexpr std::ptrdiff_t m_bFirstTime = 0x578; // bool
             }
-
             // Parent: CPlayer_MovementServices
             // Field count: 14
             //
@@ -3051,8 +2590,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bDucked (bool)
             // NetworkVarNames: m_bDucking (bool)
             // NetworkVarNames: m_bInDuckJump (bool)
-            namespace CPlayer_MovementServices_Humanoid
-            {
+            namespace CPlayer_MovementServices_Humanoid {
                 constexpr std::ptrdiff_t m_flStepSoundTime = 0x1D8; // float32
                 constexpr std::ptrdiff_t m_flFallVelocity = 0x1DC; // float32
                 constexpr std::ptrdiff_t m_bInCrouch = 0x1E0; // bool
@@ -3068,28 +2606,22 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iTargetVolume = 0x214; // int32
                 constexpr std::ptrdiff_t m_vecSmoothedVelocity = 0x218; // Vector
             }
-
             // Parent: CPhysicsProp
             // Field count: 5
-            namespace CPhysicsPropRespawnable
-            {
+            namespace CPhysicsPropRespawnable {
                 constexpr std::ptrdiff_t m_vOriginalSpawnOrigin = 0xD00; // Vector
                 constexpr std::ptrdiff_t m_vOriginalSpawnAngles = 0xD0C; // QAngle
                 constexpr std::ptrdiff_t m_vOriginalMins = 0xD18; // Vector
                 constexpr std::ptrdiff_t m_vOriginalMaxs = 0xD24; // Vector
                 constexpr std::ptrdiff_t m_flRespawnDuration = 0xD30; // float32
             }
-
             // Parent: CEnvSoundscapeProxy
             // Field count: 0
-            namespace CEnvSoundscapeProxyAlias_snd_soundscape_proxy
-            {
+            namespace CEnvSoundscapeProxyAlias_snd_soundscape_proxy {
             }
-
             // Parent: CPhysConstraint
             // Field count: 6
-            namespace CPhysBallSocket
-            {
+            namespace CPhysBallSocket {
                 constexpr std::ptrdiff_t m_flJointFriction = 0x558; // float32
                 constexpr std::ptrdiff_t m_bEnableSwingLimit = 0x55C; // bool
                 constexpr std::ptrdiff_t m_flSwingLimit = 0x560; // float32
@@ -3097,7 +2629,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flMinTwistAngle = 0x568; // float32
                 constexpr std::ptrdiff_t m_flMaxTwistAngle = 0x56C; // float32
             }
-
             // Parent: CCSGameModeRules
             // Field count: 3
             //
@@ -3105,32 +2636,25 @@ namespace cs2_dumper
             // NetworkVarNames: m_flDMBonusStartTime (GameTime_t)
             // NetworkVarNames: m_flDMBonusTimeLength (float)
             // NetworkVarNames: m_sDMBonusWeapon (CUtlString)
-            namespace CCSGameModeRules_Deathmatch
-            {
+            namespace CCSGameModeRules_Deathmatch {
                 constexpr std::ptrdiff_t m_flDMBonusStartTime = 0x30; // GameTime_t
                 constexpr std::ptrdiff_t m_flDMBonusTimeLength = 0x34; // float32
                 constexpr std::ptrdiff_t m_sDMBonusWeapon = 0x38; // CUtlString
             }
-
             // Parent: CItemAssaultSuit
             // Field count: 0
-            namespace CItemHeavyAssaultSuit
-            {
+            namespace CItemHeavyAssaultSuit {
             }
-
             // Parent: CPointEntity
             // Field count: 3
-            namespace CInfoPlayerStart
-            {
+            namespace CInfoPlayerStart {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_bIsMaster = 0x4E1; // bool
                 constexpr std::ptrdiff_t m_pPawnSubclass = 0x4E8; // CGlobalSymbol
             }
-
             // Parent: CSoundOpvarSetPointBase
             // Field count: 8
-            namespace CSoundOpvarSetOBBWindEntity
-            {
+            namespace CSoundOpvarSetOBBWindEntity {
                 constexpr std::ptrdiff_t m_vMins = 0x578; // Vector
                 constexpr std::ptrdiff_t m_vMaxs = 0x584; // Vector
                 constexpr std::ptrdiff_t m_vDistanceMins = 0x590; // Vector
@@ -3140,7 +2664,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flWindMapMin = 0x5B0; // float32
                 constexpr std::ptrdiff_t m_flWindMapMax = 0x5B4; // float32
             }
-
             // Parent: CRagdollProp
             // Field count: 6
             //
@@ -3149,8 +2672,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_ragdollAttachedObjectIndex (uint32)
             // NetworkVarNames: m_attachmentPointBoneSpace (Vector)
             // NetworkVarNames: m_attachmentPointRagdollSpace (Vector)
-            namespace CRagdollPropAttached
-            {
+            namespace CRagdollPropAttached {
                 constexpr std::ptrdiff_t m_boneIndexAttached = 0xB48; // uint32
                 constexpr std::ptrdiff_t m_ragdollAttachedObjectIndex = 0xB4C; // uint32
                 constexpr std::ptrdiff_t m_attachmentPointBoneSpace = 0xB50; // Vector
@@ -3158,23 +2680,19 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bShouldDetach = 0xB68; // bool
                 constexpr std::ptrdiff_t m_bShouldDeleteAttachedActivationRecord = 0xB78; // bool
             }
-
             // Parent: CItem
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_OwningPlayer (CHandle<CCSPlayerPawn>)
             // NetworkVarNames: m_KillingPlayer (CHandle<CCSPlayerPawn>)
-            namespace CItemDogtags
-            {
+            namespace CItemDogtags {
                 constexpr std::ptrdiff_t m_OwningPlayer = 0xA80; // CHandle<CCSPlayerPawn>
                 constexpr std::ptrdiff_t m_KillingPlayer = 0xA84; // CHandle<CCSPlayerPawn>
             }
-
             // Parent: CItem
             // Field count: 32
-            namespace CItemGeneric
-            {
+            namespace CItemGeneric {
                 constexpr std::ptrdiff_t m_bHasTriggerRadius = 0xA88; // bool
                 constexpr std::ptrdiff_t m_bHasPickupRadius = 0xA89; // bool
                 constexpr std::ptrdiff_t m_flPickupRadiusSqr = 0xA8C; // float32
@@ -3208,17 +2726,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bUseable = 0xBE5; // bool
                 constexpr std::ptrdiff_t m_hTriggerHelper = 0xBE8; // CHandle<CItemGenericTriggerHelper>
             }
-
             // Parent: CLightEntity
             // Field count: 0
-            namespace CLightSpotEntity
-            {
+            namespace CLightSpotEntity {
             }
-
             // Parent: CPlayer_WaterServices
             // Field count: 6
-            namespace CCSPlayer_WaterServices
-            {
+            namespace CCSPlayer_WaterServices {
                 constexpr std::ptrdiff_t m_NextDrownDamageTime = 0x40; // float32
                 constexpr std::ptrdiff_t m_nDrownDmgRate = 0x44; // int32
                 constexpr std::ptrdiff_t m_AirFinishedTime = 0x48; // GameTime_t
@@ -3226,19 +2740,15 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vecWaterJumpVel = 0x50; // Vector
                 constexpr std::ptrdiff_t m_flSwimSoundTime = 0x5C; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 2
-            namespace CSkyboxReference
-            {
+            namespace CSkyboxReference {
                 constexpr std::ptrdiff_t m_worldGroupId = 0x4E0; // WorldGroupId_t
                 constexpr std::ptrdiff_t m_hSkyCamera = 0x4E4; // CHandle<CSkyCamera>
             }
-
             // Parent: CBasePropDoor
             // Field count: 17
-            namespace CPropDoorRotating
-            {
+            namespace CPropDoorRotating {
                 constexpr std::ptrdiff_t m_vecAxis = 0xEE8; // Vector
                 constexpr std::ptrdiff_t m_flDistance = 0xEF4; // float32
                 constexpr std::ptrdiff_t m_eSpawnPosition = 0xEF8; // PropDoorRotatingSpawnPos_t
@@ -3257,7 +2767,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bAjarDoorShouldntAlwaysOpen = 0xF74; // bool
                 constexpr std::ptrdiff_t m_hEntityBlocker = 0xF78; // CHandle<CEntityBlocker>
             }
-
             // Parent: CBaseModelEntity
             // Field count: 21
             //
@@ -3285,8 +2794,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_hEndPoint (CHandle<CBaseEntity>)
             // NetworkVarNames: m_iStartAttachment (AttachmentHandle_t)
             // NetworkVarNames: m_iEndAttachment (AttachmentHandle_t)
-            namespace CRopeKeyframe
-            {
+            namespace CRopeKeyframe {
                 constexpr std::ptrdiff_t m_RopeFlags = 0x798; // uint16
                 constexpr std::ptrdiff_t m_iNextLinkName = 0x7A0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_Slack = 0x7A8; // int16
@@ -3309,7 +2817,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iStartAttachment = 0x7E0; // AttachmentHandle_t
                 constexpr std::ptrdiff_t m_iEndAttachment = 0x7E1; // AttachmentHandle_t
             }
-
             // Parent: CBaseModelEntity
             // Field count: 73
             //
@@ -3385,8 +2892,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_vPrecomputedOBBAngles5 (QAngle)
             // NetworkVarNames: m_vPrecomputedOBBExtent5 (Vector)
             // NetworkVarNames: m_VisClusters (uint16)
-            namespace CBarnLight
-            {
+            namespace CBarnLight {
                 constexpr std::ptrdiff_t m_bEnabled = 0x790; // bool
                 constexpr std::ptrdiff_t m_nColorMode = 0x794; // int32
                 constexpr std::ptrdiff_t m_Color = 0x798; // Color
@@ -3461,36 +2967,27 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bPvsModifyEntity = 0xA8C; // bool
                 constexpr std::ptrdiff_t m_VisClusters = 0xA90; // CNetworkUtlVectorBase<uint16>
             }
-
             // Parent: SpawnPoint
             // Field count: 0
-            namespace CInfoDeathmatchSpawn
-            {
+            namespace CInfoDeathmatchSpawn {
             }
-
             // Parent: CPointEntity
             // Field count: 2
-            namespace CEnvViewPunch
-            {
+            namespace CEnvViewPunch {
                 constexpr std::ptrdiff_t m_flRadius = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_angViewPunch = 0x4E4; // QAngle
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CDEagle
-            {
+            namespace CDEagle {
             }
-
             // Parent: CPointEntity
             // Field count: 3
-            namespace CPathCorner
-            {
+            namespace CPathCorner {
                 constexpr std::ptrdiff_t m_flWait = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flRadius = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_OnPass = 0x4E8; // CEntityIOOutput
             }
-
             // Parent: CPlayerControllerComponent
             // Field count: 9
             //
@@ -3503,8 +3000,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nPersonaDataPublicCommendsFriendly (int)
             // NetworkVarNames: m_nPersonaDataXpTrailLevel (int)
             // NetworkVarNames: m_vecServerAuthoritativeWeaponSlots (ServerAuthoritativeWeaponSlot_t)
-            namespace CCSPlayerController_InventoryServices
-            {
+            namespace CCSPlayerController_InventoryServices {
                 constexpr std::ptrdiff_t m_unMusicID = 0x40; // uint16
                 constexpr std::ptrdiff_t m_rank = 0x44; // MedalRank_t[6]
                 constexpr std::ptrdiff_t m_nPersonaDataPublicLevel = 0x5C; // int32
@@ -3515,7 +3011,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_unEquippedPlayerSprayIDs = 0xF48; // uint32[1]
                 constexpr std::ptrdiff_t m_vecServerAuthoritativeWeaponSlots = 0xF50; // CUtlVectorEmbeddedNetworkVar<ServerAuthoritativeWeaponSlot_t>
             }
-
             // Parent: CAttributeManager
             // Field count: 1
             //
@@ -3525,40 +3020,31 @@ namespace cs2_dumper
             // MNetworkIncludeByName
             // MNetworkIncludeByName
             // NetworkVarNames: m_Item (CEconItemView)
-            namespace CAttributeContainer
-            {
+            namespace CAttributeContainer {
                 constexpr std::ptrdiff_t m_Item = 0x50; // CEconItemView
             }
-
             // Parent: CHostage
             // Field count: 0
-            namespace CHostageAlias_info_hostage_spawn
-            {
+            namespace CHostageAlias_info_hostage_spawn {
             }
-
             // Parent: CLogicalEntity
             // Field count: 5
-            namespace CMultiSource
-            {
+            namespace CMultiSource {
                 constexpr std::ptrdiff_t m_rgEntities = 0x4E0; // CHandle<CBaseEntity>[32]
                 constexpr std::ptrdiff_t m_rgTriggered = 0x560; // int32[32]
                 constexpr std::ptrdiff_t m_OnTrigger = 0x5E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_iTotal = 0x608; // int32
                 constexpr std::ptrdiff_t m_globalstate = 0x610; // CUtlSymbolLarge
             }
-
             // Parent: CLogicalEntity
             // Field count: 2
-            namespace CLogicNavigation
-            {
+            namespace CLogicNavigation {
                 constexpr std::ptrdiff_t m_isOn = 0x4E8; // bool
                 constexpr std::ptrdiff_t m_navProperty = 0x4EC; // navproperties_t
             }
-
             // Parent: CPointEntity
             // Field count: 12
-            namespace CEnvEntityMaker
-            {
+            namespace CEnvEntityMaker {
                 constexpr std::ptrdiff_t m_vecEntityMins = 0x4E0; // Vector
                 constexpr std::ptrdiff_t m_vecEntityMaxs = 0x4EC; // Vector
                 constexpr std::ptrdiff_t m_hCurrentInstance = 0x4F8; // CHandle<CBaseEntity>
@@ -3572,39 +3058,30 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_pOutputOnSpawned = 0x530; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_pOutputOnFailedSpawn = 0x558; // CEntityIOOutput
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CPointEntity
-            {
+            namespace CPointEntity {
             }
-
             // Parent: CLogicalEntity
             // Field count: 4
-            namespace CLogicEventListener
-            {
+            namespace CLogicEventListener {
                 constexpr std::ptrdiff_t m_strEventName = 0x4F0; // CUtlString
                 constexpr std::ptrdiff_t m_bIsEnabled = 0x4F8; // bool
                 constexpr std::ptrdiff_t m_nTeam = 0x4FC; // int32
                 constexpr std::ptrdiff_t m_OnEventFired = 0x500; // CEntityIOOutput
             }
-
             // Parent: CBaseFilter
             // Field count: 4
-            namespace CFilterMultiple
-            {
+            namespace CFilterMultiple {
                 constexpr std::ptrdiff_t m_nFilterType = 0x538; // filter_t
                 constexpr std::ptrdiff_t m_iFilterName = 0x540; // CUtlSymbolLarge[10]
                 constexpr std::ptrdiff_t m_hFilter = 0x590; // CHandle<CBaseEntity>[10]
                 constexpr std::ptrdiff_t m_nFilterCount = 0x5B8; // int32
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 0
-            namespace CPlayer_UseServices
-            {
+            namespace CPlayer_UseServices {
             }
-
             // Parent: CBasePulseGraphInstance
             // Field count: 1
             //
@@ -3615,63 +3092,49 @@ namespace cs2_dumper
             // MPulseDomainOptInFeatureTag
             // MPulseDomainOptInGameBlackboard
             // MPulseDomainOptInValueType
-            namespace CPulseGraphInstance_ServerEntity
-            {
+            namespace CPulseGraphInstance_ServerEntity {
                 constexpr std::ptrdiff_t m_pComponent = 0x100; // CPulseGraphComponentBase*
             }
-
             // Parent: CEntityComponent
             // Field count: 1
-            namespace CScriptComponent
-            {
+            namespace CScriptComponent {
                 constexpr std::ptrdiff_t m_scriptClassName = 0x30; // CUtlSymbolLarge
             }
-
             // Parent: CBaseEntity
             // Field count: 1
-            namespace CPhysicsWire
-            {
+            namespace CPhysicsWire {
                 constexpr std::ptrdiff_t m_nDensity = 0x4E0; // int32
             }
-
             // Parent: CPropDoorRotating
             // Field count: 4
-            namespace CPropDoorRotatingBreakable
-            {
+            namespace CPropDoorRotatingBreakable {
                 constexpr std::ptrdiff_t m_bBreakable = 0xF80; // bool
                 constexpr std::ptrdiff_t m_isAbleToCloseAreaPortals = 0xF81; // bool
                 constexpr std::ptrdiff_t m_currentDamageState = 0xF84; // int32
                 constexpr std::ptrdiff_t m_damageStates = 0xF88; // CUtlVector<CUtlSymbolLarge>
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CCSPointScriptExtensions_player_controller
-            {
+            namespace CCSPointScriptExtensions_player_controller {
             }
-
             // Parent: CBaseFire
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_nFlameModelIndex (int32)
             // NetworkVarNames: m_nFlameFromAboveModelIndex (int32)
-            namespace CFireSmoke
-            {
+            namespace CFireSmoke {
                 constexpr std::ptrdiff_t m_nFlameModelIndex = 0x4F0; // int32
                 constexpr std::ptrdiff_t m_nFlameFromAboveModelIndex = 0x4F4; // int32
             }
-
             // Parent: CCSWeaponBase
             // Field count: 0
-            namespace CBumpMine
-            {
+            namespace CBumpMine {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 7
             //
@@ -3688,8 +3151,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nOuterMaxDist (uint32)
             // NetworkVarNames: m_flGlowProxySize (float32)
             // NetworkVarNames: m_flHDRColorScale (float32)
-            namespace CLightGlow
-            {
+            namespace CLightGlow {
                 constexpr std::ptrdiff_t m_nHorizontalSize = 0x790; // uint32
                 constexpr std::ptrdiff_t m_nVerticalSize = 0x794; // uint32
                 constexpr std::ptrdiff_t m_nMinDist = 0x798; // uint32
@@ -3698,7 +3160,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flGlowProxySize = 0x7A4; // float32
                 constexpr std::ptrdiff_t m_flHDRColorScale = 0x7A8; // float32
             }
-
             // Parent: None
             // Field count: 13
             //
@@ -3716,8 +3177,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iCashEarned (int)
             // NetworkVarNames: m_iUtilityDamage (int)
             // NetworkVarNames: m_iEnemiesFlashed (int)
-            namespace CSPerRoundStats_t
-            {
+            namespace CSPerRoundStats_t {
                 constexpr std::ptrdiff_t m_iKills = 0x30; // int32
                 constexpr std::ptrdiff_t m_iDeaths = 0x34; // int32
                 constexpr std::ptrdiff_t m_iAssists = 0x38; // int32
@@ -3732,7 +3192,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iUtilityDamage = 0x5C; // int32
                 constexpr std::ptrdiff_t m_iEnemiesFlashed = 0x60; // int32
             }
-
             // Parent: CDynamicProp
             // Field count: 37
             //
@@ -3749,8 +3208,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_closedPosition (Vector)
             // NetworkVarNames: m_closedAngles (QAngle)
             // NetworkVarNames: m_hMaster (CHandle<CBasePropDoor>)
-            namespace CBasePropDoor
-            {
+            namespace CBasePropDoor {
                 constexpr std::ptrdiff_t m_flAutoReturnDelay = 0xC68; // float32
                 constexpr std::ptrdiff_t m_hDoorList = 0xC70; // CUtlVector<CHandle<CBasePropDoor>>
                 constexpr std::ptrdiff_t m_nHardwareType = 0xC88; // int32
@@ -3789,24 +3247,20 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnLockedUse = 0xE98; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnAjarOpen = 0xEC0; // CEntityIOOutput
             }
-
             // Parent: CBaseEntity
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_iCurrentMaxRagdollCount (int8)
-            namespace CRagdollManager
-            {
+            namespace CRagdollManager {
                 constexpr std::ptrdiff_t m_iCurrentMaxRagdollCount = 0x4E0; // int8
                 constexpr std::ptrdiff_t m_iMaxRagdollCount = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_bSaveImportant = 0x4E8; // bool
                 constexpr std::ptrdiff_t m_bCanTakeDamage = 0x4E9; // bool
             }
-
             // Parent: CBaseTrigger
             // Field count: 12
-            namespace CTriggerFan
-            {
+            namespace CTriggerFan {
                 constexpr std::ptrdiff_t m_vFanOrigin = 0x960; // Vector
                 constexpr std::ptrdiff_t m_vFanEnd = 0x96C; // Vector
                 constexpr std::ptrdiff_t m_vNoise = 0x978; // Vector
@@ -3820,35 +3274,27 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bAddNoise = 0x997; // bool
                 constexpr std::ptrdiff_t m_RampTimer = 0x998; // CountdownTimer
             }
-
             // Parent: CMolotovGrenade
             // Field count: 0
-            namespace CIncendiaryGrenade
-            {
+            namespace CIncendiaryGrenade {
             }
-
             // Parent: CPathCorner
             // Field count: 0
-            namespace CPathCornerCrash
-            {
+            namespace CPathCornerCrash {
             }
-
             // Parent: CBaseEntity
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_Handle (CHandle<CBaseEntity>)
             // NetworkVarNames: m_bSendHandle (bool)
-            namespace CHandleTest
-            {
+            namespace CHandleTest {
                 constexpr std::ptrdiff_t m_Handle = 0x4E0; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_bSendHandle = 0x4E4; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 8
-            namespace CSoundOpvarSetEntity
-            {
+            namespace CSoundOpvarSetEntity {
                 constexpr std::ptrdiff_t m_iszStackName = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszOperatorName = 0x4F0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszOpvarName = 0x4F8; // CUtlSymbolLarge
@@ -3858,52 +3304,41 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OpvarValueString = 0x510; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_bSetOnSpawn = 0x518; // bool
             }
-
             // Parent: None
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_nItemDefIndex (uint16)
             // NetworkVarNames: m_nCount (uint16)
-            namespace WeaponPurchaseCount_t
-            {
+            namespace WeaponPurchaseCount_t {
                 constexpr std::ptrdiff_t m_nItemDefIndex = 0x30; // uint16
                 constexpr std::ptrdiff_t m_nCount = 0x32; // uint16
             }
-
             // Parent: CPointEntity
             // Field count: 1
-            namespace CNavSpaceInfo
-            {
+            namespace CNavSpaceInfo {
                 constexpr std::ptrdiff_t m_bCreateFlightSpace = 0x4E0; // bool
             }
-
             // Parent: CLogicalEntity
             // Field count: 3
-            namespace CLogicAchievement
-            {
+            namespace CLogicAchievement {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_iszAchievementEventID = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_OnFired = 0x4F0; // CEntityIOOutput
             }
-
             // Parent: CBaseEntity
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_pathString (CUtlString)
-            namespace CPathSimple
-            {
+            namespace CPathSimple {
                 constexpr std::ptrdiff_t m_pathString = 0x538; // CUtlString
             }
-
             // Parent: CBtNode
             // Field count: 1
-            namespace CBtActionParachutePositioning
-            {
+            namespace CBtActionParachutePositioning {
                 constexpr std::ptrdiff_t m_ActionTimer = 0x58; // CountdownTimer
             }
-
             // Parent: CPlayer_CameraServices
             // Field count: 7
             //
@@ -3913,8 +3348,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flFOVTime (GameTime_t)
             // NetworkVarNames: m_flFOVRate (float32)
             // NetworkVarNames: m_hZoomOwner (CHandle<CBaseEntity>)
-            namespace CCSPlayerBase_CameraServices
-            {
+            namespace CCSPlayerBase_CameraServices {
                 constexpr std::ptrdiff_t m_iFOV = 0x170; // uint32
                 constexpr std::ptrdiff_t m_iFOVStart = 0x174; // uint32
                 constexpr std::ptrdiff_t m_flFOVTime = 0x178; // GameTime_t
@@ -3923,17 +3357,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hTriggerFogList = 0x188; // CUtlVector<CHandle<CBaseEntity>>
                 constexpr std::ptrdiff_t m_hLastFogTrigger = 0x1A0; // CHandle<CBaseEntity>
             }
-
             // Parent: CEntityComponent
             // Field count: 0
-            namespace CTouchExpansionComponent
-            {
+            namespace CTouchExpansionComponent {
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 8
-            namespace CItem
-            {
+            namespace CItem {
                 constexpr std::ptrdiff_t m_OnPlayerTouch = 0x9B0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnPlayerPickup = 0x9D8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_bActivateWhenAtRest = 0xA00; // bool
@@ -3943,7 +3373,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vOriginalSpawnAngles = 0xA64; // QAngle
                 constexpr std::ptrdiff_t m_bPhysStartAsleep = 0xA70; // bool
             }
-
             // Parent: CBaseModelEntity
             // Field count: 14
             //
@@ -3952,8 +3381,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_DialogXMLName (string_t)
             // NetworkVarNames: m_PanelClassName (string_t)
             // NetworkVarNames: m_PanelID (string_t)
-            namespace CBaseClientUIEntity
-            {
+            namespace CBaseClientUIEntity {
                 constexpr std::ptrdiff_t m_bEnabled = 0x790; // bool
                 constexpr std::ptrdiff_t m_DialogXMLName = 0x798; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_PanelClassName = 0x7A0; // CUtlSymbolLarge
@@ -3969,7 +3397,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_CustomOutput8 = 0x8F0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_CustomOutput9 = 0x918; // CEntityIOOutput
             }
-
             // Parent: CBaseModelEntity
             // Field count: 9
             //
@@ -3983,8 +3410,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bProjectOnCharacters (bool)
             // NetworkVarNames: m_bProjectOnWater (bool)
             // NetworkVarNames: m_flDepthSortBias (float)
-            namespace CEnvDecal
-            {
+            namespace CEnvDecal {
                 constexpr std::ptrdiff_t m_hDecalMaterial = 0x790; // CStrongHandle<InfoForResourceTypeIMaterial2>
                 constexpr std::ptrdiff_t m_flWidth = 0x798; // float32
                 constexpr std::ptrdiff_t m_flHeight = 0x79C; // float32
@@ -3995,27 +3421,21 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bProjectOnWater = 0x7AA; // bool
                 constexpr std::ptrdiff_t m_flDepthSortBias = 0x7AC; // float32
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CCSPointScriptExtensions_entity
-            {
+            namespace CCSPointScriptExtensions_entity {
             }
-
             // Parent: CBodyComponentSkeletonInstance
             // Field count: 0
-            namespace CBodyComponentBaseModelEntity
-            {
+            namespace CBodyComponentBaseModelEntity {
             }
-
             // Parent: CBaseEntity
             // Field count: 11
-            namespace CLogicAuto
-            {
+            namespace CLogicAuto {
                 constexpr std::ptrdiff_t m_OnMapSpawn = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnDemoMapSpawn = 0x508; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnNewGame = 0x530; // CEntityIOOutput
@@ -4028,7 +3448,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnVRNotEnabled = 0x648; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_globalstate = 0x670; // CUtlSymbolLarge
             }
-
             // Parent: CBaseEntity
             // Field count: 9
             //
@@ -4038,8 +3457,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iszOpvarName (string_t)
             // NetworkVarNames: m_iOpvarIndex (int)
             // NetworkVarNames: m_bUseAutoCompare (bool)
-            namespace CSoundOpvarSetPointBase
-            {
+            namespace CSoundOpvarSetPointBase {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_hSource = 0x4E4; // CEntityHandle
                 constexpr std::ptrdiff_t m_iszSourceEntityName = 0x4F0; // CUtlSymbolLarge
@@ -4050,29 +3468,21 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iOpvarIndex = 0x570; // int32
                 constexpr std::ptrdiff_t m_bUseAutoCompare = 0x574; // bool
             }
-
             // Parent: CLightEntity
             // Field count: 0
-            namespace CLightDirectionalEntity
-            {
+            namespace CLightDirectionalEntity {
             }
-
             // Parent: CLogicNPCCounterAABB
             // Field count: 0
-            namespace CLogicNPCCounterOBB
-            {
+            namespace CLogicNPCCounterOBB {
             }
-
             // Parent: CPlayer_UseServices
             // Field count: 0
-            namespace CCSObserver_UseServices
-            {
+            namespace CCSObserver_UseServices {
             }
-
             // Parent: CFuncPlatRot
             // Field count: 9
-            namespace CFuncTrackChange
-            {
+            namespace CFuncTrackChange {
                 constexpr std::ptrdiff_t m_trackTop = 0x858; // CPathTrack*
                 constexpr std::ptrdiff_t m_trackBottom = 0x860; // CPathTrack*
                 constexpr std::ptrdiff_t m_train = 0x868; // CFuncTrackTrain*
@@ -4083,41 +3493,32 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_targetState = 0x88C; // int32
                 constexpr std::ptrdiff_t m_use = 0x890; // int32
             }
-
             // Parent: CRuleBrushEntity
             // Field count: 4
-            namespace CGamePlayerZone
-            {
+            namespace CGamePlayerZone {
                 constexpr std::ptrdiff_t m_OnPlayerInZone = 0x798; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnPlayerOutZone = 0x7C0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_PlayersInCount = 0x7E8; // CEntityOutputTemplate<int32>
                 constexpr std::ptrdiff_t m_PlayersOutCount = 0x810; // CEntityOutputTemplate<int32>
             }
-
             // Parent: CRuleEntity
             // Field count: 1
-            namespace CRulePointEntity
-            {
+            namespace CRulePointEntity {
                 constexpr std::ptrdiff_t m_Score = 0x798; // int32
             }
-
             // Parent: CPointEntity
             // Field count: 5
-            namespace CMessageEntity
-            {
+            namespace CMessageEntity {
                 constexpr std::ptrdiff_t m_radius = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_messageText = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_drawText = 0x4F0; // bool
                 constexpr std::ptrdiff_t m_bDeveloperOnly = 0x4F1; // bool
                 constexpr std::ptrdiff_t m_bEnabled = 0x4F2; // bool
             }
-
             // Parent: CBaseCSGrenade
             // Field count: 0
-            namespace CSmokeGrenade
-            {
+            namespace CSmokeGrenade {
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 11
             //
@@ -4141,8 +3542,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flAnimationStartTime (float32)
             // NetworkVarNames: m_hWeapon (CHandle<CBasePlayerWeapon>)
             // NetworkVarNames: m_hControlPanel (CHandle<CBaseEntity>)
-            namespace CBaseViewModel
-            {
+            namespace CBaseViewModel {
                 constexpr std::ptrdiff_t m_vecLastFacing = 0x9B0; // Vector
                 constexpr std::ptrdiff_t m_nViewModelIndex = 0x9BC; // uint32
                 constexpr std::ptrdiff_t m_nAnimationParity = 0x9C0; // uint32
@@ -4155,40 +3555,31 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_oldLayerStartTime = 0x9E8; // float32
                 constexpr std::ptrdiff_t m_hControlPanel = 0x9EC; // CHandle<CBaseEntity>
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_hPlayerPing (CHandle<CBaseEntity>)
-            namespace CCSPlayer_PingServices
-            {
+            namespace CCSPlayer_PingServices {
                 constexpr std::ptrdiff_t m_flPlayerPingTokens = 0x40; // GameTime_t[5]
                 constexpr std::ptrdiff_t m_hPlayerPing = 0x54; // CHandle<CBaseEntity>
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 0
-            namespace CPlayer_FlashlightServices
-            {
+            namespace CPlayer_FlashlightServices {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 0
-            namespace CServerOnlyModelEntity
-            {
+            namespace CServerOnlyModelEntity {
             }
-
             // Parent: CBtNode
             // Field count: 4
-            namespace CBtActionCombatPositioning
-            {
+            namespace CBtActionCombatPositioning {
                 constexpr std::ptrdiff_t m_szSensorInputKey = 0x68; // CUtlString
                 constexpr std::ptrdiff_t m_szIsAttackingKey = 0x80; // CUtlString
                 constexpr std::ptrdiff_t m_ActionTimer = 0x88; // CountdownTimer
                 constexpr std::ptrdiff_t m_bCrouching = 0xA0; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 4
             //
@@ -4197,44 +3588,33 @@ namespace cs2_dumper
             // NetworkVarNames: m_flStartScale (float32)
             // NetworkVarNames: m_flScaleTime (float32)
             // NetworkVarNames: m_nFlags (uint32)
-            namespace CBaseFire
-            {
+            namespace CBaseFire {
                 constexpr std::ptrdiff_t m_flScale = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flStartScale = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flScaleTime = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_nFlags = 0x4EC; // uint32
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponMAC10
-            {
+            namespace CWeaponMAC10 {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponGlock
-            {
+            namespace CWeaponGlock {
             }
-
             // Parent: CBaseViewModel
             // Field count: 0
-            namespace CPredictedViewModel
-            {
+            namespace CPredictedViewModel {
             }
-
             // Parent: CBaseTrigger
             // Field count: 2
-            namespace CTriggerActiveWeaponDetect
-            {
+            namespace CTriggerActiveWeaponDetect {
                 constexpr std::ptrdiff_t m_OnTouchedActiveWeapon = 0x960; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_iszWeaponClassName = 0x988; // CUtlSymbolLarge
             }
-
             // Parent: CPointEntity
             // Field count: 18
-            namespace CEnvMicrophone
-            {
+            namespace CEnvMicrophone {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_hMeasureTarget = 0x4E4; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_nSoundType = 0x4E8; // SoundTypes_t
@@ -4254,11 +3634,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_szLastSound = 0x598; // char[256]
                 constexpr std::ptrdiff_t m_iLastRoutedFrame = 0x698; // int32
             }
-
             // Parent: CLogicalEntity
             // Field count: 11
-            namespace CInfoSpawnGroupLoadUnload
-            {
+            namespace CInfoSpawnGroupLoadUnload {
                 constexpr std::ptrdiff_t m_OnSpawnGroupLoadStarted = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnSpawnGroupLoadFinished = 0x508; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnSpawnGroupUnloadStarted = 0x530; // CEntityIOOutput
@@ -4271,7 +3649,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bStreamingStarted = 0x5A4; // bool
                 constexpr std::ptrdiff_t m_bUnloadingStarted = 0x5A5; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 24
             //
@@ -4292,8 +3669,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iszPlayerName (char)
             // NetworkVarNames: m_steamID (uint64)
             // NetworkVarNames: m_iDesiredFOV (uint32)
-            namespace CBasePlayerController
-            {
+            namespace CBasePlayerController {
                 constexpr std::ptrdiff_t m_nInButtonsWhichAreToggles = 0x4E8; // uint64
                 constexpr std::ptrdiff_t m_nTickBase = 0x4F0; // uint32
                 constexpr std::ptrdiff_t m_hPawn = 0x520; // CHandle<CBasePlayerPawn>
@@ -4319,31 +3695,25 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_steamID = 0x740; // uint64
                 constexpr std::ptrdiff_t m_iDesiredFOV = 0x748; // uint32
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CPointTemplateAPI
-            {
+            namespace CPointTemplateAPI {
             }
-
             // Parent: CCSWeaponBase
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_bFirstAttack (bool)
-            namespace CKnife
-            {
+            namespace CKnife {
                 constexpr std::ptrdiff_t m_bFirstAttack = 0xF70; // bool
             }
-
             // Parent: CBaseModelEntity
             // Field count: 37
-            namespace CFuncTrackTrain
-            {
+            namespace CFuncTrackTrain {
                 constexpr std::ptrdiff_t m_ppath = 0x790; // CHandle<CPathTrack>
                 constexpr std::ptrdiff_t m_length = 0x794; // float32
                 constexpr std::ptrdiff_t m_vPosPrev = 0x798; // Vector
@@ -4382,28 +3752,22 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bAccelToSpeed = 0x8D4; // bool
                 constexpr std::ptrdiff_t m_flNextMPSoundTime = 0x8D8; // GameTime_t
             }
-
             // Parent: CServerOnlyModelEntity
             // Field count: 5
-            namespace CFogVolume
-            {
+            namespace CFogVolume {
                 constexpr std::ptrdiff_t m_fogName = 0x790; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_postProcessName = 0x798; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_colorCorrectionName = 0x7A0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_bDisabled = 0x7B0; // bool
                 constexpr std::ptrdiff_t m_bInFogVolumesList = 0x7B1; // bool
             }
-
             // Parent: SpawnPoint
             // Field count: 0
-            namespace CInfoPlayerCounterterrorist
-            {
+            namespace CInfoPlayerCounterterrorist {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 19
-            namespace CFire
-            {
+            namespace CFire {
                 constexpr std::ptrdiff_t m_hEffect = 0x790; // CHandle<CBaseFire>
                 constexpr std::ptrdiff_t m_hOwner = 0x794; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_nFireType = 0x798; // int32
@@ -4424,7 +3788,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnIgnited = 0x7D0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnExtinguished = 0x7F8; // CEntityIOOutput
             }
-
             // Parent: CSkeletonAnimationController
             // Field count: 14
             //
@@ -4434,8 +3797,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flSeqStartTime (GameTime_t)
             // NetworkVarNames: m_flSeqFixedCycle (float)
             // NetworkVarNames: m_nAnimLoopMode (AnimLoopMode_t)
-            namespace CBaseAnimGraphController
-            {
+            namespace CBaseAnimGraphController {
                 constexpr std::ptrdiff_t m_animGraphNetworkedVars = 0x18; // CAnimGraphNetworkedVariables
                 constexpr std::ptrdiff_t m_bSequenceFinished = 0x220; // bool
                 constexpr std::ptrdiff_t m_flSoundSyncTime = 0x224; // float32
@@ -4451,30 +3813,22 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bLastUpdateSkipped = 0x24C; // bool
                 constexpr std::ptrdiff_t m_flPrevAnimUpdateTime = 0x250; // GameTime_t
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CCSPointScriptEntity
-            {
+            namespace CCSPointScriptEntity {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponBizon
-            {
+            namespace CWeaponBizon {
             }
-
             // Parent: CBasePlatTrain
             // Field count: 1
-            namespace CFuncPlat
-            {
+            namespace CFuncPlat {
                 constexpr std::ptrdiff_t m_sNoise = 0x838; // CUtlSymbolLarge
             }
-
             // Parent: CPhysConstraint
             // Field count: 48
-            namespace CGenericConstraint
-            {
+            namespace CGenericConstraint {
                 constexpr std::ptrdiff_t m_nLinearMotionX = 0x560; // JointMotion_t
                 constexpr std::ptrdiff_t m_nLinearMotionY = 0x564; // JointMotion_t
                 constexpr std::ptrdiff_t m_nLinearMotionZ = 0x568; // JointMotion_t
@@ -4524,19 +3878,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_NotifyForceReachedY = 0x638; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_NotifyForceReachedZ = 0x660; // CEntityIOOutput
             }
-
             // Parent: CBaseCSGrenade
             // Field count: 0
-            namespace CDecoyGrenade
-            {
+            namespace CDecoyGrenade {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponG3SG1
-            {
+            namespace CWeaponG3SG1 {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 11
             //
@@ -4548,8 +3897,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nForceBone (int32)
             // NetworkVarNames: m_RagdollPose (PhysicsRagdollPose_t)
             // NetworkVarNames: m_bRagdollClientSide (bool)
-            namespace CBaseAnimGraph
-            {
+            namespace CBaseAnimGraph {
                 constexpr std::ptrdiff_t m_bInitiallyPopulateInterpHistory = 0x808; // bool
                 constexpr std::ptrdiff_t m_pChoreoServices = 0x810; // IChoreoServices*
                 constexpr std::ptrdiff_t m_bAnimGraphUpdateEnabled = 0x818; // bool
@@ -4562,20 +3910,15 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bRagdollClientSide = 0x878; // bool
                 constexpr std::ptrdiff_t m_nLastDestructiblePartDestroyedAnimgraphSetTick = 0x9A0; // int32
             }
-
             // Parent: CPhysForce
             // Field count: 1
-            namespace CPhysTorque
-            {
+            namespace CPhysTorque {
                 constexpr std::ptrdiff_t m_axis = 0x540; // Vector
             }
-
             // Parent: CBaseGrenade
             // Field count: 0
-            namespace CBreachChargeProjectile
-            {
+            namespace CBreachChargeProjectile {
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 27
             //
@@ -4584,8 +3927,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_ragAngles (QAngle)
             // NetworkVarNames: m_hRagdollSource (EHANDLE)
             // NetworkVarNames: m_flBlendWeight (float32)
-            namespace CRagdollProp
-            {
+            namespace CRagdollProp {
                 constexpr std::ptrdiff_t m_ragdoll = 0x9B0; // ragdoll_t
                 constexpr std::ptrdiff_t m_bStartDisabled = 0x9E8; // bool
                 constexpr std::ptrdiff_t m_ragPos = 0x9F0; // CNetworkUtlVectorBase<Vector>
@@ -4614,58 +3956,46 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bShouldDeleteActivationRecord = 0xAA8; // bool
                 constexpr std::ptrdiff_t m_bValidatePoweredRagdollPose = 0xB08; // bool
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 0
-            namespace CItemSoda
-            {
+            namespace CItemSoda {
             }
-
             // Parent: CEnvCubemap
             // Field count: 0
-            namespace CEnvCubemapBox
-            {
+            namespace CEnvCubemapBox {
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CBasePlayerControllerAPI
-            {
+            namespace CBasePlayerControllerAPI {
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CCSPointScriptExtensions_CCSWeaponBaseVData
-            {
+            namespace CCSPointScriptExtensions_CCSWeaponBaseVData {
             }
-
             // Parent: CBaseEntity
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_flFadeStartDist (float32)
             // NetworkVarNames: m_flFadeEndDist (float32)
-            namespace CEnvDetailController
-            {
+            namespace CEnvDetailController {
                 constexpr std::ptrdiff_t m_flFadeStartDist = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flFadeEndDist = 0x4E4; // float32
             }
-
             // Parent: CTriggerOnce
             // Field count: 14
             //
             // Metadata:
             // NetworkVarNames: m_bTestOcclusion (bool)
-            namespace CTriggerLook
-            {
+            namespace CTriggerLook {
                 constexpr std::ptrdiff_t m_hLookTarget = 0x988; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_flFieldOfView = 0x98C; // float32
                 constexpr std::ptrdiff_t m_flLookTime = 0x990; // float32
@@ -4681,17 +4011,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnStartLook = 0x9D0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnEndLook = 0x9F8; // CEntityIOOutput
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoTeleportDestination
-            {
+            namespace CInfoTeleportDestination {
             }
-
             // Parent: CLogicalEntity
             // Field count: 11
-            namespace CMathRemap
-            {
+            namespace CMathRemap {
                 constexpr std::ptrdiff_t m_flInMin = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flInMax = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flOut1 = 0x4E8; // float32
@@ -4704,16 +4030,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnFellBelowMin = 0x570; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnFellBelowMax = 0x598; // CEntityIOOutput
             }
-
             // Parent: CPointEntity
             // Field count: 3
-            namespace CInstructorEventEntity
-            {
+            namespace CInstructorEventEntity {
                 constexpr std::ptrdiff_t m_iszName = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszHintTargetEntity = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hTargetPlayer = 0x4F0; // CHandle<CBasePlayerPawn>
             }
-
             // Parent: CBaseEntity
             // Field count: 16
             //
@@ -4733,8 +4056,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flFadeTime (float)
             // NetworkVarNames: m_bStartDisabled (bool)
             // NetworkVarNames: m_bIsEnabled (bool)
-            namespace CGradientFog
-            {
+            namespace CGradientFog {
                 constexpr std::ptrdiff_t m_hGradientFogTexture = 0x4E0; // CStrongHandle<InfoForResourceTypeCTextureBase>
                 constexpr std::ptrdiff_t m_flFogStartDistance = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_flFogEndDistance = 0x4EC; // float32
@@ -4752,43 +4074,33 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bIsEnabled = 0x519; // bool
                 constexpr std::ptrdiff_t m_bGradientFogNeedsTextures = 0x51A; // bool
             }
-
             // Parent: CBaseTrigger
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_source (string_t)
             // NetworkVarNames: m_destination (string_t)
-            namespace CFootstepControl
-            {
+            namespace CFootstepControl {
                 constexpr std::ptrdiff_t m_source = 0x960; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_destination = 0x968; // CUtlSymbolLarge
             }
-
             // Parent: CBaseModelEntity
             // Field count: 2
-            namespace CTriggerVolume
-            {
+            namespace CTriggerVolume {
                 constexpr std::ptrdiff_t m_iFilterName = 0x790; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hFilter = 0x798; // CHandle<CBaseFilter>
             }
-
             // Parent: CEnvSoundscape
             // Field count: 0
-            namespace CEnvSoundscapeAlias_snd_soundscape
-            {
+            namespace CEnvSoundscapeAlias_snd_soundscape {
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoInstructorHintHostageRescueZone
-            {
+            namespace CInfoInstructorHintHostageRescueZone {
             }
-
             // Parent: CBaseEntity
             // Field count: 7
-            namespace CFishPool
-            {
+            namespace CFishPool {
                 constexpr std::ptrdiff_t m_fishCount = 0x4F0; // int32
                 constexpr std::ptrdiff_t m_maxRange = 0x4F4; // float32
                 constexpr std::ptrdiff_t m_swimDepth = 0x4F8; // float32
@@ -4797,35 +4109,27 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_fishes = 0x508; // CUtlVector<CHandle<CFish>>
                 constexpr std::ptrdiff_t m_visTimer = 0x520; // CountdownTimer
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CPointClientCommand
-            {
+            namespace CPointClientCommand {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
-            namespace CFuncVPhysicsClip
-            {
+            namespace CFuncVPhysicsClip {
                 constexpr std::ptrdiff_t m_bDisabled = 0x790; // bool
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 5
-            namespace CCSPlayer_RadioServices
-            {
+            namespace CCSPlayer_RadioServices {
                 constexpr std::ptrdiff_t m_flGotHostageTalkTimer = 0x40; // GameTime_t
                 constexpr std::ptrdiff_t m_flDefusingTalkTimer = 0x44; // GameTime_t
                 constexpr std::ptrdiff_t m_flC4PlantTalkTimer = 0x48; // GameTime_t
                 constexpr std::ptrdiff_t m_flRadioTokenSlots = 0x4C; // GameTime_t[3]
                 constexpr std::ptrdiff_t m_bIgnoreRadio = 0x58; // bool
             }
-
             // Parent: CSceneEntity
             // Field count: 7
-            namespace CInstancedSceneEntity
-            {
+            namespace CInstancedSceneEntity {
                 constexpr std::ptrdiff_t m_hOwner = 0xA40; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_bHadOwner = 0xA44; // bool
                 constexpr std::ptrdiff_t m_flPostSpeakDelay = 0xA48; // float32
@@ -4834,14 +4138,11 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bRemoveOnCompletion = 0xA51; // bool
                 constexpr std::ptrdiff_t m_hTarget = 0xA54; // CHandle<CBaseEntity>
             }
-
             // Parent: CPointEntity
             // Field count: 1
-            namespace CEnvHudHint
-            {
+            namespace CEnvHudHint {
                 constexpr std::ptrdiff_t m_iszMessage = 0x4E0; // CUtlSymbolLarge
             }
-
             // Parent: CBaseModelEntity
             // Field count: 22
             //
@@ -4867,8 +4168,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bNoSave (bool)
             // NetworkVarNames: m_bNoFreeze (bool)
             // NetworkVarNames: m_bNoRamp (bool)
-            namespace CParticleSystem
-            {
+            namespace CParticleSystem {
                 constexpr std::ptrdiff_t m_szSnapshotFileName = 0x790; // char[512]
                 constexpr std::ptrdiff_t m_bActive = 0x990; // bool
                 constexpr std::ptrdiff_t m_bFrozen = 0x991; // bool
@@ -4892,14 +4192,12 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nTintCP = 0xD00; // int32
                 constexpr std::ptrdiff_t m_clrTint = 0xD04; // Color
             }
-
             // Parent: CEntitySubclassVDataBase
             // Field count: 22
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace CBasePlayerWeaponVData
-            {
+            namespace CBasePlayerWeaponVData {
                 constexpr std::ptrdiff_t m_szWorldModel = 0x28; // CResourceNameTyped<CWeakHandle<InfoForResourceTypeCModel>>
                 constexpr std::ptrdiff_t m_sToolsOnlyOwnerModelName = 0x108; // CResourceNameTyped<CWeakHandle<InfoForResourceTypeCModel>>
                 constexpr std::ptrdiff_t m_bBuiltRightHanded = 0x1E8; // bool
@@ -4923,7 +4221,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iPosition = 0x318; // int32
                 constexpr std::ptrdiff_t m_aShootSounds = 0x320; // CUtlOrderedMap<WeaponSound_t,CSoundEventName>
             }
-
             // Parent: CCSPlayerPawnBase
             // Field count: 0
             //
@@ -4938,17 +4235,13 @@ namespace cs2_dumper
             // MNetworkIncludeByName
             // MNetworkVarTypeOverride
             // MNetworkIncludeByName
-            namespace CCSObserverPawn
-            {
+            namespace CCSObserverPawn {
             }
-
             // Parent: CItem
             // Field count: 1
-            namespace CScriptItem
-            {
+            namespace CScriptItem {
                 constexpr std::ptrdiff_t m_MoveTypeOverride = 0xA80; // MoveType_t
             }
-
             // Parent: IntervalTimer
             // Field count: 7
             //
@@ -4960,8 +4253,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flFinalValue (float)
             // NetworkVarNames: m_nCompressionType (TimelineCompression_t)
             // NetworkVarNames: m_bStopped (bool)
-            namespace CTimeline
-            {
+            namespace CTimeline {
                 constexpr std::ptrdiff_t m_flValues = 0x10; // float32[64]
                 constexpr std::ptrdiff_t m_nValueCounts = 0x110; // int32[64]
                 constexpr std::ptrdiff_t m_nBucketCount = 0x210; // int32
@@ -4970,17 +4262,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nCompressionType = 0x21C; // TimelineCompression_t
                 constexpr std::ptrdiff_t m_bStopped = 0x220; // bool
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponSG556
-            {
+            namespace CWeaponSG556 {
             }
-
             // Parent: CPointEntity
             // Field count: 10
-            namespace CAmbientGeneric
-            {
+            namespace CAmbientGeneric {
                 constexpr std::ptrdiff_t m_radius = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flMaxRadius = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_iSoundLevel = 0x4E8; // soundlevel_t
@@ -4992,7 +4280,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hSoundSource = 0x568; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_nSoundSourceEntIndex = 0x56C; // CEntityIndex
             }
-
             // Parent: CBaseModelEntity
             // Field count: 9
             //
@@ -5004,8 +4291,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_InnerAngle (float32)
             // NetworkVarNames: m_OuterAngle (float32)
             // NetworkVarNames: m_SpotRadius (float32)
-            namespace CDynamicLight
-            {
+            namespace CDynamicLight {
                 constexpr std::ptrdiff_t m_ActualFlags = 0x790; // uint8
                 constexpr std::ptrdiff_t m_Flags = 0x791; // uint8
                 constexpr std::ptrdiff_t m_LightStyle = 0x792; // uint8
@@ -5016,31 +4302,22 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OuterAngle = 0x7A0; // float32
                 constexpr std::ptrdiff_t m_SpotRadius = 0x7A4; // float32
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponP90
-            {
+            namespace CWeaponP90 {
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CTriggerToggleSave
-            {
+            namespace CTriggerToggleSave {
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CPrecipitation
-            {
+            namespace CPrecipitation {
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CPointServerCommand
-            {
+            namespace CPointServerCommand {
             }
-
             // Parent: None
             // Field count: 6
             //
@@ -5048,8 +4325,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iReapplyProvisionParity (int)
             // NetworkVarNames: m_hOuter (EHANDLE)
             // NetworkVarNames: m_ProviderType (attributeprovidertypes_t)
-            namespace CAttributeManager
-            {
+            namespace CAttributeManager {
                 constexpr std::ptrdiff_t m_Providers = 0x8; // CUtlVector<CHandle<CBaseEntity>>
                 constexpr std::ptrdiff_t m_iReapplyProvisionParity = 0x20; // int32
                 constexpr std::ptrdiff_t m_hOuter = 0x24; // CHandle<CBaseEntity>
@@ -5057,13 +4333,10 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_ProviderType = 0x2C; // attributeprovidertypes_t
                 constexpr std::ptrdiff_t m_CachedResults = 0x30; // CUtlVector<CAttributeManager::cached_attribute_float_t>
             }
-
             // Parent: CServerOnlyEntity
             // Field count: 0
-            namespace CLogicalEntity
-            {
+            namespace CLogicalEntity {
             }
-
             // Parent: None
             // Field count: 24
             //
@@ -5092,8 +4365,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nOwnerOnlyBoolVariablesCount (int)
             // NetworkVarNames: m_nRandomSeedOffset (int)
             // NetworkVarNames: m_flLastTeleportTime (float)
-            namespace CAnimGraphNetworkedVariables
-            {
+            namespace CAnimGraphNetworkedVariables {
                 constexpr std::ptrdiff_t m_PredNetBoolVariables = 0x8; // CNetworkUtlVectorBase<uint32>
                 constexpr std::ptrdiff_t m_PredNetByteVariables = 0x20; // CNetworkUtlVectorBase<uint8>
                 constexpr std::ptrdiff_t m_PredNetUInt16Variables = 0x38; // CNetworkUtlVectorBase<uint16>
@@ -5119,7 +4391,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nRandomSeedOffset = 0x1F0; // int32
                 constexpr std::ptrdiff_t m_flLastTeleportTime = 0x1F4; // float32
             }
-
             // Parent: CBreakableProp
             // Field count: 37
             //
@@ -5132,8 +4403,7 @@ namespace cs2_dumper
             // MNetworkExcludeByUserGroup
             // MNetworkIncludeByName
             // NetworkVarNames: m_bAwake (bool)
-            namespace CPhysicsProp
-            {
+            namespace CPhysicsProp {
                 constexpr std::ptrdiff_t m_MotionEnabled = 0xB60; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnAwakened = 0xB88; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnAwake = 0xBB0; // CEntityIOOutput
@@ -5172,46 +4442,35 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bRemovableForAmmoBalancing = 0xCF8; // bool
                 constexpr std::ptrdiff_t m_bAwake = 0xCF9; // bool
             }
-
             // Parent: CFuncWall
             // Field count: 0
-            namespace CFuncWallToggle
-            {
+            namespace CFuncWallToggle {
             }
-
             // Parent: None
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_bSpotted (bool)
             // NetworkVarNames: m_bSpottedByMask (uint32)
-            namespace EntitySpottedState_t
-            {
+            namespace EntitySpottedState_t {
                 constexpr std::ptrdiff_t m_bSpotted = 0x8; // bool
                 constexpr std::ptrdiff_t m_bSpottedByMask = 0xC; // uint32[2]
             }
-
             // Parent: CBaseCSGrenadeProjectile
             // Field count: 3
-            namespace CSensorGrenadeProjectile
-            {
+            namespace CSensorGrenadeProjectile {
                 constexpr std::ptrdiff_t m_fExpireTime = 0xB50; // GameTime_t
                 constexpr std::ptrdiff_t m_fNextDetectPlayerSound = 0xB54; // GameTime_t
                 constexpr std::ptrdiff_t m_hDisplayGrenade = 0xB58; // CHandle<CBaseEntity>
             }
-
             // Parent: CCSPlayerBase_CameraServices
             // Field count: 0
-            namespace CCSPlayer_CameraServices
-            {
+            namespace CCSPlayer_CameraServices {
             }
-
             // Parent: CCSGO_TeamIntroCharacterPosition
             // Field count: 0
-            namespace CCSGO_WingmanIntroCharacterPosition
-            {
+            namespace CCSGO_WingmanIntroCharacterPosition {
             }
-
             // Parent: CSPerRoundStats_t
             // Field count: 21
             //
@@ -5221,8 +4480,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iEnemy3Ks (int)
             // NetworkVarNames: m_iEnemyKnifeKills (int)
             // NetworkVarNames: m_iEnemyTaserKills (int)
-            namespace CSMatchStats_t
-            {
+            namespace CSMatchStats_t {
                 constexpr std::ptrdiff_t m_iEnemy5Ks = 0x68; // int32
                 constexpr std::ptrdiff_t m_iEnemy4Ks = 0x6C; // int32
                 constexpr std::ptrdiff_t m_iEnemy3Ks = 0x70; // int32
@@ -5245,17 +4503,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iEntryCount = 0xB4; // int32
                 constexpr std::ptrdiff_t m_iEntryWins = 0xB8; // int32
             }
-
             // Parent: CFuncLadder
             // Field count: 0
-            namespace CFuncLadderAlias_func_useableladder
-            {
+            namespace CFuncLadderAlias_func_useableladder {
             }
-
             // Parent: CBaseTrigger
             // Field count: 14
-            namespace CTriggerSndSosOpvar
-            {
+            namespace CTriggerSndSosOpvar {
                 constexpr std::ptrdiff_t m_hTouchingPlayers = 0x960; // CUtlVector<CHandle<CBaseEntity>>
                 constexpr std::ptrdiff_t m_flPosition = 0x978; // Vector
                 constexpr std::ptrdiff_t m_flCenterSize = 0x984; // float32
@@ -5271,17 +4525,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_VecNormPos = 0xCAC; // Vector
                 constexpr std::ptrdiff_t m_flNormCenterSize = 0xCB8; // float32
             }
-
             // Parent: CItem
             // Field count: 0
-            namespace CItemAssaultSuit
-            {
+            namespace CItemAssaultSuit {
             }
-
             // Parent: CBaseEntity
             // Field count: 72
-            namespace CScriptedSequence
-            {
+            namespace CScriptedSequence {
                 constexpr std::ptrdiff_t m_iszEntry = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszPreIdle = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszPlay = 0x4F0; // CUtlSymbolLarge
@@ -5355,19 +4605,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hInteractionMainEntity = 0x7F0; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_iPlayerDeathBehavior = 0x7F4; // int32
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponNegev
-            {
+            namespace CWeaponNegev {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponGalilAR
-            {
+            namespace CWeaponGalilAR {
             }
-
             // Parent: CModelPointEntity
             // Field count: 30
             //
@@ -5402,8 +4647,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flProjectionSize (float32)
             // NetworkVarNames: m_flRotation (float32)
             // NetworkVarNames: m_bFlipHorizontal (bool)
-            namespace CEnvProjectedTexture
-            {
+            namespace CEnvProjectedTexture {
                 constexpr std::ptrdiff_t m_hTargetEntity = 0x790; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_bState = 0x794; // bool
                 constexpr std::ptrdiff_t m_bAlwaysUpdate = 0x795; // bool
@@ -5435,41 +4679,30 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flRotation = 0x9EC; // float32
                 constexpr std::ptrdiff_t m_bFlipHorizontal = 0x9F0; // bool
             }
-
             // Parent: CDynamicProp
             // Field count: 0
-            namespace CDynamicPropAlias_prop_dynamic_override
-            {
+            namespace CDynamicPropAlias_prop_dynamic_override {
             }
-
             // Parent: CLogicalEntity
             // Field count: 3
-            namespace CSceneListManager
-            {
+            namespace CSceneListManager {
                 constexpr std::ptrdiff_t m_hListManagers = 0x4E0; // CUtlVector<CHandle<CSceneListManager>>
                 constexpr std::ptrdiff_t m_iszScenes = 0x4F8; // CUtlSymbolLarge[16]
                 constexpr std::ptrdiff_t m_hScenes = 0x578; // CHandle<CBaseEntity>[16]
             }
-
             // Parent: CPhysConstraint
             // Field count: 1
-            namespace CSplineConstraint
-            {
+            namespace CSplineConstraint {
                 constexpr std::ptrdiff_t m_vAnchorOffsetRestore = 0x5A0; // Vector
             }
-
             // Parent: CPlayer_ViewModelServices
             // Field count: 0
-            namespace CCSObserver_ViewModelServices
-            {
+            namespace CCSObserver_ViewModelServices {
             }
-
             // Parent: CDynamicProp
             // Field count: 0
-            namespace CDynamicPropAlias_dynamic_prop
-            {
+            namespace CDynamicPropAlias_dynamic_prop {
             }
-
             // Parent: None
             // Field count: 4
             //
@@ -5478,61 +4711,46 @@ namespace cs2_dumper
             // NetworkVarNames: m_Name (string_t)
             // NetworkVarNames: m_AssociatedEntities (CHandle<CBaseModelEntity>)
             // NetworkVarNames: m_AssociatedEntityNames (string_t)
-            namespace ActiveModelConfig_t
-            {
+            namespace ActiveModelConfig_t {
                 constexpr std::ptrdiff_t m_Handle = 0x28; // ModelConfigHandle_t
                 constexpr std::ptrdiff_t m_Name = 0x30; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_AssociatedEntities = 0x38; // CNetworkUtlVectorBase<CHandle<CBaseModelEntity>>
                 constexpr std::ptrdiff_t m_AssociatedEntityNames = 0x50; // CNetworkUtlVectorBase<CUtlSymbolLarge>
             }
-
             // Parent: CPhysicsProp
             // Field count: 0
-            namespace CPhysicsPropMultiplayer
-            {
+            namespace CPhysicsPropMultiplayer {
             }
-
             // Parent: CBaseToggle
             // Field count: 5
-            namespace CBasePlatTrain
-            {
+            namespace CBasePlatTrain {
                 constexpr std::ptrdiff_t m_NoiseMoving = 0x810; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_NoiseArrived = 0x818; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_volume = 0x828; // float32
                 constexpr std::ptrdiff_t m_flTWidth = 0x82C; // float32
                 constexpr std::ptrdiff_t m_flTLength = 0x830; // float32
             }
-
             // Parent: CMarkupVolumeTagged
             // Field count: 0
-            namespace CSimpleMarkupVolumeTagged
-            {
+            namespace CSimpleMarkupVolumeTagged {
             }
-
             // Parent: SpawnPoint
             // Field count: 0
-            namespace CInfoPlayerTerrorist
-            {
+            namespace CInfoPlayerTerrorist {
             }
-
             // Parent: CPhysHinge
             // Field count: 0
-            namespace CPhysHingeAlias_phys_hinge_local
-            {
+            namespace CPhysHingeAlias_phys_hinge_local {
             }
-
             // Parent: CPointEntity
             // Field count: 2
-            namespace CTankTargetChange
-            {
+            namespace CTankTargetChange {
                 constexpr std::ptrdiff_t m_newTarget = 0x4E0; // CVariantBase<CVariantDefaultAllocator>
                 constexpr std::ptrdiff_t m_newTargetName = 0x4F0; // CUtlSymbolLarge
             }
-
             // Parent: CLogicalEntity
             // Field count: 6
-            namespace CLogicCompare
-            {
+            namespace CLogicCompare {
                 constexpr std::ptrdiff_t m_flInValue = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flCompareValue = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_OnLessThan = 0x4E8; // CEntityOutputTemplate<float32>
@@ -5540,21 +4758,17 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnNotEqualTo = 0x538; // CEntityOutputTemplate<float32>
                 constexpr std::ptrdiff_t m_OnGreaterThan = 0x560; // CEntityOutputTemplate<float32>
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_totalHitsOnServer (int32)
-            namespace CCSPlayer_BulletServices
-            {
+            namespace CCSPlayer_BulletServices {
                 constexpr std::ptrdiff_t m_totalHitsOnServer = 0x40; // int32
             }
-
             // Parent: CLogicalEntity
             // Field count: 7
-            namespace CLogicRelay
-            {
+            namespace CLogicRelay {
                 constexpr std::ptrdiff_t m_OnTrigger = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnSpawn = 0x508; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_bDisabled = 0x530; // bool
@@ -5563,7 +4777,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bFastRetrigger = 0x533; // bool
                 constexpr std::ptrdiff_t m_bPassthoughCaller = 0x534; // bool
             }
-
             // Parent: CPlayer_ItemServices
             // Field count: 3
             //
@@ -5571,17 +4784,14 @@ namespace cs2_dumper
             // NetworkVarNames: m_bHasDefuser (bool)
             // NetworkVarNames: m_bHasHelmet (bool)
             // NetworkVarNames: m_bHasHeavyArmor (bool)
-            namespace CCSPlayer_ItemServices
-            {
+            namespace CCSPlayer_ItemServices {
                 constexpr std::ptrdiff_t m_bHasDefuser = 0x40; // bool
                 constexpr std::ptrdiff_t m_bHasHelmet = 0x41; // bool
                 constexpr std::ptrdiff_t m_bHasHeavyArmor = 0x42; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 7
-            namespace CKeepUpright
-            {
+            namespace CKeepUpright {
                 constexpr std::ptrdiff_t m_worldGoalAxis = 0x4E8; // Vector
                 constexpr std::ptrdiff_t m_localTestAxis = 0x4F4; // Vector
                 constexpr std::ptrdiff_t m_nameAttach = 0x508; // CUtlSymbolLarge
@@ -5590,35 +4800,27 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bActive = 0x518; // bool
                 constexpr std::ptrdiff_t m_bDampAllRotation = 0x519; // bool
             }
-
             // Parent: CBaseModelEntity
             // Field count: 0
-            namespace CModelPointEntity
-            {
+            namespace CModelPointEntity {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
-            namespace CFuncWater
-            {
+            namespace CFuncWater {
                 constexpr std::ptrdiff_t m_BuoyancyHelper = 0x790; // CBuoyancyHelper
             }
-
             // Parent: CBaseEntity
             // Field count: 5
-            namespace CFuncTimescale
-            {
+            namespace CFuncTimescale {
                 constexpr std::ptrdiff_t m_flDesiredTimescale = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flAcceleration = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flMinBlendRate = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_flBlendDeltaMultiplier = 0x4EC; // float32
                 constexpr std::ptrdiff_t m_isStarted = 0x4F0; // bool
             }
-
             // Parent: CBtNode
             // Field count: 14
-            namespace CBtActionMoveTo
-            {
+            namespace CBtActionMoveTo {
                 constexpr std::ptrdiff_t m_szDestinationInputKey = 0x60; // CUtlString
                 constexpr std::ptrdiff_t m_szHidingSpotInputKey = 0x68; // CUtlString
                 constexpr std::ptrdiff_t m_szThreatInputKey = 0x70; // CUtlString
@@ -5634,7 +4836,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flHidingSpotCheckDistanceThreshold = 0xE0; // float32
                 constexpr std::ptrdiff_t m_flNearestAreaDistanceThreshold = 0xE4; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 8
             //
@@ -5647,8 +4848,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flExposureAdaptationSpeedUp (float)
             // NetworkVarNames: m_flExposureAdaptationSpeedDown (float)
             // NetworkVarNames: m_flTonemapEVSmoothingRange (float)
-            namespace CTonemapController2
-            {
+            namespace CTonemapController2 {
                 constexpr std::ptrdiff_t m_flAutoExposureMin = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flAutoExposureMax = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flTonemapPercentTarget = 0x4E8; // float32
@@ -5658,17 +4858,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flExposureAdaptationSpeedDown = 0x4F8; // float32
                 constexpr std::ptrdiff_t m_flTonemapEVSmoothingRange = 0x4FC; // float32
             }
-
             // Parent: CRopeKeyframe
             // Field count: 0
-            namespace CRopeKeyframeAlias_move_rope
-            {
+            namespace CRopeKeyframeAlias_move_rope {
             }
-
             // Parent: CPointEntity
             // Field count: 9
-            namespace CEnvInstructorVRHint
-            {
+            namespace CEnvInstructorVRHint {
                 constexpr std::ptrdiff_t m_iszName = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszHintTargetEntity = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iTimeout = 0x4F0; // int32
@@ -5679,20 +4875,15 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iAttachType = 0x518; // int32
                 constexpr std::ptrdiff_t m_flHeightOffset = 0x51C; // float32
             }
-
             // Parent: CCSWeaponBase
             // Field count: 0
-            namespace CWeaponXM1014
-            {
+            namespace CWeaponXM1014 {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
-            namespace CPlatTrigger
-            {
+            namespace CPlatTrigger {
                 constexpr std::ptrdiff_t m_pPlatform = 0x790; // CHandle<CFuncPlat>
             }
-
             // Parent: None
             // Field count: 31
             //
@@ -5711,8 +4902,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_location (Vector)
             // NetworkVarNames: m_iInitialWindDir (uint16)
             // NetworkVarNames: m_flInitialWindSpeed (float32)
-            namespace CEnvWindShared
-            {
+            namespace CEnvWindShared {
                 constexpr std::ptrdiff_t m_flStartTime = 0x8; // GameTime_t
                 constexpr std::ptrdiff_t m_iWindSeed = 0xC; // uint32
                 constexpr std::ptrdiff_t m_iMinWind = 0x10; // uint16
@@ -5745,17 +4935,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flWindSpeedVariation = 0xDC; // float32
                 constexpr std::ptrdiff_t m_hEntOwner = 0xE0; // CHandle<CBaseEntity>
             }
-
             // Parent: CBaseCSGrenade
             // Field count: 0
-            namespace CMolotovGrenade
-            {
+            namespace CMolotovGrenade {
             }
-
             // Parent: CPointEntity
             // Field count: 6
-            namespace CPointHurt
-            {
+            namespace CPointHurt {
                 constexpr std::ptrdiff_t m_nDamage = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_bitsDamageType = 0x4E4; // DamageTypes_t
                 constexpr std::ptrdiff_t m_flRadius = 0x4E8; // float32
@@ -5763,7 +4949,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_strTarget = 0x4F0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_pActivator = 0x4F8; // CHandle<CBaseEntity>
             }
-
             // Parent: CBaseEntity
             // Field count: 44
             //
@@ -5785,8 +4970,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flSnapValue (float)
             // NetworkVarNames: m_nRatchetType (ValueRemapperRatchetType_t)
             // NetworkVarNames: m_flInputOffset (float)
-            namespace CPointValueRemapper
-            {
+            namespace CPointValueRemapper {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_bUpdateOnClient = 0x4E1; // bool
                 constexpr std::ptrdiff_t m_nInputType = 0x4E4; // ValueRemapperInputType_t
@@ -5832,33 +5016,25 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnEngage = 0x688; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnDisengage = 0x6B0; // CEntityIOOutput
             }
-
             // Parent: CLogicNPCCounter
             // Field count: 4
-            namespace CLogicNPCCounterAABB
-            {
+            namespace CLogicNPCCounterAABB {
                 constexpr std::ptrdiff_t m_vDistanceOuterMins = 0x820; // Vector
                 constexpr std::ptrdiff_t m_vDistanceOuterMaxs = 0x82C; // Vector
                 constexpr std::ptrdiff_t m_vOuterMins = 0x838; // Vector
                 constexpr std::ptrdiff_t m_vOuterMaxs = 0x844; // Vector
             }
-
             // Parent: CEnvSoundscapeTriggerable
             // Field count: 0
-            namespace CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable
-            {
+            namespace CEnvSoundscapeTriggerableAlias_snd_soundscape_triggerable {
             }
-
             // Parent: CLightEntity
             // Field count: 0
-            namespace CLightOrthoEntity
-            {
+            namespace CLightOrthoEntity {
             }
-
             // Parent: CSoundOpvarSetPointBase
             // Field count: 24
-            namespace CSoundOpvarSetPointEntity
-            {
+            namespace CSoundOpvarSetPointEntity {
                 constexpr std::ptrdiff_t m_OnEnter = 0x578; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnExit = 0x5A0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_bAutoDisable = 0x5C8; // bool
@@ -5884,71 +5060,58 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vPathingDirection = 0x674; // Vector
                 constexpr std::ptrdiff_t m_nPathingSourceIndex = 0x680; // int32
             }
-
             // Parent: CBaseEntity
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_skyboxData (sky3dparams_t)
             // NetworkVarNames: m_skyboxSlotToken (CUtlStringToken)
-            namespace CSkyCamera
-            {
+            namespace CSkyCamera {
                 constexpr std::ptrdiff_t m_skyboxData = 0x4E0; // sky3dparams_t
                 constexpr std::ptrdiff_t m_skyboxSlotToken = 0x570; // CUtlStringToken
                 constexpr std::ptrdiff_t m_bUseAngles = 0x574; // bool
                 constexpr std::ptrdiff_t m_pNext = 0x578; // CSkyCamera*
             }
-
             // Parent: CRulePointEntity
             // Field count: 4
-            namespace CGameMoney
-            {
+            namespace CGameMoney {
                 constexpr std::ptrdiff_t m_OnMoneySpent = 0x7A0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnMoneySpentFail = 0x7C8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_nMoney = 0x7F0; // int32
                 constexpr std::ptrdiff_t m_strAwardText = 0x7F8; // CUtlString
             }
-
             // Parent: CLogicalEntity
             // Field count: 5
-            namespace CLogicPlayerProxy
-            {
+            namespace CLogicPlayerProxy {
                 constexpr std::ptrdiff_t m_hPlayer = 0x4E0; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_PlayerHasAmmo = 0x4E8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_PlayerHasNoAmmo = 0x510; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_PlayerDied = 0x538; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_RequestedPlayerHealth = 0x560; // CEntityOutputTemplate<int32>
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_iObserverMode (uint8)
             // NetworkVarNames: m_hObserverTarget (CHandle<CBaseEntity>)
-            namespace CPlayer_ObserverServices
-            {
+            namespace CPlayer_ObserverServices {
                 constexpr std::ptrdiff_t m_iObserverMode = 0x40; // uint8
                 constexpr std::ptrdiff_t m_hObserverTarget = 0x44; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_iObserverLastMode = 0x48; // ObserverMode_t
                 constexpr std::ptrdiff_t m_bForcedObserverMode = 0x4C; // bool
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponZoneRepulsor
-            {
+            namespace CWeaponZoneRepulsor {
             }
-
             // Parent: CPointEntity
             // Field count: 3
-            namespace CPhysImpact
-            {
+            namespace CPhysImpact {
                 constexpr std::ptrdiff_t m_damage = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_distance = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_directionEntityName = 0x4E8; // CUtlSymbolLarge
             }
-
             // Parent: CBaseEntity
             // Field count: 24
             //
@@ -5977,8 +5140,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_Entity_nLightProbeAtlasY (int)
             // NetworkVarNames: m_Entity_nLightProbeAtlasZ (int)
             // NetworkVarNames: m_Entity_bEnabled (bool)
-            namespace CEnvCombinedLightProbeVolume
-            {
+            namespace CEnvCombinedLightProbeVolume {
                 constexpr std::ptrdiff_t m_Entity_Color = 0x1540; // Color
                 constexpr std::ptrdiff_t m_Entity_flBrightness = 0x1544; // float32
                 constexpr std::ptrdiff_t m_Entity_hCubemapTexture = 0x1548; // CStrongHandle<InfoForResourceTypeCTextureBase>
@@ -6004,19 +5166,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_Entity_nLightProbeAtlasZ = 0x15C8; // int32
                 constexpr std::ptrdiff_t m_Entity_bEnabled = 0x15E1; // bool
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 0
-            namespace CPlayer_WaterServices
-            {
+            namespace CPlayer_WaterServices {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponM249
-            {
+            namespace CWeaponM249 {
             }
-
             // Parent: CParticleSystem
             // Field count: 5
             //
@@ -6026,31 +5183,25 @@ namespace cs2_dumper
             // NetworkVarNames: m_flSelfIllumScale (float32)
             // NetworkVarNames: m_ColorTint (Color)
             // NetworkVarNames: m_hTextureOverride (HRenderTextureStrong)
-            namespace CEnvParticleGlow
-            {
+            namespace CEnvParticleGlow {
                 constexpr std::ptrdiff_t m_flAlphaScale = 0xD08; // float32
                 constexpr std::ptrdiff_t m_flRadiusScale = 0xD0C; // float32
                 constexpr std::ptrdiff_t m_flSelfIllumScale = 0xD10; // float32
                 constexpr std::ptrdiff_t m_ColorTint = 0xD14; // Color
                 constexpr std::ptrdiff_t m_hTextureOverride = 0xD18; // CStrongHandle<InfoForResourceTypeCTextureBase>
             }
-
             // Parent: CBaseModelEntity
             // Field count: 0
-            namespace CFuncVehicleClip
-            {
+            namespace CFuncVehicleClip {
             }
-
             // Parent: CSoundAreaEntityBase
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_flRadius (float)
-            namespace CSoundAreaEntitySphere
-            {
+            namespace CSoundAreaEntitySphere {
                 constexpr std::ptrdiff_t m_flRadius = 0x500; // float32
             }
-
             // Parent: CFuncBrush
             // Field count: 9
             //
@@ -6063,8 +5214,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_hTargetCamera (EHANDLE)
             // NetworkVarNames: m_bEnabled (bool)
             // NetworkVarNames: m_bDraw3DSkybox (bool)
-            namespace CFuncMonitor
-            {
+            namespace CFuncMonitor {
                 constexpr std::ptrdiff_t m_targetCamera = 0x7B0; // CUtlString
                 constexpr std::ptrdiff_t m_nResolutionEnum = 0x7B8; // int32
                 constexpr std::ptrdiff_t m_bRenderShadows = 0x7BC; // bool
@@ -6075,17 +5225,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bDraw3DSkybox = 0x7CD; // bool
                 constexpr std::ptrdiff_t m_bStartEnabled = 0x7CE; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CEnvFunnel
-            {
+            namespace CEnvFunnel {
             }
-
             // Parent: None
             // Field count: 6
-            namespace SequenceHistory_t
-            {
+            namespace SequenceHistory_t {
                 constexpr std::ptrdiff_t m_hSequence = 0x0; // HSequence
                 constexpr std::ptrdiff_t m_flSeqStartTime = 0x4; // GameTime_t
                 constexpr std::ptrdiff_t m_flSeqFixedCycle = 0x8; // float32
@@ -6093,17 +5239,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flPlaybackRate = 0x10; // float32
                 constexpr std::ptrdiff_t m_flCyclesPerSecond = 0x14; // float32
             }
-
             // Parent: CCSGameModeRules
             // Field count: 0
-            namespace CCSGameModeRules_Noop
-            {
+            namespace CCSGameModeRules_Noop {
             }
-
             // Parent: CPointEntity
             // Field count: 16
-            namespace CPointAngularVelocitySensor
-            {
+            namespace CPointAngularVelocitySensor {
                 constexpr std::ptrdiff_t m_hTargetEntity = 0x4E0; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_flThreshold = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_nLastCompareResult = 0x4E8; // int32
@@ -6121,36 +5263,28 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnGreaterThanOrEqualTo = 0x5B8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnEqualTo = 0x5E0; // CEntityIOOutput
             }
-
             // Parent: CBaseCSGrenadeProjectile
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_bIsIncGrenade (bool)
-            namespace CMolotovProjectile
-            {
+            namespace CMolotovProjectile {
                 constexpr std::ptrdiff_t m_bIsIncGrenade = 0xB50; // bool
                 constexpr std::ptrdiff_t m_bDetonated = 0xB5C; // bool
                 constexpr std::ptrdiff_t m_stillTimer = 0xB60; // IntervalTimer
                 constexpr std::ptrdiff_t m_bHasBouncedOffPlayer = 0xC40; // bool
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CHostageRescueZoneShim
-            {
+            namespace CHostageRescueZoneShim {
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CPointPulse
-            {
+            namespace CPointPulse {
             }
-
             // Parent: CPointEntity
             // Field count: 24
-            namespace CEnvInstructorHint
-            {
+            namespace CEnvInstructorHint {
                 constexpr std::ptrdiff_t m_iszName = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszReplace_Key = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszHintTargetEntity = 0x4F0; // CUtlSymbolLarge
@@ -6176,23 +5310,18 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bAutoStart = 0x549; // bool
                 constexpr std::ptrdiff_t m_bLocalPlayerOnly = 0x54A; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 2
-            namespace CEnvTracer
-            {
+            namespace CEnvTracer {
                 constexpr std::ptrdiff_t m_vecEnd = 0x4E0; // Vector
                 constexpr std::ptrdiff_t m_flDelay = 0x4EC; // float32
             }
-
             // Parent: CPointEntity
             // Field count: 2
-            namespace CInfoGameEventProxy
-            {
+            namespace CInfoGameEventProxy {
                 constexpr std::ptrdiff_t m_iszEventName = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_flRange = 0x4E8; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 26
             //
@@ -6219,8 +5348,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flDofFarCrisp (float)
             // NetworkVarNames: m_flDofFarBlurry (float)
             // NetworkVarNames: m_flDofTiltToGround (float)
-            namespace CPointCamera
-            {
+            namespace CPointCamera {
                 constexpr std::ptrdiff_t m_FOV = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_Resolution = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_bFogEnable = 0x4E8; // bool
@@ -6248,7 +5376,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bIsOn = 0x534; // bool
                 constexpr std::ptrdiff_t m_pNext = 0x538; // CPointCamera*
             }
-
             // Parent: None
             // Field count: 7
             //
@@ -6257,8 +5384,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bClientClothCreationSuppressed (bool)
             // NetworkVarNames: m_MeshGroupMask (MeshGroupMask_t)
             // NetworkVarNames: m_nIdealMotionType (int8)
-            namespace CModelState
-            {
+            namespace CModelState {
                 constexpr std::ptrdiff_t m_hModel = 0xA0; // CStrongHandle<InfoForResourceTypeCModel>
                 constexpr std::ptrdiff_t m_ModelName = 0xA8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_bClientClothCreationSuppressed = 0xE8; // bool
@@ -6267,7 +5393,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nForceLOD = 0x21B; // int8
                 constexpr std::ptrdiff_t m_nClothUpdateFlags = 0x21C; // int8
             }
-
             // Parent: CBaseModelEntity
             // Field count: 12
             //
@@ -6277,8 +5402,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_vecPlayerMountPositionBottom (Vector)
             // NetworkVarNames: m_flAutoRideSpeed (float)
             // NetworkVarNames: m_bFakeLadder (bool)
-            namespace CFuncLadder
-            {
+            namespace CFuncLadder {
                 constexpr std::ptrdiff_t m_vecLadderDir = 0x790; // Vector
                 constexpr std::ptrdiff_t m_Dismounts = 0x7A0; // CUtlVector<CHandle<CInfoLadderDismount>>
                 constexpr std::ptrdiff_t m_vecLocalTop = 0x7B8; // Vector
@@ -6292,11 +5416,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnPlayerGotOnLadder = 0x7F0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnPlayerGotOffLadder = 0x818; // CEntityIOOutput
             }
-
             // Parent: CLogicalEntity
             // Field count: 8
-            namespace CPathKeyFrame
-            {
+            namespace CPathKeyFrame {
                 constexpr std::ptrdiff_t m_Origin = 0x4E0; // Vector
                 constexpr std::ptrdiff_t m_Angles = 0x4EC; // QAngle
                 constexpr std::ptrdiff_t m_qAngle = 0x500; // Quaternion
@@ -6306,61 +5428,46 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_pPrevKey = 0x528; // CPathKeyFrame*
                 constexpr std::ptrdiff_t m_flMoveSpeed = 0x530; // float32
             }
-
             // Parent: CBaseModelEntity
             // Field count: 3
-            namespace CFuncInteractionLayerClip
-            {
+            namespace CFuncInteractionLayerClip {
                 constexpr std::ptrdiff_t m_bDisabled = 0x790; // bool
                 constexpr std::ptrdiff_t m_iszInteractsAs = 0x798; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszInteractsWith = 0x7A0; // CUtlSymbolLarge
             }
-
             // Parent: None
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_Attributes (CEconItemAttribute)
-            namespace CAttributeList
-            {
+            namespace CAttributeList {
                 constexpr std::ptrdiff_t m_Attributes = 0x8; // CUtlVectorEmbeddedNetworkVar<CEconItemAttribute>
                 constexpr std::ptrdiff_t m_pManager = 0x58; // CAttributeManager*
             }
-
             // Parent: CGameRules
             // Field count: 0
-            namespace CMultiplayRules
-            {
+            namespace CMultiplayRules {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponRevolver
-            {
+            namespace CWeaponRevolver {
             }
-
             // Parent: CDynamicProp
             // Field count: 1
-            namespace COrnamentProp
-            {
+            namespace COrnamentProp {
                 constexpr std::ptrdiff_t m_initialOwner = 0xC58; // CUtlSymbolLarge
             }
-
             // Parent: CLogicalEntity
             // Field count: 1
-            namespace CLogicGameEvent
-            {
+            namespace CLogicGameEvent {
                 constexpr std::ptrdiff_t m_iszEventName = 0x4E0; // CUtlSymbolLarge
             }
-
             // Parent: CPointEntity
             // Field count: 2
-            namespace CEnvMuzzleFlash
-            {
+            namespace CEnvMuzzleFlash {
                 constexpr std::ptrdiff_t m_flScale = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_iszParentAttachment = 0x4E8; // CUtlSymbolLarge
             }
-
             // Parent: CModelPointEntity
             // Field count: 15
             //
@@ -6380,8 +5487,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nTintID (int)
             // NetworkVarNames: m_nVersion (uint8)
             // NetworkVarNames: m_ubSignature (uint8)
-            namespace CPlayerSprayDecal
-            {
+            namespace CPlayerSprayDecal {
                 constexpr std::ptrdiff_t m_nUniqueID = 0x790; // int32
                 constexpr std::ptrdiff_t m_unAccountID = 0x794; // uint32
                 constexpr std::ptrdiff_t m_unTraceID = 0x798; // uint32
@@ -6398,14 +5504,12 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nVersion = 0x7E4; // uint8
                 constexpr std::ptrdiff_t m_ubSignature = 0x7E5; // uint8[128]
             }
-
             // Parent: CBaseTrigger
             // Field count: 9
             //
             // Metadata:
             // NetworkVarNames: m_bBombPlantedHere (bool)
-            namespace CBombTarget
-            {
+            namespace CBombTarget {
                 constexpr std::ptrdiff_t m_OnBombExplode = 0x960; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnBombPlanted = 0x988; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnBombDefused = 0x9B0; // CEntityIOOutput
@@ -6416,11 +5520,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hInstructorHint = 0x9E8; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_nBombSiteDesignation = 0x9EC; // int32
             }
-
             // Parent: CBaseEntity
             // Field count: 8
-            namespace CPhysicsSpring
-            {
+            namespace CPhysicsSpring {
                 constexpr std::ptrdiff_t m_flFrequency = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_flDampingRatio = 0x4EC; // float32
                 constexpr std::ptrdiff_t m_flRestLength = 0x4F0; // float32
@@ -6430,7 +5532,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_end = 0x514; // Vector
                 constexpr std::ptrdiff_t m_teleportTick = 0x520; // uint32
             }
-
             // Parent: CBaseEntity
             // Field count: 17
             //
@@ -6452,8 +5553,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_Entity_nLightProbeAtlasY (int)
             // NetworkVarNames: m_Entity_nLightProbeAtlasZ (int)
             // NetworkVarNames: m_Entity_bEnabled (bool)
-            namespace CEnvLightProbeVolume
-            {
+            namespace CEnvLightProbeVolume {
                 constexpr std::ptrdiff_t m_Entity_hLightProbeTexture = 0x14C0; // CStrongHandle<InfoForResourceTypeCTextureBase>
                 constexpr std::ptrdiff_t m_Entity_hLightProbeDirectLightIndicesTexture = 0x14C8; // CStrongHandle<InfoForResourceTypeCTextureBase>
                 constexpr std::ptrdiff_t m_Entity_hLightProbeDirectLightScalarsTexture = 0x14D0; // CStrongHandle<InfoForResourceTypeCTextureBase>
@@ -6472,45 +5572,34 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_Entity_nLightProbeAtlasZ = 0x151C; // int32
                 constexpr std::ptrdiff_t m_Entity_bEnabled = 0x1529; // bool
             }
-
             // Parent: CCSGameModeRules
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_WeaponSequence (CUtlString)
-            namespace CCSGameModeRules_ArmsRace
-            {
+            namespace CCSGameModeRules_ArmsRace {
                 constexpr std::ptrdiff_t m_WeaponSequence = 0x30; // CNetworkUtlVectorBase<CUtlString>
             }
-
             // Parent: CTriggerPush
             // Field count: 1
-            namespace CScriptTriggerPush
-            {
+            namespace CScriptTriggerPush {
                 constexpr std::ptrdiff_t m_vExtent = 0x998; // Vector
             }
-
             // Parent: CBaseEntity
             // Field count: 1
-            namespace CEnvEntityIgniter
-            {
+            namespace CEnvEntityIgniter {
                 constexpr std::ptrdiff_t m_flLifetime = 0x4E0; // float32
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
-            namespace CFuncWall
-            {
+            namespace CFuncWall {
                 constexpr std::ptrdiff_t m_nState = 0x790; // int32
             }
-
             // Parent: CPointEntity
             // Field count: 1
-            namespace CPointChildModifier
-            {
+            namespace CPointChildModifier {
                 constexpr std::ptrdiff_t m_bOrphanInsteadOfDeletingChildrenOnRemove = 0x4E0; // bool
             }
-
             // Parent: None
             // Field count: 15
             //
@@ -6529,8 +5618,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iLastBulletUpdate (int)
             // NetworkVarNames: m_bIsOtherEnemy (bool)
             // NetworkVarNames: m_killType (EKillTypes_t)
-            namespace CDamageRecord
-            {
+            namespace CDamageRecord {
                 constexpr std::ptrdiff_t m_PlayerDamager = 0x28; // CHandle<CCSPlayerPawn>
                 constexpr std::ptrdiff_t m_PlayerRecipient = 0x2C; // CHandle<CCSPlayerPawn>
                 constexpr std::ptrdiff_t m_hPlayerControllerDamager = 0x30; // CHandle<CCSPlayerController>
@@ -6547,53 +5635,43 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bIsOtherEnemy = 0x6C; // bool
                 constexpr std::ptrdiff_t m_killType = 0x6D; // EKillTypes_t
             }
-
             // Parent: CLogicalEntity
             // Field count: 3
-            namespace CLogicAutosave
-            {
+            namespace CLogicAutosave {
                 constexpr std::ptrdiff_t m_bForceNewLevelUnit = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_minHitPoints = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_minHitPointsToCommit = 0x4E8; // int32
             }
-
             // Parent: CPlayerControllerComponent
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_nSendUpdate (int)
             // NetworkVarNames: m_DamageList (CDamageRecord)
-            namespace CCSPlayerController_DamageServices
-            {
+            namespace CCSPlayerController_DamageServices {
                 constexpr std::ptrdiff_t m_nSendUpdate = 0x40; // int32
                 constexpr std::ptrdiff_t m_DamageList = 0x48; // CUtlVectorEmbeddedNetworkVar<CDamageRecord>
             }
-
             // Parent: CEntityComponent
             // Field count: 5
-            namespace CRenderComponent
-            {
+            namespace CRenderComponent {
                 constexpr std::ptrdiff_t __m_pChainEntity = 0x10; // CNetworkVarChainer
                 constexpr std::ptrdiff_t m_bIsRenderingWithViewModels = 0x50; // bool
                 constexpr std::ptrdiff_t m_nSplitscreenFlags = 0x54; // uint32
                 constexpr std::ptrdiff_t m_bEnableRendering = 0x60; // bool
                 constexpr std::ptrdiff_t m_bInterpolationReadyToDraw = 0xB0; // bool
             }
-
             // Parent: CEnvSoundscape
             // Field count: 1
-            namespace CEnvSoundscapeProxy
-            {
+            namespace CEnvSoundscapeProxy {
                 constexpr std::ptrdiff_t m_MainSoundscapeName = 0x580; // CUtlSymbolLarge
             }
-
             // Parent: CSoundEventEntity
             // Field count: 7
             //
             // Metadata:
             // NetworkVarNames: m_vecCornerPairsNetworked (SoundeventPathCornerPairNetworked_t)
-            namespace CSoundEventPathCornerEntity
-            {
+            namespace CSoundEventPathCornerEntity {
                 constexpr std::ptrdiff_t m_iszPathCorner = 0x598; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iCountMax = 0x5A0; // int32
                 constexpr std::ptrdiff_t m_flDistanceMax = 0x5A4; // float32
@@ -6602,7 +5680,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bPlaying = 0x5B0; // bool
                 constexpr std::ptrdiff_t m_vecCornerPairsNetworked = 0x5D8; // CNetworkUtlVectorBase<SoundeventPathCornerPairNetworked_t>
             }
-
             // Parent: CEntityComponent
             // Field count: 67
             //
@@ -6672,8 +5749,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flLightStyleStartTime (GameTime_t)
             // NetworkVarNames: m_flCapsuleLength (float)
             // NetworkVarNames: m_flMinRoughness (float)
-            namespace CLightComponent
-            {
+            namespace CLightComponent {
                 constexpr std::ptrdiff_t __m_pChainEntity = 0x38; // CNetworkVarChainer
                 constexpr std::ptrdiff_t m_Color = 0x75; // Color
                 constexpr std::ptrdiff_t m_SecondaryColor = 0x79; // Color
@@ -6742,7 +5818,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flMinRoughness = 0x19C; // float32
                 constexpr std::ptrdiff_t m_bPvsModifyEntity = 0x1B0; // bool
             }
-
             // Parent: CBaseCSGrenadeProjectile
             // Field count: 11
             //
@@ -6755,8 +5830,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_VoxelFrameData (uint8)
             // NetworkVarNames: m_nVoxelFrameDataSize (int)
             // NetworkVarNames: m_nVoxelUpdate (int)
-            namespace CSmokeGrenadeProjectile
-            {
+            namespace CSmokeGrenadeProjectile {
                 constexpr std::ptrdiff_t m_nSmokeEffectTickBegin = 0xB68; // int32
                 constexpr std::ptrdiff_t m_bDidSmokeEffect = 0xB6C; // bool
                 constexpr std::ptrdiff_t m_nRandomSeed = 0xB70; // int32
@@ -6769,42 +5843,32 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_fllastSimulationTime = 0xBB4; // GameTime_t
                 constexpr std::ptrdiff_t m_bExplodeFromInferno = 0x2E38; // bool
             }
-
             // Parent: CTriggerMultiple
             // Field count: 1
-            namespace CScriptTriggerMultiple
-            {
+            namespace CScriptTriggerMultiple {
                 constexpr std::ptrdiff_t m_vExtent = 0x988; // Vector
             }
-
             // Parent: CSoundOpvarSetPointEntity
             // Field count: 5
-            namespace CSoundOpvarSetAutoRoomEntity
-            {
+            namespace CSoundOpvarSetAutoRoomEntity {
                 constexpr std::ptrdiff_t m_traceResults = 0x688; // CUtlVector<SoundOpvarTraceResult_t>
                 constexpr std::ptrdiff_t m_doorwayPairs = 0x6A0; // CUtlVector<AutoRoomDoorwayPairs_t>
                 constexpr std::ptrdiff_t m_flSize = 0x6B8; // float32
                 constexpr std::ptrdiff_t m_flHeightTolerance = 0x6BC; // float32
                 constexpr std::ptrdiff_t m_flSizeSqr = 0x6C0; // float32
             }
-
             // Parent: None
             // Field count: 0
-            namespace CEntityComponent
-            {
+            namespace CEntityComponent {
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace FilterDamageType
-            {
+            namespace FilterDamageType {
                 constexpr std::ptrdiff_t m_iDamageType = 0x538; // int32
             }
-
             // Parent: CBot
             // Field count: 139
-            namespace CCSBot
-            {
+            namespace CCSBot {
                 constexpr std::ptrdiff_t m_eyePosition = 0x108; // Vector
                 constexpr std::ptrdiff_t m_name = 0x114; // char[64]
                 constexpr std::ptrdiff_t m_combatRange = 0x154; // float32
@@ -6945,11 +6009,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_voiceEndTimestamp = 0x6534; // float32
                 constexpr std::ptrdiff_t m_lastValidReactionQueueFrame = 0x6540; // int32
             }
-
             // Parent: CLogicalEntity
             // Field count: 7
-            namespace CPhysMotor
-            {
+            namespace CPhysMotor {
                 constexpr std::ptrdiff_t m_nameAttach = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hAttachedObject = 0x4E8; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_spinUp = 0x4EC; // float32
@@ -6958,7 +6020,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_lastTime = 0x4F8; // GameTime_t
                 constexpr std::ptrdiff_t m_motor = 0x510; // CMotorController
             }
-
             // Parent: CBaseEntity
             // Field count: 3
             //
@@ -6966,38 +6027,29 @@ namespace cs2_dumper
             // NetworkVarNames: m_bDisabled (bool)
             // NetworkVarNames: m_iszSoundAreaType (string_t)
             // NetworkVarNames: m_vPos (Vector)
-            namespace CSoundAreaEntityBase
-            {
+            namespace CSoundAreaEntityBase {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_iszSoundAreaType = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_vPos = 0x4F0; // Vector
             }
-
             // Parent: CPlayer_UseServices
             // Field count: 3
-            namespace CCSPlayer_UseServices
-            {
+            namespace CCSPlayer_UseServices {
                 constexpr std::ptrdiff_t m_hLastKnownUseEntity = 0x40; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_flLastUseTimeStamp = 0x44; // GameTime_t
                 constexpr std::ptrdiff_t m_flTimeLastUsedWindow = 0x48; // GameTime_t
             }
-
             // Parent: CCSGO_TeamPreviewCharacterPosition
             // Field count: 0
-            namespace CCSGO_TeamSelectCharacterPosition
-            {
+            namespace CCSGO_TeamSelectCharacterPosition {
             }
-
             // Parent: CItem
             // Field count: 0
-            namespace CItemKevlar
-            {
+            namespace CItemKevlar {
             }
-
             // Parent: CBaseTrigger
             // Field count: 14
-            namespace CTriggerHurt
-            {
+            namespace CTriggerHurt {
                 constexpr std::ptrdiff_t m_flOriginalDamage = 0x960; // float32
                 constexpr std::ptrdiff_t m_flDamage = 0x964; // float32
                 constexpr std::ptrdiff_t m_flDamageCap = 0x968; // float32
@@ -7013,11 +6065,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnHurtPlayer = 0x9C0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_hurtEntities = 0x9E8; // CUtlVector<CHandle<CBaseEntity>>
             }
-
             // Parent: CLogicalEntity
             // Field count: 13
-            namespace CPhysConstraint
-            {
+            namespace CPhysConstraint {
                 constexpr std::ptrdiff_t m_nameAttach1 = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_nameAttach2 = 0x4F0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hAttach1 = 0x4F8; // CHandle<CBaseEntity>
@@ -7032,7 +6082,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bSnapObjectPositions = 0x528; // bool
                 constexpr std::ptrdiff_t m_OnBreak = 0x530; // CEntityIOOutput
             }
-
             // Parent: CBaseEntity
             // Field count: 24
             //
@@ -7052,8 +6101,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nCurrentPhase (int)
             // NetworkVarNames: m_nPhaseStartTick (int)
             // NetworkVarNames: m_nPhaseDurationTicks (int)
-            namespace CMapVetoPickController
-            {
+            namespace CMapVetoPickController {
                 constexpr std::ptrdiff_t m_bPlayedIntroVcd = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_bNeedToPlayFiveSecondsRemaining = 0x4E1; // bool
                 constexpr std::ptrdiff_t m_dblPreMatchDraftSequenceTime = 0x500; // float64
@@ -7079,29 +6127,22 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnNewPhaseStarted = 0xEB8; // CEntityOutputTemplate<int32>
                 constexpr std::ptrdiff_t m_OnLevelTransition = 0xEE0; // CEntityOutputTemplate<int32>
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CCSMinimapBoundary
-            {
+            namespace CCSMinimapBoundary {
             }
-
             // Parent: CPointEntity
             // Field count: 4
-            namespace CSoundEnt
-            {
+            namespace CSoundEnt {
                 constexpr std::ptrdiff_t m_iFreeSound = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_iActiveSound = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_cLastActiveSounds = 0x4E8; // int32
                 constexpr std::ptrdiff_t m_SoundPool = 0x4EC; // CSound[128]
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoSpawnGroupLandmark
-            {
+            namespace CInfoSpawnGroupLandmark {
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 15
             //
@@ -7109,8 +6150,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nToggleButtonDownMask (ButtonBitMask_t)
             // NetworkVarNames: m_flMaxspeed (float32)
             // NetworkVarNames: m_arrForceSubtickMoveWhen (float32)
-            namespace CPlayer_MovementServices
-            {
+            namespace CPlayer_MovementServices {
                 constexpr std::ptrdiff_t m_nImpulse = 0x40; // int32
                 constexpr std::ptrdiff_t m_nButtons = 0x48; // CInButtonState
                 constexpr std::ptrdiff_t m_nQueuedButtonDownMask = 0x68; // uint64
@@ -7127,20 +6167,16 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vecLastMovementImpulses = 0x1B8; // Vector
                 constexpr std::ptrdiff_t m_vecOldViewAngles = 0x1C4; // QAngle
             }
-
             // Parent: CBaseTrigger
             // Field count: 3
-            namespace CTriggerSave
-            {
+            namespace CTriggerSave {
                 constexpr std::ptrdiff_t m_bForceNewLevelUnit = 0x960; // bool
                 constexpr std::ptrdiff_t m_fDangerousTimer = 0x964; // float32
                 constexpr std::ptrdiff_t m_minHitPoints = 0x968; // int32
             }
-
             // Parent: CPhysConstraint
             // Field count: 11
-            namespace CPhysWheelConstraint
-            {
+            namespace CPhysWheelConstraint {
                 constexpr std::ptrdiff_t m_flSuspensionFrequency = 0x558; // float32
                 constexpr std::ptrdiff_t m_flSuspensionDampingRatio = 0x55C; // float32
                 constexpr std::ptrdiff_t m_flSuspensionHeightOffset = 0x560; // float32
@@ -7153,11 +6189,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flSteeringAxisFriction = 0x57C; // float32
                 constexpr std::ptrdiff_t m_flSpinAxisFriction = 0x580; // float32
             }
-
             // Parent: CPhysConstraint
             // Field count: 6
-            namespace CPhysFixed
-            {
+            namespace CPhysFixed {
                 constexpr std::ptrdiff_t m_flLinearFrequency = 0x558; // float32
                 constexpr std::ptrdiff_t m_flLinearDampingRatio = 0x55C; // float32
                 constexpr std::ptrdiff_t m_flAngularFrequency = 0x560; // float32
@@ -7165,11 +6199,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bEnableLinearConstraint = 0x568; // bool
                 constexpr std::ptrdiff_t m_bEnableAngularConstraint = 0x569; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 11
-            namespace CEnvSoundscape
-            {
+            namespace CEnvSoundscape {
                 constexpr std::ptrdiff_t m_OnPlay = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_flRadius = 0x508; // float32
                 constexpr std::ptrdiff_t m_soundEventName = 0x510; // CUtlSymbolLarge
@@ -7182,14 +6214,12 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_soundscapeName = 0x570; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_soundEventHash = 0x578; // uint32
             }
-
             // Parent: CEntitySubclassVDataBase
             // Field count: 14
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace CBasePlayerVData
-            {
+            namespace CBasePlayerVData {
                 constexpr std::ptrdiff_t m_sModelName = 0x28; // CResourceNameTyped<CWeakHandle<InfoForResourceTypeCModel>>
                 constexpr std::ptrdiff_t m_flHeadDamageMultiplier = 0x108; // CSkillFloat
                 constexpr std::ptrdiff_t m_flChestDamageMultiplier = 0x118; // CSkillFloat
@@ -7205,7 +6235,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flUseAngleTolerance = 0x170; // float32
                 constexpr std::ptrdiff_t m_flCrouchTime = 0x174; // float32
             }
-
             // Parent: CPlayerControllerComponent
             // Field count: 6
             //
@@ -7214,8 +6243,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iStartAccount (int)
             // NetworkVarNames: m_iTotalCashSpent (int)
             // NetworkVarNames: m_iCashSpentThisRound (int)
-            namespace CCSPlayerController_InGameMoneyServices
-            {
+            namespace CCSPlayerController_InGameMoneyServices {
                 constexpr std::ptrdiff_t m_bReceivesMoneyNextRound = 0x40; // bool
                 constexpr std::ptrdiff_t m_iMoneyEarnedForNextRound = 0x44; // int32
                 constexpr std::ptrdiff_t m_iAccount = 0x48; // int32
@@ -7223,64 +6251,47 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iTotalCashSpent = 0x50; // int32
                 constexpr std::ptrdiff_t m_iCashSpentThisRound = 0x54; // int32
             }
-
             // Parent: CSprite
             // Field count: 0
-            namespace CSpriteOriented
-            {
+            namespace CSpriteOriented {
             }
-
             // Parent: CSoundOpvarSetAABBEntity
             // Field count: 0
-            namespace CSoundOpvarSetOBBEntity
-            {
+            namespace CSoundOpvarSetOBBEntity {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponM4A1
-            {
+            namespace CWeaponM4A1 {
             }
-
             // Parent: CBeam
             // Field count: 5
-            namespace CEnvLaser
-            {
+            namespace CEnvLaser {
                 constexpr std::ptrdiff_t m_iszLaserTarget = 0x830; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_pSprite = 0x838; // CSprite*
                 constexpr std::ptrdiff_t m_iszSpriteName = 0x840; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_firePosition = 0x848; // Vector
                 constexpr std::ptrdiff_t m_flStartFrame = 0x854; // float32
             }
-
             // Parent: CSprite
             // Field count: 0
-            namespace CCommentaryViewPosition
-            {
+            namespace CCommentaryViewPosition {
             }
-
             // Parent: CTonemapController2
             // Field count: 0
-            namespace CTonemapController2Alias_env_tonemap_controller2
-            {
+            namespace CTonemapController2Alias_env_tonemap_controller2 {
             }
-
             // Parent: CPhysConstraint
             // Field count: 4
-            namespace CPhysPulley
-            {
+            namespace CPhysPulley {
                 constexpr std::ptrdiff_t m_position2 = 0x558; // Vector
                 constexpr std::ptrdiff_t m_offset = 0x564; // Vector[2]
                 constexpr std::ptrdiff_t m_addLength = 0x57C; // float32
                 constexpr std::ptrdiff_t m_gearRatio = 0x580; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CGameRulesProxy
-            {
+            namespace CGameRulesProxy {
             }
-
             // Parent: CEconEntity
             // Field count: 8
             //
@@ -7299,8 +6310,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iClip1 (int32)
             // NetworkVarNames: m_iClip2 (int32)
             // NetworkVarNames: m_pReserveAmmo (int)
-            namespace CBasePlayerWeapon
-            {
+            namespace CBasePlayerWeapon {
                 constexpr std::ptrdiff_t m_nNextPrimaryAttackTick = 0xD30; // GameTick_t
                 constexpr std::ptrdiff_t m_flNextPrimaryAttackTickRatio = 0xD34; // float32
                 constexpr std::ptrdiff_t m_nNextSecondaryAttackTick = 0xD38; // GameTick_t
@@ -7310,7 +6320,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_pReserveAmmo = 0xD48; // int32[2]
                 constexpr std::ptrdiff_t m_OnPlayerUse = 0xD50; // CEntityIOOutput
             }
-
             // Parent: CPlayerControllerComponent
             // Field count: 5
             //
@@ -7320,31 +6329,25 @@ namespace cs2_dumper
             // NetworkVarNames: m_iNumRoundKills (int)
             // NetworkVarNames: m_iNumRoundKillsHeadshots (int)
             // NetworkVarNames: m_unTotalRoundDamageDealt (uint32)
-            namespace CCSPlayerController_ActionTrackingServices
-            {
+            namespace CCSPlayerController_ActionTrackingServices {
                 constexpr std::ptrdiff_t m_perRoundStats = 0x40; // CUtlVectorEmbeddedNetworkVar<CSPerRoundStats_t>
                 constexpr std::ptrdiff_t m_matchStats = 0xB0; // CSMatchStats_t
                 constexpr std::ptrdiff_t m_iNumRoundKills = 0x170; // int32
                 constexpr std::ptrdiff_t m_iNumRoundKillsHeadshots = 0x174; // int32
                 constexpr std::ptrdiff_t m_unTotalRoundDamageDealt = 0x178; // uint32
             }
-
             // Parent: CEntityComponent
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_bvDisabledHitGroups (uint32)
-            namespace CHitboxComponent
-            {
+            namespace CHitboxComponent {
                 constexpr std::ptrdiff_t m_bvDisabledHitGroups = 0x24; // uint32[1]
             }
-
             // Parent: CBaseFlex
             // Field count: 0
-            namespace CBaseFlexAlias_funCBaseFlex
-            {
+            namespace CBaseFlexAlias_funCBaseFlex {
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 24
             //
@@ -7357,8 +6360,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_angle (float32)
             // NetworkVarNames: m_poolOrigin (Vector)
             // NetworkVarNames: m_waterLevel (float32)
-            namespace CFish
-            {
+            namespace CFish {
                 constexpr std::ptrdiff_t m_pool = 0x9A8; // CHandle<CFishPool>
                 constexpr std::ptrdiff_t m_id = 0x9AC; // uint32
                 constexpr std::ptrdiff_t m_x = 0x9B0; // float32
@@ -7384,22 +6386,17 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_proximityTimer = 0xA80; // CountdownTimer
                 constexpr std::ptrdiff_t m_visible = 0xA98; // CUtlVector<CFish*>
             }
-
             // Parent: CBaseEntity
             // Field count: 3
-            namespace CEnvFireSource
-            {
+            namespace CEnvFireSource {
                 constexpr std::ptrdiff_t m_bEnabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_radius = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_damage = 0x4E8; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CInfoLadderDismount
-            {
+            namespace CInfoLadderDismount {
             }
-
             // Parent: CBaseTrigger
             // Field count: 3
             //
@@ -7407,17 +6404,14 @@ namespace cs2_dumper
             // NetworkVarNames: m_strStartTouchEventName (CUtlString)
             // NetworkVarNames: m_strEndTouchEventName (CUtlString)
             // NetworkVarNames: m_strTriggerID (CUtlString)
-            namespace CTriggerGameEvent
-            {
+            namespace CTriggerGameEvent {
                 constexpr std::ptrdiff_t m_strStartTouchEventName = 0x960; // CUtlString
                 constexpr std::ptrdiff_t m_strEndTouchEventName = 0x968; // CUtlString
                 constexpr std::ptrdiff_t m_strTriggerID = 0x970; // CUtlString
             }
-
             // Parent: CPhysConstraint
             // Field count: 10
-            namespace CPhysSlideConstraint
-            {
+            namespace CPhysSlideConstraint {
                 constexpr std::ptrdiff_t m_axisEnd = 0x560; // Vector
                 constexpr std::ptrdiff_t m_slideFriction = 0x56C; // float32
                 constexpr std::ptrdiff_t m_systemLoadScale = 0x570; // float32
@@ -7429,44 +6423,34 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bUseEntityPivot = 0x584; // bool
                 constexpr std::ptrdiff_t m_soundInfo = 0x588; // ConstraintSoundInfo
             }
-
             // Parent: CBaseEntity
             // Field count: 1
-            namespace CDebugHistory
-            {
+            namespace CDebugHistory {
                 constexpr std::ptrdiff_t m_nNpcEvents = 0x3E8520; // int32
             }
-
             // Parent: CServerOnlyEntity
             // Field count: 0
-            namespace CInfoData
-            {
+            namespace CInfoData {
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 0
-            namespace CHostageCarriableProp
-            {
+            namespace CHostageCarriableProp {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_CLightComponent (CLightComponent::Storage_t)
-            namespace CLightEntity
-            {
+            namespace CLightEntity {
                 constexpr std::ptrdiff_t m_CLightComponent = 0x790; // CLightComponent*
             }
-
             // Parent: CBaseModelEntity
             // Field count: 18
             //
             // Metadata:
             // MNetworkOverride
             // MNetworkOverride
-            namespace CFuncRotating
-            {
+            namespace CFuncRotating {
                 constexpr std::ptrdiff_t m_OnStopped = 0x790; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnStarted = 0x7B8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnReachedStart = 0x7E0; // CEntityIOOutput
@@ -7486,7 +6470,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vecClientOrigin = 0x860; // Vector
                 constexpr std::ptrdiff_t m_vecClientAngles = 0x86C; // QAngle
             }
-
             // Parent: CBaseGrenade
             // Field count: 17
             //
@@ -7497,8 +6480,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nExplodeEffectIndex (HParticleSystemDefinitionStrong)
             // NetworkVarNames: m_nExplodeEffectTickBegin (int)
             // NetworkVarNames: m_vecExplodeEffectOrigin (Vector)
-            namespace CBaseCSGrenadeProjectile
-            {
+            namespace CBaseCSGrenadeProjectile {
                 constexpr std::ptrdiff_t m_vInitialPosition = 0xAE0; // Vector
                 constexpr std::ptrdiff_t m_vInitialVelocity = 0xAEC; // Vector
                 constexpr std::ptrdiff_t m_nBounces = 0xAF8; // int32
@@ -7517,20 +6499,15 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bHasEverHitPlayer = 0xB4C; // bool
                 constexpr std::ptrdiff_t m_bClearFromPlayers = 0xB4D; // bool
             }
-
             // Parent: CServerOnlyModelEntity
             // Field count: 1
-            namespace CCSPlace
-            {
+            namespace CCSPlace {
                 constexpr std::ptrdiff_t m_name = 0x798; // CUtlSymbolLarge
             }
-
             // Parent: CBaseModelEntity
             // Field count: 0
-            namespace CFuncTrainControls
-            {
+            namespace CFuncTrainControls {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 10
             //
@@ -7545,8 +6522,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nDissolveType (EntityDisolveType_t)
             // NetworkVarNames: m_vDissolverOrigin (Vector)
             // NetworkVarNames: m_nMagnitude (uint32)
-            namespace CEntityDissolve
-            {
+            namespace CEntityDissolve {
                 constexpr std::ptrdiff_t m_flFadeInStart = 0x790; // float32
                 constexpr std::ptrdiff_t m_flFadeInLength = 0x794; // float32
                 constexpr std::ptrdiff_t m_flFadeOutModelStart = 0x798; // float32
@@ -7558,11 +6534,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vDissolverOrigin = 0x7B0; // Vector
                 constexpr std::ptrdiff_t m_nMagnitude = 0x7BC; // uint32
             }
-
             // Parent: CPointEntity
             // Field count: 12
-            namespace CPointAngleSensor
-            {
+            namespace CPointAngleSensor {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_nLookAtName = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hTargetEntity = 0x4F0; // CHandle<CBaseEntity>
@@ -7576,35 +6550,28 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_TargetDir = 0x558; // CEntityOutputTemplate<Vector>
                 constexpr std::ptrdiff_t m_FacingPercentage = 0x580; // CEntityOutputTemplate<float32>
             }
-
             // Parent: CSoundEventEntity
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_vMins (Vector)
             // NetworkVarNames: m_vMaxs (Vector)
-            namespace CSoundEventOBBEntity
-            {
+            namespace CSoundEventOBBEntity {
                 constexpr std::ptrdiff_t m_vMins = 0x598; // Vector
                 constexpr std::ptrdiff_t m_vMaxs = 0x5A4; // Vector
             }
-
             // Parent: CBtNodeDecorator
             // Field count: 1
-            namespace CBtNodeCondition
-            {
+            namespace CBtNodeCondition {
                 constexpr std::ptrdiff_t m_bNegated = 0x58; // bool
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MGapTypeQueriesForScopeSingleton
-            namespace CSharedGapTypeQueryRegistration
-            {
+            namespace CSharedGapTypeQueryRegistration {
             }
-
             // Parent: CBaseEntity
             // Field count: 16
             //
@@ -7625,8 +6592,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bOverrideSunLightStrength (bool)
             // NetworkVarNames: m_bOverrideNoiseStrength (bool)
             // NetworkVarNames: m_bAllowLPVIndirect (bool)
-            namespace CEnvVolumetricFogVolume
-            {
+            namespace CEnvVolumetricFogVolume {
                 constexpr std::ptrdiff_t m_bActive = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_vBoxMins = 0x4E4; // Vector
                 constexpr std::ptrdiff_t m_vBoxMaxs = 0x4F0; // Vector
@@ -7644,7 +6610,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bOverrideNoiseStrength = 0x522; // bool
                 constexpr std::ptrdiff_t m_bAllowLPVIndirect = 0x523; // bool
             }
-
             // Parent: CBaseModelEntity
             // Field count: 24
             //
@@ -7676,8 +6641,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nClipStyle (BeamClipStyle_t)
             // NetworkVarNames: m_bTurnedOff (bool)
             // NetworkVarNames: m_vecEndPos (Vector)
-            namespace CBeam
-            {
+            namespace CBeam {
                 constexpr std::ptrdiff_t m_flFrameRate = 0x790; // float32
                 constexpr std::ptrdiff_t m_flHDRColorScale = 0x794; // float32
                 constexpr std::ptrdiff_t m_flFireTime = 0x798; // GameTime_t
@@ -7703,7 +6667,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hEndEntity = 0x828; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_nDissolveType = 0x82C; // int32
             }
-
             // Parent: CBaseEntity
             // Field count: 33
             //
@@ -7731,8 +6694,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flDecalHealHeightRate (float)
             // NetworkVarNames: m_ConfigEntitiesToPropagateMaterialDecalsTo (CHandle<CBaseModelEntity>)
             // NetworkVarNames: m_vecViewOffset (CNetworkViewOffsetVector)
-            namespace CBaseModelEntity
-            {
+            namespace CBaseModelEntity {
                 constexpr std::ptrdiff_t m_CRenderComponent = 0x4E0; // CRenderComponent*
                 constexpr std::ptrdiff_t m_CHitboxComponent = 0x4E8; // CHitboxComponent
                 constexpr std::ptrdiff_t m_nDestructiblePartInitialStateDestructed0 = 0x510; // HitGroup_t
@@ -7767,11 +6729,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_ConfigEntitiesToPropagateMaterialDecalsTo = 0x748; // CNetworkUtlVectorBase<CHandle<CBaseModelEntity>>
                 constexpr std::ptrdiff_t m_vecViewOffset = 0x760; // CNetworkViewOffsetVector
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 12
-            namespace CPhysMagnet
-            {
+            namespace CPhysMagnet {
                 constexpr std::ptrdiff_t m_OnMagnetAttach = 0x9A8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnMagnetDetach = 0x9D0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_massScale = 0x9F8; // float32
@@ -7785,35 +6745,27 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flNextSuckTime = 0xA2C; // GameTime_t
                 constexpr std::ptrdiff_t m_iMaxObjectsAttached = 0xA30; // int32
             }
-
             // Parent: CSceneEntity
             // Field count: 0
-            namespace CSceneEntityAlias_logic_choreographed_scene
-            {
+            namespace CSceneEntityAlias_logic_choreographed_scene {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 2
-            namespace CFuncNavBlocker
-            {
+            namespace CFuncNavBlocker {
                 constexpr std::ptrdiff_t m_bDisabled = 0x790; // bool
                 constexpr std::ptrdiff_t m_nBlockedTeamNumber = 0x794; // int32
             }
-
             // Parent: CPointEntity
             // Field count: 4
-            namespace CRagdollMagnet
-            {
+            namespace CRagdollMagnet {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_radius = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_force = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_axis = 0x4EC; // Vector
             }
-
             // Parent: CBaseModelEntity
             // Field count: 6
-            namespace CFuncBrush
-            {
+            namespace CFuncBrush {
                 constexpr std::ptrdiff_t m_iSolidity = 0x790; // BrushSolidities_e
                 constexpr std::ptrdiff_t m_iDisabled = 0x794; // int32
                 constexpr std::ptrdiff_t m_bSolidBsp = 0x798; // bool
@@ -7821,51 +6773,38 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bInvertExclusion = 0x7A8; // bool
                 constexpr std::ptrdiff_t m_bScriptedMovement = 0x7A9; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 3
-            namespace CPointProximitySensor
-            {
+            namespace CPointProximitySensor {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_hTargetEntity = 0x4E4; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_Distance = 0x4E8; // CEntityOutputTemplate<float32>
             }
-
             // Parent: None
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_weaponPurchases (WeaponPurchaseCount_t)
-            namespace WeaponPurchaseTracker_t
-            {
+            namespace WeaponPurchaseTracker_t {
                 constexpr std::ptrdiff_t m_weaponPurchases = 0x8; // CUtlVectorEmbeddedNetworkVar<WeaponPurchaseCount_t>
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace CFilterClass
-            {
+            namespace CFilterClass {
                 constexpr std::ptrdiff_t m_iFilterClass = 0x538; // CUtlSymbolLarge
             }
-
             // Parent: CCSWeaponBase
             // Field count: 0
-            namespace CMelee
-            {
+            namespace CMelee {
             }
-
             // Parent: CMultiplayRules
             // Field count: 0
-            namespace CTeamplayRules
-            {
+            namespace CTeamplayRules {
             }
-
             // Parent: CBaseFilter
             // Field count: 0
-            namespace CFilterLOS
-            {
+            namespace CFilterLOS {
             }
-
             // Parent: None
             // Field count: 3
             //
@@ -7873,17 +6812,14 @@ namespace cs2_dumper
             // NetworkVarNames: m_duration (float32)
             // NetworkVarNames: m_timestamp (float32)
             // NetworkVarNames: m_timescale (float32)
-            namespace EngineCountdownTimer
-            {
+            namespace EngineCountdownTimer {
                 constexpr std::ptrdiff_t m_duration = 0x8; // float32
                 constexpr std::ptrdiff_t m_timestamp = 0xC; // float32
                 constexpr std::ptrdiff_t m_timescale = 0x10; // float32
             }
-
             // Parent: CBreakable
             // Field count: 14
-            namespace CPhysBox
-            {
+            namespace CPhysBox {
                 constexpr std::ptrdiff_t m_damageType = 0x868; // int32
                 constexpr std::ptrdiff_t m_damageToEnableMotion = 0x86C; // int32
                 constexpr std::ptrdiff_t m_flForceToEnableMotion = 0x870; // float32
@@ -7899,7 +6835,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnStartTouch = 0x930; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_hCarryingPlayer = 0x958; // CHandle<CBasePlayerPawn>
             }
-
             // Parent: CBaseFlex
             // Field count: 14
             //
@@ -7921,8 +6856,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flDetonateTime (GameTime_t)
             // NetworkVarNames: m_flDamage (float32)
             // NetworkVarNames: m_hThrower (CHandle<CCSPlayerPawn>)
-            namespace CBaseGrenade
-            {
+            namespace CBaseGrenade {
                 constexpr std::ptrdiff_t m_OnPlayerPickup = 0xA40; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnExplode = 0xA68; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_bHasWarnedAI = 0xA90; // bool
@@ -7938,11 +6872,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flNextAttack = 0xAD4; // GameTime_t
                 constexpr std::ptrdiff_t m_hOriginalThrower = 0xAD8; // CHandle<CCSPlayerPawn>
             }
-
             // Parent: CLogicalEntity
             // Field count: 13
-            namespace CTimerEntity
-            {
+            namespace CTimerEntity {
                 constexpr std::ptrdiff_t m_OnTimer = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnTimerHigh = 0x508; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnTimerLow = 0x530; // CEntityIOOutput
@@ -7957,41 +6889,32 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flRemainingTime = 0x578; // float32
                 constexpr std::ptrdiff_t m_bPaused = 0x57C; // bool
             }
-
             // Parent: CCSGO_TeamIntroCharacterPosition
             // Field count: 0
-            namespace CCSGO_TeamIntroCounterTerroristPosition
-            {
+            namespace CCSGO_TeamIntroCounterTerroristPosition {
             }
-
             // Parent: CBaseCSGrenadeProjectile
             // Field count: 0
-            namespace CHEGrenadeProjectile
-            {
+            namespace CHEGrenadeProjectile {
             }
-
             // Parent: CBaseEntity
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_EnvWindShared (CEnvWindShared)
-            namespace CEnvWind
-            {
+            namespace CEnvWind {
                 constexpr std::ptrdiff_t m_EnvWindShared = 0x4E0; // CEnvWindShared
             }
-
             // Parent: None
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_timestamp (GameTime_t)
             // NetworkVarNames: m_nWorldGroupId (WorldGroupId_t)
-            namespace IntervalTimer
-            {
+            namespace IntervalTimer {
                 constexpr std::ptrdiff_t m_timestamp = 0x8; // GameTime_t
                 constexpr std::ptrdiff_t m_nWorldGroupId = 0xC; // WorldGroupId_t
             }
-
             // Parent: CBasePlayerWeapon
             // Field count: 65
             //
@@ -8026,8 +6949,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_fLastShotTime (GameTime_t)
             // NetworkVarNames: m_iIronSightMode (int)
             // NetworkVarNames: m_iNumEmptyAttacks (int)
-            namespace CCSWeaponBase
-            {
+            namespace CCSWeaponBase {
                 constexpr std::ptrdiff_t m_bRemoveable = 0xDA0; // bool
                 constexpr std::ptrdiff_t m_flFireSequenceStartTime = 0xDA8; // float32
                 constexpr std::ptrdiff_t m_nFireSequenceStartTimeChange = 0xDAC; // int32
@@ -8094,17 +7016,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iNumEmptyAttacks = 0xF58; // int32
                 constexpr std::ptrdiff_t m_flWatTickOffset = 0xF5C; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CHandleDummy
-            {
+            namespace CHandleDummy {
             }
-
             // Parent: CPhysConstraint
             // Field count: 9
-            namespace CRagdollConstraint
-            {
+            namespace CRagdollConstraint {
                 constexpr std::ptrdiff_t m_xmin = 0x558; // float32
                 constexpr std::ptrdiff_t m_xmax = 0x55C; // float32
                 constexpr std::ptrdiff_t m_ymin = 0x560; // float32
@@ -8115,11 +7033,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_yfriction = 0x574; // float32
                 constexpr std::ptrdiff_t m_zfriction = 0x578; // float32
             }
-
             // Parent: CPointEntity
             // Field count: 9
-            namespace CPhysExplosion
-            {
+            namespace CPhysExplosion {
                 constexpr std::ptrdiff_t m_bExplodeOnSpawn = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_flMagnitude = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flDamage = 0x4E8; // float32
@@ -8130,11 +7046,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bConvertToDebrisWhenPossible = 0x500; // bool
                 constexpr std::ptrdiff_t m_OnPushedPlayer = 0x508; // CEntityIOOutput
             }
-
             // Parent: CPointEntity
             // Field count: 7
-            namespace CPointPush
-            {
+            namespace CPointPush {
                 constexpr std::ptrdiff_t m_bEnabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_flMagnitude = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flRadius = 0x4E8; // float32
@@ -8143,16 +7057,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iszFilterName = 0x4F8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hFilter = 0x500; // CHandle<CBaseFilter>
             }
-
             // Parent: CPointEntity
             // Field count: 3
-            namespace CCredits
-            {
+            namespace CCredits {
                 constexpr std::ptrdiff_t m_OnCreditsDone = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_bRolledOutroCredits = 0x508; // bool
                 constexpr std::ptrdiff_t m_flLogoLength = 0x50C; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 10
             //
@@ -8166,8 +7077,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_hostageRescueY (int)
             // NetworkVarNames: m_hostageRescueZ (int)
             // NetworkVarNames: m_bEndMatchNextMapAllVoted (bool)
-            namespace CCSPlayerResource
-            {
+            namespace CCSPlayerResource {
                 constexpr std::ptrdiff_t m_bHostageAlive = 0x4E0; // bool[12]
                 constexpr std::ptrdiff_t m_isHostageFollowingSomeone = 0x4EC; // bool[12]
                 constexpr std::ptrdiff_t m_iHostageEntityIDs = 0x4F8; // CEntityIndex[12]
@@ -8179,7 +7089,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bEndMatchNextMapAllVoted = 0x570; // bool
                 constexpr std::ptrdiff_t m_foundGoalPositions = 0x571; // bool
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 5
             //
@@ -8188,24 +7097,20 @@ namespace cs2_dumper
             // NetworkVarNames: m_hActiveWeapon (CHandle<CBasePlayerWeapon>)
             // NetworkVarNames: m_hLastWeapon (CHandle<CBasePlayerWeapon>)
             // NetworkVarNames: m_iAmmo (uint16)
-            namespace CPlayer_WeaponServices
-            {
+            namespace CPlayer_WeaponServices {
                 constexpr std::ptrdiff_t m_hMyWeapons = 0x40; // CNetworkUtlVectorBase<CHandle<CBasePlayerWeapon>>
                 constexpr std::ptrdiff_t m_hActiveWeapon = 0x58; // CHandle<CBasePlayerWeapon>
                 constexpr std::ptrdiff_t m_hLastWeapon = 0x5C; // CHandle<CBasePlayerWeapon>
                 constexpr std::ptrdiff_t m_iAmmo = 0x60; // uint16[32]
                 constexpr std::ptrdiff_t m_bPreventWeaponPickup = 0xA0; // bool
             }
-
             // Parent: None
             // Field count: 3
-            namespace CAttributeManager__cached_attribute_float_t
-            {
+            namespace CAttributeManager__cached_attribute_float_t {
                 constexpr std::ptrdiff_t flIn = 0x0; // float32
                 constexpr std::ptrdiff_t iAttribHook = 0x8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t flOut = 0x10; // float32
             }
-
             // Parent: CTeam
             // Field count: 14
             //
@@ -8220,8 +7125,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iClanID (uint32)
             // NetworkVarNames: m_szTeamFlagImage (char)
             // NetworkVarNames: m_szTeamLogoImage (char)
-            namespace CCSTeam
-            {
+            namespace CCSTeam {
                 constexpr std::ptrdiff_t m_nLastRecievedShorthandedRoundBonus = 0x598; // int32
                 constexpr std::ptrdiff_t m_nShorthandedRoundBonusStartRound = 0x59C; // int32
                 constexpr std::ptrdiff_t m_bSurrendered = 0x5A0; // bool
@@ -8237,14 +7141,11 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flNextResourceTime = 0x84C; // float32
                 constexpr std::ptrdiff_t m_iLastUpdateSentAt = 0x850; // int32
             }
-
             // Parent: None
             // Field count: 1
-            namespace CCSGameModeRules
-            {
+            namespace CCSGameModeRules {
                 constexpr std::ptrdiff_t __m_pChainEntity = 0x8; // CNetworkVarChainer
             }
-
             // Parent: None
             // Field count: 8
             //
@@ -8257,8 +7158,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nHierarchyId (uint16)
             // NetworkVarNames: m_nCollisionGroup (uint8)
             // NetworkVarNames: m_nCollisionFunctionMask (uint8)
-            namespace VPhysicsCollisionAttribute_t
-            {
+            namespace VPhysicsCollisionAttribute_t {
                 constexpr std::ptrdiff_t m_nInteractsAs = 0x8; // uint64
                 constexpr std::ptrdiff_t m_nInteractsWith = 0x10; // uint64
                 constexpr std::ptrdiff_t m_nInteractsExclude = 0x18; // uint64
@@ -8268,17 +7168,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nCollisionGroup = 0x2A; // uint8
                 constexpr std::ptrdiff_t m_nCollisionFunctionMask = 0x2B; // uint8
             }
-
             // Parent: CTriggerMultiple
             // Field count: 4
-            namespace CTriggerImpact
-            {
+            namespace CTriggerImpact {
                 constexpr std::ptrdiff_t m_flMagnitude = 0x988; // float32
                 constexpr std::ptrdiff_t m_flNoise = 0x98C; // float32
                 constexpr std::ptrdiff_t m_flViewkick = 0x990; // float32
                 constexpr std::ptrdiff_t m_pOutputForce = 0x998; // CEntityOutputTemplate<Vector>
             }
-
             // Parent: CBaseModelEntity
             // Field count: 14
             //
@@ -8298,8 +7195,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flAlphaScale (float32)
             // NetworkVarNames: m_flHDRColorScale (float32)
             // NetworkVarNames: m_flFarZScale (float32)
-            namespace CSun
-            {
+            namespace CSun {
                 constexpr std::ptrdiff_t m_vDirection = 0x790; // Vector
                 constexpr std::ptrdiff_t m_clrOverlay = 0x79C; // Color
                 constexpr std::ptrdiff_t m_iszEffectName = 0x7A0; // CUtlSymbolLarge
@@ -8315,34 +7211,25 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flHDRColorScale = 0x7CC; // float32
                 constexpr std::ptrdiff_t m_flFarZScale = 0x7D0; // float32
             }
-
             // Parent: CBaseTrigger
             // Field count: 2
-            namespace CTriggerDetectBulletFire
-            {
+            namespace CTriggerDetectBulletFire {
                 constexpr std::ptrdiff_t m_bPlayerFireOnly = 0x960; // bool
                 constexpr std::ptrdiff_t m_OnDetectedBulletFire = 0x968; // CEntityIOOutput
             }
-
             // Parent: CBaseModelEntity
             // Field count: 0
-            namespace CWorld
-            {
+            namespace CWorld {
             }
-
             // Parent: CPointEntity
             // Field count: 1
-            namespace CPointGiveAmmo
-            {
+            namespace CPointGiveAmmo {
                 constexpr std::ptrdiff_t m_pActivator = 0x4E0; // CHandle<CBaseEntity>
             }
-
             // Parent: CFuncMoveLinear
             // Field count: 0
-            namespace CFuncMoveLinearAlias_momentary_door
-            {
+            namespace CFuncMoveLinearAlias_momentary_door {
             }
-
             // Parent: CBaseEntity
             // Field count: 16
             //
@@ -8359,8 +7246,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_PathNodes_Color (Vector)
             // NetworkVarNames: m_PathNodes_PinEnabled (bool)
             // NetworkVarNames: m_PathNodes_RadiusScale (float)
-            namespace CPathParticleRope
-            {
+            namespace CPathParticleRope {
                 constexpr std::ptrdiff_t m_bStartActive = 0x4E8; // bool
                 constexpr std::ptrdiff_t m_flMaxSimulationTime = 0x4EC; // float32
                 constexpr std::ptrdiff_t m_iszEffectName = 0x4F0; // CUtlSymbolLarge
@@ -8378,7 +7264,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_PathNodes_PinEnabled = 0x590; // CNetworkUtlVectorBase<bool>
                 constexpr std::ptrdiff_t m_PathNodes_RadiusScale = 0x5A8; // CNetworkUtlVectorBase<float32>
             }
-
             // Parent: CBaseEntity
             // Field count: 6
             //
@@ -8389,8 +7274,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flFadeTime (float)
             // NetworkVarNames: m_bStartDisabled (bool)
             // NetworkVarNames: m_bIsEnabled (bool)
-            namespace CPlayerVisibility
-            {
+            namespace CPlayerVisibility {
                 constexpr std::ptrdiff_t m_flVisibilityStrength = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flFogDistanceMultiplier = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flFogMaxDensityMultiplier = 0x4E8; // float32
@@ -8398,45 +7282,33 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bStartDisabled = 0x4F0; // bool
                 constexpr std::ptrdiff_t m_bIsEnabled = 0x4F1; // bool
             }
-
             // Parent: CServerOnlyEntity
             // Field count: 0
-            namespace CServerOnlyPointEntity
-            {
+            namespace CServerOnlyPointEntity {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CAK47
-            {
+            namespace CAK47 {
             }
-
             // Parent: CBaseTrigger
             // Field count: 4
-            namespace CTriggerTeleport
-            {
+            namespace CTriggerTeleport {
                 constexpr std::ptrdiff_t m_iLandmark = 0x960; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_bUseLandmarkAngles = 0x968; // bool
                 constexpr std::ptrdiff_t m_bMirrorPlayer = 0x969; // bool
                 constexpr std::ptrdiff_t m_bCheckDestIfClearForPlayer = 0x96A; // bool
             }
-
             // Parent: CCSPlayerBase_CameraServices
             // Field count: 0
-            namespace CCSObserver_CameraServices
-            {
+            namespace CCSObserver_CameraServices {
             }
-
             // Parent: CCSGO_TeamIntroCharacterPosition
             // Field count: 0
-            namespace CCSGO_TeamIntroTerroristPosition
-            {
+            namespace CCSGO_TeamIntroTerroristPosition {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 38
-            namespace CFuncMover
-            {
+            namespace CFuncMover {
                 constexpr std::ptrdiff_t m_bCreateMovableNavMesh = 0x790; // bool
                 constexpr std::ptrdiff_t m_iszPathName = 0x798; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hPathMover = 0x7A0; // CHandle<CPathMover>
@@ -8476,7 +7348,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flDurationBlendToNewOrientationRan = 0x878; // float32
                 constexpr std::ptrdiff_t m_qOriginalOrientation = 0x880; // Quaternion
             }
-
             // Parent: None
             // Field count: 5
             //
@@ -8486,42 +7357,32 @@ namespace cs2_dumper
             // NetworkVarNames: localBits (uint8)
             // NetworkVarNames: soundscapeEntityListIndex (int)
             // NetworkVarNames: soundEventHash (uint32)
-            namespace audioparams_t
-            {
+            namespace audioparams_t {
                 constexpr std::ptrdiff_t localSound = 0x8; // Vector[8]
                 constexpr std::ptrdiff_t soundscapeIndex = 0x68; // int32
                 constexpr std::ptrdiff_t localBits = 0x6C; // uint8
                 constexpr std::ptrdiff_t soundscapeEntityListIndex = 0x70; // int32
                 constexpr std::ptrdiff_t soundEventHash = 0x74; // uint32
             }
-
             // Parent: CBaseCSGrenade
             // Field count: 0
-            namespace CHEGrenade
-            {
+            namespace CHEGrenade {
             }
-
             // Parent: CRulePointEntity
             // Field count: 0
-            namespace CGameEnd
-            {
+            namespace CGameEnd {
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CTriggerCallback
-            {
+            namespace CTriggerCallback {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 3
-            namespace CBubbling
-            {
+            namespace CBubbling {
                 constexpr std::ptrdiff_t m_density = 0x790; // int32
                 constexpr std::ptrdiff_t m_frequency = 0x794; // int32
                 constexpr std::ptrdiff_t m_state = 0x798; // int32
             }
-
             // Parent: CTeamplayRules
             // Field count: 189
             //
@@ -8621,8 +7482,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nRoundEndCount (uint8)
             // NetworkVarNames: m_iRoundStartRoundNumber (int)
             // NetworkVarNames: m_nRoundStartCount (uint8)
-            namespace CCSGameRules
-            {
+            namespace CCSGameRules {
                 constexpr std::ptrdiff_t m_bFreezePeriod = 0xC8; // bool
                 constexpr std::ptrdiff_t m_bWarmupPeriod = 0xC9; // bool
                 constexpr std::ptrdiff_t m_fWarmupPeriodEnd = 0xCC; // GameTime_t
@@ -8813,23 +7673,18 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nRoundStartCount = 0x17F4; // uint8
                 constexpr std::ptrdiff_t m_flLastPerfSampleTime = 0x5800; // float64
             }
-
             // Parent: CPhysicsProp
             // Field count: 0
-            namespace CPhysicsPropOverride
-            {
+            namespace CPhysicsPropOverride {
             }
-
             // Parent: CBaseEntity
             // Field count: 4
-            namespace CAI_ChangeHintGroup
-            {
+            namespace CAI_ChangeHintGroup {
                 constexpr std::ptrdiff_t m_iSearchType = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_strSearchName = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_strNewHintGroup = 0x4F0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_flRadius = 0x4F8; // float32
             }
-
             // Parent: CBaseTrigger
             // Field count: 10
             //
@@ -8839,8 +7694,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_FadeDuration (float32)
             // NetworkVarNames: m_Weight (float32)
             // NetworkVarNames: m_lookupFilename (char)
-            namespace CColorCorrectionVolume
-            {
+            namespace CColorCorrectionVolume {
                 constexpr std::ptrdiff_t m_bEnabled = 0x960; // bool
                 constexpr std::ptrdiff_t m_MaxWeight = 0x964; // float32
                 constexpr std::ptrdiff_t m_FadeDuration = 0x968; // float32
@@ -8852,24 +7706,19 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_LastExitWeight = 0xB7C; // float32
                 constexpr std::ptrdiff_t m_LastExitTime = 0xB80; // GameTime_t
             }
-
             // Parent: CBaseFilter
             // Field count: 5
-            namespace CFilterEnemy
-            {
+            namespace CFilterEnemy {
                 constexpr std::ptrdiff_t m_iszEnemyName = 0x538; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_flRadius = 0x540; // float32
                 constexpr std::ptrdiff_t m_flOuterRadius = 0x544; // float32
                 constexpr std::ptrdiff_t m_nMaxSquadmatesPerEnemy = 0x548; // int32
                 constexpr std::ptrdiff_t m_iszPlayerName = 0x550; // CUtlSymbolLarge
             }
-
             // Parent: CModelPointEntity
             // Field count: 0
-            namespace CShower
-            {
+            namespace CShower {
             }
-
             // Parent: CBaseEntity
             // Field count: 18
             //
@@ -8891,8 +7740,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iszSkyEntity (string_t)
             // NetworkVarNames: m_hFogCubemapTexture (HRenderTextureStrong)
             // NetworkVarNames: m_bHasHeightFogEnd (bool)
-            namespace CEnvCubemapFog
-            {
+            namespace CEnvCubemapFog {
                 constexpr std::ptrdiff_t m_flEndDistance = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flStartDistance = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flFogFalloffExponent = 0x4E8; // float32
@@ -8912,17 +7760,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bHasHeightFogEnd = 0x528; // bool
                 constexpr std::ptrdiff_t m_bFirstTime = 0x529; // bool
             }
-
             // Parent: CBaseButton
             // Field count: 0
-            namespace CPhysicalButton
-            {
+            namespace CPhysicalButton {
             }
-
             // Parent: CModelPointEntity
             // Field count: 16
-            namespace CEnvExplosion
-            {
+            namespace CEnvExplosion {
                 constexpr std::ptrdiff_t m_iMagnitude = 0x790; // int32
                 constexpr std::ptrdiff_t m_flPlayerDamage = 0x794; // float32
                 constexpr std::ptrdiff_t m_iRadiusOverride = 0x798; // int32
@@ -8940,32 +7784,26 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iszEntityIgnoreName = 0x7D8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hEntityIgnore = 0x7E0; // CHandle<CBaseEntity>
             }
-
             // Parent: CSoundEventEntity
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_vMins (Vector)
             // NetworkVarNames: m_vMaxs (Vector)
-            namespace CSoundEventAABBEntity
-            {
+            namespace CSoundEventAABBEntity {
                 constexpr std::ptrdiff_t m_vMins = 0x598; // Vector
                 constexpr std::ptrdiff_t m_vMaxs = 0x5A4; // Vector
             }
-
             // Parent: CTriggerMultiple
             // Field count: 0
-            namespace CTriggerOnce
-            {
+            namespace CTriggerOnce {
             }
-
             // Parent: CEntitySubclassVDataBase
             // Field count: 7
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace CPrecipitationVData
-            {
+            namespace CPrecipitationVData {
                 constexpr std::ptrdiff_t m_szParticlePrecipitationEffect = 0x28; // CResourceNameTyped<CWeakHandle<InfoForResourceTypeIParticleSystemDefinition>>
                 constexpr std::ptrdiff_t m_flInnerDistance = 0x108; // float32
                 constexpr std::ptrdiff_t m_nAttachType = 0x10C; // ParticleAttachment_t
@@ -8974,13 +7812,10 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nRTEnvCPComponent = 0x118; // int32
                 constexpr std::ptrdiff_t m_szModifier = 0x120; // CUtlString
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CLogicProximity
-            {
+            namespace CLogicProximity {
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 30
             //
@@ -8995,8 +7830,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iNodeNumber (int)
             // NetworkVarNames: m_iNodeNumberMax (int)
             // NetworkVarNames: m_bListenedTo (bool)
-            namespace CPointCommentaryNode
-            {
+            namespace CPointCommentaryNode {
                 constexpr std::ptrdiff_t m_iszPreCommands = 0x9A8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszPostCommands = 0x9B0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszCommentaryFile = 0x9B8; // CUtlSymbolLarge
@@ -9028,7 +7862,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iNodeNumberMax = 0xA94; // int32
                 constexpr std::ptrdiff_t m_bListenedTo = 0xA98; // bool
             }
-
             // Parent: CBaseClientUIEntity
             // Field count: 23
             //
@@ -9056,8 +7889,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bOnlyRenderToTexture (bool)
             // NetworkVarNames: m_bDisableMipGen (bool)
             // NetworkVarNames: m_nExplicitImageLayout (int32)
-            namespace CPointClientUIWorldPanel
-            {
+            namespace CPointClientUIWorldPanel {
                 constexpr std::ptrdiff_t m_bIgnoreInput = 0x940; // bool
                 constexpr std::ptrdiff_t m_bLit = 0x941; // bool
                 constexpr std::ptrdiff_t m_bFollowPlayerAcrossTeleport = 0x942; // bool
@@ -9082,24 +7914,18 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bDisableMipGen = 0x98F; // bool
                 constexpr std::ptrdiff_t m_nExplicitImageLayout = 0x990; // int32
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace CFilterContext
-            {
+            namespace CFilterContext {
                 constexpr std::ptrdiff_t m_iFilterContext = 0x538; // CUtlSymbolLarge
             }
-
             // Parent: CPathParticleRope
             // Field count: 0
-            namespace CPathParticleRopeAlias_path_particle_rope_clientside
-            {
+            namespace CPathParticleRopeAlias_path_particle_rope_clientside {
             }
-
             // Parent: None
             // Field count: 6
-            namespace CBuoyancyHelper
-            {
+            namespace CBuoyancyHelper {
                 constexpr std::ptrdiff_t m_nFluidType = 0x18; // CUtlStringToken
                 constexpr std::ptrdiff_t m_flFluidDensity = 0x1C; // float32
                 constexpr std::ptrdiff_t m_vecFractionOfWheelSubmergedForWheelFriction = 0x20; // CUtlVector<float32>
@@ -9107,14 +7933,11 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vecFractionOfWheelSubmergedForWheelDrag = 0x50; // CUtlVector<float32>
                 constexpr std::ptrdiff_t m_vecWheelDrag = 0x68; // CUtlVector<float32>
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace CFilterAttributeInt
-            {
+            namespace CFilterAttributeInt {
                 constexpr std::ptrdiff_t m_sAttributeName = 0x538; // CUtlStringToken
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 4
             //
@@ -9122,18 +7945,15 @@ namespace cs2_dumper
             // NetworkVarNames: m_bIsRescuing (bool)
             // NetworkVarNames: m_weaponPurchasesThisMatch (WeaponPurchaseTracker_t)
             // NetworkVarNames: m_weaponPurchasesThisRound (WeaponPurchaseTracker_t)
-            namespace CCSPlayer_ActionTrackingServices
-            {
+            namespace CCSPlayer_ActionTrackingServices {
                 constexpr std::ptrdiff_t m_hLastWeaponBeforeC4AutoSwitch = 0x200; // CHandle<CBasePlayerWeapon>
                 constexpr std::ptrdiff_t m_bIsRescuing = 0x22C; // bool
                 constexpr std::ptrdiff_t m_weaponPurchasesThisMatch = 0x230; // WeaponPurchaseTracker_t
                 constexpr std::ptrdiff_t m_weaponPurchasesThisRound = 0x288; // WeaponPurchaseTracker_t
             }
-
             // Parent: CPointEntity
             // Field count: 6
-            namespace CAISound
-            {
+            namespace CAISound {
                 constexpr std::ptrdiff_t m_iSoundType = 0x4E0; // SoundTypes_t
                 constexpr std::ptrdiff_t m_iSoundFlags = 0x4E2; // SoundFlags_t
                 constexpr std::ptrdiff_t m_iVolume = 0x4E4; // int32
@@ -9141,11 +7961,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flDuration = 0x4EC; // float32
                 constexpr std::ptrdiff_t m_iszProxyEntityName = 0x4F0; // CUtlSymbolLarge
             }
-
             // Parent: CBaseEntity
             // Field count: 7
-            namespace CPointEntityFinder
-            {
+            namespace CPointEntityFinder {
                 constexpr std::ptrdiff_t m_hEntity = 0x4E0; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_iFilterName = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hFilter = 0x4F0; // CHandle<CBaseFilter>
@@ -9154,7 +7972,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_FindMethod = 0x504; // EntFinderMethod_t
                 constexpr std::ptrdiff_t m_OnFoundEntity = 0x508; // CEntityIOOutput
             }
-
             // Parent: None
             // Field count: 13
             //
@@ -9172,8 +7989,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bHasParent (bool)
             // NetworkVarNames: m_bParentFrozen (bool)
             // NetworkVarNames: m_SurfacePropStringToken (CUtlStringToken)
-            namespace shard_model_desc_t
-            {
+            namespace shard_model_desc_t {
                 constexpr std::ptrdiff_t m_nModelID = 0x8; // int32
                 constexpr std::ptrdiff_t m_hMaterialBase = 0x10; // CStrongHandle<InfoForResourceTypeIMaterial2>
                 constexpr std::ptrdiff_t m_hMaterialDamageOverlay = 0x18; // CStrongHandle<InfoForResourceTypeIMaterial2>
@@ -9188,17 +8004,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bParentFrozen = 0x75; // bool
                 constexpr std::ptrdiff_t m_SurfacePropStringToken = 0x78; // CUtlStringToken
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 4
-            namespace CBaseProp
-            {
+            namespace CBaseProp {
                 constexpr std::ptrdiff_t m_bModelOverrodeBlockLOS = 0x9A8; // bool
                 constexpr std::ptrdiff_t m_iShapeType = 0x9AC; // int32
                 constexpr std::ptrdiff_t m_bConformToCollisionBounds = 0x9B0; // bool
                 constexpr std::ptrdiff_t m_mPreferredCatchTransform = 0x9B4; // matrix3x4_t
             }
-
             // Parent: CBaseModelEntity
             // Field count: 12
             //
@@ -9215,8 +8028,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flFogMaxStart (float)
             // NetworkVarNames: m_flFogMaxEnd (float)
             // NetworkVarNames: m_bEnabled (bool)
-            namespace CEnvSky
-            {
+            namespace CEnvSky {
                 constexpr std::ptrdiff_t m_hSkyMaterial = 0x790; // CStrongHandle<InfoForResourceTypeIMaterial2>
                 constexpr std::ptrdiff_t m_hSkyMaterialLightingOnly = 0x798; // CStrongHandle<InfoForResourceTypeIMaterial2>
                 constexpr std::ptrdiff_t m_bStartDisabled = 0x7A0; // bool
@@ -9230,11 +8042,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flFogMaxEnd = 0x7C0; // float32
                 constexpr std::ptrdiff_t m_bEnabled = 0x7C4; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 6
-            namespace CPointVelocitySensor
-            {
+            namespace CPointVelocitySensor {
                 constexpr std::ptrdiff_t m_hTargetEntity = 0x4E0; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_vecAxis = 0x4E4; // Vector
                 constexpr std::ptrdiff_t m_bEnabled = 0x4F0; // bool
@@ -9242,62 +8052,46 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flAvgInterval = 0x4F8; // float32
                 constexpr std::ptrdiff_t m_Velocity = 0x500; // CEntityOutputTemplate<float32>
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace CFilterMassGreater
-            {
+            namespace CFilterMassGreater {
                 constexpr std::ptrdiff_t m_fFilterMass = 0x538; // float32
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace FilterTeam
-            {
+            namespace FilterTeam {
                 constexpr std::ptrdiff_t m_iFilterTeam = 0x538; // int32
             }
-
             // Parent: CFuncTrackTrain
             // Field count: 1
-            namespace CFuncTankTrain
-            {
+            namespace CFuncTankTrain {
                 constexpr std::ptrdiff_t m_OnDeath = 0x8E0; // CEntityIOOutput
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CNullEntity
-            {
+            namespace CNullEntity {
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CCSPointScriptExtensions_observer
-            {
+            namespace CCSPointScriptExtensions_observer {
             }
-
             // Parent: CMarkupVolumeWithRef
             // Field count: 1
-            namespace CMarkupVolumeTagged_NavGame
-            {
+            namespace CMarkupVolumeTagged_NavGame {
                 constexpr std::ptrdiff_t m_bFloodFillAttribute = 0x7E8; // bool
             }
-
             // Parent: CBaseTrigger
             // Field count: 1
-            namespace CBuyZone
-            {
+            namespace CBuyZone {
                 constexpr std::ptrdiff_t m_LegacyTeamNum = 0x960; // int32
             }
-
             // Parent: CLogicalEntity
             // Field count: 12
-            namespace CPointTemplate
-            {
+            namespace CPointTemplate {
                 constexpr std::ptrdiff_t m_iszWorldName = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszSource2EntityLumpName = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszEntityFilterName = 0x4F0; // CUtlSymbolLarge
@@ -9311,17 +8105,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_ScriptSpawnCallback = 0x560; // HSCRIPT
                 constexpr std::ptrdiff_t m_ScriptCallbackScope = 0x568; // HSCRIPT
             }
-
             // Parent: CBaseCSGrenade
             // Field count: 0
-            namespace CTripWireFire
-            {
+            namespace CTripWireFire {
             }
-
             // Parent: CPointEntity
             // Field count: 6
-            namespace CPhysForce
-            {
+            namespace CPhysForce {
                 constexpr std::ptrdiff_t m_nameAttach = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_force = 0x4F0; // float32
                 constexpr std::ptrdiff_t m_forceTime = 0x4F4; // float32
@@ -9329,11 +8119,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_wasRestored = 0x4FC; // bool
                 constexpr std::ptrdiff_t m_integrator = 0x500; // CConstantForceController
             }
-
             // Parent: CLogicalEntity
             // Field count: 6
-            namespace CLogicDistanceAutosave
-            {
+            namespace CLogicDistanceAutosave {
                 constexpr std::ptrdiff_t m_iszTargetEntity = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_flDistanceToPlayer = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_bForceNewLevelUnit = 0x4EC; // bool
@@ -9341,22 +8129,18 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bThinkDangerous = 0x4EE; // bool
                 constexpr std::ptrdiff_t m_flDangerousTime = 0x4F0; // float32
             }
-
             // Parent: CPointEntity
             // Field count: 5
-            namespace CInfoDynamicShadowHint
-            {
+            namespace CInfoDynamicShadowHint {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_flRange = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_nImportance = 0x4E8; // int32
                 constexpr std::ptrdiff_t m_nLightChoice = 0x4EC; // int32
                 constexpr std::ptrdiff_t m_hLight = 0x4F0; // CHandle<CBaseEntity>
             }
-
             // Parent: CSoundOpvarSetPointEntity
             // Field count: 9
-            namespace CSoundOpvarSetAABBEntity
-            {
+            namespace CSoundOpvarSetAABBEntity {
                 constexpr std::ptrdiff_t m_vDistanceInnerMins = 0x688; // Vector
                 constexpr std::ptrdiff_t m_vDistanceInnerMaxs = 0x694; // Vector
                 constexpr std::ptrdiff_t m_vDistanceOuterMins = 0x6A0; // Vector
@@ -9367,38 +8151,29 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vOuterMins = 0x6D4; // Vector
                 constexpr std::ptrdiff_t m_vOuterMaxs = 0x6E0; // Vector
             }
-
             // Parent: None
             // Field count: 2
-            namespace CEnvWindShared__WindVariationEvent_t
-            {
+            namespace CEnvWindShared__WindVariationEvent_t {
                 constexpr std::ptrdiff_t m_flWindAngleVariation = 0x0; // float32
                 constexpr std::ptrdiff_t m_flWindSpeedVariation = 0x4; // float32
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CTakeDamageInfoAPI
-            {
+            namespace CTakeDamageInfoAPI {
             }
-
             // Parent: CTriggerOnce
             // Field count: 1
-            namespace CScriptTriggerOnce
-            {
+            namespace CScriptTriggerOnce {
                 constexpr std::ptrdiff_t m_vExtent = 0x988; // Vector
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CNavWalkable
-            {
+            namespace CNavWalkable {
             }
-
             // Parent: None
             // Field count: 11
             //
@@ -9412,8 +8187,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flGlowTime (float)
             // NetworkVarNames: m_flGlowStartTime (float)
             // NetworkVarNames: m_bEligibleForScreenHighlight (bool)
-            namespace CGlowProperty
-            {
+            namespace CGlowProperty {
                 constexpr std::ptrdiff_t m_fGlowColor = 0x8; // Vector
                 constexpr std::ptrdiff_t m_iGlowType = 0x30; // int32
                 constexpr std::ptrdiff_t m_iGlowTeam = 0x34; // int32
@@ -9426,78 +8200,59 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bEligibleForScreenHighlight = 0x50; // bool
                 constexpr std::ptrdiff_t m_bGlowing = 0x51; // bool
             }
-
             // Parent: CBaseCSGrenadeProjectile
             // Field count: 3
-            namespace CFlashbangProjectile
-            {
+            namespace CFlashbangProjectile {
                 constexpr std::ptrdiff_t m_flTimeToDetonate = 0xB50; // float32
                 constexpr std::ptrdiff_t m_numOpponentsHit = 0xB54; // uint8
                 constexpr std::ptrdiff_t m_numTeammatesHit = 0xB55; // uint8
             }
-
             // Parent: CPointClientUIWorldPanel
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_messageText (char)
-            namespace CPointClientUIWorldTextPanel
-            {
+            namespace CPointClientUIWorldTextPanel {
                 constexpr std::ptrdiff_t m_messageText = 0x998; // char[512]
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoInstructorHintTarget
-            {
+            namespace CInfoInstructorHintTarget {
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_hCarriedHostage (CHandle<CBaseEntity>)
             // NetworkVarNames: m_hCarriedHostageProp (CHandle<CBaseEntity>)
-            namespace CCSPlayer_HostageServices
-            {
+            namespace CCSPlayer_HostageServices {
                 constexpr std::ptrdiff_t m_hCarriedHostage = 0x40; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_hCarriedHostageProp = 0x44; // CHandle<CBaseEntity>
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponSSG08
-            {
+            namespace CWeaponSSG08 {
             }
-
             // Parent: CCSWeaponBase
             // Field count: 0
-            namespace CBreachCharge
-            {
+            namespace CBreachCharge {
             }
-
             // Parent: CLogicalEntity
             // Field count: 4
-            namespace CLogicBranch
-            {
+            namespace CLogicBranch {
                 constexpr std::ptrdiff_t m_bInValue = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_Listeners = 0x4E8; // CUtlVector<CHandle<CBaseEntity>>
                 constexpr std::ptrdiff_t m_OnTrue = 0x500; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnFalse = 0x528; // CEntityIOOutput
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponUMP45
-            {
+            namespace CWeaponUMP45 {
             }
-
             // Parent: CSprite
             // Field count: 0
-            namespace CSpriteAlias_env_glow
-            {
+            namespace CSpriteAlias_env_glow {
             }
-
             // Parent: CBaseToggle
             // Field count: 25
             //
@@ -9505,8 +8260,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_glowEntity (CHandle<CBaseModelEntity>)
             // NetworkVarNames: m_usable (bool)
             // NetworkVarNames: m_szDisplayText (string_t)
-            namespace CBaseButton
-            {
+            namespace CBaseButton {
                 constexpr std::ptrdiff_t m_angMoveEntitySpace = 0x810; // QAngle
                 constexpr std::ptrdiff_t m_fStayPushed = 0x81C; // bool
                 constexpr std::ptrdiff_t m_fRotating = 0x81D; // bool
@@ -9533,11 +8287,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_usable = 0x954; // bool
                 constexpr std::ptrdiff_t m_szDisplayText = 0x958; // CUtlSymbolLarge
             }
-
             // Parent: CPhysConstraint
             // Field count: 6
-            namespace CPhysLength
-            {
+            namespace CPhysLength {
                 constexpr std::ptrdiff_t m_offset = 0x558; // Vector[2]
                 constexpr std::ptrdiff_t m_vecAttach = 0x570; // Vector
                 constexpr std::ptrdiff_t m_addLength = 0x57C; // float32
@@ -9545,11 +8297,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_totalLength = 0x584; // float32
                 constexpr std::ptrdiff_t m_bEnableCollision = 0x588; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 48
-            namespace CLogicNPCCounter
-            {
+            namespace CLogicNPCCounter {
                 constexpr std::ptrdiff_t m_OnMinCountAll = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnMaxCountAll = 0x508; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnFactorAll = 0x530; // CEntityOutputTemplate<float32>
@@ -9599,60 +8349,50 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nMaxFactor_3 = 0x7FC; // int32
                 constexpr std::ptrdiff_t m_flDefaultDist_3 = 0x804; // float32
             }
-
             // Parent: CPredictedViewModel
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_bShouldIgnoreOffsetAndAccuracy (bool)
-            namespace CCSGOViewModel
-            {
+            namespace CCSGOViewModel {
                 constexpr std::ptrdiff_t m_bShouldIgnoreOffsetAndAccuracy = 0x9F0; // bool
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 3
             //
             // Metadata:
             // NetworkVarNames: m_flDisplayHealth (float)
-            namespace CWeaponShield
-            {
+            namespace CWeaponShield {
                 constexpr std::ptrdiff_t m_flBulletDamageAbsorbed = 0xF90; // float32
                 constexpr std::ptrdiff_t m_flLastBulletHitSoundTime = 0xF94; // GameTime_t
                 constexpr std::ptrdiff_t m_flDisplayHealth = 0xF98; // float32
             }
-
             // Parent: CPointEntity
             // Field count: 4
-            namespace CBlood
-            {
+            namespace CBlood {
                 constexpr std::ptrdiff_t m_vecSprayAngles = 0x4E0; // QAngle
                 constexpr std::ptrdiff_t m_vecSprayDir = 0x4EC; // Vector
                 constexpr std::ptrdiff_t m_flAmount = 0x4F8; // float32
                 constexpr std::ptrdiff_t m_Color = 0x4FC; // BloodType
             }
-
             // Parent: CLogicalEntity
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_fadeColor (Color)
-            namespace CEnvFade
-            {
+            namespace CEnvFade {
                 constexpr std::ptrdiff_t m_fadeColor = 0x4E0; // Color
                 constexpr std::ptrdiff_t m_Duration = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_HoldDuration = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_OnBeginFade = 0x4F0; // CEntityIOOutput
             }
-
             // Parent: CBaseProp
             // Field count: 33
             //
             // Metadata:
             // NetworkVarNames: m_CPropDataComponent (CPropDataComponent::Storage_t)
             // NetworkVarNames: m_noGhostCollision (bool)
-            namespace CBreakableProp
-            {
+            namespace CBreakableProp {
                 constexpr std::ptrdiff_t m_CPropDataComponent = 0x9F0; // CPropDataComponent
                 constexpr std::ptrdiff_t m_OnBreak = 0xA30; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnHealthChanged = 0xA58; // CEntityOutputTemplate<float32>
@@ -9687,35 +8427,29 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iszPuntSound = 0xB48; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_noGhostCollision = 0xB50; // bool
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_vecSellbackPurchaseEntries (SellbackPurchaseEntry_t)
-            namespace CCSPlayer_BuyServices
-            {
+            namespace CCSPlayer_BuyServices {
                 constexpr std::ptrdiff_t m_vecSellbackPurchaseEntries = 0xC8; // CUtlVectorEmbeddedNetworkVar<SellbackPurchaseEntry_t>
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CPathSimpleAPI
-            {
+            namespace CPathSimpleAPI {
             }
-
             // Parent: CBaseFlex
             // Field count: 9
             //
             // Metadata:
             // MNetworkExcludeByUserGroup
             // NetworkVarNames: m_hMyWearables (CHandle<CEconWearable>)
-            namespace CBaseCombatCharacter
-            {
+            namespace CBaseCombatCharacter {
                 constexpr std::ptrdiff_t m_bForceServerRagdoll = 0xA38; // bool
                 constexpr std::ptrdiff_t m_hMyWearables = 0xA40; // CNetworkUtlVectorBase<CHandle<CEconWearable>>
                 constexpr std::ptrdiff_t m_impactEnergyScale = 0xA58; // float32
@@ -9726,7 +8460,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_eHull = 0xAB8; // Hull_t
                 constexpr std::ptrdiff_t m_nNavHullIdx = 0xABC; // uint32
             }
-
             // Parent: CBaseModelEntity
             // Field count: 25
             //
@@ -9740,8 +8473,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nFireEffectTickBegin (int)
             // NetworkVarNames: m_nFireLifetime (float)
             // NetworkVarNames: m_bInPostEffectTime (bool)
-            namespace CInferno
-            {
+            namespace CInferno {
                 constexpr std::ptrdiff_t m_firePositions = 0x7A0; // Vector[64]
                 constexpr std::ptrdiff_t m_fireParentPositions = 0xAA0; // Vector[64]
                 constexpr std::ptrdiff_t m_bFireIsBurning = 0xDA0; // bool[64]
@@ -9768,27 +8500,22 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_NextSpreadTimer = 0x13B0; // CountdownTimer
                 constexpr std::ptrdiff_t m_nSourceItemDefIndex = 0x13C8; // uint16
             }
-
             // Parent: CLogicalEntity
             // Field count: 5
-            namespace CEnvGlobal
-            {
+            namespace CEnvGlobal {
                 constexpr std::ptrdiff_t m_outCounter = 0x4E0; // CEntityOutputTemplate<int32>
                 constexpr std::ptrdiff_t m_globalstate = 0x508; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_triggermode = 0x510; // int32
                 constexpr std::ptrdiff_t m_initialstate = 0x514; // int32
                 constexpr std::ptrdiff_t m_counter = 0x518; // int32
             }
-
             // Parent: CLogicalEntity
             // Field count: 3
-            namespace CBaseFilter
-            {
+            namespace CBaseFilter {
                 constexpr std::ptrdiff_t m_bNegated = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_OnPass = 0x4E8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnFail = 0x510; // CEntityIOOutput
             }
-
             // Parent: CBaseEntity
             // Field count: 4
             //
@@ -9798,20 +8525,16 @@ namespace cs2_dumper
             // NetworkVarNames: m_aPlayers (CHandle<CBasePlayerPawn>)
             // NetworkVarNames: m_iScore (int32)
             // NetworkVarNames: m_szTeamname (char)
-            namespace CTeam
-            {
+            namespace CTeam {
                 constexpr std::ptrdiff_t m_aPlayerControllers = 0x4E0; // CNetworkUtlVectorBase<CHandle<CBasePlayerController>>
                 constexpr std::ptrdiff_t m_aPlayers = 0x4F8; // CNetworkUtlVectorBase<CHandle<CBasePlayerPawn>>
                 constexpr std::ptrdiff_t m_iScore = 0x510; // int32
                 constexpr std::ptrdiff_t m_szTeamname = 0x514; // char[129]
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponUSPSilencer
-            {
+            namespace CWeaponUSPSilencer {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 23
             //
@@ -9828,8 +8551,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bWorldSpaceScale (bool)
             // NetworkVarNames: m_flGlowProxySize (float32)
             // NetworkVarNames: m_flHDRColorScale (float32)
-            namespace CSprite
-            {
+            namespace CSprite {
                 constexpr std::ptrdiff_t m_hSpriteMaterial = 0x790; // CStrongHandle<InfoForResourceTypeIMaterial2>
                 constexpr std::ptrdiff_t m_hAttachedToEntity = 0x798; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_nAttachment = 0x79C; // AttachmentHandle_t
@@ -9854,48 +8576,35 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nSpriteWidth = 0x7F4; // int32
                 constexpr std::ptrdiff_t m_nSpriteHeight = 0x7F8; // int32
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CTriggerGravity
-            {
+            namespace CTriggerGravity {
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CServerRagdollTrigger
-            {
+            namespace CServerRagdollTrigger {
             }
-
             // Parent: CInfoDynamicShadowHint
             // Field count: 2
-            namespace CInfoDynamicShadowHintBox
-            {
+            namespace CInfoDynamicShadowHintBox {
                 constexpr std::ptrdiff_t m_vBoxMins = 0x4F8; // Vector
                 constexpr std::ptrdiff_t m_vBoxMaxs = 0x504; // Vector
             }
-
             // Parent: CBaseEntity
             // Field count: 3
-            namespace CPathMover
-            {
+            namespace CPathMover {
                 constexpr std::ptrdiff_t m_vecPathNodes = 0x4E8; // CUtlVector<CHandle<CMoverPathNode>>
                 constexpr std::ptrdiff_t m_flPathLength = 0x500; // float32
                 constexpr std::ptrdiff_t m_bClosedLoop = 0x504; // bool
             }
-
             // Parent: CBaseCSGrenade
             // Field count: 0
-            namespace CFlashbang
-            {
+            namespace CFlashbang {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponAug
-            {
+            namespace CWeaponAug {
             }
-
             // Parent: CDynamicProp
             // Field count: 28
             //
@@ -9903,8 +8612,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_AttributeManager (CAttributeContainer)
             // NetworkVarNames: m_jumpedThisFrame (bool)
             // NetworkVarNames: m_leader (CHandle<CCSPlayerPawn>)
-            namespace CChicken
-            {
+            namespace CChicken {
                 constexpr std::ptrdiff_t m_AttributeManager = 0xC78; // CAttributeContainer
                 constexpr std::ptrdiff_t m_updateTimer = 0xF40; // CountdownTimer
                 constexpr std::ptrdiff_t m_stuckAnchor = 0xF58; // Vector
@@ -9934,11 +8642,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_followMinuteTimer = 0x3128; // CountdownTimer
                 constexpr std::ptrdiff_t m_BlockDirectionTimer = 0x3148; // CountdownTimer
             }
-
             // Parent: CBaseTrigger
             // Field count: 7
-            namespace CChangeLevel
-            {
+            namespace CChangeLevel {
                 constexpr std::ptrdiff_t m_sMapName = 0x960; // CUtlString
                 constexpr std::ptrdiff_t m_sLandmarkName = 0x968; // CUtlString
                 constexpr std::ptrdiff_t m_OnChangeLevel = 0x970; // CEntityIOOutput
@@ -9947,11 +8653,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bNewChapter = 0x99A; // bool
                 constexpr std::ptrdiff_t m_bOnChangeLevelFired = 0x99B; // bool
             }
-
             // Parent: CBaseTrigger
             // Field count: 14
-            namespace CTriggerLerpObject
-            {
+            namespace CTriggerLerpObject {
                 constexpr std::ptrdiff_t m_iszLerpTarget = 0x960; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hLerpTarget = 0x968; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_iszLerpTargetAttachment = 0x970; // CUtlSymbolLarge
@@ -9967,7 +8671,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnLerpStarted = 0x9B8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnLerpFinished = 0x9E0; // CEntityIOOutput
             }
-
             // Parent: CBaseToggle
             // Field count: 12
             //
@@ -9975,8 +8678,7 @@ namespace cs2_dumper
             // MNetworkIncludeByName
             // NetworkVarNames: m_bDisabled (bool)
             // NetworkVarNames: m_bClientSidePredicted (bool)
-            namespace CBaseTrigger
-            {
+            namespace CBaseTrigger {
                 constexpr std::ptrdiff_t m_bDisabled = 0x810; // bool
                 constexpr std::ptrdiff_t m_iFilterName = 0x818; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_hFilter = 0x820; // CHandle<CBaseFilter>
@@ -9990,13 +8692,10 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hTouchingEntities = 0x940; // CUtlVector<CHandle<CBaseEntity>>
                 constexpr std::ptrdiff_t m_bClientSidePredicted = 0x958; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CLogicScript
-            {
+            namespace CLogicScript {
             }
-
             // Parent: CBaseFlex
             // Field count: 9
             //
@@ -10008,8 +8707,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nFallbackSeed (int)
             // NetworkVarNames: m_flFallbackWear (float)
             // NetworkVarNames: m_nFallbackStatTrak (int)
-            namespace CEconEntity
-            {
+            namespace CEconEntity {
                 constexpr std::ptrdiff_t m_AttributeManager = 0xA48; // CAttributeContainer
                 constexpr std::ptrdiff_t m_OriginalOwnerXuidLow = 0xD10; // uint32
                 constexpr std::ptrdiff_t m_OriginalOwnerXuidHigh = 0xD14; // uint32
@@ -10020,7 +8718,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hOldProvidee = 0xD28; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_iOldOwnerClass = 0xD2C; // int32
             }
-
             // Parent: None
             // Field count: 17
             //
@@ -10039,8 +8736,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_vCapsuleCenter1 (Vector)
             // NetworkVarNames: m_vCapsuleCenter2 (Vector)
             // NetworkVarNames: m_flCapsuleRadius (float)
-            namespace CCollisionProperty
-            {
+            namespace CCollisionProperty {
                 constexpr std::ptrdiff_t m_collisionAttribute = 0x10; // VPhysicsCollisionAttribute_t
                 constexpr std::ptrdiff_t m_vecMins = 0x40; // Vector
                 constexpr std::ptrdiff_t m_vecMaxs = 0x4C; // Vector
@@ -10059,13 +8755,10 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vCapsuleCenter2 = 0xA0; // Vector
                 constexpr std::ptrdiff_t m_flCapsuleRadius = 0xAC; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CServerOnlyEntity
-            {
+            namespace CServerOnlyEntity {
             }
-
             // Parent: None
             // Field count: 8
             //
@@ -10073,8 +8766,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_hSequence (HSequence)
             // NetworkVarNames: m_flPrevCycle (float32)
             // NetworkVarNames: m_flCycle (float32)
-            namespace CNetworkedSequenceOperation
-            {
+            namespace CNetworkedSequenceOperation {
                 constexpr std::ptrdiff_t m_hSequence = 0x8; // HSequence
                 constexpr std::ptrdiff_t m_flPrevCycle = 0xC; // float32
                 constexpr std::ptrdiff_t m_flCycle = 0x10; // float32
@@ -10084,7 +8776,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flPrevCycleFromDiscontinuity = 0x20; // float32
                 constexpr std::ptrdiff_t m_flPrevCycleForAnimEventDetection = 0x24; // float32
             }
-
             // Parent: CModelPointEntity
             // Field count: 16
             //
@@ -10105,8 +8796,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nJustifyHorizontal (PointWorldTextJustifyHorizontal_t)
             // NetworkVarNames: m_nJustifyVertical (PointWorldTextJustifyVertical_t)
             // NetworkVarNames: m_nReorientMode (PointWorldTextReorientMode_t)
-            namespace CPointWorldText
-            {
+            namespace CPointWorldText {
                 constexpr std::ptrdiff_t m_messageText = 0x790; // char[512]
                 constexpr std::ptrdiff_t m_FontName = 0x990; // char[64]
                 constexpr std::ptrdiff_t m_BackgroundMaterialName = 0x9D0; // char[64]
@@ -10124,19 +8814,16 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nJustifyVertical = 0xA38; // PointWorldTextJustifyVertical_t
                 constexpr std::ptrdiff_t m_nReorientMode = 0xA3C; // PointWorldTextReorientMode_t
             }
-
             // Parent: CSoundAreaEntityBase
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_vMin (Vector)
             // NetworkVarNames: m_vMax (Vector)
-            namespace CSoundAreaEntityOrientedBox
-            {
+            namespace CSoundAreaEntityOrientedBox {
                 constexpr std::ptrdiff_t m_vMin = 0x500; // Vector
                 constexpr std::ptrdiff_t m_vMax = 0x50C; // Vector
             }
-
             // Parent: CBaseTrigger
             // Field count: 13
             //
@@ -10154,8 +8841,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_vecLinearForcePointAtWorld (Vector)
             // NetworkVarNames: m_vecLinearForceDirection (Vector)
             // NetworkVarNames: m_bConvertToDebrisWhenPossible (bool)
-            namespace CTriggerPhysics
-            {
+            namespace CTriggerPhysics {
                 constexpr std::ptrdiff_t m_gravityScale = 0x970; // float32
                 constexpr std::ptrdiff_t m_linearLimit = 0x974; // float32
                 constexpr std::ptrdiff_t m_linearDamping = 0x978; // float32
@@ -10170,29 +8856,23 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vecLinearForceDirection = 0x9AC; // Vector
                 constexpr std::ptrdiff_t m_bConvertToDebrisWhenPossible = 0x9B8; // bool
             }
-
             // Parent: None
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_ID (CUtlStringToken)
             // NetworkVarNames: m_Values (Vector4D)
-            namespace EntityRenderAttribute_t
-            {
+            namespace EntityRenderAttribute_t {
                 constexpr std::ptrdiff_t m_ID = 0x30; // CUtlStringToken
                 constexpr std::ptrdiff_t m_Values = 0x34; // Vector4D
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CPointBroadcastClientCommand
-            {
+            namespace CPointBroadcastClientCommand {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 26
-            namespace CFuncShatterglass
-            {
+            namespace CFuncShatterglass {
                 constexpr std::ptrdiff_t m_matPanelTransform = 0x790; // matrix3x4_t
                 constexpr std::ptrdiff_t m_matPanelTransformWsTemp = 0x7C0; // matrix3x4_t
                 constexpr std::ptrdiff_t m_vecShatterGlassShards = 0x7F0; // CUtlVector<uint32>
@@ -10220,29 +8900,22 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iSurfaceType = 0x8C0; // uint8
                 constexpr std::ptrdiff_t m_hMaterialDamageBase = 0x8C8; // CStrongHandle<InfoForResourceTypeIMaterial2>
             }
-
             // Parent: CBaseButton
             // Field count: 0
-            namespace CRotButton
-            {
+            namespace CRotButton {
             }
-
             // Parent: CSoundEventEntity
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_flRadius (float)
-            namespace CSoundEventSphereEntity
-            {
+            namespace CSoundEventSphereEntity {
                 constexpr std::ptrdiff_t m_flRadius = 0x598; // float32
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponHKP2000
-            {
+            namespace CWeaponHKP2000 {
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 27
             //
@@ -10262,8 +8935,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bBombDefused (bool)
             // NetworkVarNames: m_hBombDefuser (CHandle<CCSPlayerPawn>)
             // NetworkVarNames: m_hControlPanel (CHandle<CBaseEntity>)
-            namespace CPlantedC4
-            {
+            namespace CPlantedC4 {
                 constexpr std::ptrdiff_t m_bBombTicking = 0x9B0; // bool
                 constexpr std::ptrdiff_t m_flC4Blow = 0x9B4; // GameTime_t
                 constexpr std::ptrdiff_t m_nBombSite = 0x9B8; // int32
@@ -10292,25 +8964,20 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_angCatchUpToPlayerEye = 0xD64; // QAngle
                 constexpr std::ptrdiff_t m_flLastSpinDetectionTime = 0xD70; // GameTime_t
             }
-
             // Parent: CBaseClientUIEntity
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_hActivator (EHANDLE)
-            namespace CPointClientUIDialog
-            {
+            namespace CPointClientUIDialog {
                 constexpr std::ptrdiff_t m_hActivator = 0x940; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_bStartEnabled = 0x944; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 1
-            namespace CEnvSplash
-            {
+            namespace CEnvSplash {
                 constexpr std::ptrdiff_t m_flScale = 0x4E0; // float32
             }
-
             // Parent: None
             // Field count: 25
             //
@@ -10339,8 +9006,7 @@ namespace cs2_dumper
             // NetworkVarNames: enable (bool)
             // NetworkVarNames: blend (bool)
             // NetworkVarNames: m_bNoReflectionFog (bool)
-            namespace fogparams_t
-            {
+            namespace fogparams_t {
                 constexpr std::ptrdiff_t dirPrimary = 0x8; // Vector
                 constexpr std::ptrdiff_t colorPrimary = 0x14; // Color
                 constexpr std::ptrdiff_t colorSecondary = 0x18; // Color
@@ -10367,48 +9033,36 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bNoReflectionFog = 0x66; // bool
                 constexpr std::ptrdiff_t m_bPadding = 0x67; // bool
             }
-
             // Parent: CCSWeaponBase
             // Field count: 0
-            namespace CWeaponNOVA
-            {
+            namespace CWeaponNOVA {
             }
-
             // Parent: CPointCamera
             // Field count: 1
-            namespace CPointCameraVFOV
-            {
+            namespace CPointCameraVFOV {
                 constexpr std::ptrdiff_t m_flVerticalFOV = 0x540; // float32
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_fFireTime (GameTime_t)
-            namespace CWeaponTaser
-            {
+            namespace CWeaponTaser {
                 constexpr std::ptrdiff_t m_fFireTime = 0xF90; // GameTime_t
                 constexpr std::ptrdiff_t m_nLastAttackTick = 0xF94; // int32
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 0
-            namespace CWaterBullet
-            {
+            namespace CWaterBullet {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
-            namespace CMarkupVolume
-            {
+            namespace CMarkupVolume {
                 constexpr std::ptrdiff_t m_bDisabled = 0x790; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 6
-            namespace CMessage
-            {
+            namespace CMessage {
                 constexpr std::ptrdiff_t m_iszMessage = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_MessageVolume = 0x4E8; // float32
                 constexpr std::ptrdiff_t m_MessageAttenuation = 0x4EC; // int32
@@ -10416,28 +9070,24 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_sNoise = 0x4F8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_OnShowMessage = 0x500; // CEntityIOOutput
             }
-
             // Parent: CLogicalEntity
             // Field count: 5
             //
             // Metadata:
             // NetworkVarNames: m_bEnabled (bool)
-            namespace CLogicGameEventListener
-            {
+            namespace CLogicGameEventListener {
                 constexpr std::ptrdiff_t m_OnEventFired = 0x4F0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_iszGameEventName = 0x518; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszGameEventItem = 0x520; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_bEnabled = 0x528; // bool
                 constexpr std::ptrdiff_t m_bStartDisabled = 0x529; // bool
             }
-
             // Parent: CBaseModelEntity
             // Field count: 15
             //
             // Metadata:
             // NetworkVarNames: m_CPropDataComponent (CPropDataComponent::Storage_t)
-            namespace CBreakable
-            {
+            namespace CBreakable {
                 constexpr std::ptrdiff_t m_CPropDataComponent = 0x798; // CPropDataComponent
                 constexpr std::ptrdiff_t m_Material = 0x7D8; // Materials
                 constexpr std::ptrdiff_t m_hBreaker = 0x7DC; // CHandle<CBaseEntity>
@@ -10454,11 +9104,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_hPhysicsAttacker = 0x85C; // CHandle<CBasePlayerPawn>
                 constexpr std::ptrdiff_t m_flLastPhysicsInfluenceTime = 0x860; // GameTime_t
             }
-
             // Parent: CBaseModelEntity
             // Field count: 16
-            namespace CBaseToggle
-            {
+            namespace CBaseToggle {
                 constexpr std::ptrdiff_t m_toggle_state = 0x790; // TOGGLE_STATE
                 constexpr std::ptrdiff_t m_flMoveDistance = 0x794; // float32
                 constexpr std::ptrdiff_t m_flWait = 0x798; // float32
@@ -10476,17 +9124,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_movementType = 0x800; // int32
                 constexpr std::ptrdiff_t m_sMaster = 0x808; // CUtlSymbolLarge
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoTarget
-            {
+            namespace CInfoTarget {
             }
-
             // Parent: CRotButton
             // Field count: 14
-            namespace CMomentaryRotButton
-            {
+            namespace CMomentaryRotButton {
                 constexpr std::ptrdiff_t m_Position = 0x960; // CEntityOutputTemplate<float32>
                 constexpr std::ptrdiff_t m_OnUnpressed = 0x988; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnFullyOpen = 0x9B0; // CEntityIOOutput
@@ -10502,11 +9146,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_returnSpeed = 0xA58; // float32
                 constexpr std::ptrdiff_t m_flStartPosition = 0xA5C; // float32
             }
-
             // Parent: CEntityComponent
             // Field count: 10
-            namespace CPropDataComponent
-            {
+            namespace CPropDataComponent {
                 constexpr std::ptrdiff_t m_flDmgModBullet = 0x10; // float32
                 constexpr std::ptrdiff_t m_flDmgModClub = 0x14; // float32
                 constexpr std::ptrdiff_t m_flDmgModExplosive = 0x18; // float32
@@ -10518,21 +9160,16 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nDisableTakePhysicsDamageSpawnFlag = 0x38; // int32
                 constexpr std::ptrdiff_t m_nMotionDisabledSpawnFlag = 0x3C; // int32
             }
-
             // Parent: CRulePointEntity
             // Field count: 2
-            namespace CGameText
-            {
+            namespace CGameText {
                 constexpr std::ptrdiff_t m_iszMessage = 0x7A0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_textParms = 0x7A8; // hudtextparms_t
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponMP5SD
-            {
+            namespace CWeaponMP5SD {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 8
             //
@@ -10545,8 +9182,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_vAnimationBoundsMax (Vector)
             // NetworkVarNames: m_flStartTime (float)
             // NetworkVarNames: m_flStartFrame (float)
-            namespace CTextureBasedAnimatable
-            {
+            namespace CTextureBasedAnimatable {
                 constexpr std::ptrdiff_t m_bLoop = 0x790; // bool
                 constexpr std::ptrdiff_t m_flFPS = 0x794; // float32
                 constexpr std::ptrdiff_t m_hPositionKeys = 0x798; // CStrongHandle<InfoForResourceTypeCTextureBase>
@@ -10556,33 +9192,26 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flStartTime = 0x7C0; // float32
                 constexpr std::ptrdiff_t m_flStartFrame = 0x7C4; // float32
             }
-
             // Parent: CMarkupVolumeTagged
             // Field count: 3
-            namespace CMarkupVolumeWithRef
-            {
+            namespace CMarkupVolumeWithRef {
                 constexpr std::ptrdiff_t m_bUseRef = 0x7D0; // bool
                 constexpr std::ptrdiff_t m_vRefPos = 0x7D4; // Vector
                 constexpr std::ptrdiff_t m_flRefDot = 0x7E0; // float32
             }
-
             // Parent: CPhysForce
             // Field count: 1
-            namespace CPhysThruster
-            {
+            namespace CPhysThruster {
                 constexpr std::ptrdiff_t m_localOrigin = 0x540; // Vector
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CCSPointScriptExtensions_player
-            {
+            namespace CCSPointScriptExtensions_player {
             }
-
             // Parent: CBaseEntity
             // Field count: 8
             //
@@ -10595,8 +9224,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_vDistanceOuterMins (Vector)
             // NetworkVarNames: m_vDistanceOuterMaxs (Vector)
             // NetworkVarNames: m_nAABBDirection (int)
-            namespace CCitadelSoundOpvarSetOBB
-            {
+            namespace CCitadelSoundOpvarSetOBB {
                 constexpr std::ptrdiff_t m_iszStackName = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszOperatorName = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszOpvarName = 0x4F0; // CUtlSymbolLarge
@@ -10606,7 +9234,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vDistanceOuterMaxs = 0x51C; // Vector
                 constexpr std::ptrdiff_t m_nAABBDirection = 0x528; // int32
             }
-
             // Parent: None
             // Field count: 5
             //
@@ -10616,41 +9243,33 @@ namespace cs2_dumper
             // NetworkVarNames: m_nPrevArmor (int)
             // NetworkVarNames: m_bPrevHelmet (bool)
             // NetworkVarNames: m_hItem (CEntityHandle)
-            namespace SellbackPurchaseEntry_t
-            {
+            namespace SellbackPurchaseEntry_t {
                 constexpr std::ptrdiff_t m_unDefIdx = 0x30; // uint16
                 constexpr std::ptrdiff_t m_nCost = 0x34; // int32
                 constexpr std::ptrdiff_t m_nPrevArmor = 0x38; // int32
                 constexpr std::ptrdiff_t m_bPrevHelmet = 0x3C; // bool
                 constexpr std::ptrdiff_t m_hItem = 0x40; // CEntityHandle
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponFamas
-            {
+            namespace CWeaponFamas {
             }
-
             // Parent: CPhysicsProp
             // Field count: 3
             //
             // Metadata:
             // MNetworkExcludeByName
             // NetworkVarNames: m_ShardDesc (shard_model_desc_t)
-            namespace CShatterGlassShardPhysics
-            {
+            namespace CShatterGlassShardPhysics {
                 constexpr std::ptrdiff_t m_bDebris = 0xD00; // bool
                 constexpr std::ptrdiff_t m_hParentShard = 0xD04; // uint32
                 constexpr std::ptrdiff_t m_ShardDesc = 0xD08; // shard_model_desc_t
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace CFilterModel
-            {
+            namespace CFilterModel {
                 constexpr std::ptrdiff_t m_iFilterModel = 0x538; // CUtlSymbolLarge
             }
-
             // Parent: CBasePlayerPawn
             // Field count: 22
             //
@@ -10674,8 +9293,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iProgressBarDuration (int)
             // NetworkVarNames: m_angEyeAngles (QAngle)
             // NetworkVarNames: m_hOriginalController (CHandle<CCSPlayerController>)
-            namespace CCSPlayerPawnBase
-            {
+            namespace CCSPlayerPawnBase {
                 constexpr std::ptrdiff_t m_CTouchExpansionComponent = 0xC68; // CTouchExpansionComponent
                 constexpr std::ptrdiff_t m_pPingServices = 0xCB8; // CCSPlayer_PingServices*
                 constexpr std::ptrdiff_t m_pViewModelServices = 0xCC0; // CPlayer_ViewModelServices*
@@ -10699,11 +9317,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bCommittingSuicideOnTeamChange = 0xDC1; // bool
                 constexpr std::ptrdiff_t m_hOriginalController = 0xDC4; // CHandle<CCSPlayerController>
             }
-
             // Parent: CPointEntity
             // Field count: 9
-            namespace CPathTrack
-            {
+            namespace CPathTrack {
                 constexpr std::ptrdiff_t m_pnext = 0x4E0; // CPathTrack*
                 constexpr std::ptrdiff_t m_pprevious = 0x4E8; // CPathTrack*
                 constexpr std::ptrdiff_t m_paltpath = 0x4F0; // CPathTrack*
@@ -10714,11 +9330,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_eOrientationType = 0x50C; // TrackOrientationType_t
                 constexpr std::ptrdiff_t m_OnPass = 0x510; // CEntityIOOutput
             }
-
             // Parent: CLogicalEntity
             // Field count: 7
-            namespace CLogicDistanceCheck
-            {
+            namespace CLogicDistanceCheck {
                 constexpr std::ptrdiff_t m_iszEntityA = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszEntityB = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_flZone1Distance = 0x4F0; // float32
@@ -10727,7 +9341,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_InZone2 = 0x520; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_InZone3 = 0x548; // CEntityIOOutput
             }
-
             // Parent: CBarnLight
             // Field count: 3
             //
@@ -10735,13 +9348,11 @@ namespace cs2_dumper
             // NetworkVarNames: m_flInnerAngle (float)
             // NetworkVarNames: m_flOuterAngle (float)
             // NetworkVarNames: m_bShowLight (bool)
-            namespace COmniLight
-            {
+            namespace COmniLight {
                 constexpr std::ptrdiff_t m_flInnerAngle = 0xAB0; // float32
                 constexpr std::ptrdiff_t m_flOuterAngle = 0xAB4; // float32
                 constexpr std::ptrdiff_t m_bShowLight = 0xAB8; // bool
             }
-
             // Parent: CPointEntity
             // Field count: 10
             //
@@ -10754,8 +9365,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_TargetEntities (CHandle<CBaseModelEntity>)
             // NetworkVarNames: m_nTargetChangeCount (int)
             // NetworkVarNames: m_vecCSSClasses (string_t)
-            namespace CInfoOffscreenPanoramaTexture
-            {
+            namespace CInfoOffscreenPanoramaTexture {
                 constexpr std::ptrdiff_t m_bDisabled = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_nResolutionX = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_nResolutionY = 0x4E8; // int32
@@ -10767,7 +9377,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_szTargetsName = 0x538; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_AdditionalTargetEntities = 0x540; // CUtlVector<CHandle<CBaseModelEntity>>
             }
-
             // Parent: CBaseEntity
             // Field count: 3
             //
@@ -10775,34 +9384,26 @@ namespace cs2_dumper
             // NetworkVarNames: m_nMode (int)
             // NetworkVarNames: m_vBoxSize (Vector)
             // NetworkVarNames: m_bEnabled (bool)
-            namespace CInfoVisibilityBox
-            {
+            namespace CInfoVisibilityBox {
                 constexpr std::ptrdiff_t m_nMode = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_vBoxSize = 0x4E8; // Vector
                 constexpr std::ptrdiff_t m_bEnabled = 0x4F4; // bool
             }
-
             // Parent: CRulePointEntity
             // Field count: 0
-            namespace CGamePlayerEquip
-            {
+            namespace CGamePlayerEquip {
             }
-
             // Parent: CServerOnlyPointEntity
             // Field count: 0
-            namespace CInfoTargetServerOnly
-            {
+            namespace CInfoTargetServerOnly {
             }
-
             // Parent: CSoundOpvarSetPointEntity
             // Field count: 3
-            namespace CSoundOpvarSetPathCornerEntity
-            {
+            namespace CSoundOpvarSetPathCornerEntity {
                 constexpr std::ptrdiff_t m_flDistMinSqr = 0x6A0; // float32
                 constexpr std::ptrdiff_t m_flDistMaxSqr = 0x6A4; // float32
                 constexpr std::ptrdiff_t m_iszPathCornerEntityName = 0x6A8; // CUtlSymbolLarge
             }
-
             // Parent: CPlayer_WeaponServices
             // Field count: 15
             //
@@ -10810,8 +9411,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flNextAttack (GameTime_t)
             // NetworkVarNames: m_bIsLookingAtWeapon (bool)
             // NetworkVarNames: m_bIsHoldingLookAtWeapon (bool)
-            namespace CCSPlayer_WeaponServices
-            {
+            namespace CCSPlayer_WeaponServices {
                 constexpr std::ptrdiff_t m_flNextAttack = 0xA8; // GameTime_t
                 constexpr std::ptrdiff_t m_bIsLookingAtWeapon = 0xAC; // bool
                 constexpr std::ptrdiff_t m_bIsHoldingLookAtWeapon = 0xAD; // bool
@@ -10828,15 +9428,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nOldShootPositionHistoryCount = 0xCC; // uint32
                 constexpr std::ptrdiff_t m_nOldInputHistoryCount = 0x468; // uint32
             }
-
             // Parent: CBaseEntity
             // Field count: 11
             //
             // Metadata:
             // NetworkVarNames: m_hEntAttached (CHandle<CBaseEntity>)
             // NetworkVarNames: m_bCheapEffect (bool)
-            namespace CEntityFlame
-            {
+            namespace CEntityFlame {
                 constexpr std::ptrdiff_t m_hEntAttached = 0x4E0; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_bCheapEffect = 0x4E4; // bool
                 constexpr std::ptrdiff_t m_flSize = 0x4E8; // float32
@@ -10849,7 +9447,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flDirectDamagePerSecond = 0x504; // float32
                 constexpr std::ptrdiff_t m_iCustomDamageType = 0x508; // int32
             }
-
             // Parent: CCSWeaponBase
             // Field count: 9
             //
@@ -10857,8 +9454,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_zoomLevel (int)
             // NetworkVarNames: m_iBurstShotsRemaining (int)
             // NetworkVarNames: m_bNeedsBoltAction (bool)
-            namespace CCSWeaponBaseGun
-            {
+            namespace CCSWeaponBaseGun {
                 constexpr std::ptrdiff_t m_zoomLevel = 0xF70; // int32
                 constexpr std::ptrdiff_t m_iBurstShotsRemaining = 0xF74; // int32
                 constexpr std::ptrdiff_t m_silencedModelIndex = 0xF80; // int32
@@ -10869,11 +9465,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bSkillBoltInterruptAvailable = 0xF88; // bool
                 constexpr std::ptrdiff_t m_bSkillBoltLiftedFireKey = 0xF89; // bool
             }
-
             // Parent: None
             // Field count: 13
-            namespace CBot
-            {
+            namespace CBot {
                 constexpr std::ptrdiff_t m_pController = 0x10; // CCSPlayerController*
                 constexpr std::ptrdiff_t m_pPlayer = 0x18; // CCSPlayerPawn*
                 constexpr std::ptrdiff_t m_bHasSpawned = 0x20; // bool
@@ -10888,14 +9482,12 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_viewForward = 0xDC; // Vector
                 constexpr std::ptrdiff_t m_postureStackIndex = 0xF8; // int32
             }
-
             // Parent: None
             // Field count: 11
             //
             // Metadata:
             // NetworkVarNames: m_nameStringableIndex (int32)
-            namespace CEntityIdentity
-            {
+            namespace CEntityIdentity {
                 constexpr std::ptrdiff_t m_nameStringableIndex = 0x14; // int32
                 constexpr std::ptrdiff_t m_name = 0x18; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_designerName = 0x20; // CUtlSymbolLarge
@@ -10908,24 +9500,19 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_pPrevByClass = 0x68; // CEntityIdentity*
                 constexpr std::ptrdiff_t m_pNextByClass = 0x70; // CEntityIdentity*
             }
-
             // Parent: CBaseToggle
             // Field count: 3
-            namespace CGunTarget
-            {
+            namespace CGunTarget {
                 constexpr std::ptrdiff_t m_on = 0x810; // bool
                 constexpr std::ptrdiff_t m_hTargetEnt = 0x814; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_OnDeath = 0x818; // CEntityIOOutput
             }
-
             // Parent: CBaseEntity
             // Field count: 2
-            namespace CSoundEventParameter
-            {
+            namespace CSoundEventParameter {
                 constexpr std::ptrdiff_t m_iszParamName = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_flFloatValue = 0x4F0; // float32
             }
-
             // Parent: CPulseGraphInstance_ServerEntity
             // Field count: 0
             //
@@ -10934,64 +9521,48 @@ namespace cs2_dumper
             // MPulseDomainHookInfo
             // MPulseLibraryBindings
             // MPulseDomainOptInFeatureTag
-            namespace CPulseGraphInstance_GameBlackboard
-            {
+            namespace CPulseGraphInstance_GameBlackboard {
             }
-
             // Parent: CMarkupVolume
             // Field count: 5
-            namespace CMarkupVolumeTagged
-            {
+            namespace CMarkupVolumeTagged {
                 constexpr std::ptrdiff_t m_bIsGroup = 0x7C8; // bool
                 constexpr std::ptrdiff_t m_bGroupByPrefab = 0x7C9; // bool
                 constexpr std::ptrdiff_t m_bGroupByVolume = 0x7CA; // bool
                 constexpr std::ptrdiff_t m_bGroupOtherGroups = 0x7CB; // bool
                 constexpr std::ptrdiff_t m_bIsInGroup = 0x7CC; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 5
-            namespace CTestEffect
-            {
+            namespace CTestEffect {
                 constexpr std::ptrdiff_t m_iLoop = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_iBeam = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_pBeam = 0x4E8; // CBeam*[24]
                 constexpr std::ptrdiff_t m_flBeamTime = 0x5A8; // GameTime_t[24]
                 constexpr std::ptrdiff_t m_flStartTime = 0x608; // GameTime_t
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponM4A1Silencer
-            {
+            namespace CWeaponM4A1Silencer {
             }
-
             // Parent: CFuncNavBlocker
             // Field count: 1
-            namespace CScriptNavBlocker
-            {
+            namespace CScriptNavBlocker {
                 constexpr std::ptrdiff_t m_vExtent = 0x7A0; // Vector
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 1
-            namespace CConstraintAnchor
-            {
+            namespace CConstraintAnchor {
                 constexpr std::ptrdiff_t m_massScale = 0x9A8; // float32
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponTec9
-            {
+            namespace CWeaponTec9 {
             }
-
             // Parent: CMarkupVolumeTagged
             // Field count: 0
-            namespace CMarkupVolumeTagged_Nav
-            {
+            namespace CMarkupVolumeTagged_Nav {
             }
-
             // Parent: CPointEntity
             // Field count: 66
             //
@@ -11003,8 +9574,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flForceClientTime (float32)
             // NetworkVarNames: m_hActorList (CHandle<CBaseFlex>)
             // NetworkVarNames: m_nSceneStringIndex (uint16)
-            namespace CSceneEntity
-            {
+            namespace CSceneEntity {
                 constexpr std::ptrdiff_t m_iszSceneFile = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszResumeSceneFile = 0x4F0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_iszTarget1 = 0x4F8; // CUtlSymbolLarge
@@ -11072,31 +9642,24 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_BusyActor = 0xA30; // int32
                 constexpr std::ptrdiff_t m_iPlayerDeathBehavior = 0xA34; // SceneOnPlayerDeath_t
             }
-
             // Parent: CLightDirectionalEntity
             // Field count: 0
-            namespace CLightEnvironmentEntity
-            {
+            namespace CLightEnvironmentEntity {
             }
-
             // Parent: CLogicAutosave
             // Field count: 4
-            namespace CLogicActiveAutosave
-            {
+            namespace CLogicActiveAutosave {
                 constexpr std::ptrdiff_t m_TriggerHitPoints = 0x4F0; // int32
                 constexpr std::ptrdiff_t m_flTimeToTrigger = 0x4F4; // float32
                 constexpr std::ptrdiff_t m_flStartTime = 0x4F8; // GameTime_t
                 constexpr std::ptrdiff_t m_flDangerousTime = 0x4FC; // float32
             }
-
             // Parent: CBaseEntity
             // Field count: 2
-            namespace CEnvBeverage
-            {
+            namespace CEnvBeverage {
                 constexpr std::ptrdiff_t m_CanInDispenser = 0x4E0; // bool
                 constexpr std::ptrdiff_t m_nBeverageType = 0x4E4; // int32
             }
-
             // Parent: CBaseEntity
             // Field count: 14
             //
@@ -11106,8 +9669,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nVoteOptionCount (int)
             // NetworkVarNames: m_nPotentialVotes (int)
             // NetworkVarNames: m_bIsYesNoVote (bool)
-            namespace CVoteController
-            {
+            namespace CVoteController {
                 constexpr std::ptrdiff_t m_iActiveIssueIndex = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_iOnlyTeamToVote = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_nVoteOptionCount = 0x4E8; // int32[5]
@@ -11123,19 +9685,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_potentialIssues = 0x660; // CUtlVector<CBaseIssue*>
                 constexpr std::ptrdiff_t m_VoteOptions = 0x678; // CUtlVector<char*>
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponCZ75a
-            {
+            namespace CWeaponCZ75a {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponP250
-            {
+            namespace CWeaponP250 {
             }
-
             // Parent: CBaseAnimGraph
             // Field count: 7
             //
@@ -11143,8 +9700,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flexWeight (float32)
             // NetworkVarNames: m_vLookTargetPosition (Vector)
             // NetworkVarNames: m_blinktoggle (bool)
-            namespace CBaseFlex
-            {
+            namespace CBaseFlex {
                 constexpr std::ptrdiff_t m_flexWeight = 0x9A8; // CNetworkUtlVectorBase<float32>
                 constexpr std::ptrdiff_t m_vLookTargetPosition = 0x9C0; // Vector
                 constexpr std::ptrdiff_t m_blinktoggle = 0x9CC; // bool
@@ -11153,14 +9709,11 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nNextSceneEventId = 0xA28; // SceneEventId_t
                 constexpr std::ptrdiff_t m_bUpdateLayerPriorities = 0xA2C; // bool
             }
-
             // Parent: CTriggerHurt
             // Field count: 1
-            namespace CScriptTriggerHurt
-            {
+            namespace CScriptTriggerHurt {
                 constexpr std::ptrdiff_t m_vExtent = 0xA00; // Vector
             }
-
             // Parent: CBasePlayerWeaponVData
             // Field count: 92
             //
@@ -11168,8 +9721,7 @@ namespace cs2_dumper
             // MGetKV3ClassDefaults
             // MPropertySuppressBaseClassField
             // MPropertySuppressBaseClassField
-            namespace CCSWeaponBaseVData
-            {
+            namespace CCSWeaponBaseVData {
                 constexpr std::ptrdiff_t m_WeaponType = 0x348; // CSWeaponType
                 constexpr std::ptrdiff_t m_WeaponCategory = 0x34C; // CSWeaponCategory
                 constexpr std::ptrdiff_t m_szViewModel = 0x350; // CResourceNameTyped<CWeakHandle<InfoForResourceTypeCModel>>
@@ -11263,18 +9815,15 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vSmokeColor = 0xE7C; // Vector
                 constexpr std::ptrdiff_t m_szAnimClass = 0xE88; // CGlobalSymbol
             }
-
             // Parent: CLogicalEntity
             // Field count: 5
-            namespace CMathColorBlend
-            {
+            namespace CMathColorBlend {
                 constexpr std::ptrdiff_t m_flInMin = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flInMax = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_OutColor1 = 0x4E8; // Color
                 constexpr std::ptrdiff_t m_OutColor2 = 0x4EC; // Color
                 constexpr std::ptrdiff_t m_OutValue = 0x4F0; // CEntityOutputTemplate<Color>
             }
-
             // Parent: CPointEntity
             // Field count: 5
             //
@@ -11284,15 +9833,13 @@ namespace cs2_dumper
             // NetworkVarNames: m_flStartTime (GameTime_t)
             // NetworkVarNames: m_iDesiredOverlay (int32)
             // NetworkVarNames: m_bIsActive (bool)
-            namespace CEnvScreenOverlay
-            {
+            namespace CEnvScreenOverlay {
                 constexpr std::ptrdiff_t m_iszOverlayNames = 0x4E0; // CUtlSymbolLarge[10]
                 constexpr std::ptrdiff_t m_flOverlayTimes = 0x530; // float32[10]
                 constexpr std::ptrdiff_t m_flStartTime = 0x558; // GameTime_t
                 constexpr std::ptrdiff_t m_iDesiredOverlay = 0x55C; // int32
                 constexpr std::ptrdiff_t m_bIsActive = 0x560; // bool
             }
-
             // Parent: CCSPlayerPawnBase
             // Field count: 118
             //
@@ -11378,8 +9925,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_vecPlayerPatchEconIndices (uint32)
             // NetworkVarNames: m_GunGameImmunityColor (Color)
             // NetworkVarNames: m_PredictedDamageTags (PredictedDamageTag_t)
-            namespace CCSPlayerPawn
-            {
+            namespace CCSPlayerPawn {
                 constexpr std::ptrdiff_t m_pBulletServices = 0xDD0; // CCSPlayer_BulletServices*
                 constexpr std::ptrdiff_t m_pHostageServices = 0xDD8; // CCSPlayer_HostageServices*
                 constexpr std::ptrdiff_t m_pBuyServices = 0xDE0; // CCSPlayer_BuyServices*
@@ -11499,13 +10045,10 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_PredictedDamageTags = 0x1AD0; // CUtlVectorEmbeddedNetworkVar<PredictedDamageTag_t>
                 constexpr std::ptrdiff_t m_nHighestAppliedDamageTagTick = 0x1B20; // int32
             }
-
             // Parent: CBaseGrenade
             // Field count: 0
-            namespace CBumpMineProjectile
-            {
+            namespace CBumpMineProjectile {
             }
-
             // Parent: CBasePlayerController
             // Field count: 89
             //
@@ -11564,8 +10107,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_iMusicKitMVPs (int)
             // NetworkVarNames: m_iMVPs (int)
             // NetworkVarNames: m_bFireBulletsSeedSynchronized (bool)
-            namespace CCSPlayerController
-            {
+            namespace CCSPlayerController {
                 constexpr std::ptrdiff_t m_pInGameMoneyServices = 0x788; // CCSPlayerController_InGameMoneyServices*
                 constexpr std::ptrdiff_t m_pInventoryServices = 0x790; // CCSPlayerController_InventoryServices*
                 constexpr std::ptrdiff_t m_pActionTrackingServices = 0x798; // CCSPlayerController_ActionTrackingServices*
@@ -11656,7 +10198,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nNonSuspiciousHitStreak = 0xF9D4; // uint32
                 constexpr std::ptrdiff_t m_bFireBulletsSeedSynchronized = 0xFA79; // bool
             }
-
             // Parent: IEconItemInterface
             // Field count: 13
             //
@@ -11672,8 +10213,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_AttributeList (CAttributeList)
             // NetworkVarNames: m_NetworkedDynamicAttributes (CAttributeList)
             // NetworkVarNames: m_szCustomName (char)
-            namespace CEconItemView
-            {
+            namespace CEconItemView {
                 constexpr std::ptrdiff_t m_iItemDefinitionIndex = 0x38; // uint16
                 constexpr std::ptrdiff_t m_iEntityQuality = 0x3C; // int32
                 constexpr std::ptrdiff_t m_iEntityLevel = 0x40; // uint32
@@ -11688,19 +10228,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_szCustomName = 0x130; // char[161]
                 constexpr std::ptrdiff_t m_szCustomNameOverride = 0x1D1; // char[161]
             }
-
             // Parent: CPointEntity
             // Field count: 0
-            namespace CInfoInstructorHintBombTargetA
-            {
+            namespace CInfoInstructorHintBombTargetA {
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponAWP
-            {
+            namespace CWeaponAWP {
             }
-
             // Parent: CBaseCombatCharacter
             // Field count: 25
             //
@@ -11738,8 +10273,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_skybox3d (sky3dparams_t)
             // NetworkVarNames: m_flDeathTime (GameTime_t)
             // NetworkVarNames: m_hController (CHandle<CBasePlayerController>)
-            namespace CBasePlayerPawn
-            {
+            namespace CBasePlayerPawn {
                 constexpr std::ptrdiff_t m_pWeaponServices = 0xAC0; // CPlayer_WeaponServices*
                 constexpr std::ptrdiff_t m_pItemServices = 0xAC8; // CPlayer_ItemServices*
                 constexpr std::ptrdiff_t m_pAutoaimServices = 0xAD0; // CPlayer_AutoaimServices*
@@ -11766,7 +10300,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_iHltvReplayEntity = 0xC38; // CEntityIndex
                 constexpr std::ptrdiff_t m_sndOpvarLatchData = 0xC40; // CUtlVector<sndopvarlatchdata_t>
             }
-
             // Parent: CBaseTrigger
             // Field count: 16
             //
@@ -11787,8 +10320,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flTonemapPercentTarget (float)
             // NetworkVarNames: m_flTonemapPercentBrightPixels (float)
             // NetworkVarNames: m_flTonemapMinAvgLum (float)
-            namespace CPostProcessingVolume
-            {
+            namespace CPostProcessingVolume {
                 constexpr std::ptrdiff_t m_hPostSettings = 0x970; // CStrongHandle<InfoForResourceTypeCPostProcessingResource>
                 constexpr std::ptrdiff_t m_flFadeDuration = 0x978; // float32
                 constexpr std::ptrdiff_t m_flMinLogExposure = 0x97C; // float32
@@ -11806,34 +10338,27 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flTonemapPercentBrightPixels = 0x9A8; // float32
                 constexpr std::ptrdiff_t m_flTonemapMinAvgLum = 0x9AC; // float32
             }
-
             // Parent: CBaseModelEntity
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_flLightScale (float32)
             // NetworkVarNames: m_Radius (float32)
-            namespace CSpotlightEnd
-            {
+            namespace CSpotlightEnd {
                 constexpr std::ptrdiff_t m_flLightScale = 0x790; // float32
                 constexpr std::ptrdiff_t m_Radius = 0x794; // float32
                 constexpr std::ptrdiff_t m_vSpotlightDir = 0x798; // Vector
                 constexpr std::ptrdiff_t m_vSpotlightOrg = 0x7A4; // Vector
             }
-
             // Parent: CBaseModelEntity
             // Field count: 1
-            namespace CRuleEntity
-            {
+            namespace CRuleEntity {
                 constexpr std::ptrdiff_t m_iszMaster = 0x790; // CUtlSymbolLarge
             }
-
             // Parent: CBaseCSGrenade
             // Field count: 0
-            namespace CSensorGrenade
-            {
+            namespace CSensorGrenade {
             }
-
             // Parent: CBaseEntity
             // Field count: 8
             //
@@ -11846,8 +10371,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_agentItem (CEconItemView)
             // NetworkVarNames: m_glovesItem (CEconItemView)
             // NetworkVarNames: m_weaponItem (CEconItemView)
-            namespace CCSGO_TeamPreviewCharacterPosition
-            {
+            namespace CCSGO_TeamPreviewCharacterPosition {
                 constexpr std::ptrdiff_t m_nVariant = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_nRandom = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_nOrdinal = 0x4E8; // int32
@@ -11857,25 +10381,19 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_glovesItem = 0x778; // CEconItemView
                 constexpr std::ptrdiff_t m_weaponItem = 0x9F0; // CEconItemView
             }
-
             // Parent: CBaseTrigger
             // Field count: 1
-            namespace CTriggerDetectExplosion
-            {
+            namespace CTriggerDetectExplosion {
                 constexpr std::ptrdiff_t m_OnDetectedExplosion = 0x988; // CEntityIOOutput
             }
-
             // Parent: CLogicalEntity
             // Field count: 1
-            namespace CSoundStackSave
-            {
+            namespace CSoundStackSave {
                 constexpr std::ptrdiff_t m_iszStackName = 0x4E0; // CUtlSymbolLarge
             }
-
             // Parent: CPhysConstraint
             // Field count: 18
-            namespace CPhysHinge
-            {
+            namespace CPhysHinge {
                 constexpr std::ptrdiff_t m_soundInfo = 0x560; // ConstraintSoundInfo
                 constexpr std::ptrdiff_t m_NotifyMinLimitReached = 0x5E8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_NotifyMaxLimitReached = 0x610; // CEntityIOOutput
@@ -11895,35 +10413,26 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnStartMoving = 0x6A8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnStopMoving = 0x6D0; // CEntityIOOutput
             }
-
             // Parent: CGameRules
             // Field count: 1
-            namespace CSingleplayRules
-            {
+            namespace CSingleplayRules {
                 constexpr std::ptrdiff_t m_bSinglePlayerGameEnding = 0xC0; // bool
             }
-
             // Parent: CBaseFilter
             // Field count: 1
-            namespace CFilterProximity
-            {
+            namespace CFilterProximity {
                 constexpr std::ptrdiff_t m_flRadius = 0x538; // float32
             }
-
             // Parent: CEconEntity
             // Field count: 2
-            namespace CEconWearable
-            {
+            namespace CEconWearable {
                 constexpr std::ptrdiff_t m_nForceSkin = 0xD30; // int32
                 constexpr std::ptrdiff_t m_bAlwaysAllow = 0xD34; // bool
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 0
-            namespace CPlayer_ItemServices
-            {
+            namespace CPlayer_ItemServices {
             }
-
             // Parent: CBaseModelEntity
             // Field count: 9
             //
@@ -11940,8 +10449,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nTransitionDurationTicks (int)
             // NetworkVarNames: m_flTransitionStartSpeed (float32)
             // NetworkVarNames: m_hConveyorModels (EHANDLE)
-            namespace CFuncConveyor
-            {
+            namespace CFuncConveyor {
                 constexpr std::ptrdiff_t m_szConveyorModels = 0x790; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_flTransitionDurationSeconds = 0x798; // float32
                 constexpr std::ptrdiff_t m_angMoveEntitySpace = 0x79C; // QAngle
@@ -11952,17 +10460,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flTransitionStartSpeed = 0x7C0; // float32
                 constexpr std::ptrdiff_t m_hConveyorModels = 0x7C8; // CNetworkUtlVectorBase<CHandle<CBaseEntity>>
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponMag7
-            {
+            namespace CWeaponMag7 {
             }
-
             // Parent: CLogicalEntity
             // Field count: 11
-            namespace CMathCounter
-            {
+            namespace CMathCounter {
                 constexpr std::ptrdiff_t m_flMin = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flMax = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_bHitMin = 0x4E8; // bool
@@ -11975,7 +10479,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnChangedFromMin = 0x590; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnChangedFromMax = 0x5B8; // CEntityIOOutput
             }
-
             // Parent: CBaseEntity
             // Field count: 7
             //
@@ -11984,8 +10487,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_layerName (string_t)
             // NetworkVarNames: m_bWorldLayerVisible (bool)
             // NetworkVarNames: m_bEntitiesSpawned (bool)
-            namespace CInfoWorldLayer
-            {
+            namespace CInfoWorldLayer {
                 constexpr std::ptrdiff_t m_pOutputOnEntitiesSpawned = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_worldName = 0x508; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_layerName = 0x510; // CUtlSymbolLarge
@@ -11994,40 +10496,31 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bCreateAsChildSpawnGroup = 0x51A; // bool
                 constexpr std::ptrdiff_t m_hLayerSpawnGroup = 0x51C; // uint32
             }
-
             // Parent: CBarnLight
             // Field count: 1
             //
             // Metadata:
             // NetworkVarNames: m_bShowLight (bool)
-            namespace CRectLight
-            {
+            namespace CRectLight {
                 constexpr std::ptrdiff_t m_bShowLight = 0xAB0; // bool
             }
-
             // Parent: CCSGO_TeamSelectCharacterPosition
             // Field count: 0
-            namespace CCSGO_TeamSelectTerroristPosition
-            {
+            namespace CCSGO_TeamSelectTerroristPosition {
             }
-
             // Parent: CBaseDoor
             // Field count: 1
-            namespace CRotDoor
-            {
+            namespace CRotDoor {
                 constexpr std::ptrdiff_t m_bSolidBsp = 0xA18; // bool
             }
-
             // Parent: CLogicalEntity
             // Field count: 4
-            namespace CLogicLineToEntity
-            {
+            namespace CLogicLineToEntity {
                 constexpr std::ptrdiff_t m_Line = 0x4E0; // CEntityOutputTemplate<Vector>
                 constexpr std::ptrdiff_t m_SourceName = 0x508; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_StartEntity = 0x510; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_EndEntity = 0x514; // CHandle<CBaseEntity>
             }
-
             // Parent: None
             // Field count: 6
             //
@@ -12035,8 +10528,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_nTotalPausedTicks (int)
             // NetworkVarNames: m_nPauseStartTick (int)
             // NetworkVarNames: m_bGamePaused (bool)
-            namespace CGameRules
-            {
+            namespace CGameRules {
                 constexpr std::ptrdiff_t __m_pChainEntity = 0x8; // CNetworkVarChainer
                 constexpr std::ptrdiff_t m_szQuestName = 0x30; // char[128]
                 constexpr std::ptrdiff_t m_nQuestPhase = 0xB0; // int32
@@ -12044,21 +10536,18 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_nPauseStartTick = 0xB8; // int32
                 constexpr std::ptrdiff_t m_bGamePaused = 0xBC; // bool
             }
-
             // Parent: None
             // Field count: 4
             //
             // Metadata:
             // NetworkVarNames: m_pEntity (CEntityIdentity*)
             // NetworkVarNames: m_CScriptComponent (CScriptComponent::Storage_t)
-            namespace CEntityInstance
-            {
+            namespace CEntityInstance {
                 constexpr std::ptrdiff_t m_iszPrivateVScripts = 0x8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_pEntity = 0x10; // CEntityIdentity*
                 constexpr std::ptrdiff_t m_CScriptComponent = 0x28; // CScriptComponent*
                 constexpr std::ptrdiff_t m_bVisibleinPVS = 0x30; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 18
             //
@@ -12081,8 +10570,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_Entity_bIndoorCubeMap (bool)
             // NetworkVarNames: m_Entity_bCopyDiffuseFromDefaultCubemap (bool)
             // NetworkVarNames: m_Entity_bEnabled (bool)
-            namespace CEnvCubemap
-            {
+            namespace CEnvCubemap {
                 constexpr std::ptrdiff_t m_Entity_hCubemapTexture = 0x560; // CStrongHandle<InfoForResourceTypeCTextureBase>
                 constexpr std::ptrdiff_t m_Entity_bCustomCubemapTexture = 0x568; // bool
                 constexpr std::ptrdiff_t m_Entity_flInfluenceRadius = 0x56C; // float32
@@ -12102,22 +10590,17 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_Entity_bCopyDiffuseFromDefaultCubemap = 0x5B0; // bool
                 constexpr std::ptrdiff_t m_Entity_bEnabled = 0x5C0; // bool
             }
-
             // Parent: None
             // Field count: 3
-            namespace ServerAuthoritativeWeaponSlot_t
-            {
+            namespace ServerAuthoritativeWeaponSlot_t {
                 constexpr std::ptrdiff_t unClass = 0x28; // uint16
                 constexpr std::ptrdiff_t unSlot = 0x2A; // uint16
                 constexpr std::ptrdiff_t unItemDefIdx = 0x2C; // uint16
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 0
-            namespace CCSPlayer_DamageReactServices
-            {
+            namespace CCSPlayer_DamageReactServices {
             }
-
             // Parent: None
             // Field count: 5
             //
@@ -12127,15 +10610,13 @@ namespace cs2_dumper
             // NetworkVarNames: m_bRoundInProgress (bool)
             // NetworkVarNames: m_iFirstSecondHalfRound (int)
             // NetworkVarNames: m_iBombSite (int)
-            namespace CRetakeGameRules
-            {
+            namespace CRetakeGameRules {
                 constexpr std::ptrdiff_t m_nMatchSeed = 0xF8; // int32
                 constexpr std::ptrdiff_t m_bBlockersPresent = 0xFC; // bool
                 constexpr std::ptrdiff_t m_bRoundInProgress = 0xFD; // bool
                 constexpr std::ptrdiff_t m_iFirstSecondHalfRound = 0x100; // int32
                 constexpr std::ptrdiff_t m_iBombSite = 0x104; // int32
             }
-
             // Parent: CBaseEntity
             // Field count: 17
             //
@@ -12152,8 +10633,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_MaxFalloff (float32)
             // NetworkVarNames: m_flCurWeight (float32)
             // NetworkVarNames: m_netlookupFilename (char)
-            namespace CColorCorrection
-            {
+            namespace CColorCorrection {
                 constexpr std::ptrdiff_t m_flFadeInDuration = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_flFadeOutDuration = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_flStartFadeInWeight = 0x4E8; // float32
@@ -12172,29 +10652,22 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_netlookupFilename = 0x510; // char[512]
                 constexpr std::ptrdiff_t m_lookupFilename = 0x710; // CUtlSymbolLarge
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponElite
-            {
+            namespace CWeaponElite {
             }
-
             // Parent: CSoundEventEntity
             // Field count: 0
-            namespace CSoundEventEntityAlias_snd_event_point
-            {
+            namespace CSoundEventEntityAlias_snd_event_point {
             }
-
             // Parent: None
             // Field count: 0
             //
             // Metadata:
             // MPulseProvideFeatureTag
             // MPulseLibraryBindings
-            namespace CBaseEntityAPI
-            {
+            namespace CBaseEntityAPI {
             }
-
             // Parent: CCSWeaponBase
             // Field count: 11
             //
@@ -12204,8 +10677,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bBombPlacedAnimation (bool)
             // NetworkVarNames: m_bIsPlantingViaUse (bool)
             // NetworkVarNames: m_entitySpottedState (EntitySpottedState_t)
-            namespace CC4
-            {
+            namespace CC4 {
                 constexpr std::ptrdiff_t m_vecLastValidPlayerHeldPosition = 0xFA0; // Vector
                 constexpr std::ptrdiff_t m_vecLastValidDroppedPosition = 0xFAC; // Vector
                 constexpr std::ptrdiff_t m_bDoValidDroppedPositionCheck = 0xFB8; // bool
@@ -12218,17 +10690,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bPlayedArmingBeeps = 0xFE4; // bool[7]
                 constexpr std::ptrdiff_t m_bBombPlanted = 0xFEB; // bool
             }
-
             // Parent: CHostageRescueZoneShim
             // Field count: 0
-            namespace CHostageRescueZone
-            {
+            namespace CHostageRescueZone {
             }
-
             // Parent: CServerOnlyPointEntity
             // Field count: 6
-            namespace CPointPrefab
-            {
+            namespace CPointPrefab {
                 constexpr std::ptrdiff_t m_targetMapName = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_forceWorldGroupID = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_associatedRelayTargetName = 0x4F0; // CUtlSymbolLarge
@@ -12236,14 +10704,12 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bLoadDynamic = 0x4F9; // bool
                 constexpr std::ptrdiff_t m_associatedRelayEntity = 0x4FC; // CHandle<CPointPrefab>
             }
-
             // Parent: CBaseToggle
             // Field count: 27
             //
             // Metadata:
             // NetworkVarNames: m_bIsUsable (bool)
-            namespace CBaseDoor
-            {
+            namespace CBaseDoor {
                 constexpr std::ptrdiff_t m_angMoveEntitySpace = 0x820; // QAngle
                 constexpr std::ptrdiff_t m_vecMoveDirParentSpace = 0x82C; // Vector
                 constexpr std::ptrdiff_t m_ls = 0x838; // locksound_t
@@ -12272,7 +10738,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_isChaining = 0xA11; // bool
                 constexpr std::ptrdiff_t m_bIsUsable = 0xA12; // bool
             }
-
             // Parent: None
             // Field count: 33
             //
@@ -12283,8 +10748,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flScale (float)
             // NetworkVarNames: m_name (CUtlStringToken)
             // NetworkVarNames: m_hierarchyAttachName (CUtlStringToken)
-            namespace CGameSceneNode
-            {
+            namespace CGameSceneNode {
                 constexpr std::ptrdiff_t m_nodeToWorld = 0x10; // CTransform
                 constexpr std::ptrdiff_t m_pOwner = 0x30; // CEntityInstance*
                 constexpr std::ptrdiff_t m_pParent = 0x38; // CGameSceneNode*
@@ -12319,17 +10783,13 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flClientLocalScale = 0x140; // float32
                 constexpr std::ptrdiff_t m_vRenderOrigin = 0x144; // Vector
             }
-
             // Parent: CCSWeaponBase
             // Field count: 0
-            namespace CTablet
-            {
+            namespace CTablet {
             }
-
             // Parent: CPointEntity
             // Field count: 7
-            namespace CTankTrainAI
-            {
+            namespace CTankTrainAI {
                 constexpr std::ptrdiff_t m_hTrain = 0x4E0; // CHandle<CFuncTrackTrain>
                 constexpr std::ptrdiff_t m_hTargetEntity = 0x4E4; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_soundPlaying = 0x4E8; // int32
@@ -12338,17 +10798,14 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_movementSoundName = 0x510; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_targetEntityName = 0x518; // CUtlSymbolLarge
             }
-
             // Parent: CBaseEntity
             // Field count: 4
-            namespace CGameGibManager
-            {
+            namespace CGameGibManager {
                 constexpr std::ptrdiff_t m_bAllowNewGibs = 0x500; // bool
                 constexpr std::ptrdiff_t m_iCurrentMaxPieces = 0x504; // int32
                 constexpr std::ptrdiff_t m_iMaxPieces = 0x508; // int32
                 constexpr std::ptrdiff_t m_iLastFrame = 0x50C; // int32
             }
-
             // Parent: CBasePulseGraphInstance
             // Field count: 1
             //
@@ -12357,85 +10814,62 @@ namespace cs2_dumper
             // MPulseDomainHookInfo
             // MPulseLibraryBindings
             // MPulseDomainOptInFeatureTag
-            namespace CCSPointScript
-            {
+            namespace CCSPointScript {
                 constexpr std::ptrdiff_t m_pParent = 0xF8; // CCSPointScriptEntity*
             }
-
             // Parent: CRagdollProp
             // Field count: 0
-            namespace CRagdollPropAlias_physics_prop_ragdoll
-            {
+            namespace CRagdollPropAlias_physics_prop_ragdoll {
             }
-
             // Parent: CSprite
             // Field count: 0
-            namespace CCSSprite
-            {
+            namespace CCSSprite {
             }
-
             // Parent: CBaseEntity
             // Field count: 0
-            namespace CFuncPropRespawnZone
-            {
+            namespace CFuncPropRespawnZone {
             }
-
             // Parent: CServerOnlyPointEntity
             // Field count: 3
-            namespace SpawnPoint
-            {
+            namespace SpawnPoint {
                 constexpr std::ptrdiff_t m_iPriority = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_bEnabled = 0x4E4; // bool
                 constexpr std::ptrdiff_t m_nType = 0x4E8; // int32
             }
-
             // Parent: CCSWeaponBaseGun
             // Field count: 0
-            namespace CWeaponSCAR20
-            {
+            namespace CWeaponSCAR20 {
             }
-
             // Parent: CBaseGrenade
             // Field count: 0
-            namespace CTripWireFireProjectile
-            {
+            namespace CTripWireFireProjectile {
             }
-
             // Parent: CFuncPlat
             // Field count: 2
-            namespace CFuncPlatRot
-            {
+            namespace CFuncPlatRot {
                 constexpr std::ptrdiff_t m_end = 0x840; // QAngle
                 constexpr std::ptrdiff_t m_start = 0x84C; // QAngle
             }
-
             // Parent: CPointEntity
             // Field count: 5
-            namespace CEnvSpark
-            {
+            namespace CEnvSpark {
                 constexpr std::ptrdiff_t m_flDelay = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_nMagnitude = 0x4E4; // int32
                 constexpr std::ptrdiff_t m_nTrailLength = 0x4E8; // int32
                 constexpr std::ptrdiff_t m_nType = 0x4EC; // int32
                 constexpr std::ptrdiff_t m_OnSpark = 0x4F0; // CEntityIOOutput
             }
-
             // Parent: CPlayer_ObserverServices
             // Field count: 0
-            namespace CCSObserver_ObserverServices
-            {
+            namespace CCSObserver_ObserverServices {
             }
-
             // Parent: CPlayerPawnComponent
             // Field count: 0
-            namespace CPlayer_AutoaimServices
-            {
+            namespace CPlayer_AutoaimServices {
             }
-
             // Parent: CBasePlatTrain
             // Field count: 6
-            namespace CFuncTrain
-            {
+            namespace CFuncTrain {
                 constexpr std::ptrdiff_t m_hCurrentTarget = 0x838; // CHandle<CBaseEntity>
                 constexpr std::ptrdiff_t m_activated = 0x83C; // bool
                 constexpr std::ptrdiff_t m_hEnemy = 0x840; // CHandle<CBaseEntity>
@@ -12443,7 +10877,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flNextBlockTime = 0x848; // GameTime_t
                 constexpr std::ptrdiff_t m_iszLastTarget = 0x850; // CUtlSymbolLarge
             }
-
             // Parent: CHostageExpresserShim
             // Field count: 39
             //
@@ -12465,8 +10898,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_flRescueStartTime (GameTime_t)
             // NetworkVarNames: m_flGrabSuccessTime (GameTime_t)
             // NetworkVarNames: m_flDropStartTime (GameTime_t)
-            namespace CHostage
-            {
+            namespace CHostage {
                 constexpr std::ptrdiff_t m_OnHostageBeginGrab = 0xAD8; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnFirstPickedUp = 0xB00; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnDroppedNotRescued = 0xB28; // CEntityIOOutput
@@ -12507,11 +10939,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_vecSpawnGroundPos = 0x2D34; // Vector
                 constexpr std::ptrdiff_t m_vecHostageResetPosition = 0x2D54; // Vector
             }
-
             // Parent: CPointEntity
             // Field count: 13
-            namespace CNavLinkAreaEntity
-            {
+            namespace CNavLinkAreaEntity {
                 constexpr std::ptrdiff_t m_flWidth = 0x4E0; // float32
                 constexpr std::ptrdiff_t m_vLocatorOffset = 0x4E4; // Vector
                 constexpr std::ptrdiff_t m_qLocatorAnglesOffset = 0x4F0; // QAngle
@@ -12526,7 +10956,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_OnNavLinkFinish = 0x558; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_bIsTerminus = 0x580; // bool
             }
-
             // Parent: CBaseToggle
             // Field count: 12
             //
@@ -12534,8 +10963,7 @@ namespace cs2_dumper
             // MNetworkIncludeByName
             // MNetworkIncludeByName
             // MNetworkOverride
-            namespace CFuncMoveLinear
-            {
+            namespace CFuncMoveLinear {
                 constexpr std::ptrdiff_t m_authoredPosition = 0x810; // MoveLinearAuthoredPos_t
                 constexpr std::ptrdiff_t m_angMoveEntitySpace = 0x814; // QAngle
                 constexpr std::ptrdiff_t m_vecMoveDirParentSpace = 0x820; // Vector
@@ -12549,20 +10977,16 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bCreateMovableNavMesh = 0x8A8; // bool
                 constexpr std::ptrdiff_t m_bCreateNavObstacle = 0x8A9; // bool
             }
-
             // Parent: CBaseEntity
             // Field count: 3
-            namespace CCommentaryAuto
-            {
+            namespace CCommentaryAuto {
                 constexpr std::ptrdiff_t m_OnCommentaryNewGame = 0x4E0; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnCommentaryMidGame = 0x508; // CEntityIOOutput
                 constexpr std::ptrdiff_t m_OnCommentaryMultiplayerSpawn = 0x530; // CEntityIOOutput
             }
-
             // Parent: CPointEntity
             // Field count: 9
-            namespace CMapInfo
-            {
+            namespace CMapInfo {
                 constexpr std::ptrdiff_t m_iBuyingStatus = 0x4E0; // int32
                 constexpr std::ptrdiff_t m_flBombRadius = 0x4E4; // float32
                 constexpr std::ptrdiff_t m_iPetPopulation = 0x4E8; // int32
@@ -12573,13 +10997,10 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_bFadePlayerVisibilityFarZ = 0x4F8; // bool
                 constexpr std::ptrdiff_t m_bRainTraceToSkyEnabled = 0x4F9; // bool
             }
-
             // Parent: CBaseTrigger
             // Field count: 0
-            namespace CTriggerBombReset
-            {
+            namespace CTriggerBombReset {
             }
-
             // Parent: CEntityInstance
             // Field count: 77
             //
@@ -12628,8 +11049,7 @@ namespace cs2_dumper
             // NetworkVarNames: m_bAnimatedEveryTick (bool)
             // NetworkVarNames: m_flNavIgnoreUntilTime (GameTime_t)
             // NetworkVarNames: m_nBloodType (BloodType)
-            namespace CBaseEntity
-            {
+            namespace CBaseEntity {
                 constexpr std::ptrdiff_t m_CBodyComponent = 0x38; // CBodyComponent*
                 constexpr std::ptrdiff_t m_NetworkTransmitComponent = 0x40; // CNetworkTransmitComponent
                 constexpr std::ptrdiff_t m_aThinkFunctions = 0x240; // CUtlVector<thinkfunc_t>
@@ -12708,11 +11128,9 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flVPhysicsUpdateLocalTime = 0x4D4; // float32
                 constexpr std::ptrdiff_t m_nBloodType = 0x4D8; // BloodType
             }
-
             // Parent: CLogicalEntity
             // Field count: 9
-            namespace CLogicMeasureMovement
-            {
+            namespace CLogicMeasureMovement {
                 constexpr std::ptrdiff_t m_strMeasureTarget = 0x4E0; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_strMeasureReference = 0x4E8; // CUtlSymbolLarge
                 constexpr std::ptrdiff_t m_strTargetReference = 0x4F0; // CUtlSymbolLarge
@@ -12723,7 +11141,6 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flScale = 0x508; // float32
                 constexpr std::ptrdiff_t m_nMeasureType = 0x50C; // int32
             }
-
             // Parent: None
             // Field count: 3
             //
@@ -12731,21 +11148,18 @@ namespace cs2_dumper
             // NetworkVarNames: nType (FixAngleSet_t)
             // NetworkVarNames: qAngle (QAngle)
             // NetworkVarNames: nIndex (uint32)
-            namespace ViewAngleServerChange_t
-            {
+            namespace ViewAngleServerChange_t {
                 constexpr std::ptrdiff_t nType = 0x30; // FixAngleSet_t
                 constexpr std::ptrdiff_t qAngle = 0x34; // QAngle
                 constexpr std::ptrdiff_t nIndex = 0x40; // uint32
             }
-
             // Parent: None
             // Field count: 2
             //
             // Metadata:
             // NetworkVarNames: m_Transforms (CTransform)
             // NetworkVarNames: m_hOwner (EHANDLE)
-            namespace PhysicsRagdollPose_t
-            {
+            namespace PhysicsRagdollPose_t {
                 constexpr std::ptrdiff_t m_Transforms = 0x8; // CNetworkUtlVectorBase<CTransform>
                 constexpr std::ptrdiff_t m_hOwner = 0x20; // CHandle<CBaseEntity>
             }

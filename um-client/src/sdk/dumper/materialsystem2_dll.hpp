@@ -1,103 +1,83 @@
 // Generated using https://github.com/a2x/cs2-dumper
-// 2024-12-04 19:45:01.324933400 UTC
+// 2024-12-06 20:50:49.699310600 UTC
 
 #pragma once
 
 #include <cstddef>
 
-namespace cs2_dumper
-{
-    namespace schemas
-    {
+namespace cs2_dumper {
+    namespace schemas {
         // Module: materialsystem2.dll
         // Class count: 13
         // Enum count: 5
-        namespace materialsystem2_dll
-        {
+        namespace materialsystem2_dll {
             // Alignment: 4
             // Member count: 4
-            enum class VertJustification_e : uint32_t
-            {
+            enum class VertJustification_e : uint32_t {
                 VERT_JUSTIFICATION_TOP = 0x0,
                 VERT_JUSTIFICATION_CENTER = 0x1,
                 VERT_JUSTIFICATION_BOTTOM = 0x2,
                 VERT_JUSTIFICATION_NONE = 0x3
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class LayoutPositionType_e : uint32_t
-            {
+            enum class LayoutPositionType_e : uint32_t {
                 LAYOUTPOSITIONTYPE_VIEWPORT_RELATIVE = 0x0,
                 LAYOUTPOSITIONTYPE_FRACTIONAL = 0x1,
                 LAYOUTPOSITIONTYPE_NONE = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class ViewFadeMode_t : uint32_t
-            {
+            enum class ViewFadeMode_t : uint32_t {
                 VIEW_FADE_CONSTANT_COLOR = 0x0,
                 VIEW_FADE_MODULATE = 0x1,
                 VIEW_FADE_MOD2X = 0x2
             };
-
             // Alignment: 4
             // Member count: 3
-            enum class BloomBlendMode_t : uint32_t
-            {
+            enum class BloomBlendMode_t : uint32_t {
                 BLOOM_BLEND_ADD = 0x0,
                 BLOOM_BLEND_SCREEN = 0x1,
                 BLOOM_BLEND_BLUR = 0x2
             };
-
             // Alignment: 4
             // Member count: 4
-            enum class HorizJustification_e : uint32_t
-            {
+            enum class HorizJustification_e : uint32_t {
                 HORIZ_JUSTIFICATION_LEFT = 0x0,
                 HORIZ_JUSTIFICATION_CENTER = 0x1,
                 HORIZ_JUSTIFICATION_RIGHT = 0x2,
                 HORIZ_JUSTIFICATION_NONE = 0x3
             };
-
             // Parent: None
             // Field count: 1
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace MaterialParam_t
-            {
+            namespace MaterialParam_t {
                 constexpr std::ptrdiff_t m_name = 0x0; // CUtlString
             }
-
             // Parent: MaterialParam_t
             // Field count: 1
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace MaterialParamVector_t
-            {
+            namespace MaterialParamVector_t {
                 constexpr std::ptrdiff_t m_value = 0x8; // Vector4D
             }
-
             // Parent: MaterialParam_t
             // Field count: 1
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace MaterialParamString_t
-            {
+            namespace MaterialParamString_t {
                 constexpr std::ptrdiff_t m_value = 0x8; // CUtlString
             }
-
             // Parent: None
             // Field count: 11
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace PostProcessingResource_t
-            {
+            namespace PostProcessingResource_t {
                 constexpr std::ptrdiff_t m_bHasTonemapParams = 0x0; // bool
                 constexpr std::ptrdiff_t m_toneMapParams = 0x4; // PostProcessingTonemapParameters_t
                 constexpr std::ptrdiff_t m_bHasBloomParams = 0x40; // bool
@@ -110,24 +90,20 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_colorCorrectionVolumeData = 0xF8; // CUtlBinaryBlock
                 constexpr std::ptrdiff_t m_bHasColorCorrection = 0x110; // bool
             }
-
             // Parent: MaterialParam_t
             // Field count: 1
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace MaterialParamInt_t
-            {
+            namespace MaterialParamInt_t {
                 constexpr std::ptrdiff_t m_nValue = 0x8; // int32
             }
-
             // Parent: None
             // Field count: 6
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace PostProcessingVignetteParameters_t
-            {
+            namespace PostProcessingVignetteParameters_t {
                 constexpr std::ptrdiff_t m_flVignetteStrength = 0x0; // float32
                 constexpr std::ptrdiff_t m_vCenter = 0x4; // Vector2D
                 constexpr std::ptrdiff_t m_flRadius = 0xC; // float32
@@ -135,28 +111,24 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flFeather = 0x14; // float32
                 constexpr std::ptrdiff_t m_vColorTint = 0x18; // Vector
             }
-
             // Parent: None
             // Field count: 5
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace PostProcessingLocalContrastParameters_t
-            {
+            namespace PostProcessingLocalContrastParameters_t {
                 constexpr std::ptrdiff_t m_flLocalContrastStrength = 0x0; // float32
                 constexpr std::ptrdiff_t m_flLocalContrastEdgeStrength = 0x4; // float32
                 constexpr std::ptrdiff_t m_flLocalContrastVignetteStart = 0x8; // float32
                 constexpr std::ptrdiff_t m_flLocalContrastVignetteEnd = 0xC; // float32
                 constexpr std::ptrdiff_t m_flLocalContrastVignetteBlur = 0x10; // float32
             }
-
             // Parent: None
             // Field count: 15
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace PostProcessingTonemapParameters_t
-            {
+            namespace PostProcessingTonemapParameters_t {
                 constexpr std::ptrdiff_t m_flExposureBias = 0x0; // float32
                 constexpr std::ptrdiff_t m_flShoulderStrength = 0x4; // float32
                 constexpr std::ptrdiff_t m_flLinearStrength = 0x8; // float32
@@ -173,24 +145,20 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flMinHighlightLum = 0x34; // float32
                 constexpr std::ptrdiff_t m_flMaxHighlightLum = 0x38; // float32
             }
-
             // Parent: MaterialParam_t
             // Field count: 1
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace MaterialParamBuffer_t
-            {
+            namespace MaterialParamBuffer_t {
                 constexpr std::ptrdiff_t m_value = 0x8; // CUtlBinaryBlock
             }
-
             // Parent: None
             // Field count: 14
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace MaterialResourceData_t
-            {
+            namespace MaterialResourceData_t {
                 constexpr std::ptrdiff_t m_materialName = 0x0; // CUtlString
                 constexpr std::ptrdiff_t m_shaderName = 0x8; // CUtlString
                 constexpr std::ptrdiff_t m_intParams = 0x10; // CUtlVector<MaterialParamInt_t>
@@ -206,14 +174,12 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_stringAttributes = 0x100; // CUtlVector<MaterialParamString_t>
                 constexpr std::ptrdiff_t m_renderAttributesUsed = 0x118; // CUtlVector<CUtlString>
             }
-
             // Parent: None
             // Field count: 10
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace PostProcessingBloomParameters_t
-            {
+            namespace PostProcessingBloomParameters_t {
                 constexpr std::ptrdiff_t m_blendMode = 0x0; // BloomBlendMode_t
                 constexpr std::ptrdiff_t m_flBloomStrength = 0x4; // float32
                 constexpr std::ptrdiff_t m_flScreenBloomStrength = 0x8; // float32
@@ -225,24 +191,20 @@ namespace cs2_dumper
                 constexpr std::ptrdiff_t m_flBlurWeight = 0x20; // float32[5]
                 constexpr std::ptrdiff_t m_vBlurTint = 0x34; // Vector[5]
             }
-
             // Parent: MaterialParam_t
             // Field count: 1
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace MaterialParamFloat_t
-            {
+            namespace MaterialParamFloat_t {
                 constexpr std::ptrdiff_t m_flValue = 0x8; // float32
             }
-
             // Parent: MaterialParam_t
             // Field count: 1
             //
             // Metadata:
             // MGetKV3ClassDefaults
-            namespace MaterialParamTexture_t
-            {
+            namespace MaterialParamTexture_t {
                 constexpr std::ptrdiff_t m_pValue = 0x8; // CStrongHandle<InfoForResourceTypeCTextureBase>
             }
         }

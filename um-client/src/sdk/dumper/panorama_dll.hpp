@@ -1,23 +1,19 @@
 // Generated using https://github.com/a2x/cs2-dumper
-// 2024-12-04 19:45:01.324933400 UTC
+// 2024-12-06 20:50:49.699310600 UTC
 
 #pragma once
 
 #include <cstddef>
 
-namespace cs2_dumper
-{
-    namespace schemas
-    {
+namespace cs2_dumper {
+    namespace schemas {
         // Module: panorama.dll
         // Class count: 0
         // Enum count: 2
-        namespace panorama_dll
-        {
+        namespace panorama_dll {
             // Alignment: 4
             // Member count: 13
-            enum class ELayoutNodeType : uint32_t
-            {
+            enum class ELayoutNodeType : uint32_t {
                 ROOT = 0x0,
                 STYLES = 0x1,
                 SCRIPT_BODY = 0x2,
@@ -32,11 +28,9 @@ namespace cs2_dumper
                 REFERENCE_COMPILED = 0xB,
                 REFERENCE_PASSTHROUGH = 0xC
             };
-
             // Alignment: 4
             // Member count: 16
-            enum class EStyleNodeType : uint32_t
-            {
+            enum class EStyleNodeType : uint32_t {
                 ROOT = 0x0,
                 EXPRESSION = 0x1,
                 PROPERTY = 0x2,
