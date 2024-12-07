@@ -173,10 +173,6 @@ int main()
 
         std::cout << '\n';
 
-        // float max_cosine = -std::numeric_limits<float>::infinity();
-        // int closest_entity_index{-1};
-        // std::cout << XOR("Closest ent: ") << closest_entity_index << '\n';
-
         for (int i{1}; i < 32; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
@@ -200,39 +196,6 @@ int main()
                 << XOR("Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n'
                 << XOR("Is glowing: ") << (is_glowing ? "yes" : "no") << '\n';
 
-            /*const cheat::entity::Vec3 entity_pos{entity->get_eye_pos(driver)};
-            const cheat::entity::Vec3 vector_to_entity{entity_pos - my_eye_pos};
-
-            const float magnitude{
-                std::sqrt(vector_to_entity.x * vector_to_entity.x +
-                    vector_to_entity.y * vector_to_entity.y +
-                    vector_to_entity.z * vector_to_entity.z)
-            };
-
-            if (magnitude == 0.0f) { continue; }
-
-            const cheat::entity::Vec3 normalized_vector_to_entity{
-                vector_to_entity.x / magnitude,
-                vector_to_entity.y / magnitude,
-                vector_to_entity.z / magnitude
-            };
-
-            const float cosine_angle{
-                my_forward_vec.x * normalized_vector_to_entity.x +
-                my_forward_vec.y * normalized_vector_to_entity.y +
-                my_forward_vec.z * normalized_vector_to_entity.z
-            };*/
-
-            // std::cout << XOR("Cosine angle ") << cosine_angle << '\n';
-
-            /*constexpr float cosine_threshold{ 0.9f };
-            if (cosine_angle > max_cosine && cosine_angle < cosine_threshold)
-            {
-                std::cout << XOR("Cosine angle will set ") << cosine_angle << '\n';
-                max_cosine = cosine_angle;
-                closest_entity_index = i;
-            }*/
-
             if (my_team != player_team && player_health > 0 && !is_local_player)
             {
                 if (glow_hack)
@@ -248,17 +211,6 @@ int main()
             }
             std::cout << '\n';
         }
-
-        /*if (max_cosine > 0.0f)
-        {
-            std::cout << XOR("Closest ent max_cosine: ") << closest_entity_index << '\n';
-            const std::optional closestEnt{ cheat.get_entity_from_list(driver, closest_entity_index) };
-            std::cout << XOR("Closest enxxxxxxxxxxxxxxxxxxxxxxxt name: ") << closestEnt->get_name(driver) << '\n';
-        }
-        else
-        {
-            std::cout << XOR("No entity close to crosshair.\n");
-        }*/
 
         sleep_for(20ms);
     }

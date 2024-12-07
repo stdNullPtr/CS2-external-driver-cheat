@@ -32,8 +32,18 @@ namespace cheat::entity
     class Entity
     {
     private:
-        const uintptr_t m_entity_controller;
-        const uintptr_t m_entity_pawn;
+        uintptr_t entity_controller_;
+        uintptr_t entity_pawn_;
+
+        std::string name_;
+        int team_;
+        int hp_;
+        bool is_spotted_;
+        bool is_local_player_;
+        bool is_glowing_;
+        Vec3 forward_vec_;
+        Vec3 origin_;
+        Vec3 eye_position_;
 
     private:
         //TODO base classes for these classes maybe so we can move their specific field retrieval there
@@ -41,13 +51,8 @@ namespace cheat::entity
         [[nodiscard]] uintptr_t get_movement_services(const driver::Driver& driver) const;
 
     public:
-        Entity(uintptr_t entity_controller, uintptr_t entity_pawn);
-        ~Entity() = default;
-
-        Entity(Entity&& other) noexcept = default;
-        Entity(const Entity& other) = default;
-        Entity& operator=(const Entity& other) = delete;
-        Entity& operator=(Entity&& other) noexcept = delete;
+        Entity(const uintptr_t& entity_controller, const uintptr_t& entity_pawn);
+        Entity(const driver::Driver& driver, const uintptr_t& entity_controller, const uintptr_t& entity_pawn);
 
         [[nodiscard]] std::string get_name(const driver::Driver& driver) const;
 

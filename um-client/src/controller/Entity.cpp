@@ -4,21 +4,25 @@ namespace cheat::entity
 {
     uintptr_t Entity::get_game_scene_node(const driver::Driver& driver) const
     {
-        return driver.read<uintptr_t>(m_entity_pawn + client_dll::C_BaseEntity::m_pGameSceneNode);
+        return driver.read<uintptr_t>(entity_pawn_ + client_dll::C_BaseEntity::m_pGameSceneNode);
     }
 
     uintptr_t Entity::get_movement_services(const driver::Driver& driver) const
     {
-        return driver.read<uintptr_t>(m_entity_pawn + client_dll::C_BasePlayerPawn::m_pMovementServices);
+        return driver.read<uintptr_t>(entity_pawn_ + client_dll::C_BasePlayerPawn::m_pMovementServices);
     }
 
-    Entity::Entity(const uintptr_t entity_controller, const uintptr_t entity_pawn): m_entity_controller(entity_controller), m_entity_pawn(entity_pawn)
+    Entity::Entity(const uintptr_t& entity_controller, const uintptr_t& entity_pawn): entity_controller_(entity_controller), entity_pawn_(entity_pawn)
+    {
+    }
+
+    Entity::Entity(const driver::Driver& driver, const uintptr_t& entity_controller, const uintptr_t& entity_pawn)
     {
     }
 
     std::string Entity::get_name(const driver::Driver& driver) const
     {
-        const auto entity_name_address{driver.read<uintptr_t>(m_entity_controller + client_dll::CCSPlayerController::m_sSanitizedPlayerName)};
+        const auto entity_name_address{driver.read<uintptr_t>(entity_controller_ + client_dll::CCSPlayerController::m_sSanitizedPlayerName)};
         struct str_wrap
         {
             char buf[20];
@@ -30,17 +34,17 @@ namespace cheat::entity
 
     int Entity::get_team(const driver::Driver& driver) const
     {
-        return driver.read<int>(m_entity_pawn + client_dll::C_BaseEntity::m_iTeamNum);
+        return driver.read<int>(entity_pawn_ + client_dll::C_BaseEntity::m_iTeamNum);
     }
 
     int Entity::get_health(const driver::Driver& driver) const
     {
-        return driver.read<int>(m_entity_pawn + client_dll::C_BaseEntity::m_iHealth);
+        return driver.read<int>(entity_pawn_ + client_dll::C_BaseEntity::m_iHealth);
     }
 
     bool Entity::is_spotted(const driver::Driver& driver) const
     {
-        const auto p_entity_spotted_state{m_entity_pawn + client_dll::C_CSPlayerPawn::m_entitySpottedState};
+        const auto p_entity_spotted_state{entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState};
 
         const auto entity_spotted_address{p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpotted};
 
@@ -49,12 +53,12 @@ namespace cheat::entity
 
     bool Entity::is_local_player(const driver::Driver& driver) const
     {
-        return driver.read<bool>(m_entity_controller + client_dll::CBasePlayerController::m_bIsLocalPlayerController);
+        return driver.read<bool>(entity_controller_ + client_dll::CBasePlayerController::m_bIsLocalPlayerController);
     }
 
     bool Entity::is_glowing(const driver::Driver& driver) const
     {
-        return driver.read<bool>(m_entity_pawn + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_bGlowing);
+        return driver.read<bool>(entity_pawn_ + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_bGlowing);
     }
 
     Vec3 Entity::get_forward_vector(const driver::Driver& driver) const
@@ -70,12 +74,12 @@ namespace cheat::entity
 
     Vec3 Entity::get_eye_pos(const driver::Driver& driver) const
     {
-        return driver.read<Vec3>(m_entity_pawn + client_dll::C_BaseModelEntity::m_vecViewOffset) + get_vec_origin(driver);
+        return driver.read<Vec3>(entity_pawn_ + client_dll::C_BaseModelEntity::m_vecViewOffset) + get_vec_origin(driver);
     }
 
     void Entity::set_spotted(const driver::Driver& driver, const bool& spotted) const
     {
-        const auto p_entity_spotted_state{m_entity_pawn + client_dll::C_CSPlayerPawn::m_entitySpottedState};
+        const auto p_entity_spotted_state{entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState};
 
         const auto entity_spotted_address{p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpotted};
 
@@ -84,11 +88,11 @@ namespace cheat::entity
 
     void Entity::set_glowing(const driver::Driver& driver, const bool& glow) const
     {
-        driver.write(m_entity_pawn + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_bGlowing, glow);
+        driver.write(entity_pawn_ + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_bGlowing, glow);
         if (glow)
         {
-            driver.write(m_entity_pawn + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_iGlowType, 3);
-            driver.write(m_entity_pawn + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_glowColorOverride, IM_COL32(245, 0, 0, 255));
+            driver.write(entity_pawn_ + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_iGlowType, 3);
+            driver.write(entity_pawn_ + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_glowColorOverride, IM_COL32(245, 0, 0, 255));
         }
     }
 }
