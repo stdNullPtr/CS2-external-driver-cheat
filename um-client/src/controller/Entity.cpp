@@ -16,7 +16,8 @@ namespace cheat::entity
     {
     }
 
-    std::string Entity::get_name(const driver::Driver& driver) const
+    //TODO unicode names
+    std::wstring Entity::get_name(const driver::Driver& driver) const
     {
         const auto entity_name_address{driver.read<uintptr_t>(entity_controller_ + client_dll::CCSPlayerController::m_sSanitizedPlayerName)};
         struct str_wrap
@@ -25,7 +26,12 @@ namespace cheat::entity
         };
         const auto str{driver.read<str_wrap>(entity_name_address)};
 
-        return {str.buf};
+        std::wstring wideStr(sizeof str, L'\0');
+        size_t convertedSize{0};
+        wchar_t wideBuf[20];
+        (void)mbstowcs_s(&convertedSize, wideBuf, str.buf, 20);
+
+        return std::wstring(wideBuf);
     }
 
     int Entity::get_team(const driver::Driver& driver) const

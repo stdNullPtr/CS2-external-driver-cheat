@@ -9,7 +9,7 @@ namespace driver
     Driver::~Driver()
     {
         CloseHandle(handle_);
-        std::cout << XOR("Driver handle successfully destroyed.\n");
+        std::wcout << XORW(L"Driver handle successfully destroyed.\n");
     }
 
     bool Driver::is_valid() const
@@ -21,7 +21,7 @@ namespace driver
     {
         const HANDLE driver_handle{
             CreateFile(
-                XOR(R"(\\.\xd)"),
+                XORW(LR"(\\.\xd)"),
                 GENERIC_READ,
                 0,
                 nullptr,
@@ -32,11 +32,11 @@ namespace driver
 
         if (driver_handle == INVALID_HANDLE_VALUE)
         {
-            std::cerr << XOR("Failed creating Driver handle. Error: ") << GetLastError() << '\n';
+            std::wcerr << XORW(L"Failed creating Driver handle. Error: ") << GetLastError() << '\n';
         }
         else
         {
-            std::cout << XOR("Created Driver handle.\n");
+            std::wcout << XORW(L"Created Driver handle.\n");
         }
 
         return driver_handle;

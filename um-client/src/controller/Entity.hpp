@@ -27,6 +27,12 @@ namespace cheat::entity
             os << "[" << vec.x << ", " << vec.y << ", " << vec.z << "]";
             return os;
         }
+
+        friend std::wostream& operator<<(std::wostream& os, const Vec3& vec)
+        {
+            os << "[" << vec.x << ", " << vec.y << ", " << vec.z << "]";
+            return os;
+        }
     };
 
     class Entity
@@ -43,7 +49,7 @@ namespace cheat::entity
     public:
         Entity(const uintptr_t& entity_controller, const uintptr_t& entity_pawn);
 
-        [[nodiscard]] std::string get_name(const driver::Driver& driver) const;
+        [[nodiscard]] std::wstring get_name(const driver::Driver& driver) const;
         [[nodiscard]] int get_team(const driver::Driver& driver) const;
         [[nodiscard]] int get_health(const driver::Driver& driver) const;
         [[nodiscard]] bool is_spotted(const driver::Driver& driver) const;

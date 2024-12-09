@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <cstdint>
 #include <iostream>
-#include <xor.hpp>
+#include <XOR.hpp>
 #include <winioctl.h>
 
 namespace driver

@@ -7,10 +7,10 @@ namespace cheat
         const auto process_id{commons::process::GetProcessIdByName(g::CS2_PROCESS_NAME)};
         if (!process_id.has_value())
         {
-            std::cerr << XOR("Failed to find pid of requested process.\n");
+            std::wcerr << XORW(L"Failed to find pid of requested process.\n");
             throw std::runtime_error(XOR("Failed to find pid of requested process."));
         }
-        std::cout << XOR("Target process id: ") << process_id.value() << '\n';
+        std::wcout << XORW(L"Target process id: ") << process_id.value() << '\n';
 
         return process_id.value();
     }
@@ -20,10 +20,10 @@ namespace cheat
         const auto client_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::CLIENT_DLL_MODULE_NAME)};
         if (!client_dll_base.has_value())
         {
-            std::cerr << XOR("Failed GetModuleBaseAddress for Client DLL.\n");
+            std::wcerr << XORW(L"Failed GetModuleBaseAddress for Client DLL.\n");
             throw std::runtime_error(XOR("Failed GetModuleBaseAddress for Client DL."));
         }
-        std::cout << XOR("Client DLL base: ") << std::hex << std::uppercase << client_dll_base.value() << '\n';
+        std::wcout << XORW(L"Client DLL base: ") << std::hex << std::uppercase << client_dll_base.value() << '\n';
         return client_dll_base.value();
     }
 
@@ -32,10 +32,10 @@ namespace cheat
         const auto engine_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::ENGINE_DLL_MODULE_NAME)};
         if (!engine_dll_base.has_value())
         {
-            std::cerr << XOR("Failed GetModuleBaseAddress for Engine DLL.\n");
+            std::wcerr << XORW(L"Failed GetModuleBaseAddress for Engine DLL.\n");
             throw std::runtime_error(XOR("Failed GetModuleBaseAddress for Engine DLL."));
         }
-        std::cout << XOR("Engine DLL base: ") << std::hex << std::uppercase << engine_dll_base.value() << '\n';
+        std::wcout << XORW(L"Engine DLL base: ") << std::hex << std::uppercase << engine_dll_base.value() << '\n';
         return engine_dll_base.value();
     }
 
@@ -68,10 +68,10 @@ namespace cheat
     {
         if (!driver.attach(cs2_process_id_))
         {
-            std::cerr << XOR("Failed to attach to process.\n");
+            std::wcerr << XORW(L"Failed to attach to process.\n");
             return false;
         }
-        std::cout << XOR("Attachment successful.\n");
+        std::wcout << XORW(L"Attachment successful.\n");
         return true;
     }
 
@@ -156,7 +156,7 @@ namespace cheat
         const auto entity_pawn{driver.read<uintptr_t>(list_entity + 0x78 * (entity_controller_pawn & 0x1FF))};
         if (!entity_pawn)
         {
-            std::cerr << XOR("entityPawn is null\n");
+            std::wcerr << XORW(L"entityPawn is null\n");
             return std::nullopt;
         }
 

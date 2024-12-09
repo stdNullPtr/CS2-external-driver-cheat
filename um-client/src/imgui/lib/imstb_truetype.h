@@ -3010,7 +3010,7 @@ static void stbtt__rasterize_sorted_edges(stbtt__bitmap *result, stbtt__edge *e,
             ++e;
          }
 
-         // now process all active edges in XOR fashion
+         // now process all active edges in XORW fashion
          if (active)
             stbtt__fill_active_edges(scanline, result->w, active, max_weight);
 
@@ -3546,7 +3546,7 @@ static void stbtt__rasterize(stbtt__bitmap *result, stbtt__point *pts, int *wcou
    //STBTT_sort(e, n, sizeof(e[0]), stbtt__edge_compare);
    stbtt__sort_edges(e, n);
 
-   // now, traverse the scanlines and find the intersections on each scanline, use xor winding rule
+   // now, traverse the scanlines and find the intersections on each scanline, use XORW winding rule
    stbtt__rasterize_sorted_edges(result, e, n, vsubsample, off_x, off_y, userdata);
 
    STBTT_free(e, userdata);
