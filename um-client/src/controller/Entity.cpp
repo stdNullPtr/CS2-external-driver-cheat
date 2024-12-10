@@ -16,7 +16,7 @@ namespace cheat::entity
     {
     }
 
-    //TODO unicode names
+    //TODO can we improve this ugly mess
     std::wstring Entity::get_name(const driver::Driver& driver) const
     {
         const auto entity_name_address{driver.read<uintptr_t>(entity_controller_ + client_dll::CCSPlayerController::m_sSanitizedPlayerName)};
@@ -26,12 +26,11 @@ namespace cheat::entity
         };
         const auto str{driver.read<str_wrap>(entity_name_address)};
 
-        std::wstring wideStr(sizeof str, L'\0');
-        size_t convertedSize{0};
         wchar_t wideBuf[20];
+        size_t convertedSize{ 0 };
         (void)mbstowcs_s(&convertedSize, wideBuf, str.buf, 20);
 
-        return std::wstring(wideBuf);
+        return { wideBuf };
     }
 
     int Entity::get_team(const driver::Driver& driver) const

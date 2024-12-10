@@ -24,6 +24,9 @@ int main()
 {
     _setmode(_fileno(stdout), _O_WTEXT);
     _setmode(_fileno(stdin), _O_WTEXT);
+
+    (void)std::setlocale(LC_ALL, "en_US.utf8");
+
     setCursorVisibility(false);
 
     cheat::imgui::init();
