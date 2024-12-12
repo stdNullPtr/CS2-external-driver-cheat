@@ -97,11 +97,15 @@ namespace draw
 
             const std::vector rectangles{esp_draw_list.get()};
 
-            ImDrawList* const draw_list = ImGui::GetForegroundDrawList();
+            //TODO big issue, this is not click-through
+            ImDrawList* const draw_list = ImGui::GetBackgroundDrawList();
+
             for (const auto& rect : rectangles)
             {
+                //TODO drop these from here, use top left and top right in the rect object and the hack thread will set them
                 const auto top_left{ImVec2(rect.position.x - rect.size.x * 0.5f, rect.position.y - rect.size.y * 0.5f)};
                 const auto bottom_right{ImVec2(rect.position.x + rect.size.x * 0.5f, rect.position.y + rect.size.y * 0.5f)};
+                //TODO maybe instead of addrect these actually have to be windows? It makes more sense since we can highly customize them instead of having simple lines
                 draw_list->AddRect(top_left, bottom_right, rect.color, 0.0f, ImDrawFlags_None, rect.thickness);
             }
 
