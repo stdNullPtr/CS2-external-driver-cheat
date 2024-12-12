@@ -1,5 +1,7 @@
 #include "Entity.hpp"
 
+#include "../sdk/dumper/offsets.hpp"
+
 namespace cheat::entity
 {
     uintptr_t Entity::get_game_scene_node(const driver::Driver& driver) const
@@ -27,10 +29,10 @@ namespace cheat::entity
         const auto str{driver.read<str_wrap>(entity_name_address)};
 
         wchar_t wideBuf[20];
-        size_t convertedSize{ 0 };
-        (void)mbstowcs_s(&convertedSize, wideBuf, str.buf, 20);
+        size_t convertedSize{0};
+        (void)mbstowcs_s(&convertedSize, wideBuf, str.buf, 19);
 
-        return { wideBuf };
+        return {wideBuf};
     }
 
     int Entity::get_team(const driver::Driver& driver) const
@@ -62,20 +64,20 @@ namespace cheat::entity
         return driver.read<bool>(entity_pawn_ + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_bGlowing);
     }
 
-    Vec3 Entity::get_forward_vector(const driver::Driver& driver) const
+    util::Vec3 Entity::get_forward_vector(const driver::Driver& driver) const
     {
         const auto movement_services{get_movement_services(driver)};
-        return driver.read<Vec3>(movement_services + client_dll::CCSPlayer_MovementServices::m_vecForward);
+        return driver.read<util::Vec3>(movement_services + client_dll::CCSPlayer_MovementServices::m_vecForward);
     }
 
-    Vec3 Entity::get_vec_origin(const driver::Driver& driver) const
+    util::Vec3 Entity::get_vec_origin(const driver::Driver& driver) const
     {
-        return driver.read<Vec3>(get_game_scene_node(driver) + client_dll::CGameSceneNode::m_vecOrigin);
+        return driver.read<util::Vec3>(get_game_scene_node(driver) + client_dll::CGameSceneNode::m_vecOrigin);
     }
 
-    Vec3 Entity::get_eye_pos(const driver::Driver& driver) const
+    util::Vec3 Entity::get_eye_pos(const driver::Driver& driver) const
     {
-        return driver.read<Vec3>(entity_pawn_ + client_dll::C_BaseModelEntity::m_vecViewOffset) + get_vec_origin(driver);
+        return driver.read<util::Vec3>(entity_pawn_ + client_dll::C_BaseModelEntity::m_vecViewOffset) + get_vec_origin(driver);
     }
 
     void Entity::set_spotted(const driver::Driver& driver, const bool& spotted) const

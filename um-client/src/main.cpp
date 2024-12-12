@@ -15,6 +15,8 @@
 #include <io.h>
 #include <fcntl.h>
 
+#include "draw/Draw.hpp"
+
 using namespace std::chrono_literals;
 using namespace g::toggles;
 using namespace commons::console;
@@ -29,8 +31,6 @@ int main()
 
     setCursorVisibility(false);
 
-    cheat::imgui::init();
-
     const driver::Driver driver{};
     if (!driver.is_valid())
     {
@@ -40,77 +40,30 @@ int main()
 
     cheat::Cs2CheatController cheat;
 
+    draw::EspDrawList draw_list;
+    std::jthread draw_thread(draw::draw_imgui, std::ref(draw_list));
+
     sleep_for(2s);
 
     while (!(GetAsyncKeyState(VK_END) & 0x1))
     {
-        const auto frameState{cheat::imgui::frame::startFrame()};
-        if (frameState == cheat::imgui::frame::FRAME_QUIT)
-        {
-            break;
-        }
-
-        if (frameState == cheat::imgui::frame::FRAME_SKIP)
-        {
-            continue;
-        }
-
-        if (show_menu)
-        {
-            ImGui::PushStyleColor(ImGuiCol_WindowBg, IM_COL32(30, 30, 30, 230));
-            ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(10, 10));
-            ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 10.0f);
-
-            ImGui::Begin(XOR("XD"), &show_menu, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize);
-
-            ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 128, 255, 255));
-            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2));
-            ImGui::SeparatorText(XOR("Toggles"));
-            ImGui::PopStyleVar();
-            ImGui::PopStyleColor();
-
-            ImGui::PushStyleColor(ImGuiCol_FrameBg, IM_COL32(50, 50, 50, 255));
-            ImGui::PushStyleColor(ImGuiCol_FrameBgHovered, IM_COL32(70, 70, 70, 255));
-            ImGui::PushStyleColor(ImGuiCol_CheckMark, IM_COL32(0, 128, 255, 255));
-            ImGui::Checkbox(XOR("[F1] Pause"), &is_paused);
-            if (is_paused)
-            {
-                ImGui::BeginDisabled();
-            }
-            ImGui::Checkbox(XOR("[F2] Radar (Could get flagged, use with caution)"), &radar_hack);
-            ImGui::Checkbox(XOR("[F3] Glow (Could get flagged, use with caution)"), &glow_hack);
-            if (is_paused)
-            {
-                ImGui::EndDisabled();
-            }
-            ImGui::PopStyleColor(3);
-
-            ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(128, 0, 0, 255));
-            ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2));
-            ImGui::SeparatorText(XOR("[INS] Close"));
-            ImGui::PopStyleVar();
-            ImGui::PopStyleColor();
-
-            ImGui::End();
-
-            ImGui::PopStyleVar(2);
-            ImGui::PopStyleColor();
-        }
-
-        cheat::imgui::frame::render();
-
+#ifndef NDEBUG
         clearConsole({0, 0});
-
-        if (!commons::window::waitForWindow(XORW(L"Counter-Strike 2")))
-        {
-            std::wcerr << XORW(L"Aborted looking for game window, exiting...\n");
-            break;
-        }
-
+#endif
         if (!cheat.is_state_valid())
         {
             std::wcout << XORW(L"Controller state invalid, will re-init...\n");
+
+            // prevent any leftover draw artifacts
+            draw_list.clear();
             reset_toggles();
+
+            if (!commons::window::waitForWindow(XORW(L"Counter-Strike 2")))
+            {
+                std::wcout << XORW(L"Aborted looking for game window, exiting...\n");
+                return EXIT_SUCCESS;
+            }
+
             sleep_for(3s);
 
             if (!cheat.init(driver))
@@ -121,7 +74,10 @@ int main()
             }
         }
 
+#ifndef NDEBUG
         std::wcout << ansi_codes::red << XORW(L"[END] Quit\n") << ansi_codes::reset_color;
+#endif
+
         if (!cheat.is_in_game(driver))
         {
             std::wcout << XORW(L"Waiting for you to join game...\n");
@@ -129,51 +85,39 @@ int main()
             continue;
         }
 
+#ifndef NDEBUG
         std::wcout << '\n';
         std::wcout << ansi_codes::light_blue << XORW(L"[F1] Pause\n") << ansi_codes::reset_color;
         std::wcout << ansi_codes::light_blue << XORW(L"[F2] Radar hack\n") << ansi_codes::reset_color;
         std::wcout << ansi_codes::light_blue << XORW(L"[F3] Glow hack\n") << ansi_codes::reset_color;
-        std::wcout << ansi_codes::light_blue << XORW(L"[INS] Glow hack\n") << ansi_codes::reset_color;
+        std::wcout << ansi_codes::light_blue << XORW(L"[F4] ESP hack\n") << ansi_codes::reset_color;
+        std::wcout << ansi_codes::light_blue << XORW(L"[INS] Minimize\n") << ansi_codes::reset_color;
         std::wcout << '\n';
+#endif
 
-        if (GetAsyncKeyState(VK_F1) & 0x1)
-        {
-            is_paused = !is_paused;
-        }
-
-        if (is_paused)
+        if (is_paused || !commons::window::isWindowInFocus(L"Counter-Strike 2"))
         {
             std::wcout << XORW(L"[F1] Paused...\n");
+            draw_list.clear();
             sleep_for(50ms);
             continue;
         }
 
-        if (GetAsyncKeyState(VK_F2) & 0x1)
-        {
-            radar_hack = !radar_hack;
-        }
-
-        if (GetAsyncKeyState(VK_F3) & 0x1)
-        {
-            glow_hack = !glow_hack;
-        }
-
-        if (GetAsyncKeyState(VK_INSERT) & 0x1)
-        {
-            show_menu = !show_menu;
-        }
-
         const auto me{cheat.get_local_player(driver)};
-
-        const auto my_eye_pos{me.get_eye_pos(driver)};
-        const auto my_forward_vec{me.get_forward_vector(driver)};
         const auto my_team{me.get_team(driver)};
+        const auto view_matrix{cheat.get_view_matrix(driver)};
 
+#ifndef NDEBUG
+        const auto my_eye_pos{ me.get_eye_pos(driver) };
+        const auto my_forward_vec{ me.get_forward_vector(driver) };
         std::wcout << XORW(L"Forward vec: ") << my_forward_vec << '\n'
-            << XORW(L"My eye position: ") << my_eye_pos << '\n';
+            << XORW(L"My eye position: ") << my_eye_pos << '\n'
+            << XORW(L"View matrix: ") << view_matrix << '\n';
 
         std::wcout << '\n';
+#endif
 
+        std::vector<draw::Rect> draw_items;
         for (int i{1}; i < 32; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
@@ -187,15 +131,19 @@ int main()
             const auto player_team{entity->get_team(driver)};
             const auto player_health{entity->get_health(driver)};
             const auto entity_spotted{entity->is_spotted(driver)};
-            const auto is_glowing{entity->is_glowing(driver)};
 
+            const auto entity_eyes_pos_screen{cheat::Cs2CheatController::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
+            const auto entity_feet_pos_screen{cheat::Cs2CheatController::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
+
+#ifndef NDEBUG
             std::wcout << XORW(L"Ent: ") << i << '\n'
                 << XORW(L"Name: ") << entity->get_name(driver) << '\n'
                 << XORW(L"Is this me: ") << (is_local_player ? "yes" : "no") << '\n'
                 << XORW(L"Enemy: ") << (my_team != player_team ? "yes" : "no") << '\n'
                 << XORW(L"HP: ") << std::dec << player_health << '\n'
                 << XORW(L"Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n'
-                << XORW(L"Is glowing: ") << (is_glowing ? "yes" : "no") << '\n';
+                << XORW(L"w2s: ") << w2s_pos << '\n';
+#endif
 
             if (my_team != player_team && player_health > 0 && !is_local_player)
             {
@@ -209,13 +157,25 @@ int main()
                     //TODO should we set the correct mask as well? we are setting this bool but the variables after it should be 1 as well
                     entity->set_spotted(driver, true);
                 }
+
+                if (esp_hack && entity_eyes_pos_screen.x > 0 && entity_eyes_pos_screen.x < 1920 && entity_eyes_pos_screen.y > 0 && entity_eyes_pos_screen.y < 1080)
+                {
+                    constexpr ImU32 color{IM_COL32(255, 0, 0, 255)};
+                    draw_items.emplace_back(ImVec2{entity_eyes_pos_screen.x, entity_eyes_pos_screen.y}, ImVec2(50, 50), color);
+                    draw_items.emplace_back(ImVec2{entity_feet_pos_screen.x, entity_feet_pos_screen.y}, ImVec2(50, 50), color);
+                }
             }
+
+#ifndef NDEBUG
             std::wcout << '\n';
+#endif
         }
 
-        sleep_for(20ms);
+        draw_list.update(draw_items);
+        sleep_for(1ms);
     }
-    cheat::imgui::frame::cleanup();
+
+    draw_thread.request_stop();
 
     return EXIT_SUCCESS;
 }

@@ -2,48 +2,59 @@
 
 namespace cheat
 {
-    DWORD Cs2CheatController::get_cs2_process_id()
+    std::optional<DWORD> Cs2CheatController::get_cs2_process_id()
     {
         const auto process_id{commons::process::GetProcessIdByName(g::CS2_PROCESS_NAME)};
         if (!process_id.has_value())
         {
             std::wcerr << XORW(L"Failed to find pid of requested process.\n");
-            throw std::runtime_error(XOR("Failed to find pid of requested process."));
+            return std::nullopt;
         }
-        std::wcout << XORW(L"Target process id: ") << process_id.value() << '\n';
 
-        return process_id.value();
+#ifndef NDEBUG
+        std::wcout << XORW(L"Target process id: ") << process_id.value() << '\n';
+#endif
+
+        return process_id;
     }
 
-    uintptr_t Cs2CheatController::find_client_dll_base() const
+    std::optional<uintptr_t> Cs2CheatController::find_client_dll_base() const
     {
         const auto client_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::CLIENT_DLL_MODULE_NAME)};
         if (!client_dll_base.has_value())
         {
             std::wcerr << XORW(L"Failed GetModuleBaseAddress for Client DLL.\n");
-            throw std::runtime_error(XOR("Failed GetModuleBaseAddress for Client DL."));
+            return std::nullopt;
         }
+
+#ifndef NDEBUG
         std::wcout << XORW(L"Client DLL base: ") << std::hex << std::uppercase << client_dll_base.value() << '\n';
-        return client_dll_base.value();
+#endif
+
+        return client_dll_base;
     }
 
-    uintptr_t Cs2CheatController::find_engine_dll_base() const
+    std::optional<uintptr_t> Cs2CheatController::find_engine_dll_base() const
     {
         const auto engine_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::ENGINE_DLL_MODULE_NAME)};
         if (!engine_dll_base.has_value())
         {
             std::wcerr << XORW(L"Failed GetModuleBaseAddress for Engine DLL.\n");
-            throw std::runtime_error(XOR("Failed GetModuleBaseAddress for Engine DLL."));
+            return std::nullopt;
         }
+
+#ifndef NDEBUG
         std::wcout << XORW(L"Engine DLL base: ") << std::hex << std::uppercase << engine_dll_base.value() << '\n';
-        return engine_dll_base.value();
+#endif
+
+        return engine_dll_base;
     }
 
-    uintptr_t Cs2CheatController::find_entity_system(const driver::Driver& driver) const
+    std::optional<uintptr_t> Cs2CheatController::find_entity_system(const driver::Driver& driver) const
     {
         if (!client_dll_base_)
         {
-            return 0;
+            return std::nullopt;
         }
 
         return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwEntityList);
@@ -57,6 +68,30 @@ namespace cheat
     uintptr_t Cs2CheatController::find_local_player_pawn(const driver::Driver& driver) const
     {
         return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwLocalPlayerPawn);
+    }
+
+    util::Vec2 Cs2CheatController::world_to_screen(const viewmatrix_t& view_matrix, const util::Vec3& world_position)
+    {
+        static const int screen_width{GetSystemMetrics(SM_CXSCREEN)};
+        static const int screen_height{GetSystemMetrics(SM_CYSCREEN)};
+
+        float clip_space_x{view_matrix[0][0] * world_position.x + view_matrix[0][1] * world_position.y + view_matrix[0][2] * world_position.z + view_matrix[0][3]};
+        float clip_space_y{view_matrix[1][0] * world_position.x + view_matrix[1][1] * world_position.y + view_matrix[1][2] * world_position.z + view_matrix[1][3]};
+        const float clip_space_w{view_matrix[3][0] * world_position.x + view_matrix[3][1] * world_position.y + view_matrix[3][2] * world_position.z + view_matrix[3][3]};
+
+        if (clip_space_w <= 0.f)
+        {
+            return {}; // Return an empty Vec2 if the point is behind the camera
+        }
+
+        const float reciprocal_w{1.f / clip_space_w};
+        clip_space_x *= reciprocal_w;
+        clip_space_y *= reciprocal_w;
+
+        const float screen_x{(1 + clip_space_x) * static_cast<float>(screen_width) / 2.0f};
+        const float screen_y{(1 - clip_space_y) * static_cast<float>(screen_height) / 2.0f};
+
+        return util::Vec2{.x = screen_x, .y = screen_y};
     }
 
     uintptr_t Cs2CheatController::get_network_client(const driver::Driver& driver) const
@@ -79,10 +114,10 @@ namespace cheat
     {
         auto result{true};
 
-        result &= (cs2_process_id_ = get_cs2_process_id()) != 0;
-        result &= (client_dll_base_ = find_client_dll_base()) != 0;
-        result &= (engine_dll_base_ = find_engine_dll_base()) != 0;
-        result &= (entity_system_ = find_entity_system(driver)) != 0;
+        result &= (cs2_process_id_ = get_cs2_process_id().value_or(0)) != 0;
+        result &= (client_dll_base_ = find_client_dll_base().value_or(0)) != 0;
+        result &= (engine_dll_base_ = find_engine_dll_base().value_or(0)) != 0;
+        result &= (entity_system_ = find_entity_system(driver).value_or(0)) != 0;
         result &= attach(driver);
 
         return result;
@@ -120,6 +155,11 @@ namespace cheat
     entity::Entity Cs2CheatController::get_local_player(const driver::Driver& driver) const
     {
         return entity::Entity{find_local_player_controller(driver), find_local_player_pawn(driver)};
+    }
+
+    viewmatrix_t Cs2CheatController::get_view_matrix(const driver::Driver& driver) const
+    {
+        return driver.read<viewmatrix_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwViewMatrix);
     }
 
     std::optional<uintptr_t> Cs2CheatController::get_entity_controller(const driver::Driver& driver, const int& i) const

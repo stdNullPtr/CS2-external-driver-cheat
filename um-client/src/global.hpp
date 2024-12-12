@@ -10,10 +10,12 @@ namespace g
 
     namespace toggles
     {
+        //TODO atomic
         static bool is_paused{false};
         static bool show_menu{false};
         static bool radar_hack{false};
         static bool glow_hack{false};
+        static bool esp_hack{false};
 
         inline void reset_toggles()
         {
@@ -21,6 +23,7 @@ namespace g
 
             radar_hack = false;
             glow_hack = false;
+            esp_hack = false;
         }
     }
 }

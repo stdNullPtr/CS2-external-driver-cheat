@@ -3,37 +3,11 @@
 #include "../imgui/lib/imgui.h"
 #include "../sdk/dumper/client_dll.hpp"
 #include "../driver/Driver.hpp"
+#include "../util/Vec3.h"
 
 namespace cheat::entity
 {
     using namespace cs2_dumper::schemas;
-
-    struct Vec3
-    {
-        float x, y, z;
-
-        Vec3 operator+(const Vec3& other) const
-        {
-            return {.x = x + other.x, .y = y + other.y, .z = z + other.z};
-        }
-
-        Vec3 operator-(const Vec3& other) const
-        {
-            return {.x = x - other.x, .y = y - other.y, .z = z - other.z};
-        }
-
-        friend std::ostream& operator<<(std::ostream& os, const Vec3& vec)
-        {
-            os << "[" << vec.x << ", " << vec.y << ", " << vec.z << "]";
-            return os;
-        }
-
-        friend std::wostream& operator<<(std::wostream& os, const Vec3& vec)
-        {
-            os << "[" << vec.x << ", " << vec.y << ", " << vec.z << "]";
-            return os;
-        }
-    };
 
     class Entity
     {
@@ -55,9 +29,9 @@ namespace cheat::entity
         [[nodiscard]] bool is_spotted(const driver::Driver& driver) const;
         [[nodiscard]] bool is_local_player(const driver::Driver& driver) const;
         [[nodiscard]] bool is_glowing(const driver::Driver& driver) const;
-        [[nodiscard]] Vec3 get_forward_vector(const driver::Driver& driver) const;
-        [[nodiscard]] Vec3 get_vec_origin(const driver::Driver& driver) const;
-        [[nodiscard]] Vec3 get_eye_pos(const driver::Driver& driver) const;
+        [[nodiscard]] util::Vec3 get_forward_vector(const driver::Driver& driver) const;
+        [[nodiscard]] util::Vec3 get_vec_origin(const driver::Driver& driver) const;
+        [[nodiscard]] util::Vec3 get_eye_pos(const driver::Driver& driver) const;
 
         void set_spotted(const driver::Driver& driver, const bool& spotted) const;
         void set_glowing(const driver::Driver& driver, const bool& glow) const;
