@@ -27,6 +27,7 @@ namespace render
         float thickness;
 
         // TEXT
+        int line_position;
         std::string text;
 
     public:
@@ -38,10 +39,11 @@ namespace render
         [[nodiscard]] float get_thickness() const;
 
         [[nodiscard]] ImVec2 get_position() const;
+        [[nodiscard]] int get_line_position() const;
         [[nodiscard]] std::string get_text() const;
 
         static DrawCache build_rect(const ImVec2& topLeft, const ImVec2& bottomRight, const bool& filled = false, const ImVec4& col = {255.0f, 0.0f, 0.0f, 255.0f}, const float& thick = 2.0f);
 
-        static DrawCache build_text(const std::string& text, const ImVec2& position, const ImVec4& col);
+        static DrawCache build_text(const std::string& text, const ImVec2& position, const ImVec4& col, const int& line_position);
     };
 }

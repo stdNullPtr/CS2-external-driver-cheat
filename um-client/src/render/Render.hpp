@@ -171,6 +171,8 @@ namespace render
                 ImGui::ColorEdit3(XOR("Box"), reinterpret_cast<float*>(&g::espColor));
                 ImGui::ColorEdit3(XOR("Health"), reinterpret_cast<float*>(&g::espHealthColor));
                 ImGui::ColorEdit3(XOR("Text"), reinterpret_cast<float*>(&g::textColor));
+                ImGui::ColorEdit3(XOR("Carrying AWP text"), reinterpret_cast<float*>(&g::weaponAwpTextColor));
+                ImGui::ColorEdit3(XOR("Carrying knife text"), reinterpret_cast<float*>(&g::weaponKnifeTextColor));
 
                 ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 128, 255, 255));
                 ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2));
@@ -221,8 +223,7 @@ namespace render
                 case RenderObjectType::circle:
                     break;
                 case RenderObjectType::text:
-                    std::stringstream stream(object.get_text());
-                    std::string line;
+                    const std::string text{object.get_text()};
                     const ImVec4 color{object.get_color()};
 
                     if (color.x == 0.0f && color.y == 0.0f && color.z == 0.0f)
@@ -232,49 +233,45 @@ namespace render
 
                     const ImVec2 requestedPosition{object.get_position()};
 
-                    int i{0};
-                    while (std::getline(stream, line))
-                    {
-                        const ImVec2 textSize{ImGui::CalcTextSize(line.c_str())};
-                        const ImVec2 position{requestedPosition.x - textSize.x / 2.0f, requestedPosition.y - textSize.y * static_cast<float>(i)};
+                    int linePosition{object.get_line_position()};
+                    const ImVec2 textSize{ImGui::CalcTextSize(text.c_str())};
+                    const ImVec2 position{requestedPosition.x - textSize.x / 2.0f, requestedPosition.y - textSize.y * static_cast<float>(linePosition)};
 #pragma region shadow
-                        const ImVec4 shadowColor{0.1f, 0.1f, 0.1f, color.w * 0.5f};
-                        constexpr float shadowOffset{1.0f};
+                    const ImVec4 shadowColor{0.1f, 0.1f, 0.1f, color.w * 0.5f};
+                    constexpr float shadowOffset{1.0f};
 
-                        draw_list->AddText(
-                            ImVec2(position.x + shadowOffset, position.y),
-                            ImGui::ColorConvertFloat4ToU32(shadowColor),
-                            line.c_str(),
-                            line.c_str() + line.size()
-                        );
-                        draw_list->AddText(
-                            ImVec2(position.x - shadowOffset, position.y),
-                            ImGui::ColorConvertFloat4ToU32(shadowColor),
-                            line.c_str(),
-                            line.c_str() + line.size()
-                        );
-                        draw_list->AddText(
-                            ImVec2(position.x, position.y + shadowOffset),
-                            ImGui::ColorConvertFloat4ToU32(shadowColor),
-                            line.c_str(),
-                            line.c_str() + line.size()
-                        );
-                        draw_list->AddText(
-                            ImVec2(position.x, position.y - shadowOffset),
-                            ImGui::ColorConvertFloat4ToU32(shadowColor),
-                            line.c_str(),
-                            line.c_str() + line.size()
-                        );
+                    draw_list->AddText(
+                        ImVec2(position.x + shadowOffset, position.y),
+                        ImGui::ColorConvertFloat4ToU32(shadowColor),
+                        text.c_str(),
+                        text.c_str() + text.size()
+                    );
+                    draw_list->AddText(
+                        ImVec2(position.x - shadowOffset, position.y),
+                        ImGui::ColorConvertFloat4ToU32(shadowColor),
+                        text.c_str(),
+                        text.c_str() + text.size()
+                    );
+                    draw_list->AddText(
+                        ImVec2(position.x, position.y + shadowOffset),
+                        ImGui::ColorConvertFloat4ToU32(shadowColor),
+                        text.c_str(),
+                        text.c_str() + text.size()
+                    );
+                    draw_list->AddText(
+                        ImVec2(position.x, position.y - shadowOffset),
+                        ImGui::ColorConvertFloat4ToU32(shadowColor),
+                        text.c_str(),
+                        text.c_str() + text.size()
+                    );
 #pragma endregion
-                        draw_list->AddText(
-                            position,
-                            ImGui::ColorConvertFloat4ToU32(color),
-                            line.c_str(),
-                            line.c_str() + line.size()
-                        );
+                    draw_list->AddText(
+                        position,
+                        ImGui::ColorConvertFloat4ToU32(color),
+                        text.c_str(),
+                        text.c_str() + text.size()
+                    );
 
-                        i++;
-                    }
                     break;
                 }
             }

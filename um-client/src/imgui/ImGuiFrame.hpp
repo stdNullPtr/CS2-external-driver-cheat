@@ -100,8 +100,8 @@ namespace cheat::imgui
         static ImFontConfig cfg;
         // cfg.OversampleH = cfg.OversampleV = 5;
         cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
-        cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_Bold;
-        cfg.RasterizerMultiply = 1.5f;
+        //cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_Bold;
+        //cfg.RasterizerMultiply = 1.5f;
         io.Fonts->AddFontFromFileTTF(XOR(R"(D:\Repos\lmao-driver\um-client\src\imgui\lib\misc\font\NotoSans-Regular.ttf)"), baseFontSize, &cfg, ranges);
 
         static constexpr ImWchar icons_ranges[]{ICON_MIN_FA, ICON_MAX_16_FA, 0};

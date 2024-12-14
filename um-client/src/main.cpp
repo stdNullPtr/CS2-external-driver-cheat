@@ -133,7 +133,7 @@ int main()
             const auto entity_name{entity->get_name(driver)};
             const auto is_scoped{entity->is_scoped(driver)};
             auto weaponName{entity->get_weapon_name(driver)};
-            if (!weaponName.empty())
+            if (weaponName.length() > 7)
             {
                 weaponName = weaponName.substr(7); //get rid of weapon_ prefix
             }
@@ -179,7 +179,6 @@ int main()
 
                     const auto mainEspTopLeft{ImVec2{entity_eyes_pos_screen.x - widthRelativeToPlayerDistance, entity_eyes_pos_screen.y - heightRelativeToPlayerDistance}};
                     const auto mainEspBotRight{ImVec2{entity_feet_pos_screen.x + widthRelativeToPlayerDistance, entity_feet_pos_screen.y + heightRelativeToPlayerDistance}};
-
                     const auto espBox{render::DrawCache::build_rect(mainEspTopLeft, mainEspBotRight, false, espBoxColor, espBoxThickness)};
 
                     const auto healthBox{render::DrawCache::build_rect(ImVec2{mainEspTopLeft.x - 10.0f, mainEspTopLeft.y}, ImVec2{mainEspTopLeft.x, mainEspBotRight.y}, false, espBoxColor, espBoxThickness)};
@@ -202,19 +201,60 @@ int main()
                         )
                     };
 
-                    const auto textColor{g::textColor};
+                    const auto healthText{
+                        render::DrawCache::build_text(
+                            std::to_string(player_health).append("%"),
+                            {
+                                healthBox.get_top_left().x + cheat::imgui::g::font_size / 2.0f,
+                                healthBox.get_top_left().y - cheat::imgui::g::font_size
+                            },
+                            espHealthColor,
+                            0
+                        )
+                    };
 
-                    const auto bottomEspText{std::string(entity_name).append(XOR("\n")).append(weaponName)};
-                    const auto bottomEspTextRenderObj{render::DrawCache::build_text(bottomEspText, ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y + cheat::imgui::g::font_size}, textColor)};
+                    const auto bottomTextColor{g::textColor};
+                    const auto entityNameRenderObj{
+                        render::DrawCache::build_text(
+                            entity_name,
+                            ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y + cheat::imgui::g::font_size},
+                            bottomTextColor,
+                            0)
+                    };
+
+                    ImVec4 weaponTextColor{bottomTextColor};
+                    if (weaponName.starts_with(XOR("awp")))
+                    {
+                        weaponTextColor = g::weaponAwpTextColor;
+                    }
+                    else if (weaponName.starts_with("knife"))
+                    {
+                        weaponTextColor = g::weaponKnifeTextColor;
+                    }
+                    const auto weaponNameNameRenderObj{
+                        render::DrawCache::build_text(
+                            weaponName,
+                            ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y + cheat::imgui::g::font_size},
+                            weaponTextColor,
+                            1)
+                    };
 
                     draw_items.emplace_back(espBox);
                     draw_items.emplace_back(healthBox);
                     draw_items.emplace_back(healthBoxFilled);
-                    draw_items.emplace_back(bottomEspTextRenderObj);
+                    draw_items.emplace_back(healthText);
+                    draw_items.emplace_back(weaponNameNameRenderObj);
+                    draw_items.emplace_back(entityNameRenderObj);
 
                     if (is_scoped)
                     {
-                        const auto scopedText{render::DrawCache::build_text(ICON_FA_EXCLAMATION_TRIANGLE " >SCOPED< " ICON_FA_EXCLAMATION_TRIANGLE, ImVec2{entity_eyes_pos_screen.x, espBox.get_top_left().y - cheat::imgui::g::font_size}, ImVec4(255.0f, 0, 0, 255.0f))};
+                        const auto scopedText{
+                            render::DrawCache::build_text(
+                                ICON_FA_EXCLAMATION_TRIANGLE " >SCOPED< " ICON_FA_EXCLAMATION_TRIANGLE,
+                                ImVec2{entity_eyes_pos_screen.x, espBox.get_top_left().y - cheat::imgui::g::font_size},
+                                g::weaponAwpTextColor,
+                                0)
+                        };
                         draw_items.emplace_back(scopedText);
                     }
                 }

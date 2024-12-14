@@ -32,6 +32,11 @@ namespace render
         return position;
     }
 
+    int DrawCache::get_line_position() const
+    {
+        return line_position;
+    }
+
     std::string DrawCache::get_text() const
     {
         return text;
@@ -50,7 +55,7 @@ namespace render
         return cache;
     }
 
-    DrawCache DrawCache::build_text(const std::string& text, const ImVec2& position, const ImVec4& col)
+    DrawCache DrawCache::build_text(const std::string& text, const ImVec2& position, const ImVec4& col, const int& line_position)
     {
         DrawCache cache;
 
@@ -58,6 +63,7 @@ namespace render
         cache.position = position;
         cache.color = col;
         cache.text = text;
+        cache.line_position = line_position;
 
         return cache;
     }
