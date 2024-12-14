@@ -103,7 +103,7 @@ namespace render
                 ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(10, 10));
                 ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 10.0f);
 
-                ImGui::Begin(XOR("XD"), &show_menu, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize);
+                ImGui::Begin(XOR("[INS] - minimize | [Open Game console] - interact"), &show_menu, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_AlwaysAutoResize);
 
                 ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 128, 255, 255));
                 ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2));
@@ -119,8 +119,9 @@ namespace render
                 {
                     ImGui::BeginDisabled();
                 }
-                ImGui::Checkbox(XOR("[F2] Radar (Unsafe)"), &radar_hack);
-                ImGui::Checkbox(XOR("[F3] Glow (Unsafe)"), &glow_hack);
+
+                ImGui::Checkbox(XOR("[F2] Radar (Unsafe) " ICON_FA_EXCLAMATION_TRIANGLE), &radar_hack);
+                ImGui::Checkbox(XOR("[F3] Glow (Unsafe) " ICON_FA_EXCLAMATION_TRIANGLE), &glow_hack);
                 ImGui::Checkbox(XOR("[F4] ESP"), &esp_hack);
                 if (is_paused)
                 {
@@ -128,14 +129,14 @@ namespace render
                 }
                 ImGui::PopStyleColor(3);
 
-                ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(128, 0, 0, 255));
+                ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 128, 255, 255));
                 ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2));
-                ImGui::SeparatorText(XOR("[INS] Hide"));
+                ImGui::SeparatorText(XOR("ESP Colors"));
                 ImGui::PopStyleVar();
                 ImGui::PopStyleColor();
 
-                ImGui::ColorEdit3("ESP box color", reinterpret_cast<float*>(&g::espColor));
-                ImGui::ColorEdit3("ESP health color", reinterpret_cast<float*>(&g::espHealthColor));
+                ImGui::ColorEdit3("Box", reinterpret_cast<float*>(&g::espColor));
+                ImGui::ColorEdit3("Health", reinterpret_cast<float*>(&g::espHealthColor));
 
                 ImGui::End();
 

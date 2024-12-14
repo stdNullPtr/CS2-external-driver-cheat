@@ -51,6 +51,9 @@
     <ClCompile Include="src\render\EspDrawList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\imgui\lib\misc\freetype\imgui_freetype.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Global.hpp">
@@ -167,8 +170,18 @@
     <ClInclude Include="src\util\ViewMatrix.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\imgui\lib\misc\freetype\imgui_freetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\lib\misc\font\IconsFontAwesome5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\sdk\dumper\info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="src\imgui\lib\misc\font\fa-solid-900.ttf" />
+    <Font Include="src\imgui\lib\misc\font\NotoSans-Regular.ttf" />
   </ItemGroup>
 </Project>

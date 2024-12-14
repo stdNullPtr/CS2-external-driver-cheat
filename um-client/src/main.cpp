@@ -140,8 +140,7 @@ int main()
                 << XORW(L"Is this me: ") << (is_local_player ? "yes" : "no") << '\n'
                 << XORW(L"Enemy: ") << (my_team != player_team ? "yes" : "no") << '\n'
                 << XORW(L"HP: ") << std::dec << player_health << '\n'
-                << XORW(L"Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n'
-                << XORW(L"w2s: ") << w2s_pos << '\n';
+                << XORW(L"Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n';
 #endif
 
             if (my_team != player_team && player_health > 0 && !is_local_player)
@@ -165,7 +164,7 @@ int main()
                     const auto espBoxColor{g::espColor};
                     const auto espHealthColor{g::espHealthColor };
                     constexpr float widthShrinkCoefficient{0.35f};
-                    constexpr float heightShrinkCoefficient{0.12f};
+                    constexpr float heightShrinkCoefficient{0.15f};
 
                     const float widthRelativeToPlayerDistance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * widthShrinkCoefficient};
                     const float heightRelativeToPlayerDistance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * heightShrinkCoefficient};

@@ -150,8 +150,11 @@
     <ClCompile Include="src\controller\Cs2CheatController.cpp" />
     <ClCompile Include="src\controller\Entity.cpp" />
     <ClInclude Include="src\controller\Entity.hpp" />
+    <ClCompile Include="src\imgui\lib\misc\freetype\imgui_freetype.cpp" />
     <ClCompile Include="src\render\EspDrawList.cpp" />
     <ClCompile Include="src\driver\Driver.cpp" />
+    <ClInclude Include="src\imgui\lib\misc\freetype\imgui_freetype.h" />
+    <ClInclude Include="src\imgui\lib\misc\font\IconsFontAwesome5.h" />
     <ClInclude Include="src\render\Render.hpp" />
     <ClInclude Include="src\render\EspDrawList.hpp" />
     <ClCompile Include="src\imgui\lib\backends\imgui_impl_dx11.cpp" />
@@ -202,6 +205,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="src\sdk\dumper\info.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="src\imgui\lib\misc\font\fa-solid-900.ttf" />
+    <Font Include="src\imgui\lib\misc\font\NotoSans-Regular.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

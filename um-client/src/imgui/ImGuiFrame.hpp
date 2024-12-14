@@ -5,6 +5,8 @@
 #include "lib/imgui.h"
 #include "lib/backends/imgui_impl_win32.h"
 #include "lib/backends/imgui_impl_dx11.h"
+#include "lib/misc/freetype/imgui_freetype.h"
+#include "lib/misc/font/IconsFontAwesome5.h"
 
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -83,12 +85,28 @@ namespace cheat::imgui
         ImGui::CreateContext();
         ImGuiIO& io{ImGui::GetIO()};
         (void)io;
-        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
+        io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
         ImGui::StyleColorsDark();
 
         ImGui_ImplWin32_Init(g::hOverlay);
         ImGui_ImplDX11_Init(g::g_pd3dDevice, g::g_pd3dDeviceContext);
+
+        float baseFontSize = 18.0f; 
+        float iconFontSize = baseFontSize * 2.0f / 3.0f; 
+
+        static constexpr ImWchar ranges[] { 0x1, 0x1FFFF, 0 };
+        static ImFontConfig cfg;
+        cfg.OversampleH = cfg.OversampleV = 3;
+        cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
+        io.Fonts->AddFontFromFileTTF(XOR(R"(D:\Repos\lmao-driver\um-client\src\imgui\lib\misc\font\NotoSans-Regular.ttf)"), baseFontSize, &cfg, ranges);
+
+        static constexpr ImWchar icons_ranges[] { ICON_MIN_FA, ICON_MAX_16_FA, 0 };
+        static ImFontConfig icons_config;
+        icons_config.MergeMode = true;
+        icons_config.PixelSnapH = true;
+        icons_config.GlyphMinAdvanceX = iconFontSize;
+        io.Fonts->AddFontFromFileTTF(XOR(R"(D:\Repos\lmao-driver\um-client\src\imgui\lib\misc\font\)" FONT_ICON_FILE_NAME_FAS), iconFontSize, &icons_config, icons_ranges);
     }
 
     namespace frame
