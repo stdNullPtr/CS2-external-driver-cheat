@@ -13,15 +13,17 @@ namespace cheat::imgui
 {
     namespace g
     {
-        static ID3D11Device* g_pd3dDevice = nullptr;
-        static ID3D11DeviceContext* g_pd3dDeviceContext = nullptr;
-        static IDXGISwapChain* g_pSwapChain = nullptr;
-        static bool g_SwapChainOccluded = false;
-        static UINT g_ResizeWidth = 0, g_ResizeHeight = 0;
-        static ID3D11RenderTargetView* g_mainRenderTargetView = nullptr;
+        static inline ID3D11Device* g_pd3dDevice{nullptr};
+        static inline ID3D11DeviceContext* g_pd3dDeviceContext{nullptr};
+        static inline IDXGISwapChain* g_pSwapChain{nullptr};
+        static inline bool g_SwapChainOccluded{false};
+        static inline UINT g_ResizeWidth{0};
+        static inline UINT g_ResizeHeight{0};
+        static inline ID3D11RenderTargetView* g_mainRenderTargetView{nullptr};
 
-        WNDCLASSEXW wc;
-        HWND window;
+        static inline WNDCLASSEXW wc;
+        static inline HWND window;
+        constexpr auto overlay_window_name{L"zzxzz"};
     }
 
     LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -30,7 +32,7 @@ namespace cheat::imgui
     void CreateRenderTarget();
     void CleanupRenderTarget();
 
-    void init()
+    inline void init()
     {
         g::wc = WNDCLASSEXW{
             sizeof(g::wc),
@@ -51,7 +53,7 @@ namespace cheat::imgui
 
         g::window = CreateWindowExW(WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW,
                                     g::wc.lpszClassName,
-                                    L"z",
+                                    g::overlay_window_name,
                                     WS_POPUP,
                                     0,
                                     0,
@@ -79,7 +81,7 @@ namespace cheat::imgui
         // Setup Dear ImGui context
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
-        ImGuiIO& io = ImGui::GetIO();
+        ImGuiIO& io{ImGui::GetIO()};
         (void)io;
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // Enable Keyboard Controls
 
@@ -98,7 +100,7 @@ namespace cheat::imgui
             FRAME_SKIP
         };
 
-        void cleanup()
+        inline void cleanup()
         {
             ImGui_ImplDX11_Shutdown();
             ImGui_ImplWin32_Shutdown();
@@ -109,7 +111,7 @@ namespace cheat::imgui
             UnregisterClassW(g::wc.lpszClassName, g::wc.hInstance);
         }
 
-        FRAME_STATE startFrame()
+        inline FRAME_STATE startFrame()
         {
             // Poll and handle messages (inputs, window resize, etc.)
             // See the WndProc() function below for our to dispatch events to the Win32 backend.
@@ -138,7 +140,7 @@ namespace cheat::imgui
             return FRAME_SUCCESS;
         }
 
-        void render()
+        inline void render()
         {
             ImGui::Render();
             constexpr float transparent[4]{0, 0, 0, 0};
@@ -147,14 +149,14 @@ namespace cheat::imgui
             ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
             // Present
-            HRESULT hr = g::g_pSwapChain->Present(1, 0); // Present with vsync
+            HRESULT hr{g::g_pSwapChain->Present(1, 0)}; // Present with vsync
             //HRESULT hr = g_pSwapChain->Present(0, 0); // Present without vsync
             g::g_SwapChainOccluded = (hr == DXGI_STATUS_OCCLUDED);
         }
     }
 
 #pragma region imgui_helpers
-    bool CreateDeviceD3D(HWND hWnd)
+    inline bool CreateDeviceD3D(HWND hWnd)
     {
         // Setup swap chain
         DXGI_SWAP_CHAIN_DESC sd;
@@ -187,7 +189,7 @@ namespace cheat::imgui
         return true;
     }
 
-    void CleanupDeviceD3D()
+    inline void CleanupDeviceD3D()
     {
         CleanupRenderTarget();
         if (g::g_pSwapChain)
@@ -207,7 +209,7 @@ namespace cheat::imgui
         }
     }
 
-    void CreateRenderTarget()
+    inline void CreateRenderTarget()
     {
         ID3D11Texture2D* pBackBuffer;
         g::g_pSwapChain->GetBuffer(0, IID_PPV_ARGS(&pBackBuffer));
@@ -215,7 +217,7 @@ namespace cheat::imgui
         pBackBuffer->Release();
     }
 
-    void CleanupRenderTarget()
+    inline void CleanupRenderTarget()
     {
         if (g::g_mainRenderTargetView)
         {
@@ -229,7 +231,7 @@ namespace cheat::imgui
     // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application, or clear/overwrite your copy of the mouse data.
     // - When io.WantCaptureKeyboard is true, do not dispatch keyboard input data to your main application, or clear/overwrite your copy of the keyboard data.
     // Generally you may always pass all inputs to dear imgui, and hide them from your application based on those two flags.
-    LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+    inline LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     {
         if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
             return true;

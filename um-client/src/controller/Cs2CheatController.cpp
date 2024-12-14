@@ -70,30 +70,6 @@ namespace cheat
         return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwLocalPlayerPawn);
     }
 
-    util::Vec2 Cs2CheatController::world_to_screen(const viewmatrix_t& view_matrix, const util::Vec3& world_position)
-    {
-        static const int screen_width{GetSystemMetrics(SM_CXSCREEN)};
-        static const int screen_height{GetSystemMetrics(SM_CYSCREEN)};
-
-        float clip_space_x{view_matrix[0][0] * world_position.x + view_matrix[0][1] * world_position.y + view_matrix[0][2] * world_position.z + view_matrix[0][3]};
-        float clip_space_y{view_matrix[1][0] * world_position.x + view_matrix[1][1] * world_position.y + view_matrix[1][2] * world_position.z + view_matrix[1][3]};
-        const float clip_space_w{view_matrix[3][0] * world_position.x + view_matrix[3][1] * world_position.y + view_matrix[3][2] * world_position.z + view_matrix[3][3]};
-
-        if (clip_space_w <= 0.f)
-        {
-            return {}; // Return an empty Vec2 if the point is behind the camera
-        }
-
-        const float reciprocal_w{1.f / clip_space_w};
-        clip_space_x *= reciprocal_w;
-        clip_space_y *= reciprocal_w;
-
-        const float screen_x{(1 + clip_space_x) * static_cast<float>(screen_width) / 2.0f};
-        const float screen_y{(1 - clip_space_y) * static_cast<float>(screen_height) / 2.0f};
-
-        return util::Vec2{.x = screen_x, .y = screen_y};
-    }
-
     uintptr_t Cs2CheatController::get_network_client(const driver::Driver& driver) const
     {
         return driver.read<uintptr_t>(engine_dll_base_ + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient);
@@ -157,9 +133,9 @@ namespace cheat
         return entity::Entity{find_local_player_controller(driver), find_local_player_pawn(driver)};
     }
 
-    viewmatrix_t Cs2CheatController::get_view_matrix(const driver::Driver& driver) const
+    util::ViewMatrix Cs2CheatController::get_view_matrix(const driver::Driver& driver) const
     {
-        return driver.read<viewmatrix_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwViewMatrix);
+        return driver.read<util::ViewMatrix>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwViewMatrix);
     }
 
     std::optional<uintptr_t> Cs2CheatController::get_entity_controller(const driver::Driver& driver, const int& i) const

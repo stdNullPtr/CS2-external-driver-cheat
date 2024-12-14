@@ -3,13 +3,40 @@
 
 #include "EspDrawList.hpp"
 #include "../global.hpp"
-#include "../imgui/ImGuiFrame.h"
+#include "../imgui/ImGuiFrame.hpp"
+#include "../util/ViewMatrix.hpp"
+#include "../util/Vec2.hpp"
+#include "../util/Vec3.hpp"
 
-namespace draw
+namespace render
 {
     using namespace g::toggles;
+    using util::Vec2;
+    using util::Vec3;
+    using util::ViewMatrix;
 
-    void draw_imgui(const std::stop_token& stop_token, EspDrawList& esp_draw_list)
+    inline Vec2 world_to_screen(const ViewMatrix& view_matrix, const Vec3& world_position)
+    {
+        float clip_space_x{view_matrix[0][0] * world_position.x + view_matrix[0][1] * world_position.y + view_matrix[0][2] * world_position.z + view_matrix[0][3]};
+        float clip_space_y{view_matrix[1][0] * world_position.x + view_matrix[1][1] * world_position.y + view_matrix[1][2] * world_position.z + view_matrix[1][3]};
+        const float clip_space_w{view_matrix[3][0] * world_position.x + view_matrix[3][1] * world_position.y + view_matrix[3][2] * world_position.z + view_matrix[3][3]};
+
+        if (clip_space_w <= 0.f)
+        {
+            return {}; // Return an empty Vec2 if the point is behind the camera
+        }
+
+        const float reciprocal_w{1.f / clip_space_w};
+        clip_space_x *= reciprocal_w;
+        clip_space_y *= reciprocal_w;
+
+        const float screen_x{(1 + clip_space_x) * static_cast<float>(g::screen_width) / 2.0f};
+        const float screen_y{(1 - clip_space_y) * static_cast<float>(g::screen_height) / 2.0f};
+
+        return Vec2{.x = screen_x, .y = screen_y};
+    }
+
+    inline void draw_scene(const std::stop_token& stop_token, render::EspDrawList& esp_draw_list)
     {
         cheat::imgui::init();
 
@@ -89,6 +116,8 @@ namespace draw
                 ImGui::PopStyleVar();
                 ImGui::PopStyleColor();
 
+                ImGui::SliderFloat("float", &g::floatSlider, 0.0f, 10.0f);
+
                 ImGui::End();
 
                 ImGui::PopStyleVar(2);
@@ -103,10 +132,7 @@ namespace draw
             for (const auto& rect : rectangles)
             {
                 //TODO drop these from here, use top left and top right in the rect object and the hack thread will set them
-                const auto top_left{ImVec2(rect.position.x - rect.size.x * 0.5f, rect.position.y - rect.size.y * 0.5f)};
-                const auto bottom_right{ImVec2(rect.position.x + rect.size.x * 0.5f, rect.position.y + rect.size.y * 0.5f)};
-                //TODO maybe instead of addrect these actually have to be windows? It makes more sense since we can highly customize them instead of having simple lines
-                draw_list->AddRect(top_left, bottom_right, rect.color, 0.0f, ImDrawFlags_None, rect.thickness);
+                draw_list->AddRect(rect.topLeft, rect.bottomRight, rect.color, 0.0f, ImDrawFlags_None, rect.thickness);
             }
 
             cheat::imgui::frame::render();

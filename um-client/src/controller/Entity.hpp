@@ -3,7 +3,7 @@
 #include "../imgui/lib/imgui.h"
 #include "../sdk/dumper/client_dll.hpp"
 #include "../driver/Driver.hpp"
-#include "../util/Vec3.h"
+#include "../util/Vec3.hpp"
 
 namespace cheat::entity
 {

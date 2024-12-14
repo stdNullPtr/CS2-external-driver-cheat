@@ -11,11 +11,9 @@
 #include "window.hpp"
 #include "controller/Cs2CheatController.hpp"
 #include "controller/Entity.hpp"
-#include "imgui/ImGuiFrame.h"
 #include <io.h>
 #include <fcntl.h>
-
-#include "draw/Draw.hpp"
+#include "render/Render.hpp"
 
 using namespace std::chrono_literals;
 using namespace g::toggles;
@@ -40,8 +38,8 @@ int main()
 
     cheat::Cs2CheatController cheat;
 
-    draw::EspDrawList draw_list;
-    std::jthread draw_thread(draw::draw_imgui, std::ref(draw_list));
+    render::EspDrawList draw_list;
+    std::jthread draw_thread(render::draw_scene, std::ref(draw_list));
 
     sleep_for(2s);
 
@@ -54,7 +52,7 @@ int main()
         {
             std::wcout << XORW(L"Controller state invalid, will re-init...\n");
 
-            // prevent any leftover draw artifacts
+            // prevent any leftover draw_scene artifacts
             draw_list.clear();
             reset_toggles();
 
@@ -78,6 +76,7 @@ int main()
         std::wcout << ansi_codes::red << XORW(L"[END] Quit\n") << ansi_codes::reset_color;
 #endif
 
+        //TODO a better approach would be for EACH of these 'wait' functions to be in its own loop until the condition is met. Not to rely on the parent main loop to re-visit.
         if (!cheat.is_in_game(driver))
         {
             std::wcout << XORW(L"Waiting for you to join game...\n");
@@ -95,7 +94,7 @@ int main()
         std::wcout << '\n';
 #endif
 
-        if (is_paused || !commons::window::isWindowInFocus(L"Counter-Strike 2"))
+        if (is_paused || (!commons::window::isWindowInFocus(g::CS2_WINDOW_NAME) && !commons::window::isWindowInFocus(cheat::imgui::g::overlay_window_name)))
         {
             std::wcout << XORW(L"[F1] Paused...\n");
             draw_list.clear();
@@ -117,7 +116,7 @@ int main()
         std::wcout << '\n';
 #endif
 
-        std::vector<draw::Rect> draw_items;
+        std::vector<render::Rect> draw_items;
         for (int i{1}; i < 32; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
@@ -132,8 +131,8 @@ int main()
             const auto player_health{entity->get_health(driver)};
             const auto entity_spotted{entity->is_spotted(driver)};
 
-            const auto entity_eyes_pos_screen{cheat::Cs2CheatController::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
-            const auto entity_feet_pos_screen{cheat::Cs2CheatController::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
+            const auto entity_eyes_pos_screen{render::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
+            const auto entity_feet_pos_screen{render::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
 
 #ifndef NDEBUG
             std::wcout << XORW(L"Ent: ") << i << '\n'
@@ -158,11 +157,22 @@ int main()
                     entity->set_spotted(driver, true);
                 }
 
-                if (esp_hack && entity_eyes_pos_screen.x > 0 && entity_eyes_pos_screen.x < 1920 && entity_eyes_pos_screen.y > 0 && entity_eyes_pos_screen.y < 1080)
+                if (esp_hack && entity_eyes_pos_screen.x > 0
+                    && entity_eyes_pos_screen.x < static_cast<float>(g::screen_width)
+                    && entity_eyes_pos_screen.y > 0
+                    && entity_eyes_pos_screen.y < static_cast<float>(g::screen_height))
                 {
                     constexpr ImU32 color{IM_COL32(255, 0, 0, 255)};
-                    draw_items.emplace_back(ImVec2{entity_eyes_pos_screen.x, entity_eyes_pos_screen.y}, ImVec2(50, 50), color);
-                    draw_items.emplace_back(ImVec2{entity_feet_pos_screen.x, entity_feet_pos_screen.y}, ImVec2(50, 50), color);
+                    constexpr float widthShrinkCoefficient{0.35f};
+                    constexpr float heightShrinkCoefficient{0.12f};
+
+                    const float widthRelativeToPlayerDistance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * widthShrinkCoefficient};
+                    const float heightRelativeToPlayerDistance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * heightShrinkCoefficient};
+
+                    const auto topLeft{ImVec2{entity_eyes_pos_screen.x - widthRelativeToPlayerDistance, entity_eyes_pos_screen.y - heightRelativeToPlayerDistance}};
+                    const auto botRight{ImVec2{entity_feet_pos_screen.x + widthRelativeToPlayerDistance, entity_feet_pos_screen.y + heightRelativeToPlayerDistance}};
+
+                    draw_items.emplace_back(topLeft, botRight, color);
                 }
             }
 

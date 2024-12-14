@@ -150,10 +150,10 @@
     <ClCompile Include="src\controller\Cs2CheatController.cpp" />
     <ClCompile Include="src\controller\Entity.cpp" />
     <ClInclude Include="src\controller\Entity.hpp" />
-    <ClCompile Include="src\draw\EspDrawList.cpp" />
+    <ClCompile Include="src\render\EspDrawList.cpp" />
     <ClCompile Include="src\driver\Driver.cpp" />
-    <ClInclude Include="src\draw\Draw.hpp" />
-    <ClInclude Include="src\draw\EspDrawList.hpp" />
+    <ClInclude Include="src\render\Render.hpp" />
+    <ClInclude Include="src\render\EspDrawList.hpp" />
     <ClCompile Include="src\imgui\lib\backends\imgui_impl_dx11.cpp" />
     <ClCompile Include="src\imgui\lib\imgui.cpp" />
     <ClCompile Include="src\imgui\lib\imgui_demo.cpp" />
@@ -162,14 +162,15 @@
     <ClCompile Include="src\imgui\lib\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\lib\imgui_widgets.cpp" />
     <ClCompile Include="src\Main.cpp" />
-    <ClInclude Include="src\util\Vec2.h" />
-    <ClInclude Include="src\util\Vec3.h" />
+    <ClInclude Include="src\util\Vec2.hpp" />
+    <ClInclude Include="src\util\Vec3.hpp" />
+    <ClInclude Include="src\util\ViewMatrix.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\controller\Cs2CheatController.hpp" />
     <ClInclude Include="src\driver\Driver.hpp" />
     <ClInclude Include="src\Global.hpp" />
-    <ClInclude Include="src\imgui\ImGuiFrame.h" />
+    <ClInclude Include="src\imgui\ImGuiFrame.hpp" />
     <ClInclude Include="src\imgui\lib\backends\imgui_impl_dx11.h" />
     <ClInclude Include="src\imgui\lib\imconfig.h" />
     <ClInclude Include="src\imgui\lib\imgui.h" />

@@ -1,6 +1,6 @@
 #include "EspDrawList.hpp"
 
-namespace draw
+namespace render
 {
     void EspDrawList::update(const std::vector<Rect>& new_items)
     {

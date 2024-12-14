@@ -4,17 +4,17 @@
 #include <mutex>
 #include "../imgui/lib/imgui.h"
 
-namespace draw
+namespace render
 {
     struct Rect
     {
-        ImVec2 position;
-        ImVec2 size;
+        ImVec2 topLeft;
+        ImVec2 bottomRight;
         ImU32 color;
         float thickness;
 
-        Rect(const ImVec2& pos, const ImVec2& size, const ImU32& col, const float& thick = 2.0f)
-            : position(pos), size(size), color(col), thickness(thick)
+        Rect(const ImVec2& topLeft, const ImVec2& bottomRight, const ImU32& col, const float& thick = 1.0f)
+            : topLeft(topLeft), bottomRight(bottomRight), color(col), thickness(thick)
         {
         }
     };

@@ -48,7 +48,7 @@
     <ClCompile Include="src\imgui\lib\backends\imgui_impl_dx11.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\draw\EspDrawList.cpp">
+    <ClCompile Include="src\render\EspDrawList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -146,22 +146,25 @@
     <ClInclude Include="src\imgui\lib\imstb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\imgui\ImGuiFrame.h">
+    <ClInclude Include="src\imgui\ImGuiFrame.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\imgui\lib\backends\imgui_impl_dx11.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\draw\Draw.hpp">
+    <ClInclude Include="src\render\Render.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\draw\EspDrawList.hpp">
+    <ClInclude Include="src\render\EspDrawList.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\Vec3.h">
+    <ClInclude Include="src\util\Vec3.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\Vec2.h">
+    <ClInclude Include="src\util\Vec2.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\ViewMatrix.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
