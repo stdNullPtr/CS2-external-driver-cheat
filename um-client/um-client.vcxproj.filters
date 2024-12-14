@@ -54,6 +54,9 @@
     <ClCompile Include="src\imgui\lib\misc\freetype\imgui_freetype.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\render\DrawCache.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Global.hpp">
@@ -174,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\imgui\lib\misc\font\IconsFontAwesome5.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render\DrawCache.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

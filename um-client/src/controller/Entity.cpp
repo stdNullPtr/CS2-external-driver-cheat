@@ -18,21 +18,35 @@ namespace cheat::entity
     {
     }
 
-    //TODO can we improve this ugly mess
-    std::wstring Entity::get_name(const driver::Driver& driver) const
+    std::string Entity::get_name(const driver::Driver& driver) const
     {
-        const auto entity_name_address{driver.read<uintptr_t>(entity_controller_ + client_dll::CCSPlayerController::m_sSanitizedPlayerName)};
+        const auto entity_name_address = driver.read<uintptr_t>(
+            entity_controller_ + client_dll::CCSPlayerController::m_sSanitizedPlayerName
+        );
+
         struct str_wrap
         {
             char buf[20];
         };
+
         const auto str{driver.read<str_wrap>(entity_name_address)};
 
-        wchar_t wideBuf[20];
-        size_t convertedSize{0};
-        (void)mbstowcs_s(&convertedSize, wideBuf, str.buf, 19);
+        return {str.buf, str.buf + strnlen(str.buf, sizeof(str.buf))};
+    }
 
-        return {wideBuf};
+    std::string Entity::get_weapon_name(const driver::Driver& driver) const
+    {
+        struct str_wrap
+        {
+            char buf[20];
+        };
+
+        const auto weaponBase{ driver.read<uintptr_t>(entity_pawn_ + client_dll::C_CSPlayerPawnBase::m_pClippingWeapon) };
+        const auto identity{ driver.read<uintptr_t>(weaponBase + client_dll::CEntityInstance::m_pEntity) };
+        const auto designerName{ driver.read<uintptr_t>(identity + client_dll::CEntityIdentity::m_designerName) };
+        const auto str{ driver.read<str_wrap>(designerName) };
+
+        return { str.buf, str.buf + strnlen(str.buf, sizeof(str.buf)) };
     }
 
     int Entity::get_team(const driver::Driver& driver) const
@@ -62,6 +76,11 @@ namespace cheat::entity
     bool Entity::is_glowing(const driver::Driver& driver) const
     {
         return driver.read<bool>(entity_pawn_ + client_dll::C_BaseModelEntity::m_Glow + client_dll::CGlowProperty::m_bGlowing);
+    }
+
+    bool Entity::is_scoped(const driver::Driver& driver) const
+    {
+        return driver.read<bool>(entity_pawn_ + client_dll::C_CSPlayerPawn::m_bIsScoped);
     }
 
     util::Vec3 Entity::get_forward_vector(const driver::Driver& driver) const

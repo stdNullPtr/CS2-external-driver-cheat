@@ -15,6 +15,7 @@ namespace g
 
     static ImVec4 espColor{255.0f, 0.0f, 0.0f, 255.0f};
     static ImVec4 espHealthColor{0.0f, 255.0f, 0.0f, 255.0f};
+    static ImVec4 textColor{0.0f, 255.0f, 0.0f, 255.0f};
 
     namespace toggles
     {

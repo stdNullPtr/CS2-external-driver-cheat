@@ -2,7 +2,7 @@
 
 namespace render
 {
-    void EspDrawList::update(const std::vector<Rect>& new_items)
+    void EspDrawList::update(const std::vector<DrawCache>& new_items)
     {
         std::lock_guard lock(mutex_);
         draw_items_ = new_items;
@@ -14,7 +14,7 @@ namespace render
         draw_items_.clear();
     }
 
-    std::vector<Rect> EspDrawList::get()
+    std::vector<DrawCache> EspDrawList::get()
     {
         std::lock_guard lock(mutex_);
         return draw_items_;

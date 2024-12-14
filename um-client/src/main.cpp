@@ -107,8 +107,8 @@ int main()
         const auto view_matrix{cheat.get_view_matrix(driver)};
 
 #ifndef NDEBUG
-        const auto my_eye_pos{ me.get_eye_pos(driver) };
-        const auto my_forward_vec{ me.get_forward_vector(driver) };
+        const auto my_eye_pos{me.get_eye_pos(driver)};
+        const auto my_forward_vec{me.get_forward_vector(driver)};
         std::wcout << XORW(L"Forward vec: ") << my_forward_vec << '\n'
             << XORW(L"My eye position: ") << my_eye_pos << '\n'
             << XORW(L"View matrix: ") << view_matrix << '\n';
@@ -116,7 +116,7 @@ int main()
         std::wcout << '\n';
 #endif
 
-        std::vector<render::Rect> draw_items;
+        std::vector<render::DrawCache> draw_items;
         for (int i{1}; i < 32; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
@@ -130,13 +130,15 @@ int main()
             const auto player_team{entity->get_team(driver)};
             const auto player_health{entity->get_health(driver)};
             const auto entity_spotted{entity->is_spotted(driver)};
+            const auto entity_name{entity->get_name(driver)};
+            const auto is_scoped{entity->is_scoped(driver)};
+            const auto weaponName{entity->get_weapon_name(driver).substr(7)}; //get rid of weapon_ prefix
 
             const auto entity_eyes_pos_screen{render::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
             const auto entity_feet_pos_screen{render::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
 
 #ifndef NDEBUG
             std::wcout << XORW(L"Ent: ") << i << '\n'
-                << XORW(L"Name: ") << entity->get_name(driver) << '\n'
                 << XORW(L"Is this me: ") << (is_local_player ? "yes" : "no") << '\n'
                 << XORW(L"Enemy: ") << (my_team != player_team ? "yes" : "no") << '\n'
                 << XORW(L"HP: ") << std::dec << player_health << '\n'
@@ -162,7 +164,7 @@ int main()
                     && entity_eyes_pos_screen.y < static_cast<float>(g::screen_height))
                 {
                     const auto espBoxColor{g::espColor};
-                    const auto espHealthColor{g::espHealthColor };
+                    const auto espHealthColor{g::espHealthColor};
                     constexpr float widthShrinkCoefficient{0.35f};
                     constexpr float heightShrinkCoefficient{0.15f};
 
@@ -172,21 +174,41 @@ int main()
                     const auto mainEspTopLeft{ImVec2{entity_eyes_pos_screen.x - widthRelativeToPlayerDistance, entity_eyes_pos_screen.y - heightRelativeToPlayerDistance}};
                     const auto mainEspBotRight{ImVec2{entity_feet_pos_screen.x + widthRelativeToPlayerDistance, entity_feet_pos_screen.y + heightRelativeToPlayerDistance}};
 
-                    const auto espBox{render::Rect{mainEspTopLeft, mainEspBotRight, espBoxColor}};
+                    const auto espBox{render::DrawCache::build_rect(mainEspTopLeft, mainEspBotRight, false, espBoxColor)};
 
-                    const auto healthBox{render::Rect{ImVec2{mainEspTopLeft.x - 10.0f, mainEspTopLeft.y}, ImVec2{mainEspTopLeft.x, mainEspBotRight.y}, espBoxColor}};
+                    const auto healthBox{render::DrawCache::build_rect(ImVec2{mainEspTopLeft.x - 10.0f, mainEspTopLeft.y}, ImVec2{mainEspTopLeft.x, mainEspBotRight.y}, false, espBoxColor)};
 
-                    float healthBarHeight = healthBox.bottomRight.y - healthBox.topLeft.y;
-                    float topLeftY = healthBox.bottomRight.y - (healthBarHeight * (static_cast<float>(player_health) / 100.0f));
-                    const auto healthBoxFilled{ render::Rect{
-                        ImVec2{healthBox.topLeft.x + healthBox.thickness, topLeftY + healthBox.thickness},
-                        {healthBox.bottomRight.x - healthBox.thickness, healthBox.bottomRight.y - healthBox.thickness},
-                        espHealthColor,
-                        true} };
+                    float healthBarHeight = healthBox.get_bottom_right().y - healthBox.get_top_left().y;
+                    float topLeftY = healthBox.get_bottom_right().y - (healthBarHeight * (static_cast<float>(player_health) / 100.0f));
+                    const auto healthBoxFilled{
+                        render::DrawCache::build_rect(
+                            ImVec2{
+                                healthBox.get_top_left().x + healthBox.get_thickness(),
+                                topLeftY + healthBox.get_thickness()
+                            },
+                            {
+                                healthBox.get_bottom_right().x - healthBox.get_thickness(),
+                                healthBox.get_bottom_right().y - healthBox.get_thickness()
+                            },
+                            true,
+                            espHealthColor)
+                    };
+
+                    const auto textColor{g::textColor};
+
+                    const auto bottomEspText{std::string(entity_name).append(XOR("\n")).append(weaponName)};
+                    const auto bottomEspTextRenderObj{render::DrawCache::build_text(bottomEspText, ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y + cheat::imgui::g::font_size}, textColor)};
 
                     draw_items.emplace_back(espBox);
                     draw_items.emplace_back(healthBox);
                     draw_items.emplace_back(healthBoxFilled);
+                    draw_items.emplace_back(bottomEspTextRenderObj);
+
+                    if (is_scoped)
+                    {
+                        const auto scopedText{render::DrawCache::build_text(ICON_FA_EXCLAMATION_TRIANGLE " >SCOPED< " ICON_FA_EXCLAMATION_TRIANGLE, ImVec2{entity_eyes_pos_screen.x, espBox.get_top_left().y - cheat::imgui::g::font_size}, ImVec4(255.0f, 0, 0, 255.0f))};
+                        draw_items.emplace_back(scopedText);
+                    }
                 }
             }
 

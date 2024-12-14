@@ -23,12 +23,14 @@ namespace cheat::entity
     public:
         Entity(const uintptr_t& entity_controller, const uintptr_t& entity_pawn);
 
-        [[nodiscard]] std::wstring get_name(const driver::Driver& driver) const;
+        [[nodiscard]] std::string get_name(const driver::Driver& driver) const;
+        [[nodiscard]] std::string get_weapon_name(const driver::Driver& driver) const;
         [[nodiscard]] int get_team(const driver::Driver& driver) const;
         [[nodiscard]] int get_health(const driver::Driver& driver) const;
         [[nodiscard]] bool is_spotted(const driver::Driver& driver) const;
         [[nodiscard]] bool is_local_player(const driver::Driver& driver) const;
         [[nodiscard]] bool is_glowing(const driver::Driver& driver) const;
+        [[nodiscard]] bool is_scoped(const driver::Driver& driver) const;
         [[nodiscard]] util::Vec3 get_forward_vector(const driver::Driver& driver) const;
         [[nodiscard]] util::Vec3 get_vec_origin(const driver::Driver& driver) const;
         [[nodiscard]] util::Vec3 get_eye_pos(const driver::Driver& driver) const;

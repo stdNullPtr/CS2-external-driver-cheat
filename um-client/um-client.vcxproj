@@ -120,7 +120,6 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
       <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxgi.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
@@ -141,9 +140,9 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
       <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
       <AdditionalDependencies>d3d11.lib;d3dcompiler.lib;dxgi.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -151,10 +150,12 @@
     <ClCompile Include="src\controller\Entity.cpp" />
     <ClInclude Include="src\controller\Entity.hpp" />
     <ClCompile Include="src\imgui\lib\misc\freetype\imgui_freetype.cpp" />
+    <ClCompile Include="src\render\DrawCache.cpp" />
     <ClCompile Include="src\render\EspDrawList.cpp" />
     <ClCompile Include="src\driver\Driver.cpp" />
     <ClInclude Include="src\imgui\lib\misc\freetype\imgui_freetype.h" />
     <ClInclude Include="src\imgui\lib\misc\font\IconsFontAwesome5.h" />
+    <ClInclude Include="src\render\DrawCache.hpp" />
     <ClInclude Include="src\render\Render.hpp" />
     <ClInclude Include="src\render\EspDrawList.hpp" />
     <ClCompile Include="src\imgui\lib\backends\imgui_impl_dx11.cpp" />

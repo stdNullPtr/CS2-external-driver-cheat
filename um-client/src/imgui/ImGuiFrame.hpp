@@ -26,6 +26,7 @@ namespace cheat::imgui
         static inline WNDCLASSEXW wc;
         static inline HWND hOverlay;
         constexpr auto overlay_window_name{L"zzxzz"};
+        constexpr auto font_size{22.0f};
     }
 
     LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -54,17 +55,17 @@ namespace cheat::imgui
         RegisterClassExW(&g::wc);
 
         g::hOverlay = CreateWindowExW(WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW | WS_EX_TRANSPARENT,
-                                    g::wc.lpszClassName,
-                                    g::overlay_window_name,
-                                    WS_POPUP,
-                                    0,
-                                    0,
-                                    ::g::screen_width,
-                                    ::g::screen_height,
-                                    nullptr,
-                                    nullptr,
-                                    g::wc.hInstance,
-                                    nullptr);
+                                      g::wc.lpszClassName,
+                                      g::overlay_window_name,
+                                      WS_POPUP,
+                                      0,
+                                      0,
+                                      ::g::screen_width,
+                                      ::g::screen_height,
+                                      nullptr,
+                                      nullptr,
+                                      g::wc.hInstance,
+                                      nullptr);
 
         SetLayeredWindowAttributes(g::hOverlay, RGB(0, 0, 0), 255, LWA_ALPHA | LWA_COLORKEY);
 
@@ -92,20 +93,23 @@ namespace cheat::imgui
         ImGui_ImplWin32_Init(g::hOverlay);
         ImGui_ImplDX11_Init(g::g_pd3dDevice, g::g_pd3dDeviceContext);
 
-        float baseFontSize = 18.0f; 
-        float iconFontSize = baseFontSize * 2.0f / 3.0f; 
+        float baseFontSize = g::font_size;
+        float iconFontSize = baseFontSize * 2.0f / 3.0f;
 
-        static constexpr ImWchar ranges[] { 0x1, 0x1FFFF, 0 };
+        static constexpr ImWchar ranges[]{0x1, 0x1FFFF, 0};
         static ImFontConfig cfg;
-        cfg.OversampleH = cfg.OversampleV = 3;
+        // cfg.OversampleH = cfg.OversampleV = 5;
         cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
+        cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_Bold;
+        cfg.RasterizerMultiply = 1.5f;
         io.Fonts->AddFontFromFileTTF(XOR(R"(D:\Repos\lmao-driver\um-client\src\imgui\lib\misc\font\NotoSans-Regular.ttf)"), baseFontSize, &cfg, ranges);
 
-        static constexpr ImWchar icons_ranges[] { ICON_MIN_FA, ICON_MAX_16_FA, 0 };
+        static constexpr ImWchar icons_ranges[]{ICON_MIN_FA, ICON_MAX_16_FA, 0};
         static ImFontConfig icons_config;
         icons_config.MergeMode = true;
         icons_config.PixelSnapH = true;
         icons_config.GlyphMinAdvanceX = iconFontSize;
+        // icons_config.OversampleH = icons_config.OversampleV = 3;
         io.Fonts->AddFontFromFileTTF(XOR(R"(D:\Repos\lmao-driver\um-client\src\imgui\lib\misc\font\)" FONT_ICON_FILE_NAME_FAS), iconFontSize, &icons_config, icons_ranges);
     }
 
