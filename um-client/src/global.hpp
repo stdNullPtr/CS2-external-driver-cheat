@@ -14,6 +14,7 @@ namespace g
     static const int screen_height{GetSystemMetrics(SM_CYSCREEN)};
 
     static ImVec4 espColor{255.0f, 0.0f, 0.0f, 255.0f};
+    static float espBoxThickness{1.0f};
     static ImVec4 espHealthColor{0.0f, 255.0f, 0.0f, 255.0f};
     static ImVec4 textColor{0.0f, 255.0f, 0.0f, 255.0f};
 

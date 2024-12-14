@@ -132,7 +132,11 @@ int main()
             const auto entity_spotted{entity->is_spotted(driver)};
             const auto entity_name{entity->get_name(driver)};
             const auto is_scoped{entity->is_scoped(driver)};
-            const auto weaponName{entity->get_weapon_name(driver).substr(7)}; //get rid of weapon_ prefix
+            auto weaponName{entity->get_weapon_name(driver)};
+            if (!weaponName.empty())
+            {
+                weaponName = weaponName.substr(7); //get rid of weapon_ prefix
+            }
 
             const auto entity_eyes_pos_screen{render::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
             const auto entity_feet_pos_screen{render::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
@@ -165,6 +169,8 @@ int main()
                 {
                     const auto espBoxColor{g::espColor};
                     const auto espHealthColor{g::espHealthColor};
+                    const auto espBoxThickness{g::espBoxThickness};
+
                     constexpr float widthShrinkCoefficient{0.35f};
                     constexpr float heightShrinkCoefficient{0.15f};
 
@@ -174,9 +180,9 @@ int main()
                     const auto mainEspTopLeft{ImVec2{entity_eyes_pos_screen.x - widthRelativeToPlayerDistance, entity_eyes_pos_screen.y - heightRelativeToPlayerDistance}};
                     const auto mainEspBotRight{ImVec2{entity_feet_pos_screen.x + widthRelativeToPlayerDistance, entity_feet_pos_screen.y + heightRelativeToPlayerDistance}};
 
-                    const auto espBox{render::DrawCache::build_rect(mainEspTopLeft, mainEspBotRight, false, espBoxColor)};
+                    const auto espBox{render::DrawCache::build_rect(mainEspTopLeft, mainEspBotRight, false, espBoxColor, espBoxThickness)};
 
-                    const auto healthBox{render::DrawCache::build_rect(ImVec2{mainEspTopLeft.x - 10.0f, mainEspTopLeft.y}, ImVec2{mainEspTopLeft.x, mainEspBotRight.y}, false, espBoxColor)};
+                    const auto healthBox{render::DrawCache::build_rect(ImVec2{mainEspTopLeft.x - 10.0f, mainEspTopLeft.y}, ImVec2{mainEspTopLeft.x, mainEspBotRight.y}, false, espBoxColor, espBoxThickness)};
 
                     float healthBarHeight = healthBox.get_bottom_right().y - healthBox.get_top_left().y;
                     float topLeftY = healthBox.get_bottom_right().y - (healthBarHeight * (static_cast<float>(player_health) / 100.0f));
@@ -191,7 +197,9 @@ int main()
                                 healthBox.get_bottom_right().y - healthBox.get_thickness()
                             },
                             true,
-                            espHealthColor)
+                            espHealthColor,
+                            espBoxThickness
+                        )
                     };
 
                     const auto textColor{g::textColor};

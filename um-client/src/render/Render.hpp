@@ -136,7 +136,11 @@ namespace render
                 ImGui::TextUnformatted(ICON_FA_EXCLAMATION_TRIANGLE);
                 ImGui::PopStyleColor();
 
-                ImGui::Checkbox(XOR("[F4] ESP"), &esp_hack);
+                ImGui::Checkbox(XOR("[F4] ESP "), &esp_hack);
+                ImGui::SameLine();
+                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 1.0f, 0.0f, 1.0f));
+                ImGui::TextUnformatted(ICON_FA_EYE);
+                ImGui::PopStyleColor();
                 if (is_paused)
                 {
                     ImGui::EndDisabled();
@@ -167,6 +171,14 @@ namespace render
                 ImGui::ColorEdit3(XOR("Box"), reinterpret_cast<float*>(&g::espColor));
                 ImGui::ColorEdit3(XOR("Health"), reinterpret_cast<float*>(&g::espHealthColor));
                 ImGui::ColorEdit3(XOR("Text"), reinterpret_cast<float*>(&g::textColor));
+
+                ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 128, 255, 255));
+                ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2));
+                ImGui::SeparatorText(XOR("ESP Config"));
+                ImGui::PopStyleVar();
+                ImGui::PopStyleColor();
+
+                ImGui::SliderFloat(XOR("Thickness"), &g::espBoxThickness, 1.0f, 3.0f);
 
                 ImGui::End();
 
