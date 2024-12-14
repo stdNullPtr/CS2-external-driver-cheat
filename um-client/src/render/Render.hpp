@@ -36,6 +36,20 @@ namespace render
         return Vec2{.x = screen_x, .y = screen_y};
     }
 
+    inline void set_click_through(const bool& enabled)
+    {
+        if (enabled)
+        {
+            // Enable click-through
+            SetWindowLong(cheat::imgui::g::hOverlay, GWL_EXSTYLE, GetWindowLong(cheat::imgui::g::hOverlay, GWL_EXSTYLE) | WS_EX_TRANSPARENT);
+        }
+        else
+        {
+            // Disable click-through (allow interaction)
+            SetWindowLong(cheat::imgui::g::hOverlay, GWL_EXSTYLE, GetWindowLong(cheat::imgui::g::hOverlay, GWL_EXSTYLE) & ~WS_EX_TRANSPARENT);
+        }
+    }
+
     inline void draw_scene(const std::stop_token& stop_token, render::EspDrawList& esp_draw_list)
     {
         cheat::imgui::init();
@@ -81,6 +95,10 @@ namespace render
 
             if (show_menu)
             {
+                set_click_through(false);
+                //TODO this is not always working ????
+                //SetForegroundWindow(cheat::imgui::g::hOverlay);
+
                 ImGui::PushStyleColor(ImGuiCol_WindowBg, IM_COL32(30, 30, 30, 230));
                 ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(10, 10));
                 ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 10.0f);
@@ -116,12 +134,17 @@ namespace render
                 ImGui::PopStyleVar();
                 ImGui::PopStyleColor();
 
-                ImGui::SliderFloat("float", &g::floatSlider, 0.0f, 10.0f);
+                ImGui::ColorEdit3("ESP box color", reinterpret_cast<float*>(&g::espColor));
+                ImGui::ColorEdit3("ESP health color", reinterpret_cast<float*>(&g::espHealthColor));
 
                 ImGui::End();
 
                 ImGui::PopStyleVar(2);
                 ImGui::PopStyleColor();
+            }
+            else
+            {
+                set_click_through(true);
             }
 
             const std::vector rectangles{esp_draw_list.get()};
@@ -132,7 +155,14 @@ namespace render
             for (const auto& rect : rectangles)
             {
                 //TODO drop these from here, use top left and top right in the rect object and the hack thread will set them
-                draw_list->AddRect(rect.topLeft, rect.bottomRight, rect.color, 0.0f, ImDrawFlags_None, rect.thickness);
+                if (rect.filled)
+                {
+                    draw_list->AddRectFilled(rect.topLeft, rect.bottomRight, ImGui::ColorConvertFloat4ToU32(rect.color), 0.0f, ImDrawFlags_None);
+                }
+                else
+                {
+                    draw_list->AddRect(rect.topLeft, rect.bottomRight, ImGui::ColorConvertFloat4ToU32(rect.color), 0.0f, ImDrawFlags_None, rect.thickness);
+                }
             }
 
             cheat::imgui::frame::render();

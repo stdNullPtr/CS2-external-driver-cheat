@@ -162,17 +162,32 @@ int main()
                     && entity_eyes_pos_screen.y > 0
                     && entity_eyes_pos_screen.y < static_cast<float>(g::screen_height))
                 {
-                    constexpr ImU32 color{IM_COL32(255, 0, 0, 255)};
+                    const auto espBoxColor{g::espColor};
+                    const auto espHealthColor{g::espHealthColor };
                     constexpr float widthShrinkCoefficient{0.35f};
                     constexpr float heightShrinkCoefficient{0.12f};
 
                     const float widthRelativeToPlayerDistance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * widthShrinkCoefficient};
                     const float heightRelativeToPlayerDistance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * heightShrinkCoefficient};
 
-                    const auto topLeft{ImVec2{entity_eyes_pos_screen.x - widthRelativeToPlayerDistance, entity_eyes_pos_screen.y - heightRelativeToPlayerDistance}};
-                    const auto botRight{ImVec2{entity_feet_pos_screen.x + widthRelativeToPlayerDistance, entity_feet_pos_screen.y + heightRelativeToPlayerDistance}};
+                    const auto mainEspTopLeft{ImVec2{entity_eyes_pos_screen.x - widthRelativeToPlayerDistance, entity_eyes_pos_screen.y - heightRelativeToPlayerDistance}};
+                    const auto mainEspBotRight{ImVec2{entity_feet_pos_screen.x + widthRelativeToPlayerDistance, entity_feet_pos_screen.y + heightRelativeToPlayerDistance}};
 
-                    draw_items.emplace_back(topLeft, botRight, color);
+                    const auto espBox{render::Rect{mainEspTopLeft, mainEspBotRight, espBoxColor}};
+
+                    const auto healthBox{render::Rect{ImVec2{mainEspTopLeft.x - 10.0f, mainEspTopLeft.y}, ImVec2{mainEspTopLeft.x, mainEspBotRight.y}, espBoxColor}};
+
+                    float healthBarHeight = healthBox.bottomRight.y - healthBox.topLeft.y;
+                    float topLeftY = healthBox.bottomRight.y - (healthBarHeight * (static_cast<float>(player_health) / 100.0f));
+                    const auto healthBoxFilled{ render::Rect{
+                        ImVec2{healthBox.topLeft.x + healthBox.thickness, topLeftY + healthBox.thickness},
+                        {healthBox.bottomRight.x - healthBox.thickness, healthBox.bottomRight.y - healthBox.thickness},
+                        espHealthColor,
+                        true} };
+
+                    draw_items.emplace_back(espBox);
+                    draw_items.emplace_back(healthBox);
+                    draw_items.emplace_back(healthBoxFilled);
                 }
             }
 

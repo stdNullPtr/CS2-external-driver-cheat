@@ -10,11 +10,12 @@ namespace render
     {
         ImVec2 topLeft;
         ImVec2 bottomRight;
-        ImU32 color;
+        ImVec4 color;
+        bool filled;
         float thickness;
 
-        Rect(const ImVec2& topLeft, const ImVec2& bottomRight, const ImU32& col, const float& thick = 1.0f)
-            : topLeft(topLeft), bottomRight(bottomRight), color(col), thickness(thick)
+        Rect(const ImVec2& topLeft, const ImVec2& bottomRight, const ImVec4& col = {255.0f, 0.0f, 0.0f, 255.0f}, const bool& filled = false, const float& thick = 2.0f)
+            : topLeft(topLeft), bottomRight(bottomRight), color(col), filled(filled), thickness(thick)
         {
         }
     };

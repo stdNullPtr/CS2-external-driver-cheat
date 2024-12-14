@@ -2,16 +2,19 @@
 #include <string>
 #include <XOR.hpp>
 
+#include "imgui/lib/imgui.h"
+
 namespace g
 {
     static const std::wstring CS2_PROCESS_NAME{XORW(L"cs2.exe")};
-    static const std::wstring CS2_WINDOW_NAME{ XORW(L"Counter-Strike 2") };
+    static const std::wstring CS2_WINDOW_NAME{XORW(L"Counter-Strike 2")};
     static const std::wstring CLIENT_DLL_MODULE_NAME{XORW(L"client.dll")};
     static const std::wstring ENGINE_DLL_MODULE_NAME{XORW(L"engine2.dll")};
-    static const int screen_width{ GetSystemMetrics(SM_CXSCREEN) };
-    static const int screen_height{ GetSystemMetrics(SM_CYSCREEN) };
+    static const int screen_width{GetSystemMetrics(SM_CXSCREEN)};
+    static const int screen_height{GetSystemMetrics(SM_CYSCREEN)};
 
-    static float floatSlider{ 0.0f };
+    static ImVec4 espColor{255.0f, 0.0f, 0.0f, 255.0f};
+    static ImVec4 espHealthColor{0.0f, 255.0f, 0.0f, 255.0f};
 
     namespace toggles
     {

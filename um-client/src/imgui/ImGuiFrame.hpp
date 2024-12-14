@@ -22,7 +22,7 @@ namespace cheat::imgui
         static inline ID3D11RenderTargetView* g_mainRenderTargetView{nullptr};
 
         static inline WNDCLASSEXW wc;
-        static inline HWND window;
+        static inline HWND hOverlay;
         constexpr auto overlay_window_name{L"zzxzz"};
     }
 
@@ -51,23 +51,23 @@ namespace cheat::imgui
 
         RegisterClassExW(&g::wc);
 
-        g::window = CreateWindowExW(WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW,
+        g::hOverlay = CreateWindowExW(WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW | WS_EX_TRANSPARENT,
                                     g::wc.lpszClassName,
                                     g::overlay_window_name,
                                     WS_POPUP,
                                     0,
                                     0,
-                                    1920,
-                                    1080,
+                                    ::g::screen_width,
+                                    ::g::screen_height,
                                     nullptr,
                                     nullptr,
                                     g::wc.hInstance,
                                     nullptr);
 
-        SetLayeredWindowAttributes(g::window, RGB(0, 0, 0), 255, LWA_ALPHA | LWA_COLORKEY);
+        SetLayeredWindowAttributes(g::hOverlay, RGB(0, 0, 0), 255, LWA_ALPHA | LWA_COLORKEY);
 
         // Initialize Direct3D
-        if (!CreateDeviceD3D(g::window))
+        if (!CreateDeviceD3D(g::hOverlay))
         {
             CleanupDeviceD3D();
             UnregisterClassW(g::wc.lpszClassName, g::wc.hInstance);
@@ -75,8 +75,8 @@ namespace cheat::imgui
         }
 
         // Show the window
-        ShowWindow(g::window, SW_SHOWDEFAULT);
-        UpdateWindow(g::window);
+        ShowWindow(g::hOverlay, SW_SHOWDEFAULT);
+        UpdateWindow(g::hOverlay);
 
         // Setup Dear ImGui context
         IMGUI_CHECKVERSION();
@@ -87,7 +87,7 @@ namespace cheat::imgui
 
         ImGui::StyleColorsDark();
 
-        ImGui_ImplWin32_Init(g::window);
+        ImGui_ImplWin32_Init(g::hOverlay);
         ImGui_ImplDX11_Init(g::g_pd3dDevice, g::g_pd3dDeviceContext);
     }
 
@@ -107,7 +107,7 @@ namespace cheat::imgui
             ImGui::DestroyContext();
 
             CleanupDeviceD3D();
-            DestroyWindow(g::window);
+            DestroyWindow(g::hOverlay);
             UnregisterClassW(g::wc.lpszClassName, g::wc.hInstance);
         }
 
