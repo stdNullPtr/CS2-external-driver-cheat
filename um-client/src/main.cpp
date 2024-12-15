@@ -16,34 +16,14 @@
 
 #include "controller/Aim.hpp"
 #include "render/Render.hpp"
+#include "util/Esp.hpp"
 
 using namespace std::chrono_literals;
 using namespace g::toggles;
 using namespace commons::console;
 using std::this_thread::sleep_for;
 using util::Vec2;
-
-
-std::optional<Vec2> findValidAimTargetInCircle(const Vec2& center, const float& radius, const std::vector<Vec2>& entities)
-{
-    float radiusSquared = radius * radius;
-    float minDistanceSquared = std::numeric_limits<float>::max();
-    std::optional<Vec2> closestEntity = std::nullopt;
-
-    for (const auto& entity : entities)
-    {
-        float distSquared = center.distanceSquared(entity);
-
-        if (distSquared <= radiusSquared && distSquared < minDistanceSquared)
-        {
-            minDistanceSquared = distSquared;
-            closestEntity = entity;
-        }
-    }
-
-    return closestEntity;
-}
-
+using render::DrawCache;
 
 int main()
 {
@@ -57,17 +37,17 @@ int main()
     const driver::Driver driver{};
     if (!driver.is_valid())
     {
-        MessageBox(nullptr, XORW(L"Load the Driver first lmao."), XORW(L"Oopsie"), MB_OK);
+        MessageBox(nullptr, XORW(L"Load the Driver first lmao."), XORW(L"RIP"), MB_OK);
         return EXIT_FAILURE;
     }
 
     cheat::Cs2CheatController cheat;
 
     render::EspDrawList draw_list;
-    std::optional<Vec2> aimTarget;
+    std::optional<Vec2> aim_target;
 
     std::jthread draw_thread(render::draw_scene, std::ref(draw_list));
-    std::jthread aim_thread(cheat::aim::aimLoop, std::ref(aimTarget));
+    std::jthread aim_thread(cheat::aim::aim_loop, std::ref(aim_target));
 
     sleep_for(2s);
 
@@ -90,13 +70,19 @@ int main()
                 return EXIT_SUCCESS;
             }
 
-            sleep_for(3s);
+            sleep_for(2s);
 
             if (!cheat.init(driver))
             {
-                std::wcerr << XORW(L"Failed initializing cheat controller state, retying...\n");
+                std::wcerr << XORW(L"Failed initializing cheat controller state, retrying...\n");
                 sleep_for(2s);
                 continue;
+            }
+
+            if (cheat.build_number_changed(driver))
+            {
+                MessageBox(nullptr, XORW(L"There was an update, update the client."), XORW(L"RIP"), MB_OK);
+                return EXIT_FAILURE;
             }
         }
 
@@ -127,7 +113,7 @@ int main()
         std::wcout << '\n';
 #endif
 
-        if (is_paused || (!commons::window::isWindowInFocus(g::CS2_WINDOW_NAME) && !commons::window::isWindowInFocus(cheat::imgui::g::overlay_window_name)))
+        if (is_paused || (!commons::window::isWindowInFocus(g::cs2_window_name) && !commons::window::isWindowInFocus(cheat::imgui::g::overlay_window_name)))
         {
             std::wcout << XORW(L"[F1] Paused...\n");
             draw_list.clear();
@@ -138,31 +124,21 @@ int main()
         const auto me{cheat.get_local_player(driver)};
         const auto my_team{me.get_team(driver)};
         const auto view_matrix{cheat.get_view_matrix(driver)};
-        const auto c4RemainingTime{cheat.c4_blow_remaining_time(driver)};
+        const auto c4_remaining_time{cheat.c4_blow_remaining_time(driver)};
 
-        std::vector<render::DrawCache> draw_items;
-
-        if (esp_hack && c4RemainingTime > 0.0f)
+        if (no_flash_hack && me.is_flashed(driver))
         {
-            const auto c4TimerText{
-                render::DrawCache::build_text(
-                    std::string{XOR("C4 blow: ")}.append(std::to_string(c4RemainingTime)),
-                    ImVec2{static_cast<float>(g::additionalScreenInfoPositionX), static_cast<float>(g::additionalScreenInfoPositionY)},
-                    g::additionalScreenInfoTextColor,
-                    0)
-            };
+            me.disable_flash(driver);
+        }
 
-            const auto isA{cheat.c4_is_bomb_site_a(driver)};
-            const auto c4BombSiteText{
-                render::DrawCache::build_text(
-                    std::string{XOR("Plant site: ")}.append(isA ? "A" : "B"),
-                    ImVec2{static_cast<float>(g::additionalScreenInfoPositionX), static_cast<float>(g::additionalScreenInfoPositionY)},
-                    g::additionalScreenInfoTextColor,
-                    1)
-            };
+        std::vector<DrawCache> draw_items;
+        draw_items.reserve(32);
 
-            draw_items.emplace_back(c4TimerText);
-            draw_items.emplace_back(c4BombSiteText);
+        if (esp_hack && c4_remaining_time > 0.0f)
+        {
+            const auto is_planted_a{cheat.c4_is_bomb_site_a(driver)};
+            const auto esp_c4{util::esp::build_c4_esp(c4_remaining_time, is_planted_a)};
+            draw_items.append_range(esp_c4);
         }
 
 #ifndef NDEBUG
@@ -175,8 +151,8 @@ int main()
         std::wcout << '\n';
 #endif
 
-        std::vector<Vec2> entities;
-        for (int i{1}; i < 32; i++)
+        std::vector<Vec2> aim_targets;
+        for (int i{1}; i < 64; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
 
@@ -185,24 +161,25 @@ int main()
                 continue;
             }
 
-            const auto is_local_player{entity->is_local_player(driver)};
-            const auto player_team{entity->get_team(driver)};
             const auto player_health{entity->get_health(driver)};
+            const auto player_team{entity->get_team(driver)};
+            const auto is_valid_enemy{my_team != player_team && player_health > 0};
+            if (!is_valid_enemy)
+            {
+                continue;
+            }
+
             const auto entity_spotted{entity->is_spotted(driver)};
             const auto entity_name{entity->get_name(driver)};
             const auto is_scoped{entity->is_scoped(driver)};
-            auto weaponName{entity->get_weapon_name(driver)};
-            if (weaponName.length() > 7)
+            auto weapon_name{entity->get_weapon_name(driver)};
+            if (weapon_name.length() > 7)
             {
-                weaponName = weaponName.substr(7); //get rid of weapon_ prefix
+                weapon_name = weapon_name.substr(7); //get rid of weapon_ prefix
             }
 
-            const auto entity_eyes_pos_screen{render::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
-            const auto entity_feet_pos_screen{render::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
-            if (my_team != player_team && player_health > 0 && !is_local_player)
-            {
-                entities.emplace_back(entity_eyes_pos_screen);
-            }
+            const auto entity_eyes_pos_screen{render::utils::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
+            const auto entity_feet_pos_screen{render::utils::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
 
 #ifndef NDEBUG
             std::wcout << XORW(L"Ent: ") << i << '\n'
@@ -212,115 +189,30 @@ int main()
                 << XORW(L"Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n';
 #endif
 
-            if (my_team != player_team && player_health > 0 && !is_local_player)
+            aim_targets.emplace_back(entity_eyes_pos_screen);
+
+            if (glow_hack)
             {
-                if (glow_hack)
-                {
-                    entity->set_glowing(driver, true);
-                }
+                entity->set_glowing(driver, true);
+            }
 
-                if (radar_hack && !entity_spotted)
-                {
-                    //TODO should we set the correct mask as well? we are setting this bool but the variables after it should be 1 as well
-                    entity->set_spotted(driver, true);
-                }
+            if (radar_hack && !entity_spotted)
+            {
+                //TODO should we set the correct mask as well? we are setting this bool but the variables after it should be 1 as well
+                entity->set_spotted(driver, true);
+            }
 
-                if (esp_hack && entity_eyes_pos_screen.x > 0
-                    && entity_eyes_pos_screen.x < static_cast<float>(g::screen_width)
-                    && entity_eyes_pos_screen.y > 0
-                    && entity_eyes_pos_screen.y < static_cast<float>(g::screen_height))
-                {
-                    const auto espBoxColor{g::espColor};
-                    const auto espHealthColor{g::espHealthColor};
-                    const auto espBoxThickness{g::espBoxThickness};
+            if (esp_hack && (render::utils::is_in_screen(entity_eyes_pos_screen) || render::utils::is_in_screen(entity_feet_pos_screen)))
+            {
+                const auto esp_player{util::esp::build_player_esp(entity_eyes_pos_screen, entity_feet_pos_screen)};
+                const auto esp_health{util::esp::build_health_esp(esp_player.get_top_left(), esp_player.get_bottom_right(), player_health)};
+                const auto esp_player_bottom{util::esp::build_player_bottom_esp(entity_name, entity_eyes_pos_screen, esp_player.get_bottom_right(), weapon_name)};
+                const auto esp_player_top{util::esp::build_player_top_esp(is_scoped, entity_eyes_pos_screen, esp_player.get_top_left())};
 
-                    constexpr float widthShrinkCoefficient{0.35f};
-                    constexpr float heightShrinkCoefficient{0.15f};
-
-                    const float widthRelativeToPlayerDistance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * widthShrinkCoefficient};
-                    const float heightRelativeToPlayerDistance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * heightShrinkCoefficient};
-
-                    const auto mainEspTopLeft{ImVec2{entity_eyes_pos_screen.x - widthRelativeToPlayerDistance, entity_eyes_pos_screen.y - heightRelativeToPlayerDistance}};
-                    const auto mainEspBotRight{ImVec2{entity_feet_pos_screen.x + widthRelativeToPlayerDistance, entity_feet_pos_screen.y + heightRelativeToPlayerDistance}};
-                    const auto espBox{render::DrawCache::build_rect(mainEspTopLeft, mainEspBotRight, false, espBoxColor, espBoxThickness)};
-
-                    const auto healthBox{render::DrawCache::build_rect(ImVec2{mainEspTopLeft.x - 10.0f, mainEspTopLeft.y}, ImVec2{mainEspTopLeft.x, mainEspBotRight.y}, false, espBoxColor, espBoxThickness)};
-
-                    float healthBarHeight = healthBox.get_bottom_right().y - healthBox.get_top_left().y;
-                    float topLeftY = healthBox.get_bottom_right().y - (healthBarHeight * (static_cast<float>(player_health) / 100.0f));
-                    const auto healthBoxFilled{
-                        render::DrawCache::build_rect(
-                            ImVec2{
-                                healthBox.get_top_left().x + healthBox.get_thickness(),
-                                topLeftY + healthBox.get_thickness()
-                            },
-                            {
-                                healthBox.get_bottom_right().x - healthBox.get_thickness(),
-                                healthBox.get_bottom_right().y - healthBox.get_thickness()
-                            },
-                            true,
-                            espHealthColor,
-                            espBoxThickness
-                        )
-                    };
-
-                    const auto healthText{
-                        render::DrawCache::build_text(
-                            std::to_string(player_health).append("%"),
-                            {
-                                healthBox.get_top_left().x + cheat::imgui::g::font_size / 2.0f,
-                                healthBox.get_top_left().y - cheat::imgui::g::font_size
-                            },
-                            espHealthColor,
-                            0
-                        )
-                    };
-
-                    const auto bottomTextColor{g::textColor};
-                    const auto entityNameRenderObj{
-                        render::DrawCache::build_text(
-                            entity_name,
-                            ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y},
-                            bottomTextColor,
-                            0)
-                    };
-
-                    ImVec4 weaponTextColor{bottomTextColor};
-                    if (weaponName.starts_with(XOR("awp")))
-                    {
-                        weaponTextColor = g::weaponAwpTextColor;
-                    }
-                    else if (weaponName.starts_with("knife"))
-                    {
-                        weaponTextColor = g::weaponKnifeTextColor;
-                    }
-                    const auto weaponNameNameRenderObj{
-                        render::DrawCache::build_text(
-                            weaponName,
-                            ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y},
-                            weaponTextColor,
-                            1)
-                    };
-
-                    draw_items.emplace_back(espBox);
-                    draw_items.emplace_back(healthBox);
-                    draw_items.emplace_back(healthBoxFilled);
-                    draw_items.emplace_back(healthText);
-                    draw_items.emplace_back(weaponNameNameRenderObj);
-                    draw_items.emplace_back(entityNameRenderObj);
-
-                    if (is_scoped)
-                    {
-                        const auto scopedText{
-                            render::DrawCache::build_text(
-                                ICON_FA_EXCLAMATION_TRIANGLE " >SCOPED< " ICON_FA_EXCLAMATION_TRIANGLE,
-                                ImVec2{entity_eyes_pos_screen.x, espBox.get_top_left().y - cheat::imgui::g::font_size},
-                                g::weaponAwpTextColor,
-                                0)
-                        };
-                        draw_items.emplace_back(scopedText);
-                    }
-                }
+                draw_items.emplace_back(esp_player);
+                draw_items.append_range(esp_health);
+                draw_items.append_range(esp_player_bottom);
+                draw_items.append_range(esp_player_top);
             }
 
 #ifndef NDEBUG
@@ -330,7 +222,7 @@ int main()
 
         if (aim_hack)
         {
-            aimTarget = findValidAimTargetInCircle(Vec2{g::screen_width / 2.0f, g::screen_height / 2.0f}, g::aimFov, entities);
+            aim_target = cheat::aim::find_valid_aim_target_in_circle(Vec2{.x = g::screen_center.x, .y = g::screen_center.y}, g::aim_fov, aim_targets);
         }
 
         draw_list.update(draw_items);

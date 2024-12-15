@@ -7,10 +7,10 @@ namespace util
     {
         float x, y;
 
-        float distanceSquared(const Vec2& other) const
+        [[nodiscard]] float distance_squared(const Vec2& other) const
         {
-            float dx = x - other.x;
-            float dy = y - other.y;
+            const float dx{x - other.x};
+            const float dy{y - other.y};
             return dx * dx + dy * dy;
         }
 

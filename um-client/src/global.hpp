@@ -6,24 +6,25 @@
 
 namespace g
 {
-    static const std::wstring CS2_PROCESS_NAME{XORW(L"cs2.exe")};
-    static const std::wstring CS2_WINDOW_NAME{XORW(L"Counter-Strike 2")};
-    static const std::wstring CLIENT_DLL_MODULE_NAME{XORW(L"client.dll")};
-    static const std::wstring ENGINE_DLL_MODULE_NAME{XORW(L"engine2.dll")};
+    static const std::wstring cs2_process_name{XORW(L"cs2.exe")};
+    static const std::wstring cs2_window_name{XORW(L"Counter-Strike 2")};
+    static const std::wstring client_dll_module_name{XORW(L"client.dll")};
+    static const std::wstring engine_dll_module_name{XORW(L"engine2.dll")};
     static const int screen_width{GetSystemMetrics(SM_CXSCREEN)};
     static const int screen_height{GetSystemMetrics(SM_CYSCREEN)};
+    static const ImVec2 screen_center{screen_width / 2.0f, screen_height / 2.0f};
 
-    static ImVec4 espColor{255.0f, 0.0f, 0.0f, 255.0f};
-    static float espBoxThickness{1.0f};
-    static ImVec4 espHealthColor{0.0f, 255.0f, 0.0f, 255.0f};
-    static ImVec4 textColor{0.0f, 255.0f, 0.0f, 255.0f};
-    static ImVec4 weaponAwpTextColor{255.0f, 0.0f, 0.0f, 255.0f};
-    static ImVec4 weaponKnifeTextColor{0.0f, 0.0f, 255.0f, 255.0f};
-    static ImVec4 additionalScreenInfoTextColor{255.0f, 0.0f, 0.0f, 255.0f};
-    static int additionalScreenInfoPositionX{100};
-    static int additionalScreenInfoPositionY{350};
+    static ImVec4 esp_color{255.0f, 0.0f, 0.0f, 255.0f};
+    static float esp_box_thickness{1.0f};
+    static ImVec4 esp_health_color{0.0f, 255.0f, 0.0f, 255.0f};
+    static ImVec4 text_color{0.0f, 255.0f, 0.0f, 255.0f};
+    static ImVec4 weapon_awp_text_color{255.0f, 0.0f, 0.0f, 255.0f};
+    static ImVec4 weapon_knife_text_color{0.0f, 0.0f, 255.0f, 255.0f};
+    static ImVec4 additional_screen_info_text_color{255.0f, 0.0f, 0.0f, 255.0f};
+    static int additional_screen_info_position_x{100};
+    static int additional_screen_info_position_y{350};
 
-    static float aimFov{ 50.0f };
+    static float aim_fov{50.0f};
 
     namespace toggles
     {
@@ -32,6 +33,7 @@ namespace g
         static bool show_menu{false};
         static bool radar_hack{false};
         static bool glow_hack{false};
+        static bool no_flash_hack{false};
         static bool esp_hack{false};
         static bool aim_hack{false};
 
@@ -41,6 +43,7 @@ namespace g
 
             radar_hack = false;
             glow_hack = false;
+            no_flash_hack = false;
             esp_hack = false;
             aim_hack = false;
         }

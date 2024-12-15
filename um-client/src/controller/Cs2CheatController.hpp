@@ -55,6 +55,7 @@ namespace cheat
         [[nodiscard]] bool c4_is_bomb_site_a(const driver::Driver& driver) const;
 
         [[nodiscard]] bool init(const driver::Driver& driver);
+        [[nodiscard]] bool build_number_changed(const driver::Driver& driver) const;
 
         [[nodiscard]] std::optional<uintptr_t> get_entity_controller(const driver::Driver& driver, const int& i) const;
         [[nodiscard]] std::optional<uintptr_t> get_entity_pawn(const driver::Driver& driver, const uintptr_t& entity_controller) const;

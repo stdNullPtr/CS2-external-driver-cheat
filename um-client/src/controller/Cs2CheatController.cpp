@@ -4,7 +4,7 @@ namespace cheat
 {
     std::optional<DWORD> Cs2CheatController::get_cs2_process_id()
     {
-        const auto process_id{commons::process::GetProcessIdByName(g::CS2_PROCESS_NAME)};
+        const auto process_id{commons::process::GetProcessIdByName(g::cs2_process_name)};
         if (!process_id.has_value())
         {
             std::wcerr << XORW(L"Failed to find pid of requested process.\n");
@@ -20,7 +20,7 @@ namespace cheat
 
     std::optional<uintptr_t> Cs2CheatController::find_client_dll_base() const
     {
-        const auto client_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::CLIENT_DLL_MODULE_NAME)};
+        const auto client_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::client_dll_module_name)};
         if (!client_dll_base.has_value())
         {
             std::wcerr << XORW(L"Failed GetModuleBaseAddress for Client DLL.\n");
@@ -36,7 +36,7 @@ namespace cheat
 
     std::optional<uintptr_t> Cs2CheatController::find_engine_dll_base() const
     {
-        const auto engine_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::ENGINE_DLL_MODULE_NAME)};
+        const auto engine_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::engine_dll_module_name)};
         if (!engine_dll_base.has_value())
         {
             std::wcerr << XORW(L"Failed GetModuleBaseAddress for Engine DLL.\n");
@@ -99,6 +99,14 @@ namespace cheat
         return result;
     }
 
+    bool Cs2CheatController::build_number_changed(const driver::Driver& driver) const
+    {
+        //TODO read the json info.json dont be an idiot
+        static constexpr DWORD expected_build{14055};
+
+        return driver.read<DWORD>(engine_dll_base_ + cs2_dumper::offsets::engine2_dll::dwBuildNumber) != expected_build;
+    }
+
     bool Cs2CheatController::is_in_game(const driver::Driver& driver) const
     {
         const auto is_background{driver.read<bool>(get_network_client(driver) + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_isBackgroundMap)};
@@ -140,46 +148,46 @@ namespace cheat
 
     float Cs2CheatController::c4_blow_remaining_time(const driver::Driver& driver) const
     {
-        const auto dwGameRules{driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwGameRules)};
-        const auto bombPlanted{driver.read<bool>(dwGameRules + cs2_dumper::schemas::client_dll::C_CSGameRules::m_bBombPlanted)};
+        const auto dw_game_rules{driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwGameRules)};
+        const auto bomb_planted{driver.read<bool>(dw_game_rules + cs2_dumper::schemas::client_dll::C_CSGameRules::m_bBombPlanted)};
 
-        if (!bombPlanted)
+        if (!bomb_planted)
         {
             return 0.0f;
         }
 
-        const auto plantedC4{driver.read<uintptr_t>(driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwPlantedC4))};
-        const auto globalVars{driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwGlobalVars)};
+        const auto planted_c4{driver.read<uintptr_t>(driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwPlantedC4))};
+        const auto global_vars{driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwGlobalVars)};
 
-        const auto c4Time{driver.read<float>(plantedC4 + cs2_dumper::schemas::client_dll::C_PlantedC4::m_flC4Blow)};
-        const auto globalTime{driver.read<float>(globalVars + 0x34)};
+        const auto c4_time{driver.read<float>(planted_c4 + cs2_dumper::schemas::client_dll::C_PlantedC4::m_flC4Blow)};
+        const auto global_time{driver.read<float>(global_vars + 0x34)};
 
-        return c4Time - globalTime;
+        return c4_time - global_time;
     }
 
     bool Cs2CheatController::c4_is_bomb_site_a(const driver::Driver& driver) const
     {
-        const auto plantedC4{driver.read<uintptr_t>(driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwPlantedC4))};
-        const auto bombSite{driver.read<int>(plantedC4 + cs2_dumper::schemas::client_dll::C_PlantedC4::m_nBombSite)};
+        const auto planted_c4{driver.read<uintptr_t>(driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwPlantedC4))};
+        const auto bomb_site{driver.read<int>(planted_c4 + cs2_dumper::schemas::client_dll::C_PlantedC4::m_nBombSite)};
 
-        return bombSite == 0;
+        return bomb_site == 0;
     }
 
     std::optional<uintptr_t> Cs2CheatController::get_entity_controller(const driver::Driver& driver, const int& i) const
     {
-        const auto listEntity{driver.read<uintptr_t>(entity_system_ + ((8 * (i & 0x7FFF) >> 9) + 16))};
-        if (!listEntity)
+        const auto list_entity{driver.read<uintptr_t>(entity_system_ + ((8 * (i & 0x7FFF) >> 9) + 16))};
+        if (!list_entity)
         {
             return std::nullopt;
         }
 
-        const auto entityController{driver.read<uintptr_t>(listEntity + 0x78 * (i & 0x1FF))};
-        if (!entityController)
+        const auto entity_controller{driver.read<uintptr_t>(list_entity + 0x78 * (i & 0x1FF))};
+        if (!entity_controller)
         {
             return std::nullopt;
         }
 
-        return entityController;
+        return entity_controller;
     }
 
     std::optional<uintptr_t> Cs2CheatController::get_entity_pawn(const driver::Driver& driver, const uintptr_t& entity_controller) const

@@ -15,25 +15,36 @@ namespace render
     using util::Vec3;
     using util::ViewMatrix;
 
-    inline Vec2 world_to_screen(const ViewMatrix& view_matrix, const Vec3& world_position)
+    namespace utils
     {
-        float clip_space_x{view_matrix[0][0] * world_position.x + view_matrix[0][1] * world_position.y + view_matrix[0][2] * world_position.z + view_matrix[0][3]};
-        float clip_space_y{view_matrix[1][0] * world_position.x + view_matrix[1][1] * world_position.y + view_matrix[1][2] * world_position.z + view_matrix[1][3]};
-        const float clip_space_w{view_matrix[3][0] * world_position.x + view_matrix[3][1] * world_position.y + view_matrix[3][2] * world_position.z + view_matrix[3][3]};
-
-        if (clip_space_w <= 0.f)
+        inline Vec2 world_to_screen(const ViewMatrix& view_matrix, const Vec3& world_position)
         {
-            return {}; // Return an empty Vec2 if the point is behind the camera
+            float clip_space_x{view_matrix[0][0] * world_position.x + view_matrix[0][1] * world_position.y + view_matrix[0][2] * world_position.z + view_matrix[0][3]};
+            float clip_space_y{view_matrix[1][0] * world_position.x + view_matrix[1][1] * world_position.y + view_matrix[1][2] * world_position.z + view_matrix[1][3]};
+            const float clip_space_w{view_matrix[3][0] * world_position.x + view_matrix[3][1] * world_position.y + view_matrix[3][2] * world_position.z + view_matrix[3][3]};
+
+            if (clip_space_w <= 0.f)
+            {
+                return {}; // Return an empty Vec2 if the point is behind the camera
+            }
+
+            const float reciprocal_w{1.f / clip_space_w};
+            clip_space_x *= reciprocal_w;
+            clip_space_y *= reciprocal_w;
+
+            const float screen_x{(1 + clip_space_x) * static_cast<float>(g::screen_width) / 2.0f};
+            const float screen_y{(1 - clip_space_y) * static_cast<float>(g::screen_height) / 2.0f};
+
+            return Vec2{.x = screen_x, .y = screen_y};
         }
 
-        const float reciprocal_w{1.f / clip_space_w};
-        clip_space_x *= reciprocal_w;
-        clip_space_y *= reciprocal_w;
-
-        const float screen_x{(1 + clip_space_x) * static_cast<float>(g::screen_width) / 2.0f};
-        const float screen_y{(1 - clip_space_y) * static_cast<float>(g::screen_height) / 2.0f};
-
-        return Vec2{.x = screen_x, .y = screen_y};
+        inline bool is_in_screen(const Vec2& location)
+        {
+            return location.x > 0
+                && location.x < static_cast<float>(g::screen_width)
+                && location.y > 0
+                && location.y < static_cast<float>(g::screen_height);
+        }
     }
 
     inline void set_click_through(const bool& enabled)
@@ -77,6 +88,11 @@ namespace render
             if (GetAsyncKeyState(VK_F5) & 0x1)
             {
                 aim_hack = !aim_hack;
+            }
+
+            if (GetAsyncKeyState(VK_F6) & 0x1)
+            {
+                no_flash_hack = !no_flash_hack;
             }
 
             if (GetAsyncKeyState(VK_INSERT) & 0x1)
@@ -153,6 +169,12 @@ namespace render
                 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 1.0f, 0.0f, 1.0f));
                 ImGui::TextUnformatted(ICON_FA_CROSSHAIRS);
                 ImGui::PopStyleColor();
+
+                ImGui::Checkbox(XOR("[F6] No flash (Unsafe)"), &no_flash_hack);
+                ImGui::SameLine();
+                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.5f, 0.0f, 1.0f));
+                ImGui::TextUnformatted(ICON_FA_EXCLAMATION_TRIANGLE);
+                ImGui::PopStyleColor();
                 if (is_paused)
                 {
                     ImGui::EndDisabled();
@@ -180,12 +202,12 @@ namespace render
                 ImGui::PopStyleVar();
                 ImGui::PopStyleColor();
 
-                ImGui::ColorEdit3(XOR("Box"), reinterpret_cast<float*>(&g::espColor));
-                ImGui::ColorEdit3(XOR("Health"), reinterpret_cast<float*>(&g::espHealthColor));
-                ImGui::ColorEdit3(XOR("Text"), reinterpret_cast<float*>(&g::textColor));
-                ImGui::ColorEdit3(XOR("Carrying AWP text"), reinterpret_cast<float*>(&g::weaponAwpTextColor));
-                ImGui::ColorEdit3(XOR("Carrying knife text"), reinterpret_cast<float*>(&g::weaponKnifeTextColor));
-                ImGui::ColorEdit3(XOR("Extra info"), reinterpret_cast<float*>(&g::additionalScreenInfoTextColor));
+                ImGui::ColorEdit3(XOR("Box"), reinterpret_cast<float*>(&g::esp_color));
+                ImGui::ColorEdit3(XOR("Health"), reinterpret_cast<float*>(&g::esp_health_color));
+                ImGui::ColorEdit3(XOR("Text"), reinterpret_cast<float*>(&g::text_color));
+                ImGui::ColorEdit3(XOR("Carrying AWP text"), reinterpret_cast<float*>(&g::weapon_awp_text_color));
+                ImGui::ColorEdit3(XOR("Carrying knife text"), reinterpret_cast<float*>(&g::weapon_knife_text_color));
+                ImGui::ColorEdit3(XOR("Extra info"), reinterpret_cast<float*>(&g::additional_screen_info_text_color));
 
                 ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 128, 255, 255));
                 ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2));
@@ -193,11 +215,11 @@ namespace render
                 ImGui::PopStyleVar();
                 ImGui::PopStyleColor();
 
-                ImGui::SliderFloat(XOR("Thickness"), &g::espBoxThickness, 1.0f, 3.0f);
-                ImGui::SliderFloat(XOR("Aim FOV"), &g::aimFov, 5.0f, 200.0f);
-                draw_list->AddCircle(ImVec2{ g::screen_width / 2.0f, g::screen_height / 2.0f }, g::aimFov, IM_COL32_WHITE);
-                ImGui::SliderInt(XOR("Extra info X"), &g::additionalScreenInfoPositionX, 50, 300);
-                ImGui::SliderInt(XOR("Extra info Y"), &g::additionalScreenInfoPositionY, 0, 700);
+                ImGui::SliderFloat(XOR("Thickness"), &g::esp_box_thickness, 1.0f, 3.0f);
+                ImGui::SliderFloat(XOR("Aim FOV"), &g::aim_fov, 5.0f, 200.0f);
+                draw_list->AddCircle(g::screen_center, g::aim_fov, IM_COL32_WHITE);
+                ImGui::SliderInt(XOR("Extra info X"), &g::additional_screen_info_position_x, 50, 300);
+                ImGui::SliderInt(XOR("Extra info Y"), &g::additional_screen_info_position_y, 0, 700);
 
                 ImGui::End();
 
@@ -242,8 +264,7 @@ namespace render
                 case RenderObjectType::line:
                     break;
                 case RenderObjectType::circle:
-                    // draw_list->AddCircle(ImVec2{ g::screen_width / 2.0f, g::screen_height / 2.0f }, g::aimFov, IM_COL32_WHITE);
-                     draw_list->AddCircle(object.get_position(), object.get_radius(), IM_COL32_WHITE);
+                    draw_list->AddCircle(object.get_position(), object.get_radius(), IM_COL32_WHITE);
                     break;
                 case RenderObjectType::text:
                     const std::string text{object.get_text()};

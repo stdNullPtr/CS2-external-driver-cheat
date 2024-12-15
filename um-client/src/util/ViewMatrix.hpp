@@ -20,11 +20,11 @@ namespace util
 
         friend std::wostream& operator<<(std::wostream& os, const ViewMatrix& matrix)
         {
-            os << L"VewMatrix:\n";
-            for (int i = 0; i < 4; ++i)
+            os << L"ViewMatrix:\n";
+            for (int i{0}; i < 4; ++i)
             {
                 os << L"[ ";
-                for (int j = 0; j < 4; ++j)
+                for (int j{0}; j < 4; ++j)
                 {
                     os << std::setw(10) << std::fixed << std::setprecision(3) << matrix[i][j] << L" ";
                 }

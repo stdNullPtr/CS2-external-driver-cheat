@@ -41,12 +41,12 @@ namespace cheat::entity
             char buf[20];
         };
 
-        const auto weaponBase{ driver.read<uintptr_t>(entity_pawn_ + client_dll::C_CSPlayerPawnBase::m_pClippingWeapon) };
-        const auto identity{ driver.read<uintptr_t>(weaponBase + client_dll::CEntityInstance::m_pEntity) };
-        const auto designerName{ driver.read<uintptr_t>(identity + client_dll::CEntityIdentity::m_designerName) };
-        const auto str{ driver.read<str_wrap>(designerName) };
+        const auto weapon_base{driver.read<uintptr_t>(entity_pawn_ + client_dll::C_CSPlayerPawnBase::m_pClippingWeapon)};
+        const auto identity{driver.read<uintptr_t>(weapon_base + client_dll::CEntityInstance::m_pEntity)};
+        const auto designer_name{driver.read<uintptr_t>(identity + client_dll::CEntityIdentity::m_designerName)};
+        const auto str{driver.read<str_wrap>(designer_name)};
 
-        return { str.buf, str.buf + strnlen(str.buf, sizeof(str.buf)) };
+        return {str.buf, str.buf + strnlen(str.buf, sizeof(str.buf))};
     }
 
     int Entity::get_team(const driver::Driver& driver) const
@@ -83,6 +83,11 @@ namespace cheat::entity
         return driver.read<bool>(entity_pawn_ + client_dll::C_CSPlayerPawn::m_bIsScoped);
     }
 
+    bool Entity::is_flashed(const driver::Driver& driver) const
+    {
+        return driver.read<float>(entity_pawn_ + client_dll::C_CSPlayerPawnBase::m_flFlashDuration) > 0.0f;
+    }
+
     util::Vec3 Entity::get_forward_vector(const driver::Driver& driver) const
     {
         const auto movement_services{get_movement_services(driver)};
@@ -102,10 +107,13 @@ namespace cheat::entity
     void Entity::set_spotted(const driver::Driver& driver, const bool& spotted) const
     {
         const auto p_entity_spotted_state{entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState};
-
         const auto entity_spotted_address{p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpotted};
-
         driver.write(entity_spotted_address, spotted);
+    }
+
+    void Entity::disable_flash(const driver::Driver& driver) const
+    {
+        driver.write(entity_pawn_ + client_dll::C_CSPlayerPawnBase::m_flFlashDuration, 0.0f);
     }
 
     void Entity::set_glowing(const driver::Driver& driver, const bool& glow) const
