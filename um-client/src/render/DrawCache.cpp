@@ -4,78 +4,71 @@ namespace render
 {
     RenderObjectType DrawCache::get_type() const
     {
-        return type;
+        return type_;
     }
 
     ImVec2 DrawCache::get_top_left() const
     {
-        return topLeft;
+        return top_left_;
     }
 
     ImVec2 DrawCache::get_bottom_right() const
     {
-        return bottomRight;
+        return bottom_right_;
     }
 
     ImVec4 DrawCache::get_color() const
     {
-        return color;
+        return color_;
     }
 
     float DrawCache::get_thickness() const
     {
-        return thickness;
+        return thickness_;
     }
 
     ImVec2 DrawCache::get_position() const
     {
-        return position;
-    }
-
-    bool DrawCache::get_render_only_when_menu_open() const
-    {
-        return render_only_when_menu_open;
+        return position_;
     }
 
     int DrawCache::get_line_position() const
     {
-        return line_position;
+        return line_position_;
     }
 
     std::string DrawCache::get_text() const
     {
-        return text;
+        return text_;
     }
 
     float DrawCache::get_radius() const
     {
-        return radius;
+        return radius_;
     }
 
-    DrawCache DrawCache::build_rect(const ImVec2& topLeft, const ImVec2& bottomRight, const bool& filled, const ImVec4& col, const float& thick, const bool& renderOnlyWhenMenuOpen)
+    DrawCache DrawCache::build_rect(const ImVec2& top_left, const ImVec2& bottom_right, const bool& filled, const ImVec4& col, const float& thick)
     {
         DrawCache cache;
 
-        cache.type = filled ? RenderObjectType::rect_filled : RenderObjectType::rect;
-        cache.topLeft = topLeft;
-        cache.bottomRight = bottomRight;
-        cache.color = col;
-        cache.thickness = thick;
-        cache.render_only_when_menu_open = renderOnlyWhenMenuOpen;
+        cache.type_ = filled ? RenderObjectType::rect_filled : RenderObjectType::rect;
+        cache.top_left_ = top_left;
+        cache.bottom_right_ = bottom_right;
+        cache.color_ = col;
+        cache.thickness_ = thick;
 
         return cache;
     }
 
-    DrawCache DrawCache::build_text(const std::string& text, const ImVec2& position, const ImVec4& col, const int& line_position, const bool& renderOnlyWhenMenuOpen)
+    DrawCache DrawCache::build_text(const std::string& text, const ImVec2& position, const ImVec4& col, const int& line_position)
     {
         DrawCache cache;
 
-        cache.type = RenderObjectType::text;
-        cache.position = position;
-        cache.color = col;
-        cache.text = text;
-        cache.line_position = line_position;
-        cache.render_only_when_menu_open = renderOnlyWhenMenuOpen;
+        cache.type_ = RenderObjectType::text;
+        cache.position_ = position;
+        cache.color_ = col;
+        cache.text_ = text;
+        cache.line_position_ = line_position;
 
         return cache;
     }
