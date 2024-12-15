@@ -36,6 +36,7 @@ namespace g
         static bool no_flash_hack{false};
         static bool esp_hack{false};
         static bool aim_hack{false};
+        static bool aim_assist{false};
 
         inline void reset_toggles()
         {
@@ -46,6 +47,7 @@ namespace g
             no_flash_hack = false;
             esp_hack = false;
             aim_hack = false;
+            aim_assist = false;
         }
     }
 }

@@ -72,4 +72,16 @@ namespace render
 
         return cache;
     }
+
+    DrawCache DrawCache::build_circle(const ImVec2& position, const ImVec4& col, const float& radius)
+    {
+        DrawCache cache;
+
+        cache.type_ = RenderObjectType::circle;
+        cache.position_ = position;
+        cache.color_ = col;
+        cache.radius_ = radius;
+
+        return cache;
+    }
 }

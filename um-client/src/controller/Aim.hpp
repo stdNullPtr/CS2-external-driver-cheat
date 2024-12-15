@@ -46,13 +46,16 @@ namespace cheat::aim
 
         while (!stop_token.stop_requested())
         {
-            if (aim_target && g::toggles::aim_hack && (GetAsyncKeyState(VK_MBUTTON) & 0x8000))
+            if (aim_target && g::toggles::aim_hack && !g::toggles::show_menu)
             {
-                const float delta_x{aim_target->x - crosshair.x};
-                const float delta_y{aim_target->y - crosshair.y};
+                if (GetAsyncKeyState(VK_MBUTTON) & 0x8000 || (g::toggles::aim_assist && GetAsyncKeyState(VK_LBUTTON) & 0x8000))
+                {
+                    const float delta_x{aim_target->x - crosshair.x};
+                    const float delta_y{aim_target->y - crosshair.y};
 
-                move_mouse(delta_x, delta_y);
-                sleep_for(10us);
+                    move_mouse(delta_x, delta_y);
+                    sleep_for(10us);
+                }
             }
             else
             {

@@ -35,6 +35,7 @@ namespace cheat::entity
         [[nodiscard]] util::Vec3 get_forward_vector(const driver::Driver& driver) const;
         [[nodiscard]] util::Vec3 get_vec_origin(const driver::Driver& driver) const;
         [[nodiscard]] util::Vec3 get_eye_pos(const driver::Driver& driver) const;
+        [[nodiscard]] util::Vec3 get_head_bone_pos(const driver::Driver& driver) const;
 
         void set_spotted(const driver::Driver& driver, const bool& spotted) const;
         void disable_flash(const driver::Driver& driver) const;

@@ -189,7 +189,10 @@ int main()
                 << XORW(L"Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n';
 #endif
 
-            aim_targets.emplace_back(entity_eyes_pos_screen);
+            const auto head_bone_pos_world{entity->get_head_bone_pos(driver)};
+            const auto head_bone_pos_screen{render::utils::world_to_screen(view_matrix, head_bone_pos_world)};
+            const auto aim_position{head_bone_pos_screen};
+            aim_targets.emplace_back(aim_position);
 
             if (glow_hack)
             {
@@ -205,11 +208,13 @@ int main()
             if (esp_hack && (render::utils::is_in_screen(entity_eyes_pos_screen) || render::utils::is_in_screen(entity_feet_pos_screen)))
             {
                 const auto esp_player{util::esp::build_player_esp(entity_eyes_pos_screen, entity_feet_pos_screen)};
+                const auto esp_bones{util::esp::build_bone_esp(head_bone_pos_screen)};
                 const auto esp_health{util::esp::build_health_esp(esp_player.get_top_left(), esp_player.get_bottom_right(), player_health)};
                 const auto esp_player_bottom{util::esp::build_player_bottom_esp(entity_name, entity_eyes_pos_screen, esp_player.get_bottom_right(), weapon_name)};
                 const auto esp_player_top{util::esp::build_player_top_esp(is_scoped, entity_eyes_pos_screen, esp_player.get_top_left())};
 
                 draw_items.emplace_back(esp_player);
+                draw_items.emplace_back(esp_bones);
                 draw_items.append_range(esp_health);
                 draw_items.append_range(esp_player_bottom);
                 draw_items.append_range(esp_player_top);

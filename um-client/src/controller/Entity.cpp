@@ -1,6 +1,7 @@
 #include "Entity.hpp"
 
 #include "../sdk/dumper/offsets.hpp"
+#include "../util/BoneMatrix.hpp"
 
 namespace cheat::entity
 {
@@ -102,6 +103,17 @@ namespace cheat::entity
     util::Vec3 Entity::get_eye_pos(const driver::Driver& driver) const
     {
         return driver.read<util::Vec3>(entity_pawn_ + client_dll::C_BaseModelEntity::m_vecViewOffset) + get_vec_origin(driver);
+    }
+
+    util::Vec3 Entity::get_head_bone_pos(const driver::Driver& driver) const
+    {
+        constexpr auto bone_head{6};
+
+        const auto game_scene_node{get_game_scene_node(driver)};
+        const auto bone_array{driver.read<uintptr_t>(game_scene_node + client_dll::CPlayer_MovementServices_Humanoid::m_groundNormal)};
+        const auto head{driver.read<util::Vec3>(bone_array + bone_head * 32)};
+
+        return head;
     }
 
     void Entity::set_spotted(const driver::Driver& driver, const bool& spotted) const

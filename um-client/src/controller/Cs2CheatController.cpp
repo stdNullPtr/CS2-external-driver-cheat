@@ -122,18 +122,18 @@ namespace cheat
     std::optional<entity::Entity> Cs2CheatController::get_entity_from_list(const driver::Driver& driver, const int& index) const
     {
         const auto controller{get_entity_controller(driver, index)};
-        if (!controller.has_value())
+        if (!controller)
         {
             return std::nullopt;
         }
 
-        const auto entity_pawn{get_entity_pawn(driver, controller.value())};
-        if (!entity_pawn.has_value())
+        const auto entity_pawn{get_entity_pawn(driver, *controller)};
+        if (!entity_pawn)
         {
             return std::nullopt;
         }
 
-        return entity::Entity{controller.value(), entity_pawn.value()};
+        return entity::Entity{*controller, *entity_pawn};
     }
 
     entity::Entity Cs2CheatController::get_local_player(const driver::Driver& driver) const

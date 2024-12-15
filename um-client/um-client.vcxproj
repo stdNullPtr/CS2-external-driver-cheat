@@ -167,6 +167,7 @@
     <ClCompile Include="src\imgui\lib\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\lib\imgui_widgets.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClInclude Include="src\util\BoneMatrix.hpp" />
     <ClInclude Include="src\util\Esp.hpp" />
     <ClInclude Include="src\util\Vec2.hpp" />
     <ClInclude Include="src\util\Vec3.hpp" />

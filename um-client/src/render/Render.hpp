@@ -82,17 +82,22 @@ namespace render
 
             if (GetAsyncKeyState(VK_F4) & 0x1)
             {
-                esp_hack = !esp_hack;
+                no_flash_hack = !no_flash_hack;
             }
 
             if (GetAsyncKeyState(VK_F5) & 0x1)
             {
-                aim_hack = !aim_hack;
+                esp_hack = !esp_hack;
             }
 
             if (GetAsyncKeyState(VK_F6) & 0x1)
             {
-                no_flash_hack = !no_flash_hack;
+                aim_hack = !aim_hack;
+            }
+
+            if (GetAsyncKeyState(VK_F7) & 0x1 && aim_hack)
+            {
+                aim_assist = !aim_assist;
             }
 
             if (GetAsyncKeyState(VK_INSERT) & 0x1)
@@ -158,23 +163,38 @@ namespace render
                 ImGui::TextUnformatted(ICON_FA_EXCLAMATION_TRIANGLE);
                 ImGui::PopStyleColor();
 
-                ImGui::Checkbox(XOR("[F4] ESP "), &esp_hack);
+                ImGui::Checkbox(XOR("[F4] No flash (Unsafe)"), &no_flash_hack);
+                ImGui::SameLine();
+                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.5f, 0.0f, 1.0f));
+                ImGui::TextUnformatted(ICON_FA_EXCLAMATION_TRIANGLE);
+                ImGui::PopStyleColor();
+
+                ImGui::Checkbox(XOR("[F5] ESP "), &esp_hack);
                 ImGui::SameLine();
                 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 1.0f, 0.0f, 1.0f));
                 ImGui::TextUnformatted(ICON_FA_EYE);
                 ImGui::PopStyleColor();
 
-                ImGui::Checkbox(XOR("[F5] AIM "), &aim_hack);
+                ImGui::Checkbox(XOR("[F6] AIM "), &aim_hack);
                 ImGui::SameLine();
                 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 1.0f, 0.0f, 1.0f));
                 ImGui::TextUnformatted(ICON_FA_CROSSHAIRS);
                 ImGui::PopStyleColor();
 
-                ImGui::Checkbox(XOR("[F6] No flash (Unsafe)"), &no_flash_hack);
+                if (!aim_hack)
+                {
+                    ImGui::BeginDisabled();
+                }
+                ImGui::Checkbox(XOR("[F7] AIM assist (just shoot) "), &aim_assist);
                 ImGui::SameLine();
-                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.5f, 0.0f, 1.0f));
-                ImGui::TextUnformatted(ICON_FA_EXCLAMATION_TRIANGLE);
+                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 1.0f, 0.0f, 1.0f));
+                ImGui::TextUnformatted(ICON_FA_CROSSHAIRS);
                 ImGui::PopStyleColor();
+                if (!aim_hack)
+                {
+                    ImGui::EndDisabled();
+                }
+
                 if (is_paused)
                 {
                     ImGui::EndDisabled();

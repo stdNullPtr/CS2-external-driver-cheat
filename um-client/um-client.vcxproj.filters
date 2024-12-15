@@ -188,6 +188,9 @@
     <ClInclude Include="src\util\Esp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\util\BoneMatrix.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\sdk\dumper\info.json" />
