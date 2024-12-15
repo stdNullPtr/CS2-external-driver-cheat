@@ -7,6 +7,13 @@ namespace util
     {
         float x, y;
 
+        float distanceSquared(const Vec2& other) const
+        {
+            float dx = x - other.x;
+            float dy = y - other.y;
+            return dx * dx + dy * dy;
+        }
+
         Vec2 operator+(const Vec2& other) const
         {
             return {.x = x + other.x, .y = y + other.y};

@@ -23,6 +23,8 @@ namespace g
     static int additionalScreenInfoPositionX{100};
     static int additionalScreenInfoPositionY{350};
 
+    static float aimFov{ 50.0f };
+
     namespace toggles
     {
         //TODO atomic
@@ -31,6 +33,7 @@ namespace g
         static bool radar_hack{false};
         static bool glow_hack{false};
         static bool esp_hack{false};
+        static bool aim_hack{false};
 
         inline void reset_toggles()
         {
@@ -39,6 +42,7 @@ namespace g
             radar_hack = false;
             glow_hack = false;
             esp_hack = false;
+            aim_hack = false;
         }
     }
 }

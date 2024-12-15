@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="src\controller\Cs2CheatController.cpp" />
     <ClCompile Include="src\controller\Entity.cpp" />
+    <ClInclude Include="src\controller\Aim.hpp" />
     <ClInclude Include="src\controller\Entity.hpp" />
     <ClCompile Include="src\imgui\lib\misc\freetype\imgui_freetype.cpp" />
     <ClCompile Include="src\render\DrawCache.cpp" />

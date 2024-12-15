@@ -48,7 +48,7 @@ namespace render
         }
     }
 
-    inline void draw_scene(const std::stop_token& stop_token, render::EspDrawList& esp_draw_list)
+    inline void draw_scene(const std::stop_token& stop_token, EspDrawList& esp_draw_list)
     {
         cheat::imgui::init();
 
@@ -74,6 +74,11 @@ namespace render
                 esp_hack = !esp_hack;
             }
 
+            if (GetAsyncKeyState(VK_F5) & 0x1)
+            {
+                aim_hack = !aim_hack;
+            }
+
             if (GetAsyncKeyState(VK_INSERT) & 0x1)
             {
                 show_menu = !show_menu;
@@ -91,6 +96,7 @@ namespace render
                 continue;
             }
 
+            ImDrawList* const draw_list{ImGui::GetBackgroundDrawList()};
             if (show_menu)
             {
                 set_click_through(false);
@@ -141,6 +147,12 @@ namespace render
                 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.0f, 1.0f, 0.0f, 1.0f));
                 ImGui::TextUnformatted(ICON_FA_EYE);
                 ImGui::PopStyleColor();
+
+                ImGui::Checkbox(XOR("[F5] AIM "), &aim_hack);
+                ImGui::SameLine();
+                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 1.0f, 0.0f, 1.0f));
+                ImGui::TextUnformatted(ICON_FA_CROSSHAIRS);
+                ImGui::PopStyleColor();
                 if (is_paused)
                 {
                     ImGui::EndDisabled();
@@ -182,6 +194,8 @@ namespace render
                 ImGui::PopStyleColor();
 
                 ImGui::SliderFloat(XOR("Thickness"), &g::espBoxThickness, 1.0f, 3.0f);
+                ImGui::SliderFloat(XOR("Aim FOV"), &g::aimFov, 5.0f, 200.0f);
+                draw_list->AddCircle(ImVec2{ g::screen_width / 2.0f, g::screen_height / 2.0f }, g::aimFov, IM_COL32_WHITE);
                 ImGui::SliderInt(XOR("Extra info X"), &g::additionalScreenInfoPositionX, 50, 300);
                 ImGui::SliderInt(XOR("Extra info Y"), &g::additionalScreenInfoPositionY, 0, 700);
 
@@ -197,9 +211,13 @@ namespace render
 
             const std::vector draw_objects{esp_draw_list.get()};
 
-            ImDrawList* const draw_list{ImGui::GetBackgroundDrawList()};
             for (const auto& object : draw_objects)
             {
+                if (object.get_render_only_when_menu_open() && !show_menu)
+                {
+                    continue;
+                }
+
                 switch (object.get_type())
                 {
                 case RenderObjectType::rect:
@@ -224,6 +242,8 @@ namespace render
                 case RenderObjectType::line:
                     break;
                 case RenderObjectType::circle:
+                    // draw_list->AddCircle(ImVec2{ g::screen_width / 2.0f, g::screen_height / 2.0f }, g::aimFov, IM_COL32_WHITE);
+                     draw_list->AddCircle(object.get_position(), object.get_radius(), IM_COL32_WHITE);
                     break;
                 case RenderObjectType::text:
                     const std::string text{object.get_text()};

@@ -13,12 +13,37 @@
 #include "controller/Entity.hpp"
 #include <io.h>
 #include <fcntl.h>
+
+#include "controller/Aim.hpp"
 #include "render/Render.hpp"
 
 using namespace std::chrono_literals;
 using namespace g::toggles;
 using namespace commons::console;
 using std::this_thread::sleep_for;
+using util::Vec2;
+
+
+std::optional<Vec2> findValidAimTargetInCircle(const Vec2& center, const float& radius, const std::vector<Vec2>& entities)
+{
+    float radiusSquared = radius * radius;
+    float minDistanceSquared = std::numeric_limits<float>::max();
+    std::optional<Vec2> closestEntity = std::nullopt;
+
+    for (const auto& entity : entities)
+    {
+        float distSquared = center.distanceSquared(entity);
+
+        if (distSquared <= radiusSquared && distSquared < minDistanceSquared)
+        {
+            minDistanceSquared = distSquared;
+            closestEntity = entity;
+        }
+    }
+
+    return closestEntity;
+}
+
 
 int main()
 {
@@ -39,7 +64,10 @@ int main()
     cheat::Cs2CheatController cheat;
 
     render::EspDrawList draw_list;
+    std::optional<Vec2> aimTarget;
+
     std::jthread draw_thread(render::draw_scene, std::ref(draw_list));
+    std::jthread aim_thread(cheat::aim::aimLoop, std::ref(aimTarget));
 
     sleep_for(2s);
 
@@ -80,6 +108,11 @@ int main()
         if (!cheat.is_in_game(driver))
         {
             std::wcout << XORW(L"Waiting for you to join game...\n");
+
+            // prevent any leftover draw_scene artifacts
+            draw_list.clear();
+            reset_toggles();
+
             sleep_for(500ms);
             continue;
         }
@@ -142,6 +175,7 @@ int main()
         std::wcout << '\n';
 #endif
 
+        std::vector<Vec2> entities;
         for (int i{1}; i < 32; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
@@ -165,6 +199,10 @@ int main()
 
             const auto entity_eyes_pos_screen{render::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
             const auto entity_feet_pos_screen{render::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
+            if (my_team != player_team && player_health > 0 && !is_local_player)
+            {
+                entities.emplace_back(entity_eyes_pos_screen);
+            }
 
 #ifndef NDEBUG
             std::wcout << XORW(L"Ent: ") << i << '\n'
@@ -290,11 +328,17 @@ int main()
 #endif
         }
 
+        if (aim_hack)
+        {
+            aimTarget = findValidAimTargetInCircle(Vec2{g::screen_width / 2.0f, g::screen_height / 2.0f}, g::aimFov, entities);
+        }
+
         draw_list.update(draw_items);
         sleep_for(1ms);
     }
 
     draw_thread.request_stop();
+    aim_thread.request_stop();
 
     return EXIT_SUCCESS;
 }
