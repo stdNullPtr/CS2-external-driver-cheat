@@ -105,6 +105,32 @@ int main()
         const auto me{cheat.get_local_player(driver)};
         const auto my_team{me.get_team(driver)};
         const auto view_matrix{cheat.get_view_matrix(driver)};
+        const auto c4RemainingTime{cheat.c4_blow_remaining_time(driver)};
+
+        std::vector<render::DrawCache> draw_items;
+
+        if (esp_hack && c4RemainingTime > 0.0f)
+        {
+            const auto c4TimerText{
+                render::DrawCache::build_text(
+                    std::string{XOR("C4 blow: ")}.append(std::to_string(c4RemainingTime)),
+                    ImVec2{static_cast<float>(g::additionalScreenInfoPositionX), static_cast<float>(g::additionalScreenInfoPositionY)},
+                    g::additionalScreenInfoTextColor,
+                    0)
+            };
+
+            const auto isA{cheat.c4_is_bomb_site_a(driver)};
+            const auto c4BombSiteText{
+                render::DrawCache::build_text(
+                    std::string{XOR("Plant site: ")}.append(isA ? "A" : "B"),
+                    ImVec2{static_cast<float>(g::additionalScreenInfoPositionX), static_cast<float>(g::additionalScreenInfoPositionY)},
+                    g::additionalScreenInfoTextColor,
+                    1)
+            };
+
+            draw_items.emplace_back(c4TimerText);
+            draw_items.emplace_back(c4BombSiteText);
+        }
 
 #ifndef NDEBUG
         const auto my_eye_pos{me.get_eye_pos(driver)};
@@ -116,7 +142,6 @@ int main()
         std::wcout << '\n';
 #endif
 
-        std::vector<render::DrawCache> draw_items;
         for (int i{1}; i < 32; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
@@ -217,7 +242,7 @@ int main()
                     const auto entityNameRenderObj{
                         render::DrawCache::build_text(
                             entity_name,
-                            ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y + cheat::imgui::g::font_size},
+                            ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y},
                             bottomTextColor,
                             0)
                     };
@@ -234,7 +259,7 @@ int main()
                     const auto weaponNameNameRenderObj{
                         render::DrawCache::build_text(
                             weaponName,
-                            ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y + cheat::imgui::g::font_size},
+                            ImVec2{entity_eyes_pos_screen.x, espBox.get_bottom_right().y},
                             weaponTextColor,
                             1)
                     };

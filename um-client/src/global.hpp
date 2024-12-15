@@ -18,7 +18,10 @@ namespace g
     static ImVec4 espHealthColor{0.0f, 255.0f, 0.0f, 255.0f};
     static ImVec4 textColor{0.0f, 255.0f, 0.0f, 255.0f};
     static ImVec4 weaponAwpTextColor{255.0f, 0.0f, 0.0f, 255.0f};
-    static ImVec4 weaponKnifeTextColor{0.0f,0.0f, 255.0f, 255.0f};
+    static ImVec4 weaponKnifeTextColor{0.0f, 0.0f, 255.0f, 255.0f};
+    static ImVec4 additionalScreenInfoTextColor{255.0f, 0.0f, 0.0f, 255.0f};
+    static int additionalScreenInfoPositionX{100};
+    static int additionalScreenInfoPositionY{350};
 
     namespace toggles
     {

@@ -51,6 +51,9 @@ namespace cheat
         [[nodiscard]] entity::Entity get_local_player(const driver::Driver& driver) const;
         [[nodiscard]] util::ViewMatrix get_view_matrix(const driver::Driver& driver) const;
 
+        [[nodiscard]] float c4_blow_remaining_time(const driver::Driver& driver) const;
+        [[nodiscard]] bool c4_is_bomb_site_a(const driver::Driver& driver) const;
+
         [[nodiscard]] bool init(const driver::Driver& driver);
 
         [[nodiscard]] std::optional<uintptr_t> get_entity_controller(const driver::Driver& driver, const int& i) const;

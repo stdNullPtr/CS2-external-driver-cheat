@@ -173,6 +173,7 @@ namespace render
                 ImGui::ColorEdit3(XOR("Text"), reinterpret_cast<float*>(&g::textColor));
                 ImGui::ColorEdit3(XOR("Carrying AWP text"), reinterpret_cast<float*>(&g::weaponAwpTextColor));
                 ImGui::ColorEdit3(XOR("Carrying knife text"), reinterpret_cast<float*>(&g::weaponKnifeTextColor));
+                ImGui::ColorEdit3(XOR("Extra info"), reinterpret_cast<float*>(&g::additionalScreenInfoTextColor));
 
                 ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0, 128, 255, 255));
                 ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(5, 2));
@@ -181,6 +182,8 @@ namespace render
                 ImGui::PopStyleColor();
 
                 ImGui::SliderFloat(XOR("Thickness"), &g::espBoxThickness, 1.0f, 3.0f);
+                ImGui::SliderInt(XOR("Extra info X"), &g::additionalScreenInfoPositionX, 50, 300);
+                ImGui::SliderInt(XOR("Extra info Y"), &g::additionalScreenInfoPositionY, 0, 700);
 
                 ImGui::End();
 
@@ -233,9 +236,9 @@ namespace render
 
                     const ImVec2 requestedPosition{object.get_position()};
 
-                    int linePosition{object.get_line_position()};
+                    const int linePosition{object.get_line_position()};
                     const ImVec2 textSize{ImGui::CalcTextSize(text.c_str())};
-                    const ImVec2 position{requestedPosition.x - textSize.x / 2.0f, requestedPosition.y - textSize.y * static_cast<float>(linePosition)};
+                    const ImVec2 position{requestedPosition.x - textSize.x / 2.0f, requestedPosition.y + textSize.y * static_cast<float>(linePosition)};
 #pragma region shadow
                     const ImVec4 shadowColor{0.1f, 0.1f, 0.1f, color.w * 0.5f};
                     constexpr float shadowOffset{1.0f};

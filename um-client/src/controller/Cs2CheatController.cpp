@@ -138,6 +138,33 @@ namespace cheat
         return driver.read<util::ViewMatrix>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwViewMatrix);
     }
 
+    float Cs2CheatController::c4_blow_remaining_time(const driver::Driver& driver) const
+    {
+        const auto dwGameRules{driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwGameRules)};
+        const auto bombPlanted{driver.read<bool>(dwGameRules + cs2_dumper::schemas::client_dll::C_CSGameRules::m_bBombPlanted)};
+
+        if (!bombPlanted)
+        {
+            return 0.0f;
+        }
+
+        const auto plantedC4{driver.read<uintptr_t>(driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwPlantedC4))};
+        const auto globalVars{driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwGlobalVars)};
+
+        const auto c4Time{driver.read<float>(plantedC4 + cs2_dumper::schemas::client_dll::C_PlantedC4::m_flC4Blow)};
+        const auto globalTime{driver.read<float>(globalVars + 0x34)};
+
+        return c4Time - globalTime;
+    }
+
+    bool Cs2CheatController::c4_is_bomb_site_a(const driver::Driver& driver) const
+    {
+        const auto plantedC4{driver.read<uintptr_t>(driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwPlantedC4))};
+        const auto bombSite{driver.read<int>(plantedC4 + cs2_dumper::schemas::client_dll::C_PlantedC4::m_nBombSite)};
+
+        return bombSite == 0;
+    }
+
     std::optional<uintptr_t> Cs2CheatController::get_entity_controller(const driver::Driver& driver, const int& i) const
     {
         const auto listEntity{driver.read<uintptr_t>(entity_system_ + ((8 * (i & 0x7FFF) >> 9) + 16))};
