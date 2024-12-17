@@ -15,6 +15,7 @@ namespace g
     static const ImVec2 screen_center{screen_width / 2.0f, screen_height / 2.0f};
 
     static ImVec4 esp_color{255.0f, 0.0f, 0.0f, 255.0f};
+    static ImVec4 esp_color_enemy_visible{ 0.0f, 0.0f, 255.0f, 255.0f };
     static float esp_box_thickness{1.0f};
     static ImVec4 esp_health_color{0.0f, 255.0f, 0.0f, 255.0f};
     static ImVec4 text_color{0.0f, 255.0f, 0.0f, 255.0f};

@@ -175,7 +175,7 @@ namespace render
                 ImGui::TextUnformatted(ICON_FA_EYE);
                 ImGui::PopStyleColor();
 
-                ImGui::Checkbox(XOR("[F6] AIM "), &aim_hack);
+                ImGui::Checkbox(XOR("[F6] AIM (hold middle mouse)"), &aim_hack);
                 ImGui::SameLine();
                 ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 1.0f, 0.0f, 1.0f));
                 ImGui::TextUnformatted(ICON_FA_CROSSHAIRS);
@@ -223,6 +223,7 @@ namespace render
                 ImGui::PopStyleColor();
 
                 ImGui::ColorEdit3(XOR("Box"), reinterpret_cast<float*>(&g::esp_color));
+                ImGui::ColorEdit3(XOR("Box when enemy visible"), reinterpret_cast<float*>(&g::esp_color_enemy_visible));
                 ImGui::ColorEdit3(XOR("Health"), reinterpret_cast<float*>(&g::esp_health_color));
                 ImGui::ColorEdit3(XOR("Text"), reinterpret_cast<float*>(&g::text_color));
                 ImGui::ColorEdit3(XOR("Carrying AWP text"), reinterpret_cast<float*>(&g::weapon_awp_text_color));

@@ -14,7 +14,7 @@ namespace util::esp
         return head_bone_circle;
     }
 
-    inline DrawCache build_player_esp(const Vec2& entity_eyes_pos_screen, const Vec2& entity_feet_pos_screen)
+    inline DrawCache build_player_esp(const Vec2& entity_eyes_pos_screen, const Vec2& entity_feet_pos_screen, const ImVec4& esp_box_color)
     {
         constexpr float width_shrink_coefficient{0.35f};
         constexpr float height_shrink_coefficient{0.15f};
@@ -25,19 +25,19 @@ namespace util::esp
         const auto main_esp_top_left{ImVec2{entity_eyes_pos_screen.x - width_relative_to_player_distance, entity_eyes_pos_screen.y - height_relative_to_player_distance}};
         const auto main_esp_bot_right{ImVec2{entity_feet_pos_screen.x + width_relative_to_player_distance, entity_feet_pos_screen.y + height_relative_to_player_distance}};
 
-        const DrawCache main_esp_box{DrawCache::build_rect(main_esp_top_left, main_esp_bot_right, false, g::esp_color, g::esp_box_thickness)};
+        const DrawCache main_esp_box{DrawCache::build_rect(main_esp_top_left, main_esp_bot_right, false, esp_box_color, g::esp_box_thickness)};
 
         return main_esp_box;
     }
 
-    inline std::vector<DrawCache> build_health_esp(const ImVec2& player_esp_top_left, const ImVec2& player_esp_bot_right, const int& health)
+    inline std::vector<DrawCache> build_health_esp(const ImVec2& player_esp_top_left, const ImVec2& player_esp_bot_right, const int& health, const ImVec4& esp_box_color)
     {
         const DrawCache esp_health_border{
             DrawCache::build_rect(
                 ImVec2{player_esp_top_left.x - 10.0f, player_esp_top_left.y},
                 ImVec2{player_esp_top_left.x, player_esp_bot_right.y},
                 false,
-                g::esp_color,
+                esp_box_color,
                 g::esp_box_thickness
             )
         };

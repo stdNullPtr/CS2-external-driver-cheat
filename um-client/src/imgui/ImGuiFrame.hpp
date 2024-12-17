@@ -26,7 +26,7 @@ namespace cheat::imgui
         static inline WNDCLASSEXW wc;
         static inline HWND hOverlay;
         constexpr auto overlay_window_name{L"zzxzz"};
-        constexpr auto font_size{22.0f};
+        constexpr auto font_size{20.0f};
     }
 
     LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -102,7 +102,7 @@ namespace cheat::imgui
         cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
         //cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_Bold;
         //cfg.RasterizerMultiply = 1.5f;
-        io.Fonts->AddFontFromFileTTF(XOR(R"(D:\Repos\lmao-driver\um-client\src\imgui\lib\misc\font\NotoSans-Regular.ttf)"), baseFontSize, &cfg, ranges);
+        io.Fonts->AddFontFromFileTTF(XOR("NotoSans-Regular.ttf"), baseFontSize, &cfg, ranges);
 
         static constexpr ImWchar icons_ranges[]{ICON_MIN_FA, ICON_MAX_16_FA, 0};
         static ImFontConfig icons_config;
@@ -110,7 +110,7 @@ namespace cheat::imgui
         icons_config.PixelSnapH = true;
         icons_config.GlyphMinAdvanceX = iconFontSize;
         // icons_config.OversampleH = icons_config.OversampleV = 3;
-        io.Fonts->AddFontFromFileTTF(XOR(R"(D:\Repos\lmao-driver\um-client\src\imgui\lib\misc\font\)" FONT_ICON_FILE_NAME_FAS), iconFontSize, &icons_config, icons_ranges);
+        io.Fonts->AddFontFromFileTTF(XOR(FONT_ICON_FILE_NAME_FAS), iconFontSize, &icons_config, icons_ranges);
     }
 
     namespace frame

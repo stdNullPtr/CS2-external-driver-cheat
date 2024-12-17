@@ -32,6 +32,7 @@ namespace cheat::entity
         [[nodiscard]] bool is_glowing(const driver::Driver& driver) const;
         [[nodiscard]] bool is_scoped(const driver::Driver& driver) const;
         [[nodiscard]] bool is_flashed(const driver::Driver& driver) const;
+        [[nodiscard]] bool is_spotted_by_local_player(const driver::Driver& driver, const int& local_player_index) const;
         [[nodiscard]] util::Vec3 get_forward_vector(const driver::Driver& driver) const;
         [[nodiscard]] util::Vec3 get_vec_origin(const driver::Driver& driver) const;
         [[nodiscard]] util::Vec3 get_eye_pos(const driver::Driver& driver) const;

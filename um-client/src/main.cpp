@@ -11,7 +11,6 @@
 #include "window.hpp"
 #include "controller/Cs2CheatController.hpp"
 #include "controller/Entity.hpp"
-#include <io.h>
 #include <fcntl.h>
 
 #include "controller/Aim.hpp"
@@ -27,11 +26,6 @@ using render::DrawCache;
 
 int main()
 {
-    _setmode(_fileno(stdout), _O_WTEXT);
-    _setmode(_fileno(stdin), _O_WTEXT);
-
-    (void)std::setlocale(LC_ALL, "en_US.utf8");
-
     setCursorVisibility(false);
 
     const driver::Driver driver{};
@@ -152,6 +146,7 @@ int main()
 #endif
 
         std::vector<Vec2> aim_targets;
+        static int local_player_index{-1};
         for (int i{1}; i < 64; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
@@ -161,15 +156,22 @@ int main()
                 continue;
             }
 
+            if (entity->is_local_player(driver))
+            {
+                local_player_index = i - 1;
+            }
+
             const auto player_health{entity->get_health(driver)};
             const auto player_team{entity->get_team(driver)};
             const auto is_valid_enemy{my_team != player_team && player_health > 0};
+
             if (!is_valid_enemy)
             {
                 continue;
             }
 
             const auto entity_spotted{entity->is_spotted(driver)};
+            const auto entity_spotted_by_local_player{entity->is_spotted_by_local_player(driver, local_player_index)};
             const auto entity_name{entity->get_name(driver)};
             const auto is_scoped{entity->is_scoped(driver)};
             auto weapon_name{entity->get_weapon_name(driver)};
@@ -183,7 +185,6 @@ int main()
 
 #ifndef NDEBUG
             std::wcout << XORW(L"Ent: ") << i << '\n'
-                << XORW(L"Is this me: ") << (is_local_player ? "yes" : "no") << '\n'
                 << XORW(L"Enemy: ") << (my_team != player_team ? "yes" : "no") << '\n'
                 << XORW(L"HP: ") << std::dec << player_health << '\n'
                 << XORW(L"Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n';
@@ -191,8 +192,11 @@ int main()
 
             const auto head_bone_pos_world{entity->get_head_bone_pos(driver)};
             const auto head_bone_pos_screen{render::utils::world_to_screen(view_matrix, head_bone_pos_world)};
-            const auto aim_position{head_bone_pos_screen};
-            aim_targets.emplace_back(aim_position);
+            if (entity_spotted_by_local_player)
+            {
+                const auto aim_position{head_bone_pos_screen};
+                aim_targets.emplace_back(aim_position);
+            }
 
             if (glow_hack)
             {
@@ -207,9 +211,11 @@ int main()
 
             if (esp_hack && (render::utils::is_in_screen(entity_eyes_pos_screen) || render::utils::is_in_screen(entity_feet_pos_screen)))
             {
-                const auto esp_player{util::esp::build_player_esp(entity_eyes_pos_screen, entity_feet_pos_screen)};
+                const auto esp_box_color{entity_spotted_by_local_player ? g::esp_color_enemy_visible : g::esp_color};
+
+                const auto esp_player{util::esp::build_player_esp(entity_eyes_pos_screen, entity_feet_pos_screen, esp_box_color)};
                 const auto esp_bones{util::esp::build_bone_esp(head_bone_pos_screen)};
-                const auto esp_health{util::esp::build_health_esp(esp_player.get_top_left(), esp_player.get_bottom_right(), player_health)};
+                const auto esp_health{util::esp::build_health_esp(esp_player.get_top_left(), esp_player.get_bottom_right(), player_health, esp_box_color)};
                 const auto esp_player_bottom{util::esp::build_player_bottom_esp(entity_name, entity_eyes_pos_screen, esp_player.get_bottom_right(), weapon_name)};
                 const auto esp_player_top{util::esp::build_player_top_esp(is_scoped, entity_eyes_pos_screen, esp_player.get_top_left())};
 

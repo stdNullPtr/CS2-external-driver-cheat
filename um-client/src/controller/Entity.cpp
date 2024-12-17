@@ -63,9 +63,7 @@ namespace cheat::entity
     bool Entity::is_spotted(const driver::Driver& driver) const
     {
         const auto p_entity_spotted_state{entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState};
-
         const auto entity_spotted_address{p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpotted};
-
         return driver.read<bool>(entity_spotted_address);
     }
 
@@ -87,6 +85,19 @@ namespace cheat::entity
     bool Entity::is_flashed(const driver::Driver& driver) const
     {
         return driver.read<float>(entity_pawn_ + client_dll::C_CSPlayerPawnBase::m_flFlashDuration) > 0.0f;
+    }
+
+    bool Entity::is_spotted_by_local_player(const driver::Driver& driver, const int& local_player_index) const
+    {
+        if (local_player_index < 0)
+        {
+            return false;
+        }
+
+        const auto p_entity_spotted_state{ entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState };
+        const auto entity_spotted_by_mask{ driver.read<uint64_t>(p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpottedByMask )};
+
+        return entity_spotted_by_mask & (DWORD64(1) << (local_player_index));
     }
 
     util::Vec3 Entity::get_forward_vector(const driver::Driver& driver) const

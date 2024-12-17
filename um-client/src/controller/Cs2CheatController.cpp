@@ -207,7 +207,7 @@ namespace cheat
         const auto entity_pawn{driver.read<uintptr_t>(list_entity + 0x78 * (entity_controller_pawn & 0x1FF))};
         if (!entity_pawn)
         {
-            std::wcerr << XORW(L"entityPawn is null\n");
+            std::wcerr << XORW(L"Cant grab player pawn, maybe the player disconnected?\n");
             return std::nullopt;
         }
 
