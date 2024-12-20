@@ -18,10 +18,10 @@ namespace cheat
     class Cs2CheatController
     {
     private:
-        DWORD cs2_process_id_{0};
-        uintptr_t client_dll_base_{0};
-        uintptr_t engine_dll_base_{0};
-        uintptr_t entity_system_{0};
+        DWORD cs2_process_id_{ 0 };
+        uintptr_t client_dll_base_{ 0 };
+        uintptr_t engine_dll_base_{ 0 };
+        uintptr_t entity_system_{ 0 };
 
     private:
         [[nodiscard]] static std::optional<DWORD> get_cs2_process_id();

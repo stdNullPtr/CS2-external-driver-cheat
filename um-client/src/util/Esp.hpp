@@ -9,23 +9,23 @@ namespace util::esp
 
     inline DrawCache build_bone_esp(const Vec2& head_bone_pos_screen)
     {
-        const DrawCache head_bone_circle{DrawCache::build_circle({head_bone_pos_screen.x, head_bone_pos_screen.y}, g::esp_color, 4.0f)};
+        const DrawCache head_bone_circle{ DrawCache::build_circle({head_bone_pos_screen.x, head_bone_pos_screen.y}, g::esp_color, 4.0f) };
 
         return head_bone_circle;
     }
 
     inline DrawCache build_player_esp(const Vec2& entity_eyes_pos_screen, const Vec2& entity_feet_pos_screen, const ImVec4& esp_box_color)
     {
-        constexpr float width_shrink_coefficient{0.35f};
-        constexpr float height_shrink_coefficient{0.15f};
+        constexpr float width_shrink_coefficient{ 0.35f };
+        constexpr float height_shrink_coefficient{ 0.15f };
 
-        const float width_relative_to_player_distance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * width_shrink_coefficient};
-        const float height_relative_to_player_distance{(entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * height_shrink_coefficient};
+        const float width_relative_to_player_distance{ (entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * width_shrink_coefficient };
+        const float height_relative_to_player_distance{ (entity_feet_pos_screen.y - entity_eyes_pos_screen.y) * height_shrink_coefficient };
 
-        const auto main_esp_top_left{ImVec2{entity_eyes_pos_screen.x - width_relative_to_player_distance, entity_eyes_pos_screen.y - height_relative_to_player_distance}};
-        const auto main_esp_bot_right{ImVec2{entity_feet_pos_screen.x + width_relative_to_player_distance, entity_feet_pos_screen.y + height_relative_to_player_distance}};
+        const auto main_esp_top_left{ ImVec2{entity_eyes_pos_screen.x - width_relative_to_player_distance, entity_eyes_pos_screen.y - height_relative_to_player_distance} };
+        const auto main_esp_bot_right{ ImVec2{entity_feet_pos_screen.x + width_relative_to_player_distance, entity_feet_pos_screen.y + height_relative_to_player_distance} };
 
-        const DrawCache main_esp_box{DrawCache::build_rect(main_esp_top_left, main_esp_bot_right, false, esp_box_color, g::esp_box_thickness)};
+        const DrawCache main_esp_box{ DrawCache::build_rect(main_esp_top_left, main_esp_bot_right, false, esp_box_color, g::esp_box_thickness) };
 
         return main_esp_box;
     }
@@ -42,8 +42,8 @@ namespace util::esp
             )
         };
 
-        const float health_bar_height{esp_health_border.get_bottom_right().y - esp_health_border.get_top_left().y};
-        const float top_left_y{esp_health_border.get_bottom_right().y - (health_bar_height * (static_cast<float>(health) / 100.0f))};
+        const float health_bar_height{ esp_health_border.get_bottom_right().y - esp_health_border.get_top_left().y };
+        const float top_left_y{ esp_health_border.get_bottom_right().y - (health_bar_height * (static_cast<float>(health) / 100.0f)) };
         const DrawCache health_box_filled{
             DrawCache::build_rect(
                 ImVec2{
@@ -72,7 +72,7 @@ namespace util::esp
             )
         };
 
-        return {esp_health_border, health_text, health_box_filled};
+        return { esp_health_border, health_text, health_box_filled };
     }
 
     inline std::vector<DrawCache> build_player_bottom_esp(const std::string& entity_name, const Vec2& entity_eyes_pos_screen, const ImVec2& player_esp_bot_right, const std::string& weapon_name)
@@ -85,7 +85,7 @@ namespace util::esp
                 0)
         };
 
-        ImVec4 weapon_text_color{g::text_color};
+        ImVec4 weapon_text_color{ g::text_color };
         if (weapon_name.starts_with(XOR("awp")))
         {
             weapon_text_color = g::weapon_awp_text_color;
@@ -102,7 +102,7 @@ namespace util::esp
                 1)
         };
 
-        return {entity_name_render_obj, weapon_name_render_obj};
+        return { entity_name_render_obj, weapon_name_render_obj };
     }
 
     inline std::vector<DrawCache> build_player_top_esp(const bool& is_scoped, const Vec2& entity_eyes_pos_screen, const ImVec2& player_esp_top_left)
@@ -142,6 +142,6 @@ namespace util::esp
                 1)
         };
 
-        return {c4_timer_text, c4_bomb_site_text};
+        return { c4_timer_text, c4_bomb_site_text };
     }
 }

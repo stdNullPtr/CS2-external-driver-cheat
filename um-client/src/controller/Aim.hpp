@@ -11,13 +11,13 @@ namespace cheat::aim
 
     inline std::optional<Vec2> find_valid_aim_target_in_circle(const Vec2& center, const float& radius, const std::vector<Vec2>& aim_targets)
     {
-        const float radius_squared{radius * radius};
-        float min_distance_squared{std::numeric_limits<float>::max()};
-        std::optional<Vec2> aim_target{std::nullopt};
+        const float radius_squared{ radius * radius };
+        float min_distance_squared{ std::numeric_limits<float>::max() };
+        std::optional<Vec2> aim_target{ std::nullopt };
 
         for (const auto& target : aim_targets)
         {
-            const float dist_squared{center.distance_squared(target)};
+            const float dist_squared{ center.distance_squared(target) };
 
             if (dist_squared <= radius_squared && dist_squared < min_distance_squared)
             {
@@ -42,7 +42,7 @@ namespace cheat::aim
 
     inline void aim_loop(const std::stop_token& stop_token, const std::optional<Vec2>& aim_target)
     {
-        static const ImVec2 crosshair{g::screen_center};
+        static const ImVec2 crosshair{ g::screen_center };
 
         while (!stop_token.stop_requested())
         {
@@ -50,8 +50,8 @@ namespace cheat::aim
             {
                 if (GetAsyncKeyState(VK_MBUTTON) & 0x8000 || (g::toggles::aim_assist && GetAsyncKeyState(VK_LBUTTON) & 0x8000))
                 {
-                    const float delta_x{aim_target->x - crosshair.x};
-                    const float delta_y{aim_target->y - crosshair.y};
+                    const float delta_x{ aim_target->x - crosshair.x };
+                    const float delta_y{ aim_target->y - crosshair.y };
 
                     move_mouse(delta_x, delta_y);
                     sleep_for(10us);

@@ -15,18 +15,18 @@ namespace cheat::imgui
 {
     namespace g
     {
-        static inline ID3D11Device* g_pd3dDevice{nullptr};
-        static inline ID3D11DeviceContext* g_pd3dDeviceContext{nullptr};
-        static inline IDXGISwapChain* g_pSwapChain{nullptr};
-        static inline bool g_SwapChainOccluded{false};
-        static inline UINT g_ResizeWidth{0};
-        static inline UINT g_ResizeHeight{0};
-        static inline ID3D11RenderTargetView* g_mainRenderTargetView{nullptr};
+        static inline ID3D11Device* g_pd3dDevice{ nullptr };
+        static inline ID3D11DeviceContext* g_pd3dDeviceContext{ nullptr };
+        static inline IDXGISwapChain* g_pSwapChain{ nullptr };
+        static inline bool g_SwapChainOccluded{ false };
+        static inline UINT g_ResizeWidth{ 0 };
+        static inline UINT g_ResizeHeight{ 0 };
+        static inline ID3D11RenderTargetView* g_mainRenderTargetView{ nullptr };
 
         static inline WNDCLASSEXW wc;
         static inline HWND hOverlay;
-        constexpr auto overlay_window_name{L"zzxzz"};
-        constexpr auto font_size{20.0f};
+        constexpr auto overlay_window_name{ L"zzxzz" };
+        constexpr auto font_size{ 20.0f };
     }
 
     LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -55,17 +55,17 @@ namespace cheat::imgui
         RegisterClassExW(&g::wc);
 
         g::hOverlay = CreateWindowExW(WS_EX_TOPMOST | WS_EX_LAYERED | WS_EX_TOOLWINDOW | WS_EX_TRANSPARENT,
-                                      g::wc.lpszClassName,
-                                      g::overlay_window_name,
-                                      WS_POPUP,
-                                      0,
-                                      0,
-                                      ::g::screen_width,
-                                      ::g::screen_height,
-                                      nullptr,
-                                      nullptr,
-                                      g::wc.hInstance,
-                                      nullptr);
+            g::wc.lpszClassName,
+            g::overlay_window_name,
+            WS_POPUP,
+            0,
+            0,
+            ::g::screen_width,
+            ::g::screen_height,
+            nullptr,
+            nullptr,
+            g::wc.hInstance,
+            nullptr);
 
         SetLayeredWindowAttributes(g::hOverlay, RGB(0, 0, 0), 255, LWA_ALPHA | LWA_COLORKEY);
 
@@ -84,7 +84,7 @@ namespace cheat::imgui
         // Setup Dear ImGui context
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
-        ImGuiIO& io{ImGui::GetIO()};
+        ImGuiIO& io{ ImGui::GetIO() };
         (void)io;
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
@@ -96,7 +96,7 @@ namespace cheat::imgui
         float baseFontSize = g::font_size;
         float iconFontSize = baseFontSize * 2.0f / 3.0f;
 
-        static constexpr ImWchar ranges[]{0x1, 0x1FFFF, 0};
+        static constexpr ImWchar ranges[]{ 0x1, 0x1FFFF, 0 };
         static ImFontConfig cfg;
         // cfg.OversampleH = cfg.OversampleV = 5;
         cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
@@ -104,7 +104,7 @@ namespace cheat::imgui
         //cfg.RasterizerMultiply = 1.5f;
         io.Fonts->AddFontFromFileTTF(XOR("NotoSans-Regular.ttf"), baseFontSize, &cfg, ranges);
 
-        static constexpr ImWchar icons_ranges[]{ICON_MIN_FA, ICON_MAX_16_FA, 0};
+        static constexpr ImWchar icons_ranges[]{ ICON_MIN_FA, ICON_MAX_16_FA, 0 };
         static ImFontConfig icons_config;
         icons_config.MergeMode = true;
         icons_config.PixelSnapH = true;
@@ -165,13 +165,13 @@ namespace cheat::imgui
         inline void render()
         {
             ImGui::Render();
-            constexpr float transparent[4]{0, 0, 0, 0};
+            constexpr float transparent[4]{ 0, 0, 0, 0 };
             g::g_pd3dDeviceContext->OMSetRenderTargets(1, &g::g_mainRenderTargetView, nullptr);
             g::g_pd3dDeviceContext->ClearRenderTargetView(g::g_mainRenderTargetView, transparent);
             ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
 
             // Present
-            HRESULT hr{g::g_pSwapChain->Present(1, 0)}; // Present with vsync
+            HRESULT hr{ g::g_pSwapChain->Present(1, 0) }; // Present with vsync
             //HRESULT hr = g_pSwapChain->Present(0, 0); // Present without vsync
             g::g_SwapChainOccluded = (hr == DXGI_STATUS_OCCLUDED);
         }
@@ -200,7 +200,7 @@ namespace cheat::imgui
         UINT createDeviceFlags = 0;
         //createDeviceFlags |= D3D11_CREATE_DEVICE_DEBUG;
         D3D_FEATURE_LEVEL featureLevel;
-        const D3D_FEATURE_LEVEL featureLevelArray[2] = {D3D_FEATURE_LEVEL_11_0, D3D_FEATURE_LEVEL_10_0,};
+        const D3D_FEATURE_LEVEL featureLevelArray[2] = { D3D_FEATURE_LEVEL_11_0, D3D_FEATURE_LEVEL_10_0, };
         HRESULT res = D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr, createDeviceFlags, featureLevelArray, 2, D3D11_SDK_VERSION, &sd, &g::g_pSwapChain, &g::g_pd3dDevice, &featureLevel, &g::g_pd3dDeviceContext);
         if (res == DXGI_ERROR_UNSUPPORTED) // Try high-performance WARP software driver if hardware is not available.
             res = D3D11CreateDeviceAndSwapChain(nullptr, D3D_DRIVER_TYPE_WARP, nullptr, createDeviceFlags, featureLevelArray, 2, D3D11_SDK_VERSION, &sd, &g::g_pSwapChain, &g::g_pd3dDevice, &featureLevel, &g::g_pd3dDeviceContext);

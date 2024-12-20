@@ -9,19 +9,19 @@ namespace util
 
         [[nodiscard]] float distance_squared(const Vec2& other) const
         {
-            const float dx{x - other.x};
-            const float dy{y - other.y};
+            const float dx{ x - other.x };
+            const float dy{ y - other.y };
             return dx * dx + dy * dy;
         }
 
         Vec2 operator+(const Vec2& other) const
         {
-            return {.x = x + other.x, .y = y + other.y};
+            return { .x = x + other.x, .y = y + other.y };
         }
 
         Vec2 operator-(const Vec2& other) const
         {
-            return {.x = x - other.x, .y = y - other.y};
+            return { .x = x - other.x, .y = y - other.y };
         }
 
         friend std::ostream& operator<<(std::ostream& os, const Vec2& vec)

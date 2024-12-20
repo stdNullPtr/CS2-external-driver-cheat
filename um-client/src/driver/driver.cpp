@@ -2,9 +2,8 @@
 
 namespace driver
 {
-    Driver::Driver(): handle_(create_handle())
-    {
-    }
+    Driver::Driver() : handle_(create_handle())
+    {}
 
     Driver::~Driver()
     {
