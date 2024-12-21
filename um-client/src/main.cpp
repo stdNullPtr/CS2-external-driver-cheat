@@ -107,10 +107,12 @@ int main()
         std::wcout << '\n';
 #endif
 
-        if (is_paused || (!commons::window::isWindowInFocus(g::cs2_window_name) && !commons::window::isWindowInFocus(cheat::imgui::g::overlay_window_name)))
+        const bool is_window_in_focus{ (commons::window::isWindowInFocus(g::cs2_window_name) || commons::window::isWindowInFocus(cheat::imgui::g::overlay_window_name)) };
+        if (is_paused || !is_window_in_focus)
         {
             std::wcout << XORW(L"[F1] Paused...\n");
             draw_list.clear();
+            aim_target = std::nullopt;
             sleep_for(50ms);
             continue;
         }
@@ -192,9 +194,14 @@ int main()
 
             const auto head_bone_pos_world{ entity->get_head_bone_pos(driver) };
             const auto head_bone_pos_screen{ render::utils::world_to_screen(view_matrix, head_bone_pos_world) };
-            if (entity_spotted_by_local_player)
+
+            const auto aim_position{ head_bone_pos_screen };
+            if (g::toggles::aim_through_walls)
             {
-                const auto aim_position{ head_bone_pos_screen };
+                aim_targets.emplace_back(aim_position);
+            }
+            else if (entity_spotted_by_local_player)
+            {
                 aim_targets.emplace_back(aim_position);
             }
 
