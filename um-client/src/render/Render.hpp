@@ -7,6 +7,7 @@
 #include "../util/ViewMatrix.hpp"
 #include "../util/Vec2.hpp"
 #include "../util/Vec3.hpp"
+#include "../imgui/lib/imgui_internal.h"
 
 namespace render
 {
@@ -103,6 +104,7 @@ namespace render
             }
 
             ImDrawList* const draw_list{ ImGui::GetBackgroundDrawList() };
+
             if (show_menu)
             {
                 set_click_through(false);
@@ -228,7 +230,16 @@ namespace render
                 ImGui::PopStyleColor();
 
                 ImGui::SliderFloat(XOR("Thickness"), &g::esp_box_thickness, 1.0f, 3.0f);
-                ImGui::SliderFloat(XOR("Aim FOV"), &g::aim_fov, 5.0f, 200.0f);
+                ImGui::SliderFloat(XOR("Aim FOV (you can hover and scroll)"), &g::aim_fov, 5.0f, 300.0f);
+                if (ImGui::IsItemHovered())
+                {
+                    const float scroll_delta{ ImGui::GetIO().MouseWheel };
+                    if (scroll_delta != 0.0f)
+                    {
+                        g::aim_fov += scroll_delta * 1.0f;
+                        g::aim_fov = ImClamp(g::aim_fov, 5.0f, 300.0f);
+                    }
+                }
                 draw_list->AddCircle(g::screen_center, g::aim_fov, IM_COL32_WHITE, 0, 2.0f);
                 ImGui::SliderInt(XOR("Extra info X"), &g::additional_screen_info_position_x, 50, 300);
                 ImGui::SliderInt(XOR("Extra info Y"), &g::additional_screen_info_position_y, 0, 700);
