@@ -61,7 +61,7 @@ int main()
             if (!commons::window::waitForWindow(XORW(L"Counter-Strike 2")))
             {
                 std::wcout << XORW(L"Aborted looking for game window, exiting...\n");
-                return EXIT_SUCCESS;
+                break;
             }
 
             sleep_for(2s);
@@ -76,7 +76,7 @@ int main()
             if (cheat.build_number_changed(driver))
             {
                 MessageBox(nullptr, XORW(L"There was an update, update the client."), XORW(L"RIP"), MB_OK);
-                return EXIT_FAILURE;
+                break;
             }
         }
 

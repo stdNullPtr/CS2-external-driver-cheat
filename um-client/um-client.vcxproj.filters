@@ -191,12 +191,23 @@
     <ClInclude Include="src\util\BoneMatrix.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resources\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\Resource.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\sdk\dumper\info.json" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="src\imgui\lib\misc\font\fa-solid-900.ttf" />
-    <Font Include="src\imgui\lib\misc\font\NotoSans-Regular.ttf" />
+    <Font Include="resources\fa-solid-900.ttf" />
+    <Font Include="resources\NotoSans-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\um-client.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

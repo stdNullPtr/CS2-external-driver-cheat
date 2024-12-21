@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="src\controller\Cs2CheatController.cpp" />
     <ClCompile Include="src\controller\Entity.cpp" />
+    <ClInclude Include="resources\resource.h" />
     <ClInclude Include="src\controller\Aim.hpp" />
     <ClInclude Include="src\controller\Entity.hpp" />
     <ClCompile Include="src\imgui\lib\misc\freetype\imgui_freetype.cpp" />
@@ -167,6 +168,7 @@
     <ClCompile Include="src\imgui\lib\imgui_tables.cpp" />
     <ClCompile Include="src\imgui\lib\imgui_widgets.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClInclude Include="src\util\Resource.hpp" />
     <ClInclude Include="src\util\BoneMatrix.hpp" />
     <ClInclude Include="src\util\Esp.hpp" />
     <ClInclude Include="src\util\Vec2.hpp" />
@@ -211,8 +213,11 @@
     <None Include="src\sdk\dumper\info.json" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="src\imgui\lib\misc\font\fa-solid-900.ttf" />
-    <Font Include="src\imgui\lib\misc\font\NotoSans-Regular.ttf" />
+    <Font Include="resources\fa-solid-900.ttf" />
+    <Font Include="resources\NotoSans-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources\um-client.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

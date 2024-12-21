@@ -41,8 +41,6 @@ namespace g
 
         inline void reset_toggles()
         {
-            show_menu = false;
-
             radar_hack = false;
             glow_hack = false;
             no_flash_hack = false;

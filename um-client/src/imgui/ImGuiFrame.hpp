@@ -7,6 +7,8 @@
 #include "lib/backends/imgui_impl_dx11.h"
 #include "lib/misc/freetype/imgui_freetype.h"
 #include "lib/misc/font/IconsFontAwesome5.h"
+#include "../../resources/resource.h"
+#include "../util/Resource.hpp"
 
 // Forward declare message handler from imgui_impl_win32.cpp
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -96,21 +98,26 @@ namespace cheat::imgui
         float baseFontSize = g::font_size;
         float iconFontSize = baseFontSize * 2.0f / 3.0f;
 
-        static constexpr ImWchar ranges[]{ 0x1, 0x1FFFF, 0 };
-        static ImFontConfig cfg;
-        // cfg.OversampleH = cfg.OversampleV = 5;
-        cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
-        //cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_Bold;
-        //cfg.RasterizerMultiply = 1.5f;
-        io.Fonts->AddFontFromFileTTF(XOR("NotoSans-Regular.ttf"), baseFontSize, &cfg, ranges);
+        // We are doing this crazy font shiii because ImGui takes ownership and then clear the mem, which is also the reason we are not freeing the pointers
 
-        static constexpr ImWchar icons_ranges[]{ ICON_MIN_FA, ICON_MAX_16_FA, 0 };
-        static ImFontConfig icons_config;
+        const Resource fontNotoSansRes{ IDR_NOTO_SANS, RT_RCDATA };
+        void* fontNotoSansData{ std::malloc(fontNotoSansRes.GetDataSize()) };
+        std::memcpy(fontNotoSansData, fontNotoSansRes.GetData(), fontNotoSansRes.GetDataSize());
+
+        static constexpr ImWchar ranges[]{ 0x1, 0x1FFFF, 0 };
+        ImFontConfig cfg;
+        cfg.FontBuilderFlags |= ImGuiFreeTypeBuilderFlags_LoadColor;
+        io.Fonts->AddFontFromMemoryTTF(fontNotoSansData, (int)fontNotoSansRes.GetDataSize(), baseFontSize, &cfg, ranges);
+
+        const Resource fontAwesomeRes(IDR_FA_SOLID, RT_RCDATA);
+        void* fontAwesomeData{ std::malloc(fontNotoSansRes.GetDataSize()) };
+        std::memcpy(fontAwesomeData, fontAwesomeRes.GetData(), fontAwesomeRes.GetDataSize());
+        static  constexpr ImWchar icons_ranges[]{ ICON_MIN_FA, ICON_MAX_16_FA, 0 };
+        ImFontConfig icons_config;
         icons_config.MergeMode = true;
         icons_config.PixelSnapH = true;
         icons_config.GlyphMinAdvanceX = iconFontSize;
-        // icons_config.OversampleH = icons_config.OversampleV = 3;
-        io.Fonts->AddFontFromFileTTF(XOR(FONT_ICON_FILE_NAME_FAS), iconFontSize, &icons_config, icons_ranges);
+        io.Fonts->AddFontFromMemoryTTF(fontAwesomeData, (int)fontAwesomeRes.GetDataSize(), iconFontSize, &icons_config, icons_ranges);
     }
 
     namespace frame

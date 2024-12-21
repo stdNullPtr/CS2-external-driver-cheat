@@ -102,7 +102,7 @@ namespace cheat
     bool Cs2CheatController::build_number_changed(const driver::Driver& driver) const
     {
         //TODO read the json info.json dont be an idiot
-        static constexpr DWORD expected_build{ 14055 };
+        static constexpr DWORD expected_build{ 14057 };
 
         return driver.read<DWORD>(engine_dll_base_ + cs2_dumper::offsets::engine2_dll::dwBuildNumber) != expected_build;
     }
