@@ -11,11 +11,9 @@ namespace cheat::entity
 
     class Entity
     {
-    private:
         uintptr_t entity_controller_;
         uintptr_t entity_pawn_;
 
-    private:
         //TODO base classes for these classes maybe so we can move their specific field retrieval there
         [[nodiscard]] uintptr_t get_game_scene_node(const driver::Driver& driver) const;
         [[nodiscard]] uintptr_t get_movement_services(const driver::Driver& driver) const;

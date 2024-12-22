@@ -16,7 +16,8 @@ namespace cheat::entity
     }
 
     Entity::Entity(const uintptr_t& entity_controller, const uintptr_t& entity_pawn) : entity_controller_(entity_controller), entity_pawn_(entity_pawn)
-    {}
+    {
+    }
 
     std::string Entity::get_name(const driver::Driver& driver) const
     {
@@ -29,9 +30,9 @@ namespace cheat::entity
             char buf[20];
         };
 
-        const auto str{ driver.read<str_wrap>(entity_name_address) };
+        const auto str{driver.read<str_wrap>(entity_name_address)};
 
-        return { str.buf, str.buf + strnlen(str.buf, sizeof(str.buf)) };
+        return {str.buf, str.buf + strnlen(str.buf, sizeof(str.buf))};
     }
 
     std::string Entity::get_weapon_name(const driver::Driver& driver) const
@@ -41,12 +42,12 @@ namespace cheat::entity
             char buf[20];
         };
 
-        const auto weapon_base{ driver.read<uintptr_t>(entity_pawn_ + client_dll::C_CSPlayerPawnBase::m_pClippingWeapon) };
-        const auto identity{ driver.read<uintptr_t>(weapon_base + client_dll::CEntityInstance::m_pEntity) };
-        const auto designer_name{ driver.read<uintptr_t>(identity + client_dll::CEntityIdentity::m_designerName) };
-        const auto str{ driver.read<str_wrap>(designer_name) };
+        const auto weapon_base{driver.read<uintptr_t>(entity_pawn_ + client_dll::C_CSPlayerPawnBase::m_pClippingWeapon)};
+        const auto identity{driver.read<uintptr_t>(weapon_base + client_dll::CEntityInstance::m_pEntity)};
+        const auto designer_name{driver.read<uintptr_t>(identity + client_dll::CEntityIdentity::m_designerName)};
+        const auto str{driver.read<str_wrap>(designer_name)};
 
-        return { str.buf, str.buf + strnlen(str.buf, sizeof(str.buf)) };
+        return {str.buf, str.buf + strnlen(str.buf, sizeof(str.buf))};
     }
 
     int Entity::get_team(const driver::Driver& driver) const
@@ -61,8 +62,8 @@ namespace cheat::entity
 
     bool Entity::is_spotted(const driver::Driver& driver) const
     {
-        const auto p_entity_spotted_state{ entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState };
-        const auto entity_spotted_address{ p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpotted };
+        const auto p_entity_spotted_state{entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState};
+        const auto entity_spotted_address{p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpotted};
         return driver.read<bool>(entity_spotted_address);
     }
 
@@ -93,15 +94,15 @@ namespace cheat::entity
             return false;
         }
 
-        const auto p_entity_spotted_state{ entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState };
-        const auto entity_spotted_by_mask{ driver.read<uint64_t>(p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpottedByMask) };
+        const auto p_entity_spotted_state{entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState};
+        const auto entity_spotted_by_mask{driver.read<uint64_t>(p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpottedByMask)};
 
-        return entity_spotted_by_mask & (DWORD64(1) << (local_player_index));
+        return entity_spotted_by_mask & (static_cast<DWORD64>(1) << (local_player_index));
     }
 
     util::Vec3 Entity::get_forward_vector(const driver::Driver& driver) const
     {
-        const auto movement_services{ get_movement_services(driver) };
+        const auto movement_services{get_movement_services(driver)};
         return driver.read<util::Vec3>(movement_services + client_dll::CCSPlayer_MovementServices::m_vecForward);
     }
 
@@ -117,19 +118,19 @@ namespace cheat::entity
 
     util::Vec3 Entity::get_head_bone_pos(const driver::Driver& driver) const
     {
-        constexpr auto bone_head{ 6 };
+        constexpr auto bone_head{6};
 
-        const auto game_scene_node{ get_game_scene_node(driver) };
-        const auto bone_array{ driver.read<uintptr_t>(game_scene_node + client_dll::CPlayer_MovementServices_Humanoid::m_groundNormal) };
-        const auto head{ driver.read<util::Vec3>(bone_array + bone_head * 32) };
+        const auto game_scene_node{get_game_scene_node(driver)};
+        const auto bone_array{driver.read<uintptr_t>(game_scene_node + client_dll::CPlayer_MovementServices_Humanoid::m_groundNormal)};
+        const auto head{driver.read<util::Vec3>(bone_array + bone_head * 32)};
 
         return head;
     }
 
     void Entity::set_spotted(const driver::Driver& driver, const bool& spotted) const
     {
-        const auto p_entity_spotted_state{ entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState };
-        const auto entity_spotted_address{ p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpotted };
+        const auto p_entity_spotted_state{entity_pawn_ + client_dll::C_CSPlayerPawn::m_entitySpottedState};
+        const auto entity_spotted_address{p_entity_spotted_state + client_dll::EntitySpottedState_t::m_bSpotted};
         driver.write(entity_spotted_address, spotted);
     }
 

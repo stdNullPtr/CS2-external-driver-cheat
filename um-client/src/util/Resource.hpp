@@ -11,13 +11,13 @@ class Resource
 public:
     struct Parameters
     {
-        std::size_t size_bytes{ 0 };
-        void* ptr{ nullptr };
+        std::size_t size_bytes{0};
+        void* ptr{nullptr};
     };
 
 private:
-    HRSRC hResource{ nullptr };
-    HGLOBAL hMemory{ nullptr };
+    HRSRC hResource{nullptr};
+    HGLOBAL hMemory{nullptr};
 
     Parameters p;
 
@@ -51,7 +51,6 @@ public:
             MessageBox(nullptr, XORW(L"Failed to lock resource"), XORW(L"Error"), MB_OK | MB_ICONERROR);
             throw std::runtime_error(XOR("Failed to lock resource."));
         }
-
     }
 
     auto CopyResource() const

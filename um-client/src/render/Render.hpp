@@ -20,23 +20,23 @@ namespace render
     {
         inline Vec2 world_to_screen(const ViewMatrix& view_matrix, const Vec3& world_position)
         {
-            float clip_space_x{ view_matrix[0][0] * world_position.x + view_matrix[0][1] * world_position.y + view_matrix[0][2] * world_position.z + view_matrix[0][3] };
-            float clip_space_y{ view_matrix[1][0] * world_position.x + view_matrix[1][1] * world_position.y + view_matrix[1][2] * world_position.z + view_matrix[1][3] };
-            const float clip_space_w{ view_matrix[3][0] * world_position.x + view_matrix[3][1] * world_position.y + view_matrix[3][2] * world_position.z + view_matrix[3][3] };
+            float clip_space_x{view_matrix[0][0] * world_position.x + view_matrix[0][1] * world_position.y + view_matrix[0][2] * world_position.z + view_matrix[0][3]};
+            float clip_space_y{view_matrix[1][0] * world_position.x + view_matrix[1][1] * world_position.y + view_matrix[1][2] * world_position.z + view_matrix[1][3]};
+            const float clip_space_w{view_matrix[3][0] * world_position.x + view_matrix[3][1] * world_position.y + view_matrix[3][2] * world_position.z + view_matrix[3][3]};
 
             if (clip_space_w <= 0.f)
             {
                 return {}; // Return an empty Vec2 if the point is behind the camera
             }
 
-            const float reciprocal_w{ 1.f / clip_space_w };
+            const float reciprocal_w{1.f / clip_space_w};
             clip_space_x *= reciprocal_w;
             clip_space_y *= reciprocal_w;
 
-            const float screen_x{ (1 + clip_space_x) * static_cast<float>(g::screen_width) / 2.0f };
-            const float screen_y{ (1 - clip_space_y) * static_cast<float>(g::screen_height) / 2.0f };
+            const float screen_x{(1 + clip_space_x) * static_cast<float>(g::screen_width) / 2.0f};
+            const float screen_y{(1 - clip_space_y) * static_cast<float>(g::screen_height) / 2.0f};
 
-            return Vec2{ .x = screen_x, .y = screen_y };
+            return Vec2{.x = screen_x, .y = screen_y};
         }
 
         inline bool is_in_screen(const Vec2& location)
@@ -91,7 +91,7 @@ namespace render
                 show_menu = !show_menu;
             }
 
-            const auto frame_state{ cheat::imgui::frame::startFrame() };
+            const auto frame_state{cheat::imgui::frame::startFrame()};
 
             if (frame_state == cheat::imgui::frame::FRAME_QUIT)
             {
@@ -103,7 +103,7 @@ namespace render
                 continue;
             }
 
-            ImDrawList* const draw_list{ ImGui::GetBackgroundDrawList() };
+            ImDrawList* const draw_list{ImGui::GetBackgroundDrawList()};
 
             if (show_menu)
             {
@@ -233,7 +233,7 @@ namespace render
                 ImGui::SliderFloat(XOR("Aim FOV (you can hover and scroll)"), &g::aim_fov, 5.0f, 300.0f);
                 if (ImGui::IsItemHovered())
                 {
-                    const float scroll_delta{ ImGui::GetIO().MouseWheel };
+                    const float scroll_delta{ImGui::GetIO().MouseWheel};
                     if (scroll_delta != 0.0f)
                     {
                         g::aim_fov += scroll_delta * 1.0f;
@@ -254,7 +254,7 @@ namespace render
                 set_click_through(true);
             }
 
-            const std::vector draw_objects{ esp_draw_list.get() };
+            const std::vector draw_objects{esp_draw_list.get()};
 
             for (const auto& object : draw_objects)
             {
@@ -285,22 +285,22 @@ namespace render
                     draw_list->AddCircle(object.get_position(), object.get_radius(), IM_COL32_WHITE);
                     break;
                 case RenderObjectType::text:
-                    const std::string text{ object.get_text() };
-                    const ImVec4 color{ object.get_color() };
+                    const std::string text{object.get_text()};
+                    const ImVec4 color{object.get_color()};
 
                     if (color.x == 0.0f && color.y == 0.0f && color.z == 0.0f)
                     {
                         break;
                     }
 
-                    const ImVec2 requested_position{ object.get_position() };
+                    const ImVec2 requested_position{object.get_position()};
 
-                    const int line_position{ object.get_line_position() };
-                    const ImVec2 text_size{ ImGui::CalcTextSize(text.c_str()) };
-                    const ImVec2 position{ requested_position.x - text_size.x / 2.0f, requested_position.y + text_size.y * static_cast<float>(line_position) };
+                    const int line_position{object.get_line_position()};
+                    const ImVec2 text_size{ImGui::CalcTextSize(text.c_str())};
+                    const ImVec2 position{requested_position.x - text_size.x / 2.0f, requested_position.y + text_size.y * static_cast<float>(line_position)};
 #pragma region shadow
-                    const ImVec4 shadow_color{ 0.1f, 0.1f, 0.1f, color.w * 0.5f };
-                    constexpr float shadow_offset{ 1.0f };
+                    const ImVec4 shadow_color{0.1f, 0.1f, 0.1f, color.w * 0.5f};
+                    constexpr float shadow_offset{1.0f};
 
                     draw_list->AddText(
                         ImVec2(position.x + shadow_offset, position.y),
