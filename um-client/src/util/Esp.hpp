@@ -62,7 +62,7 @@ namespace util::esp
 
         const DrawCache health_text{
             DrawCache::build_text(
-                std::to_string(health).append("%"),
+                std::to_string(health),
                 {
                     esp_health_border.get_top_left().x + cheat::imgui::g::font_size / 2.0f,
                     esp_health_border.get_top_left().y - cheat::imgui::g::font_size
