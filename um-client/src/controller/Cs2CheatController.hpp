@@ -12,9 +12,16 @@
 #include "../util/Vec2.hpp"
 #include "../util/ViewMatrix.hpp"
 #include "../render/Render.hpp"
+#include "../sdk/C_CSPlayerPawn.hpp"
+#include "../sdk/CCSPlayerController.hpp"
 
 namespace cheat
 {
+    using namespace sdk;
+    using driver::Driver;
+    using entity::Entity;
+    using util::ViewMatrix;
+
     class Cs2CheatController
     {
         DWORD cs2_process_id_{0};
@@ -26,11 +33,18 @@ namespace cheat
 
         [[nodiscard]] std::optional<uintptr_t> find_client_dll_base() const;
         [[nodiscard]] std::optional<uintptr_t> find_engine_dll_base() const;
-        [[nodiscard]] std::optional<uintptr_t> find_entity_system(const driver::Driver& driver) const;
-        [[nodiscard]] uintptr_t find_local_player_controller(const driver::Driver& driver) const;
-        [[nodiscard]] uintptr_t find_local_player_pawn(const driver::Driver& driver) const;
+        [[nodiscard]] std::optional<uintptr_t> find_entity_system(const Driver& driver) const;
+        [[nodiscard]] uintptr_t find_local_player_controller(const Driver& driver) const;
+        [[nodiscard]] uintptr_t find_local_player_pawn(const Driver& driver) const;
+        [[nodiscard]] std::optional<CCSPlayerController> get_entity_controller(const Driver& driver, const int& i) const;
+        [[nodiscard]] std::optional<C_CSPlayerPawn> get_entity_pawn(const Driver& driver, const CCSPlayerController& entity_controller) const;
 
-        [[nodiscard]] bool attach(const driver::Driver& driver) const;
+        [[nodiscard]] C_CSPlayerPawn get_local_player_pawn(const Driver& driver) const;
+        [[nodiscard]] CCSPlayerController get_local_player_controller(const Driver& driver) const;
+
+        [[nodiscard]] uintptr_t get_network_client(const Driver& driver) const;
+
+        [[nodiscard]] bool attach(const Driver& driver) const;
 
     public:
         Cs2CheatController() = default;
@@ -41,21 +55,16 @@ namespace cheat
         Cs2CheatController& operator=(const Cs2CheatController& other) = delete;
         Cs2CheatController& operator=(Cs2CheatController&& other) noexcept = delete;
 
-        [[nodiscard]] uintptr_t get_network_client(const driver::Driver& driver) const;
-        [[nodiscard]] bool is_in_game(const driver::Driver& driver) const;
+        [[nodiscard]] bool is_in_game(const Driver& driver) const;
         [[nodiscard]] bool is_state_valid() const;
 
-        [[nodiscard]] std::optional<entity::Entity> get_entity_from_list(const driver::Driver& driver, const int& index) const;
-        [[nodiscard]] entity::Entity get_local_player(const driver::Driver& driver) const;
-        [[nodiscard]] util::ViewMatrix get_view_matrix(const driver::Driver& driver) const;
+        [[nodiscard]] std::optional<Entity> get_entity_from_list(const Driver& driver, const int& index) const;
+        [[nodiscard]] Entity get_local_player_entity(const Driver& driver) const;
+        [[nodiscard]] ViewMatrix get_view_matrix(const Driver& driver) const;
 
-        [[nodiscard]] float c4_blow_remaining_time(const driver::Driver& driver) const;
-        [[nodiscard]] bool c4_is_bomb_site_a(const driver::Driver& driver) const;
+        [[nodiscard]] float c4_blow_remaining_time(const Driver& driver) const;
+        [[nodiscard]] bool c4_is_bomb_site_a(const Driver& driver) const;
 
-        [[nodiscard]] bool init(const driver::Driver& driver);
-        [[nodiscard]] bool build_number_changed(const driver::Driver& driver) const;
-
-        [[nodiscard]] std::optional<uintptr_t> get_entity_controller(const driver::Driver& driver, const int& i) const;
-        [[nodiscard]] std::optional<uintptr_t> get_entity_pawn(const driver::Driver& driver, const uintptr_t& entity_controller) const;
+        [[nodiscard]] bool init(const Driver& driver);
     };
 }

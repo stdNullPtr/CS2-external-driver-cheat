@@ -170,24 +170,6 @@ namespace render
                     ImGui::EndDisabled();
                 }
 
-                ImGui::Checkbox(XOR("Radar (Unsafe) "), &radar_hack);
-                ImGui::SameLine();
-                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.5f, 0.0f, 1.0f));
-                ImGui::TextUnformatted(ICON_FA_EXCLAMATION_TRIANGLE);
-                ImGui::PopStyleColor();
-
-                ImGui::Checkbox(XOR("Glow (Unsafe) "), &glow_hack);
-                ImGui::SameLine();
-                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.5f, 0.0f, 1.0f));
-                ImGui::TextUnformatted(ICON_FA_EXCLAMATION_TRIANGLE);
-                ImGui::PopStyleColor();
-
-                ImGui::Checkbox(XOR("No flash (Unsafe)"), &no_flash_hack);
-                ImGui::SameLine();
-                ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.5f, 0.0f, 1.0f));
-                ImGui::TextUnformatted(ICON_FA_EXCLAMATION_TRIANGLE);
-                ImGui::PopStyleColor();
-
                 if (is_paused)
                 {
                     ImGui::EndDisabled();

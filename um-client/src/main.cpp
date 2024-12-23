@@ -9,9 +9,9 @@
 #include "console.hpp"
 #include "window.hpp"
 #include "controller/Cs2CheatController.hpp"
-#include "controller/Entity.hpp"
 #include <fcntl.h>
 #include "controller/Aim.hpp"
+#include "controller/Entity.hpp"
 #include "render/Render.hpp"
 #include "util/Esp.hpp"
 
@@ -20,13 +20,16 @@ using namespace g::toggles;
 using namespace commons::console;
 using std::this_thread::sleep_for;
 using util::Vec2;
+using util::Vec3;
 using render::DrawCache;
+using std::optional;
+using driver::Driver;
 
 int main()
 {
     setCursorVisibility(false);
 
-    const driver::Driver driver{};
+    const Driver driver{};
     if (!driver.is_valid())
     {
         MessageBox(nullptr, XORW(L"Load the Driver first lmao."), XORW(L"RIP"), MB_OK);
@@ -46,7 +49,7 @@ int main()
     while (!(GetAsyncKeyState(VK_END) & 0x1))
     {
 #ifndef NDEBUG
-        clearConsole({ 0, 0 });
+        clearConsole({0, 0});
 #endif
         if (!cheat.is_state_valid())
         {
@@ -69,12 +72,6 @@ int main()
                 std::wcerr << XORW(L"Failed initializing cheat controller state, retrying...\n");
                 sleep_for(2s);
                 continue;
-            }
-
-            if (cheat.build_number_changed(driver))
-            {
-                MessageBox(nullptr, XORW(L"There was an update, update the client."), XORW(L"RIP"), MB_OK);
-                break;
             }
         }
 
@@ -115,15 +112,11 @@ int main()
             continue;
         }
 
-        const auto me{cheat.get_local_player(driver)};
-        const auto my_team{me.get_team(driver)};
+        const cheat::entity::Entity me{cheat.get_local_player_entity(driver)};
+
+        const auto my_team{me.pawn.m_iTeamNum};
         const auto view_matrix{cheat.get_view_matrix(driver)};
         const auto c4_remaining_time{cheat.c4_blow_remaining_time(driver)};
-
-        if (no_flash_hack && me.is_flashed(driver))
-        {
-            me.disable_flash(driver);
-        }
 
         std::vector<DrawCache> draw_items;
         draw_items.reserve(32);
@@ -136,10 +129,8 @@ int main()
         }
 
 #ifndef NDEBUG
-        const auto my_eye_pos{ me.get_eye_pos(driver) };
-        const auto my_forward_vec{ me.get_forward_vector(driver) };
-        std::wcout << XORW(L"Forward vec: ") << my_forward_vec << '\n'
-            << XORW(L"My eye position: ") << my_eye_pos << '\n'
+        const auto my_eye_pos{me.pawn.m_pGameSceneNode->m_vecOrigin + me.pawn.m_vecViewOffset};
+        std::wcout << XORW(L"My eye position: ") << my_eye_pos << '\n'
             << XORW(L"View matrix: ") << view_matrix << '\n';
 
         std::wcout << '\n';
@@ -147,7 +138,7 @@ int main()
 
         std::vector<Vec2> aim_targets;
         static int local_player_index{-1};
-        for (int i{1}; i < 64; i++)
+        for (int i{1}; i < 32; i++)
         {
             const std::optional entity{cheat.get_entity_from_list(driver, i)};
 
@@ -156,13 +147,13 @@ int main()
                 continue;
             }
 
-            if (entity->is_local_player(driver))
+            if (entity->controller.m_bIsLocalPlayerController)
             {
                 local_player_index = i - 1;
             }
 
-            const auto player_health{entity->get_health(driver)};
-            const auto player_team{entity->get_team(driver)};
+            const auto player_health{entity->pawn.m_iHealth};
+            const auto player_team{entity->pawn.m_iTeamNum};
             const auto is_valid_enemy{my_team != player_team && player_health > 0};
 
             if (!is_valid_enemy)
@@ -170,30 +161,28 @@ int main()
                 continue;
             }
 
-            const auto entity_spotted{entity->is_spotted(driver)};
-            const auto entity_spotted_by_local_player{entity->is_spotted_by_local_player(driver, local_player_index)};
-            const auto entity_name{entity->get_name(driver)};
-            const auto is_scoped{entity->is_scoped(driver)};
-            auto weapon_name{entity->get_weapon_name(driver)};
+            const auto entity_spotted_by_local_player{entity->pawn.m_entitySpottedState.m_bSpottedByMask & (static_cast<DWORD64>(1) << local_player_index)};
+            const auto entity_name{entity->controller.m_sSanitizedPlayerName};
+            const auto is_scoped{entity->pawn.m_bIsScoped};
+            auto weapon_name{std::string{entity->pawn.m_pClippingWeapon->m_pEntity->m_designerName}};
             if (weapon_name.length() > 7)
             {
                 weapon_name = weapon_name.substr(7); //get rid of weapon_ prefix
             }
 
-            const auto entity_eyes_pos_screen{render::utils::world_to_screen(view_matrix, entity->get_eye_pos(driver))};
-            const auto entity_feet_pos_screen{render::utils::world_to_screen(view_matrix, entity->get_vec_origin(driver))};
+            const auto entity_eyes_pos_screen{render::utils::world_to_screen(view_matrix, entity->pawn.m_pGameSceneNode->m_vecOrigin + entity->pawn.m_vecViewOffset)};
+            const auto entity_feet_pos_screen{render::utils::world_to_screen(view_matrix, entity->pawn.m_pGameSceneNode->m_vecOrigin)};
 
 #ifndef NDEBUG
             std::wcout << XORW(L"Ent: ") << i << '\n'
                 << XORW(L"Enemy: ") << (my_team != player_team ? "yes" : "no") << '\n'
-                << XORW(L"HP: ") << std::dec << player_health << '\n'
-                << XORW(L"Visible on Radar: ") << (entity_spotted ? "yes" : "no") << '\n';
+                << XORW(L"HP: ") << std::dec << player_health << '\n';
 #endif
 
-            const auto head_bone_pos_world{entity->get_head_bone_pos(driver)};
-            const auto head_bone_pos_screen{render::utils::world_to_screen(view_matrix, head_bone_pos_world)};
+            const auto bone_pos_world{(*entity->pawn.m_pGameSceneNode->m_modelState.m_pBoneArray)[sdk::BoneId::BONE_HEAD]};
+            const auto bone_pos_screen{render::utils::world_to_screen(view_matrix, Vec3{bone_pos_world._11, bone_pos_world._12, bone_pos_world._13})};
 
-            const auto aim_position{head_bone_pos_screen};
+            const auto aim_position{bone_pos_screen};
             if (aim_through_walls)
             {
                 aim_targets.emplace_back(aim_position);
@@ -203,23 +192,12 @@ int main()
                 aim_targets.emplace_back(aim_position);
             }
 
-            if (glow_hack)
-            {
-                entity->set_glowing(driver, true);
-            }
-
-            if (radar_hack && !entity_spotted)
-            {
-                //TODO should we set the correct mask as well? we are setting this bool but the variables after it should be 1 as well
-                entity->set_spotted(driver, true);
-            }
-
             if (esp_hack && (render::utils::is_in_screen(entity_eyes_pos_screen) || render::utils::is_in_screen(entity_feet_pos_screen)))
             {
                 const auto esp_box_color{entity_spotted_by_local_player ? g::esp_color_enemy_visible : g::esp_color};
 
                 const auto esp_player{util::esp::build_player_esp(entity_eyes_pos_screen, entity_feet_pos_screen, esp_box_color)};
-                const auto esp_bones{util::esp::build_bone_esp(head_bone_pos_screen)};
+                const auto esp_bones{util::esp::build_bone_esp(bone_pos_screen)};
                 const auto esp_health{util::esp::build_health_esp(esp_player.get_top_left(), esp_player.get_bottom_right(), player_health, esp_box_color)};
                 const auto esp_player_bottom{util::esp::build_player_bottom_esp(entity_name, entity_eyes_pos_screen, esp_player.get_bottom_right(), weapon_name)};
                 const auto esp_player_top{util::esp::build_player_top_esp(is_scoped, entity_eyes_pos_screen, esp_player.get_top_left())};
@@ -231,10 +209,13 @@ int main()
                 draw_items.append_range(esp_player_top);
             }
 
+            entity->ReleaseMem();
+
 #ifndef NDEBUG
             std::wcout << '\n';
 #endif
         }
+        me.ReleaseMem();
 
         if (aim_hack)
         {

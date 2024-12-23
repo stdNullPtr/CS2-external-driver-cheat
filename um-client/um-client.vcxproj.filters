@@ -24,9 +24,6 @@
     <ClCompile Include="src\controller\Cs2CheatController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\controller\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\imgui\lib\imgui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,6 +54,12 @@
     <ClCompile Include="src\render\DrawCache.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\sdk\C_CSPlayerPawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sdk\CCSPlayerController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Global.hpp">
@@ -67,9 +70,6 @@
     </ClInclude>
     <ClInclude Include="src\controller\Cs2CheatController.hpp">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\controller\Entity.hpp">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\sdk\dumper\animationsystem_dll.hpp">
       <Filter>Header Files</Filter>
@@ -188,13 +188,19 @@
     <ClInclude Include="src\util\Esp.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\util\BoneMatrix.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resources\resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\util\Resource.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdk\C_CSPlayerPawn.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sdk\CCSPlayerController.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\controller\Entity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

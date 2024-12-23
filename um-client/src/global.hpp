@@ -32,9 +32,6 @@ namespace g
         //TODO atomic
         static bool is_paused{false};
         static bool show_menu{false};
-        static bool radar_hack{false};
-        static bool glow_hack{false};
-        static bool no_flash_hack{false};
         static bool esp_hack{false};
 
         static bool aim_hack{false};
@@ -43,9 +40,6 @@ namespace g
 
         inline void reset_toggles()
         {
-            radar_hack = false;
-            glow_hack = false;
-            no_flash_hack = false;
             esp_hack = false;
             aim_hack = false;
             aim_assist = false;

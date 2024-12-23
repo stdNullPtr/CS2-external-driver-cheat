@@ -2,6 +2,11 @@
 
 namespace cheat
 {
+    using namespace sdk;
+    using driver::Driver;
+    using entity::Entity;
+    using util::ViewMatrix;
+
     std::optional<DWORD> Cs2CheatController::get_cs2_process_id()
     {
         const auto process_id{commons::process::GetProcessIdByName(g::cs2_process_name)};
@@ -50,7 +55,7 @@ namespace cheat
         return engine_dll_base;
     }
 
-    std::optional<uintptr_t> Cs2CheatController::find_entity_system(const driver::Driver& driver) const
+    std::optional<uintptr_t> Cs2CheatController::find_entity_system(const Driver& driver) const
     {
         if (!client_dll_base_)
         {
@@ -60,22 +65,42 @@ namespace cheat
         return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwEntityList);
     }
 
-    uintptr_t Cs2CheatController::find_local_player_controller(const driver::Driver& driver) const
+    uintptr_t Cs2CheatController::find_local_player_controller(const Driver& driver) const
     {
         return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwLocalPlayerController);
     }
 
-    uintptr_t Cs2CheatController::find_local_player_pawn(const driver::Driver& driver) const
+    uintptr_t Cs2CheatController::find_local_player_pawn(const Driver& driver) const
     {
         return driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwLocalPlayerPawn);
     }
 
-    uintptr_t Cs2CheatController::get_network_client(const driver::Driver& driver) const
+    C_CSPlayerPawn Cs2CheatController::get_local_player_pawn(const Driver& driver) const
+    {
+        auto pawn{driver.read<C_CSPlayerPawn>(find_local_player_pawn(driver))};
+        pawn.m_pGameSceneNode = new CGameSceneNode{driver.read<CGameSceneNode>(reinterpret_cast<uintptr_t>(pawn.m_pGameSceneNode))};
+
+        pawn.m_pGameSceneNode->m_modelState.m_pBoneArray = nullptr;
+        pawn.m_pClippingWeapon = nullptr;
+        pawn.m_pMovementServices = nullptr;
+        return pawn;
+    }
+
+    CCSPlayerController Cs2CheatController::get_local_player_controller(const Driver& driver) const
+    {
+        auto controller{driver.read<CCSPlayerController>(find_local_player_controller(driver))};
+
+        controller.m_sSanitizedPlayerName = nullptr;
+
+        return controller;
+    }
+
+    uintptr_t Cs2CheatController::get_network_client(const Driver& driver) const
     {
         return driver.read<uintptr_t>(engine_dll_base_ + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient);
     }
 
-    bool Cs2CheatController::attach(const driver::Driver& driver) const
+    bool Cs2CheatController::attach(const Driver& driver) const
     {
         if (!driver.attach(cs2_process_id_))
         {
@@ -86,7 +111,7 @@ namespace cheat
         return true;
     }
 
-    bool Cs2CheatController::init(const driver::Driver& driver)
+    bool Cs2CheatController::init(const Driver& driver)
     {
         auto result{true};
 
@@ -99,18 +124,12 @@ namespace cheat
         return result;
     }
 
-    bool Cs2CheatController::build_number_changed(const driver::Driver& driver) const
+    bool Cs2CheatController::is_in_game(const Driver& driver) const
     {
-        //TODO read the json info.json dont be an idiot
-        static constexpr DWORD expected_build{14057};
+        const auto network_client{get_network_client(driver)};
 
-        return driver.read<DWORD>(engine_dll_base_ + cs2_dumper::offsets::engine2_dll::dwBuildNumber) != expected_build;
-    }
-
-    bool Cs2CheatController::is_in_game(const driver::Driver& driver) const
-    {
-        const auto is_background{driver.read<bool>(get_network_client(driver) + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_isBackgroundMap)};
-        const auto state{driver.read<int>(get_network_client(driver) + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_signOnState)};
+        const auto is_background{driver.read<bool>(network_client + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_isBackgroundMap)};
+        const auto state{driver.read<int>(network_client + cs2_dumper::offsets::engine2_dll::dwNetworkGameClient_signOnState)};
         return !is_background && state >= 6;
     }
 
@@ -119,7 +138,7 @@ namespace cheat
         return get_cs2_process_id() == cs2_process_id_;
     }
 
-    std::optional<entity::Entity> Cs2CheatController::get_entity_from_list(const driver::Driver& driver, const int& index) const
+    std::optional<Entity> Cs2CheatController::get_entity_from_list(const Driver& driver, const int& index) const
     {
         const auto controller{get_entity_controller(driver, index)};
         if (!controller)
@@ -127,26 +146,30 @@ namespace cheat
             return std::nullopt;
         }
 
-        const auto entity_pawn{get_entity_pawn(driver, *controller)};
-        if (!entity_pawn)
+        const auto pawn{get_entity_pawn(driver, *controller)};
+        if (!pawn)
         {
             return std::nullopt;
         }
 
-        return entity::Entity{*controller, *entity_pawn};
+        auto entity{Entity{*controller, *pawn}};
+
+        return entity;
     }
 
-    entity::Entity Cs2CheatController::get_local_player(const driver::Driver& driver) const
+    Entity Cs2CheatController::get_local_player_entity(const Driver& driver) const
     {
-        return entity::Entity{find_local_player_controller(driver), find_local_player_pawn(driver)};
+        auto entity{Entity{get_local_player_controller(driver), get_local_player_pawn(driver)}};
+
+        return entity;
     }
 
-    util::ViewMatrix Cs2CheatController::get_view_matrix(const driver::Driver& driver) const
+    ViewMatrix Cs2CheatController::get_view_matrix(const Driver& driver) const
     {
-        return driver.read<util::ViewMatrix>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwViewMatrix);
+        return driver.read<ViewMatrix>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwViewMatrix);
     }
 
-    float Cs2CheatController::c4_blow_remaining_time(const driver::Driver& driver) const
+    float Cs2CheatController::c4_blow_remaining_time(const Driver& driver) const
     {
         const auto dw_game_rules{driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwGameRules)};
         const auto bomb_planted{driver.read<bool>(dw_game_rules + cs2_dumper::schemas::client_dll::C_CSGameRules::m_bBombPlanted)};
@@ -165,7 +188,7 @@ namespace cheat
         return c4_time - global_time;
     }
 
-    bool Cs2CheatController::c4_is_bomb_site_a(const driver::Driver& driver) const
+    bool Cs2CheatController::c4_is_bomb_site_a(const Driver& driver) const
     {
         const auto planted_c4{driver.read<uintptr_t>(driver.read<uintptr_t>(client_dll_base_ + cs2_dumper::offsets::client_dll::dwPlantedC4))};
         const auto bomb_site{driver.read<int>(planted_c4 + cs2_dumper::schemas::client_dll::C_PlantedC4::m_nBombSite)};
@@ -173,7 +196,7 @@ namespace cheat
         return bomb_site == 0;
     }
 
-    std::optional<uintptr_t> Cs2CheatController::get_entity_controller(const driver::Driver& driver, const int& i) const
+    std::optional<CCSPlayerController> Cs2CheatController::get_entity_controller(const Driver& driver, const int& i) const
     {
         const auto list_entity{driver.read<uintptr_t>(entity_system_ + ((8 * (i & 0x7FFF) >> 9) + 16))};
         if (!list_entity)
@@ -181,18 +204,28 @@ namespace cheat
             return std::nullopt;
         }
 
-        const auto entity_controller{driver.read<uintptr_t>(list_entity + 0x78 * (i & 0x1FF))};
-        if (!entity_controller)
+        const auto p_entity_controller{driver.read<uintptr_t>(list_entity + 0x78 * (i & 0x1FF))};
+        if (!p_entity_controller)
         {
             return std::nullopt;
         }
 
+        auto entity_controller{driver.read<CCSPlayerController>(p_entity_controller)};
+
+        struct str_wrap
+        {
+            char buf[20];
+        };
+        const str_wrap name{driver.read<str_wrap>(reinterpret_cast<uintptr_t>(entity_controller.m_sSanitizedPlayerName))};
+        entity_controller.m_sSanitizedPlayerName = new char[sizeof name];
+        strcpy_s(entity_controller.m_sSanitizedPlayerName, sizeof name, name.buf);
+
         return entity_controller;
     }
 
-    std::optional<uintptr_t> Cs2CheatController::get_entity_pawn(const driver::Driver& driver, const uintptr_t& entity_controller) const
+    std::optional<C_CSPlayerPawn> Cs2CheatController::get_entity_pawn(const Driver& driver, const CCSPlayerController& entity_controller) const
     {
-        const auto entity_controller_pawn{driver.read<uintptr_t>(entity_controller + cs2_dumper::schemas::client_dll::CCSPlayerController::m_hPlayerPawn)};
+        const auto entity_controller_pawn{entity_controller.m_hPlayerPawn};
         if (!entity_controller_pawn)
         {
             return std::nullopt;
@@ -204,12 +237,34 @@ namespace cheat
             return std::nullopt;
         }
 
-        const auto entity_pawn{driver.read<uintptr_t>(list_entity + 0x78 * (entity_controller_pawn & 0x1FF))};
-        if (!entity_pawn)
+        const auto p_entity_pawn{driver.read<uintptr_t>(list_entity + 0x78 * (entity_controller_pawn & 0x1FF))};
+        if (!p_entity_pawn)
         {
             std::wcerr << XORW(L"Cant grab player pawn, maybe the player disconnected?\n");
             return std::nullopt;
         }
+
+        auto entity_pawn{driver.read<C_CSPlayerPawn>(p_entity_pawn)};
+        entity_pawn.m_pGameSceneNode = new CGameSceneNode{driver.read<CGameSceneNode>(reinterpret_cast<uintptr_t>(entity_pawn.m_pGameSceneNode))};
+
+        struct Bones
+        {
+            Bone bones[32];
+        };
+        const auto bones{driver.read<Bones>(reinterpret_cast<uintptr_t>(entity_pawn.m_pGameSceneNode->m_modelState.m_pBoneArray))};
+        entity_pawn.m_pGameSceneNode->m_modelState.m_pBoneArray = reinterpret_cast<Bone(*)[32]>(new Bone[32]);
+        std::memcpy(*entity_pawn.m_pGameSceneNode->m_modelState.m_pBoneArray, bones.bones, sizeof Bones);
+
+        entity_pawn.m_pClippingWeapon = new C_CSWeaponBase{driver.read<C_CSWeaponBase>(reinterpret_cast<uintptr_t>(entity_pawn.m_pClippingWeapon))};
+        entity_pawn.m_pClippingWeapon->m_pEntity = new CEntityIdentity{driver.read<CEntityIdentity>(reinterpret_cast<uintptr_t>(entity_pawn.m_pClippingWeapon->m_pEntity))};
+
+        struct str_wrap
+        {
+            char buf[20];
+        };
+        const str_wrap name{driver.read<str_wrap>(reinterpret_cast<uintptr_t>(entity_pawn.m_pClippingWeapon->m_pEntity->m_designerName))};
+        entity_pawn.m_pClippingWeapon->m_pEntity->m_designerName = new char[sizeof name];
+        strcpy_s(entity_pawn.m_pClippingWeapon->m_pEntity->m_designerName, sizeof name, name.buf);
 
         return entity_pawn;
     }
