@@ -371,8 +371,9 @@ imgui*.ini
 
 ## General build artifacts
 *.o
-*.obj
 *.exe
 examples/*/Debug/*
 examples/*/Release/*
 examples/*/x64/*
+
+.idea/
