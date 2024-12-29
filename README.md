@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-- ImGui (already included)
+- [ImGui](https://github.com/ocornut/imgui) (already included)
 - [reversing-commons header-only lib](https://github.com/stdNullPtr/reversing-commons)
 
 ## Project Overview
