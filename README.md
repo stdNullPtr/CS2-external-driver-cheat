@@ -21,7 +21,7 @@ This solution contains 2 projects:
 
 <h2>I will not show you how to build/run, this is for educational purposes. It's pretty simple if you are not a cheating
 paster.</h2>
-<h3><i>I don't support cheating, I support curiosity.</i></h3>
+<h3><i>I don't support cheating, I support educational curiosity.</i></h3>
 
 ## Concept
 
