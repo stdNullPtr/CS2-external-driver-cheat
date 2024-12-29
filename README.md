@@ -3,7 +3,7 @@
 ## Dependencies
 
 - ImGui (already included)
-- reversing-commons header-only lib
+- [reversing-commons header-only lib](https://github.com/stdNullPtr/reversing-commons)
 
 ## Project Overview
 
