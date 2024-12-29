@@ -39,16 +39,21 @@ done from Kernel space to Usermode.
 ## Examples
 
 ![kdmapper](/github/img/kd-mapper.png)
+<br>
 *Loading with [kdmapper](https://github.com/TheCruZ/kdmapper)*
 
 ![wait-join-game.png](/github/img/wait-join-game.png)
+<br>
 *The client will always maintain a valid state depending on where you are (in-game/minimized/loading)*
 
 ![menu.png](/github/img/menu.png)
+<br>
 *Cheat menu in-game (press INSERT)*
 
 ![menu-toggled.png](/github/img/menu-toggled.png)
+<br>
 *box ESP toggled*
 
 ![toggled.png](/github/img/toggled.png)
+<br>
 *box ESP is blue when the enemy is radar-visible to you (safe to aim lock)*
