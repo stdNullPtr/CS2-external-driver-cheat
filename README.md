@@ -3,6 +3,7 @@
 ## Dependencies
 
 - [ImGui](https://github.com/ocornut/imgui) (already included)
+- [ImGui Freetype](https://github.com/ocornut/imgui/tree/master/misc/freetype) (easiest way through vcpkg)
 - [reversing-commons header-only lib](https://github.com/stdNullPtr/reversing-commons)
 
 ## Project Overview
