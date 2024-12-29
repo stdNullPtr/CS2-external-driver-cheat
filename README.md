@@ -10,7 +10,7 @@
 This solution contains 2 projects:
 
 - km-xd
-    - The IOCTL Kernel Mode driver project. It builds a simple IOCTL driver that is used to proxy red/write mem calls
+    - The IOCTL Kernel Mode driver project. It builds a simple IOCTL driver that is used to proxy read/write mem calls
     - Produces **km-xd.sys**
 - um-xd
     - The Client Mode application that interacts with the driver and has the actual cheat implementation.
