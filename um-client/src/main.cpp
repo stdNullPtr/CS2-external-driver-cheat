@@ -98,9 +98,9 @@ int main()
 #ifndef NDEBUG
         std::wcout << '\n';
         std::wcout << ansi_codes::light_blue << XORW(L"[F1] Pause\n") << ansi_codes::reset_color;
-        std::wcout << ansi_codes::light_blue << XORW(L"[F2] Radar hack\n") << ansi_codes::reset_color;
-        std::wcout << ansi_codes::light_blue << XORW(L"[F3] Glow hack\n") << ansi_codes::reset_color;
-        std::wcout << ansi_codes::light_blue << XORW(L"[F4] ESP hack\n") << ansi_codes::reset_color;
+        std::wcout << ansi_codes::light_blue << XORW(L"[F2] ESP hack\n") << ansi_codes::reset_color;
+        std::wcout << ansi_codes::light_blue << XORW(L"[F3] Aim hack\n") << ansi_codes::reset_color;
+        std::wcout << ansi_codes::light_blue << XORW(L"[F4]   Aim assist\n") << ansi_codes::reset_color;
         std::wcout << ansi_codes::light_blue << XORW(L"[INS] Minimize\n") << ansi_codes::reset_color;
         std::wcout << '\n';
 #endif
