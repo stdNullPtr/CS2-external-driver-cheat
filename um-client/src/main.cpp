@@ -24,7 +24,7 @@ using render::DrawCache;
 
 int main()
 {
-    setCursorVisibility(false);
+    set_cursor_visibility(false);
 
     const driver::Driver driver{};
     if (!driver.is_valid())
@@ -46,7 +46,7 @@ int main()
     while (!(GetAsyncKeyState(VK_END) & 0x1))
     {
 #ifndef NDEBUG
-        clearConsole({ 0, 0 });
+        clear_console({ 0, 0 });
 #endif
         if (!cheat.is_state_valid())
         {
@@ -56,7 +56,7 @@ int main()
             draw_list.clear();
             reset_toggles();
 
-            if (!commons::window::waitForWindow(XORW(L"Counter-Strike 2")))
+            if (!commons::window::wait_for_window(XORW(L"Counter-Strike 2")))
             {
                 std::wcout << XORW(L"Aborted looking for game window, exiting...\n");
                 break;
@@ -105,7 +105,7 @@ int main()
         std::wcout << '\n';
 #endif
 
-        const bool is_window_in_focus{(commons::window::isWindowInFocus(g::cs2_window_name) || commons::window::isWindowInFocus(cheat::imgui::g::overlay_window_name))};
+        const bool is_window_in_focus{(commons::window::is_window_in_focus(g::cs2_window_name) || commons::window::is_window_in_focus(cheat::imgui::g::overlay_window_name))};
         if (is_paused || !is_window_in_focus)
         {
             std::wcout << XORW(L"[F1] Paused...\n");

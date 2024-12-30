@@ -3,7 +3,7 @@
 ## Dependencies
 
 - [ImGui](https://github.com/ocornut/imgui) (already included)
-- [ImGui Freetype](https://github.com/ocornut/imgui/tree/master/misc/freetype) (easiest way through vcpkg)
+- [ImGui Freetype](https://github.com/ocornut/imgui/tree/master/misc/freetype) (easiest way through [vcpkg](https://devblogs.microsoft.com/cppblog/vcpkg-is-now-included-with-visual-studio/) ([example](https://superuser.com/a/1829890)))
 - [reversing-commons header-only lib](https://github.com/stdNullPtr/reversing-commons)
 
 ## Project Overview

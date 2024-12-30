@@ -377,3 +377,5 @@ examples/*/Release/*
 examples/*/x64/*
 
 .idea/
+
+vcpkg_installed/

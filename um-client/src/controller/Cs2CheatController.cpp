@@ -4,7 +4,7 @@ namespace cheat
 {
     std::optional<DWORD> Cs2CheatController::get_cs2_process_id()
     {
-        const auto process_id{commons::process::GetProcessIdByName(g::cs2_process_name)};
+        const auto process_id{commons::process::get_process_id_by_name(g::cs2_process_name)};
         if (!process_id.has_value())
         {
             std::wcerr << XORW(L"Failed to find pid of requested process.\n");
@@ -20,7 +20,7 @@ namespace cheat
 
     std::optional<uintptr_t> Cs2CheatController::find_client_dll_base() const
     {
-        const auto client_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::client_dll_module_name)};
+        const auto client_dll_base{commons::process::get_module_base_address(cs2_process_id_, g::client_dll_module_name)};
         if (!client_dll_base.has_value())
         {
             std::wcerr << XORW(L"Failed GetModuleBaseAddress for Client DLL.\n");
@@ -36,7 +36,7 @@ namespace cheat
 
     std::optional<uintptr_t> Cs2CheatController::find_engine_dll_base() const
     {
-        const auto engine_dll_base{commons::process::GetModuleBaseAddress(cs2_process_id_, g::engine_dll_module_name)};
+        const auto engine_dll_base{commons::process::get_module_base_address(cs2_process_id_, g::engine_dll_module_name)};
         if (!engine_dll_base.has_value())
         {
             std::wcerr << XORW(L"Failed GetModuleBaseAddress for Engine DLL.\n");
